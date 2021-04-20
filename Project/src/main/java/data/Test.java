@@ -17,6 +17,6 @@ public class Test {
         String[] productions = {"Star wars", "Sejt"};
         rightsholder.put(new Rightsholder(1,"bo","adwwa", productions),list);
         ProductionHandler ph = ProductionHandler.getInstance();
-        ph.saveProduction(new Production("122223","Janisdwa",rightsholder));
+        ph.saveProduction(new Production("122r22t3","Janisdwa",rightsholder));
     }
 }

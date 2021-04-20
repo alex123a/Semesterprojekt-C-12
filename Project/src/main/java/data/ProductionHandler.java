@@ -43,7 +43,6 @@ public class ProductionHandler {
     }
 
     public Map<IRightsholder, List<String>> convertToMap(String rhRoles) {
-        System.out.println(rhRoles);
         String[] rightholdersWithRoles = rhRoles.split("¤");
         Map<IRightsholder, List<String>> map = new HashMap<>();
         RightsHolderHandler rhandler = RightsHolderHandler.getInstance();
