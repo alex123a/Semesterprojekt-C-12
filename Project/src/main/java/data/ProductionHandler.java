@@ -8,23 +8,21 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class ProductionHandler {
-    private File file;
+    private static File file;
+    private final static ProductionHandler prHandler = new ProductionHandler("productionData");
 
     private ProductionHandler(String fileName) {
         try {
-            this.file = new File(getClass().getResource("/" + fileName + ".txt").toURI().getPath());
+            this.file = new File(getClass().getResource("/" + fileName + ".dat").toURI().getPath());
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
 
-    private ArrayList<IProduction> readPFile() {
+    public ArrayList<IProduction> readPFile() {
         Scanner scanner = null;
         try {
             scanner = new Scanner(this.file);
@@ -42,12 +40,19 @@ public class ProductionHandler {
         return null;
     }
 
-    private Map<IRightsholder, List<String>> convertToMap(String rhRoles) {
-
-        return null;
+    public Map<IRightsholder, List<String>> convertToMap(String rhRoles) {
+        String[] rightholdersWithRoles = rhRoles.split("¤");
+        Map<IRightsholder, List<String>> map = new HashMap<>();
+        RightsHolderHandler rhandler = RightsHolderHandler.getInstance();
+        for (String rhRole: rightholdersWithRoles) {
+            String[] splitted = rhRole.split(":");
+            List<String> roles = new ArrayList<>(Arrays.asList(splitted[2].split(",")));
+            map.put(rhandler.readRightsholder(Integer.parseInt(splitted[0])), roles);
+        }
+        return map;
     }
 
-    private IProduction readProduction(String id) {
+    public IProduction readProduction(String id) {
         ArrayList<IProduction> productions = readPFile();
         for (IProduction p: productions) {
             if (((Production) p).getProductionID().equals(id)) {
@@ -57,20 +62,22 @@ public class ProductionHandler {
         return null;
     }
 
-    private void saveProduction(IProduction production) {
+    public void saveProduction(IProduction production) {
         Scanner scanner = null;
         FileWriter fileWriter = null;
+        boolean exists = false;
         try {
+            fileWriter = new FileWriter(this.file,true);
             scanner = new Scanner(this.file);
-            fileWriter = new FileWriter(this.file);
-            while (scanner.hasNextLine()) {
-                if (scanner.nextLine().contains(production.getName())) {
-                    fileWriter.append("");
-                } else {
-                    fileWriter.append(scanner.nextLine());
+            while(scanner.hasNextLine()) {
+                if (scanner.nextLine().contains(production.getProductionID())) {
+                    exists = true;
+                    break;
                 }
             }
-            fileWriter.append(production.getProductionID() + ";" + production.getName() + ";" + production + "\n");
+            if (!exists) {
+                fileWriter.write(production.getProductionID() + ";" + production.getName() + ";" + ((Production) production).mapToString() + "\n");
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -83,5 +90,55 @@ public class ProductionHandler {
                 e.printStackTrace();
             }
         }
+        if (exists) {
+            try {
+                List<String> list = new ArrayList<>();
+                scanner = new Scanner(this.file);
+                fileWriter = new FileWriter(this.file);
+                fileWriter.write("");
+                while (scanner.hasNextLine()) {
+                    list.add(scanner.nextLine());
+                }
+                for (String s: list) {
+                    if (s.contains(production.getProductionID())) {
+                        list.remove(s);
+                    } else {
+                        try {
+                            fileWriter.append(s);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    fileWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                scanner.close();
+            }
+        }
+
+    }
+
+    public static ProductionHandler getInstance() {
+        return prHandler;
+    }
+
+    public String read() {
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(this.file);
+            System.out.println(this.file.getAbsolutePath());
+            return scanner.next();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -22,7 +22,7 @@ public class Rightsholder implements IRightsholder {
         this.productions = productions;
     }
 
-    // TODO Convert productions string from only ids to Production instances.
+
 
 
     public int getId() {

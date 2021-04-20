@@ -3,6 +3,8 @@ package data;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +17,7 @@ public class Production implements IProduction {
 
     }
 
-    public Production(String productionID, String name, Map<IRightsholder, List<String>> rightsholder) {
+    public Production(String productionID, String name, Map<IRightsholder,List<String>> rightsholder) {
         this.productionID = productionID;
         this.name = name;
         this.rightsholder = rightsholder;
@@ -50,4 +52,33 @@ public class Production implements IProduction {
     public void setRightsholder(Map<IRightsholder, List<String>> rightsholder) {
         this.rightsholder = rightsholder;
     }
+
+    // Creating a map with ID integer as key instead of the whole rightholder object.
+
+    public Map<Integer, List<String>> convertRHToIDs() {
+        Map<Integer, List<String>> newMap = new HashMap<>();
+        for (IRightsholder rh: rightsholder.keySet()) {
+            int theId = ((Rightsholder) rh).getId();
+            newMap.put(theId, rightsholder.get(rh));
+        }
+        return newMap;
+    }
+
+    public String mapToString() {
+        Map<Integer, List<String>> map = convertRHToIDs();
+        System.out.println(map.keySet());
+        System.out.println(map.get(1));
+        String rightholderString = "";
+        for (Integer rh: map.keySet()) {
+            rightholderString = rightholderString + "" + rh + ": [";
+            for (String word: map.get(rh)) {
+                rightholderString = rightholderString + word + ", ";
+            }
+
+            rightholderString = rightholderString + "]¤ ";
+        }
+        return rightholderString;
+    }
+
+
 }
