@@ -46,7 +46,7 @@ public class ProductionHandler {
         String[] rightholdersWithRoles = rhRoles.split("¤");
         Map<IRightsholder, List<String>> map = new HashMap<>();
         RightsHolderHandler rhandler = RightsHolderHandler.getInstance();
-        for (String rhRole: rightholdersWithRoles) {
+        for (String rhRole : rightholdersWithRoles) {
             String[] splitted = rhRole.split(":");
             List<String> roles = new ArrayList<>(Arrays.asList(splitted[1].split(",")));
             map.put(rhandler.readRightsholder(Integer.parseInt(splitted[0])), roles);
@@ -67,17 +67,21 @@ public class ProductionHandler {
     public void saveProduction(IProduction production) {
         ArrayList<IProduction> readings = readPFile();
         boolean contains = false;
-        for (IProduction p: readings) {
-            p.getName().equals(production.)
+        for (int i = 0; i < readings.size(); i++) {
+            if (readings.get(i).getProductionID().equals(production.getProductionID())) {
+                contains = true;
+                readings.remove(i);
+            }
         }
-
-        if (readings.contains(production)) {
-            readings.remove(production);
-            file.delete();
+        if (contains) {
+            readings.add(production);
             FileWriter fileWriter = null;
             try {
                 fileWriter = new FileWriter(this.file);
-                fileWriter.append("\n" + production.getProductionID() + ";" + production.getName() + ";" + ((Production) production).mapToString());
+                fileWriter.append(readings.get(0).getProductionID() + ";" + readings.get(0).getName() + ";" + ((Production) readings.get(0)).mapToString());
+                for (int i = 1; i < readings.size(); i++) {
+                    fileWriter.append("\n" + readings.get(i).getProductionID() + ";" + readings.get(i).getName() + ";" + ((Production) readings.get(i)).mapToString());
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -90,10 +94,15 @@ public class ProductionHandler {
                 }
             }
         } else {
+            System.out.println("testing");
             FileWriter fileWriter = null;
             try {
                 fileWriter = new FileWriter(this.file, true);
-                fileWriter.write(production.getProductionID() + ";" + production.getName() + ";" + ((Production) production).mapToString() + "\n");
+                if (readings.size() == 0) {
+                    fileWriter.write(production.getProductionID() + ";" + production.getName() + ";" + ((Production) production).mapToString());
+                } else {
+                    fileWriter.write("\n" + production.getProductionID() + ";" + production.getName() + ";" + ((Production) production).mapToString());
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {

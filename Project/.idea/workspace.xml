@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Production.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Production.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Production.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/ProductionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/ProductionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/Rightsholder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Rightsholder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/productionData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/productionData.dat" afterDir="false" />
     </list>
@@ -44,15 +44,11 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java">
       <ranges>
-        <range start1="31" end1="31" start2="31" end2="33" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="37" end1="38" start2="39" end2="42" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="44" end1="44" start2="48" end2="51" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="46" end1="47" start2="53" end2="54" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="48" end1="49" start2="55" end2="56" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="56" end1="57" start2="63" end2="64" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="65" end1="78" start2="72" end2="95" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="79" end1="123" start2="96" end2="106" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="125" end1="126" start2="108" end2="108" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="48" end1="49" start2="48" end2="49" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="69" end1="76" start2="69" end2="77" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="79" end1="80" start2="80" end2="84" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="92" end1="92" start2="96" end2="97" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="95" end1="96" start2="100" end2="105" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
       </ranges>
     </file>
   </component>
@@ -119,7 +115,7 @@
       <updated>1618902693988</updated>
       <workItem from="1618902697189" duration="883000" />
       <workItem from="1618904875475" duration="1589000" />
-      <workItem from="1618906505118" duration="15597000" />
+      <workItem from="1618906505118" duration="18646000" />
     </task>
     <servers />
   </component>
