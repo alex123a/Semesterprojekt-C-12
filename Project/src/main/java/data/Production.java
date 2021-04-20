@@ -54,7 +54,6 @@ public class Production implements IProduction {
     }
 
     // Creating a map with ID integer as key instead of the whole rightholder object.
-
     public Map<Integer, List<String>> convertRHToIDs() {
         Map<Integer, List<String>> newMap = new HashMap<>();
         for (IRightsholder rh: rightsholder.keySet()) {
@@ -66,8 +65,6 @@ public class Production implements IProduction {
 
     public String mapToString() {
         Map<Integer, List<String>> map = convertRHToIDs();
-        System.out.println(map.keySet());
-        System.out.println(map.get(1));
         String rightholderString = "";
         for (Integer rh: map.keySet()) {
             rightholderString = rightholderString + "" + rh + ":[";

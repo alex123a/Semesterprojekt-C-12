@@ -54,7 +54,7 @@ public class RightsHolderHandler {
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(this.file);
-            fileWriter.write(rightsholder.getName() + ";" + rightsholder.getDescription() + ";" + rightsholder.getRightsholderFor() + "\n");
+            fileWriter.write(rightsholder.getId() + ";" + rightsholder.getName() + ";" + rightsholder.getDescription() + ";" + rightsholder.getRightsholderFor() + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
