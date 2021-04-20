@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.Controller">
    <children>
       <Pane prefHeight="140.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;">
          <children>
@@ -63,7 +63,7 @@
       </Pane>
       <HBox alignment="CENTER" layoutX="460.0" layoutY="141.0" prefHeight="80.0" prefWidth="800.0">
          <children>
-            <Label fx:id="menuMyBroadcast" text="Mine udsendelser">
+            <Label fx:id="menuMyBroadcast" onMouseClicked="#onBroadcastClicked" text="Mine udsendelser">
                <font>
                   <Font name="Calibri" size="30.0" />
                </font>
@@ -74,7 +74,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="menuHelp" text="Hjælpeside">
+            <Label fx:id="menuHelp" onMouseClicked="#onHelpClicked" text="Hjælpeside">
                <font>
                   <Font name="Calibri" size="30.0" />
                </font>
@@ -88,7 +88,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="menuHomepage" text="TV2.DK" textFill="#e40000">
+            <Label fx:id="menuHomepage" onMouseClicked="#onHomepageClicked" text="TV2.DK" textFill="#e40000">
                <font>
                   <Font name="Calibri Light" size="34.0" />
                </font>
@@ -99,7 +99,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="menuEditUser" text="Rediger Brugere">
+            <Label fx:id="menuEditUser" onMouseClicked="#onEditUserClicked" text="Rediger Brugere">
                <font>
                   <Font name="Calibri" size="30.0" />
                </font>
