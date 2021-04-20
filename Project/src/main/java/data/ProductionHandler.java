@@ -43,12 +43,13 @@ public class ProductionHandler {
     }
 
     public Map<IRightsholder, List<String>> convertToMap(String rhRoles) {
+        System.out.println(rhRoles);
         String[] rightholdersWithRoles = rhRoles.split("¤");
         Map<IRightsholder, List<String>> map = new HashMap<>();
         RightsHolderHandler rhandler = RightsHolderHandler.getInstance();
         for (String rhRole : rightholdersWithRoles) {
             String[] splitted = rhRole.split(":");
-            List<String> roles = new ArrayList<>(Arrays.asList(splitted[1].split(",")));
+            List<String> roles = new ArrayList<>(Arrays.asList(splitted[1].replace("[", "").replace("]", "").split(",")));
             map.put(rhandler.readRightsholder(Integer.parseInt(splitted[0])), roles);
         }
         return map;
@@ -94,7 +95,6 @@ public class ProductionHandler {
                 }
             }
         } else {
-            System.out.println("testing");
             FileWriter fileWriter = null;
             try {
                 fileWriter = new FileWriter(this.file, true);
