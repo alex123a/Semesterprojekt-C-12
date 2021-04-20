@@ -9,12 +9,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class ProductionHandler {
     private File file;
 
-    public ProductionHandler(String fileName) {
+    private ProductionHandler(String fileName) {
         try {
             this.file = new File(getClass().getResource("/" + fileName + ".txt").toURI().getPath());
         } catch (URISyntaxException e) {
@@ -22,14 +24,14 @@ public class ProductionHandler {
         }
     }
 
-    public ArrayList<IProduction> readPFile() {
+    private ArrayList<IProduction> readPFile() {
         Scanner scanner = null;
         try {
             scanner = new Scanner(this.file);
             ArrayList<IProduction> productions = new ArrayList<>();
             while (scanner.hasNextLine()) {
                 String[] line = scanner.nextLine().split(";");
-                productions.add(new Production(line[0], line[1], line[2], line[3]));
+                productions.add(new Production(line[0], line[1], convertToMap(line[2])));
             }
             return productions;
         } catch (FileNotFoundException e) {
@@ -40,24 +42,41 @@ public class ProductionHandler {
         return null;
     }
 
-    public IProduction readProduction(String id) {
-        ArrayList<IProduction> rightsholders = readPFile();
-        for (IProduction rh: rightsholders) {
-            if (((Production) rh).getId() == id) {
-                return rh;
+    private Map<IRightsholder, List<String>> convertToMap(String rhRoles) {
+
+        return null;
+    }
+
+    private IProduction readProduction(String id) {
+        ArrayList<IProduction> productions = readPFile();
+        for (IProduction p: productions) {
+            if (((Production) p).getProductionID().equals(id)) {
+                return p;
             }
         }
         return null;
     }
 
-    public void saveProduction(IProduction production) {
+    private void saveProduction(IProduction production) {
+        Scanner scanner = null;
         FileWriter fileWriter = null;
         try {
+            scanner = new Scanner(this.file);
             fileWriter = new FileWriter(this.file);
-            fileWriter.write(production.getProductionID() + ";" + production.getName() + ";" + production.getRightsholders() + ";" + production.getRightsholdersRoles() + "\n");
+            while (scanner.hasNextLine()) {
+                if (scanner.nextLine().contains(production.getName())) {
+                    fileWriter.append("");
+                } else {
+                    fileWriter.append(scanner.nextLine());
+                }
+            }
+            fileWriter.append(production.getProductionID() + ";" + production.getName() + ";" + production + "\n");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            scanner.close();
             try {
                 fileWriter.close();
             } catch (IOException e) {
