@@ -3,20 +3,42 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/productionData.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Account_Grey.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Account_Red.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/RedDot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Search_Grey.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Search_Red.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/TV2Charlie.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/TV2Fri.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/TV2News.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/TV2Sport.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/TV2SportX.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/TV2Zulu.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Tv2Logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/layout/menu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/IRightsHolderHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" afterDir="false" />
     </list>
-    <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/IProductionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" afterDir="false" />
-    </list>
+    <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,24 +55,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java">
-      <ranges>
-        <range start1="2" end1="3" start2="2" end2="2" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="13" end1="14" start2="12" end2="13" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="15" end1="15" start2="14" end2="15" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="16" end1="17" start2="16" end2="17" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="24" end1="26" start2="24" end2="25" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="31" end1="33" start2="30" end2="32" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="34" end1="34" start2="33" end2="34" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="41" end1="43" start2="41" end2="49" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="46" end1="48" start2="52" end2="53" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="51" end1="52" start2="56" end2="57" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="63" end1="64" start2="68" end2="69" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="73" end1="81" start2="78" end2="78" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-      </ranges>
-    </file>
-  </component>
   <component name="ProjectId" id="1rQK5Km5WstHAcTLM2GKVYa2GXO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -62,6 +66,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -70,6 +75,13 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mikkel P Larsen\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\resources\Stylesheets" />
+      <recent name="C:\Users\Mikkel P Larsen\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\resources\images" />
+      <recent name="C:\Users\Mikkel P Larsen\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\resources\layout" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">

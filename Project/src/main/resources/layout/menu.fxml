@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="140.0" prefWidth="1920.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" layoutX="1625.0" layoutY="20.0" prefHeight="100.0" prefWidth="235.0">
+               <children>
+                  <ImageView fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/Search_Grey.jpg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="60.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/Account_Grey.jpg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0">
+                     <children>
+                        <ImageView fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/RedDot.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="9.0" layoutY="12.0" text="102" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <ImageView fitHeight="92.0" fitWidth="200.0" layoutX="853.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/Tv2Logo.png" />
+               </image>
+            </ImageView>
+            <Line endX="1920.0" layoutY="140.0" strokeWidth="0.5" />
+         </children>
+      </Pane>
+      <HBox alignment="CENTER" layoutX="460.0" layoutY="141.0" prefHeight="80.0" prefWidth="800.0">
+         <children>
+            <Label text="Mine udsendelser">
+               <font>
+                  <Font name="Calibri" size="30.0" />
+               </font>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </Label>
+            <Label text="Hjælpeside">
+               <font>
+                  <Font name="Calibri" size="30.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </Label>
+            <Label text="TV2.DK" textFill="#e40000">
+               <font>
+                  <Font name="Calibri Light" size="34.0" />
+               </font>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </Label>
+            <Label text="Rediger Brugere">
+               <font>
+                  <Font name="Calibri" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Line endX="1920.0" endY="221.0" startY="221.0" strokeWidth="0.5" />
+      <Pane layoutX="310.0" layoutY="315.0" prefWidth="1300.0">
+         <children>
+            <Label text="TV-GUIDE" textFill="#242424">
+               <font>
+                  <Font name="Calibri Bold" size="42.0" />
+               </font>
+            </Label>
+            <HBox layoutY="60.0" prefHeight="100.0" prefWidth="1300.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefWidth="140.0" styleClass="vbox" stylesheets="@/stylesheets/vboxStyle.css">
+                     <children>
+                        <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/Tv2Logo.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
+                        <ImageView fitHeight="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/TV2Sport.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
+                        <ImageView fitHeight="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/TV2SportX.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
+                        <ImageView fitHeight="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/TV2Charlie.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets left="4.0" right="4.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
+                        <ImageView fitHeight="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/TV2News.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="8.0" top="8.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
+                        <ImageView fitHeight="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/TV2Zulu.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
+                        <ImageView fitHeight="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/TV2Fri.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="15.0" />
+                           </VBox.margin>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="1160.0" stylesheets="@/stylesheets/vboxStyle.css">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                           <children>
+                              <Label text="Nyhederne, Sporten og Vejret">
+                                 <font>
+                                    <Font name="Calibri Bold" size="34.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="12:00">
+                                 <font>
+                                    <Font name="Calibri Light" size="30.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="1.0" />
+                           </opaqueInsets>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                           <children>
+                              <Label text="Cykling: Tour of the Alps - 1. etape">
+                                 <font>
+                                    <Font name="Calibri Bold" size="34.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="11:45">
+                                 <font>
+                                    <Font name="Calibri Light" size="30.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="1.0" />
+                           </opaqueInsets>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                           <children>
+                              <Label text="Tennis: ATP - A. Ramos-Vinolas-H. Rune, Barcelona">
+                                 <font>
+                                    <Font name="Calibri Bold" size="34.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="11:00">
+                                 <font>
+                                    <Font name="Calibri Light" size="30.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="1.0" />
+                           </opaqueInsets>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                           <children>
+                              <Label text="Love Child">
+                                 <font>
+                                    <Font name="Calibri Bold" size="34.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="11:35">
+                                 <font>
+                                    <Font name="Calibri Light" size="30.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="1.0" />
+                           </opaqueInsets>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                           <children>
+                              <Label text="12 Nyheder med business og vejr">
+                                 <font>
+                                    <Font name="Calibri Bold" size="34.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="12:00">
+                                 <font>
+                                    <Font name="Calibri Light" size="30.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="1.0" />
+                           </opaqueInsets>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                           <children>
+                              <Label text="Beverly Hills 90210">
+                                 <font>
+                                    <Font name="Calibri Bold" size="34.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="11:50">
+                                 <font>
+                                    <Font name="Calibri Light" size="30.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="1.0" />
+                           </opaqueInsets>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                           <children>
+                              <Label text="Bolighjælp på vej">
+                                 <font>
+                                    <Font name="Calibri Bold" size="34.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="11:20">
+                                 <font>
+                                    <Font name="Calibri Light" size="30.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="1.0" />
+                           </opaqueInsets>
+                        </VBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Label layoutX="1770.0" layoutY="163.0" text="Log Ind">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
