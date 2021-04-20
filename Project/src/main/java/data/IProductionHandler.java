@@ -1,11 +1,11 @@
 package data;
 
-import domain.CreditsManagement.Production;
+import Interfaces.IProduction;
 
 import java.util.ArrayList;
 
 public interface IProductionHandler {
-    ArrayList<Production> readPFile();
-    Production readPFile(String id);
-    void writeToPFile(Production production);
+    ArrayList<IProduction> readPFile();
+    IProduction readProduction(String id);
+    void saveProduction(IProduction production);
 }

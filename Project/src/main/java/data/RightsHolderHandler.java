@@ -1,6 +1,7 @@
 package data;
 
-import domain.CreditsManagement.Production;
+import Interfaces.IProduction;
+import Interfaces.IRightsholder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,14 +23,14 @@ public class RightsHolderHandler implements IRightsHolderHandler {
     }
 
     @Override
-    public ArrayList<RightsHolder> readRHFile() {
+    public ArrayList<IRightsholder> readRHFile() {
         Scanner scanner = null;
         try {
             scanner = new Scanner(this.file);
-            ArrayList<RightsHolder> rightsholder = new ArrayList<>();
+            ArrayList<IRightsholder> rightsholder = new ArrayList<>();
             while (scanner.hasNextLine()) {
                 String[] line = scanner.nextLine().split(",");
-                rightsholder.add(new RightsHolder(line[0], line[1], line[2]));
+                rightsholder.add(new Rightsholder(line[0], line[1], line[2]));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -39,12 +40,12 @@ public class RightsHolderHandler implements IRightsHolderHandler {
         return null;
     }
     @Override
-    public RightsHolder readRHFile(String id) {
+    public IRightsholder readRightsholder(String id) {
         return null;
     }
 
     @Override
-    public void writeToRHFile(RightsHolder rightsHolder) {
+    public void saveRightsholder(IRightsholder rightsHolder) {
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(this.file);
@@ -60,8 +61,9 @@ public class RightsHolderHandler implements IRightsHolderHandler {
         }
     }
 
-    public ArrayList<Production> convertToProduction(String stringProduction) {
+    public String[] convertToProduction(String stringProduction) {
         String[] productionArray = stringProduction.replace("[","").replace("]", "").split(",");
+        return productionArray;
 
     }
 
