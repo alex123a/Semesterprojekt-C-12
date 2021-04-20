@@ -1,4 +1,4 @@
-package sample;
+package presentation;
 
 public class NewMain {
     public static void main(String[] args) {
