@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.Controller">
    <children>
       <Pane prefHeight="140.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;">
          <children>
@@ -62,15 +63,18 @@
       </Pane>
       <HBox alignment="CENTER" layoutX="460.0" layoutY="141.0" prefHeight="80.0" prefWidth="800.0">
          <children>
-            <Label text="Mine udsendelser">
+            <Label fx:id="menuMyBroadcast" onMouseClicked="#onBroadcastClicked" text="Mine udsendelser">
                <font>
                   <Font name="Calibri" size="30.0" />
                </font>
                <padding>
                   <Insets right="30.0" />
                </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
-            <Label text="Hjælpeside">
+            <Label fx:id="menuHelp" onMouseClicked="#onHelpClicked" text="Hjælpeside">
                <font>
                   <Font name="Calibri" size="30.0" />
                </font>
@@ -80,19 +84,28 @@
                <padding>
                   <Insets right="30.0" />
                </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
-            <Label text="TV2.DK" textFill="#e40000">
+            <Label fx:id="menuHomepage" onMouseClicked="#onHomepageClicked" text="TV2.DK" textFill="#e40000">
                <font>
                   <Font name="Calibri Light" size="34.0" />
                </font>
                <padding>
                   <Insets right="30.0" />
                </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
-            <Label text="Rediger Brugere">
+            <Label fx:id="menuEditUser" onMouseClicked="#onEditUserClicked" text="Rediger Brugere">
                <font>
                   <Font name="Calibri" size="30.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
          </children>
       </HBox>
@@ -174,7 +187,7 @@
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="1160.0" stylesheets="@/stylesheets/vboxStyle.css">
                      <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-width: 1; -fx-border-color: #000000;">
+                        <VBox fx:id="defaultBox" alignment="CENTER_LEFT" onMouseClicked="#onDefaultBoxClicked" prefHeight="81.0" prefWidth="100.0" style="-fx-border-width: 1; -fx-border-color: #000000;">
                            <children>
                               <Label text="TV2 Program Navn">
                                  <font>
@@ -196,10 +209,13 @@
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
+                        <VBox fx:id="sportBox" alignment="CENTER_LEFT" onMouseClicked="#onSportBoxClicked" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
                            <children>
-                              <Label text="TV2 Sport Program Navn">
+                              <Label fx:id="sportProgramName" text="TV2 Sport Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -207,7 +223,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="TV2 Sport Program Klokkeslæt">
+                              <Label fx:id="sportProgramTime" text="TV2 Sport Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
@@ -219,10 +235,13 @@
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
+                        <VBox fx:id="sportXBox" alignment="CENTER_LEFT" onMouseClicked="#onSportXBoxClicked" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
                            <children>
-                              <Label text="TV2 Sport X Program Navn">
+                              <Label fx:id="sportXProgramName" text="TV2 Sport X Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -230,7 +249,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="TV2 Sport X Program Klokkeslæt">
+                              <Label fx:id="sportXProgramTime" text="TV2 Sport X Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
@@ -242,10 +261,13 @@
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
+                        <VBox fx:id="charlieBox" alignment="CENTER_LEFT" onMouseClicked="#onCharlieBoxClicked" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
                            <children>
-                              <Label text="TV2 Charlie Program Navn">
+                              <Label fx:id="charlieProgramName" text="TV2 Charlie Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -253,7 +275,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="TV2 Charlie Program Klokkeslæt">
+                              <Label fx:id="charlieProgramTIme" text="TV2 Charlie Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
@@ -265,10 +287,13 @@
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
+                        <VBox fx:id="newBox" alignment="CENTER_LEFT" onMouseClicked="#onNewsBoxClicked" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
                            <children>
-                              <Label text="TV2 News Program Navn">
+                              <Label fx:id="newsProgramName" text="TV2 News Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -276,7 +301,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="TV2 News Program Klokkeslæt">
+                              <Label fx:id="newsProgramTime" text="TV2 News Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
@@ -288,10 +313,13 @@
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
+                        <VBox fx:id="zuluBox" alignment="CENTER_LEFT" onMouseClicked="#onZuluBoxClicked" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
                            <children>
-                              <Label text="TV2 Zulu Program Navn">
+                              <Label fx:id="zuluProgramName" text="TV2 Zulu Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -299,7 +327,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="TV2 Zulu Program Klokkeslæt">
+                              <Label fx:id="zuluProgramTime" text="TV2 Zulu Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
@@ -311,10 +339,13 @@
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
+                        <VBox fx:id="friBox" alignment="CENTER_LEFT" onMouseClicked="#onFriBoxClicked" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
                            <children>
-                              <Label text="TV2 Fri Program Navn">
+                              <Label fx:id="friProgramName" text="TV2 Fri Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -322,7 +353,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="TV2 Fri Program Klokkeslæt">
+                              <Label fx:id="friProgramTime" text="TV2 Fri Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
@@ -334,6 +365,9 @@
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </VBox>
                      </children>
                      <opaqueInsets>
@@ -344,10 +378,13 @@
             </HBox>
          </children>
       </Pane>
-      <Label layoutX="1770.0" layoutY="163.0" text="Log Ind">
+      <Label fx:id="loginBtn" layoutX="1770.0" layoutY="163.0" onMouseClicked="#onLoginClicked" text="Log Ind">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
    </children>
 </Pane>
