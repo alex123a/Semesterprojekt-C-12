@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/IRightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/IRightsHolderHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" afterDir="false" />
+    </list>
+    <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/IProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/IProductionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/IRightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/IRightsHolderHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/data/IRightsHolderHandler.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="4" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="5" end1="8" start2="7" end2="10" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java">
+      <ranges>
+        <range start1="2" end1="3" start2="2" end2="4" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="24" end1="25" start2="25" end2="26" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="28" end1="29" start2="29" end2="30" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="31" end1="32" start2="32" end2="33" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="41" end1="42" start2="42" end2="43" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="46" end1="47" start2="47" end2="48" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="62" end1="63" start2="63" end2="64" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+      </ranges>
+    </file>
+  </component>
+  <component name="ProjectId" id="1rQK5Km5WstHAcTLM2GKVYa2GXO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="" />
+      <created>1618902693988</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618902693988</updated>
+      <workItem from="1618902697189" duration="883000" />
+      <workItem from="1618904875475" duration="1589000" />
+      <workItem from="1618906505118" duration="2972000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
