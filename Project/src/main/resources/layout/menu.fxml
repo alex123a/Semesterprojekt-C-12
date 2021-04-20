@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<Pane fx:controller="presentation.controllers.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="140.0" prefWidth="1920.0">
+      <Pane prefHeight="140.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;">
          <children>
             <HBox alignment="CENTER_RIGHT" layoutX="1625.0" layoutY="20.0" prefHeight="100.0" prefWidth="235.0">
                <children>
@@ -36,7 +40,7 @@
                               <Image url="@/images/RedDot.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="9.0" layoutY="12.0" text="102" textFill="WHITE">
+                        <Label alignment="CENTER" layoutX="9.0" layoutY="12.0" prefHeight="27.0" prefWidth="32.0" text="0" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -170,9 +174,9 @@
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="1160.0" stylesheets="@/stylesheets/vboxStyle.css">
                      <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-width: 1; -fx-border-color: #000000;">
                            <children>
-                              <Label text="Nyhederne, Sporten og Vejret">
+                              <Label text="TV2 Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -180,7 +184,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="12:00">
+                              <Label text="TV2 Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
@@ -188,15 +192,14 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
                            </children>
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
                            <children>
-                              <Label text="Cykling: Tour of the Alps - 1. etape">
+                              <Label text="TV2 Sport Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -204,7 +207,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="11:45">
+                              <Label text="TV2 Sport Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
@@ -212,15 +215,14 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
                            </children>
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
                            <children>
-                              <Label text="Tennis: ATP - A. Ramos-Vinolas-H. Rune, Barcelona">
+                              <Label text="TV2 Sport X Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -228,7 +230,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="11:00">
+                              <Label text="TV2 Sport X Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
@@ -236,15 +238,14 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
                            </children>
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
                            <children>
-                              <Label text="Love Child">
+                              <Label text="TV2 Charlie Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -252,7 +253,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="11:35">
+                              <Label text="TV2 Charlie Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
@@ -260,15 +261,14 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
                            </children>
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
                            <children>
-                              <Label text="12 Nyheder med business og vejr">
+                              <Label text="TV2 News Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -276,7 +276,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="12:00">
+                              <Label text="TV2 News Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
@@ -284,15 +284,14 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
                            </children>
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
                            <children>
-                              <Label text="Beverly Hills 90210">
+                              <Label text="TV2 Zulu Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -300,7 +299,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="11:50">
+                              <Label text="TV2 Zulu Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
@@ -308,15 +307,14 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Separator prefWidth="200.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
                            </children>
                            <opaqueInsets>
                               <Insets left="1.0" />
                            </opaqueInsets>
                         </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" stylesheets="@/stylesheets/vboxStyle.css">
+                        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="100.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
                            <children>
-                              <Label text="Bolighjælp på vej">
+                              <Label text="TV2 Fri Program Navn">
                                  <font>
                                     <Font name="Calibri Bold" size="34.0" />
                                  </font>
@@ -324,7 +322,7 @@
                                     <Insets left="10.0" />
                                  </padding>
                               </Label>
-                              <Label text="11:20">
+                              <Label text="TV2 Fri Program Klokkeslæt">
                                  <font>
                                     <Font name="Calibri Light" size="30.0" />
                                  </font>
