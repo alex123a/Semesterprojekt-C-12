@@ -16,6 +16,6 @@ public class MyProductionsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        productionListView.getItems().setAll(CreditsSystem.)
+        productionListView.getItems().setAll(CreditsSystem.getInstance().getProductions());
     }
 }
