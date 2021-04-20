@@ -5,22 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Production.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/IEditCredits.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/Production.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/Rightsholder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/Production.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Production.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/ProductionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/ProductionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/productionData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/productionData.dat" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Production.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/productionData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/productionData.dat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,37 +44,15 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java">
       <ranges>
-        <range start1="10" end1="14" start2="10" end2="11" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="16" end1="17" start2="13" end2="15" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="20" end1="21" start2="18" end2="19" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="26" end1="27" start2="24" end2="25" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="44" end1="47" start2="42" end2="52" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="49" end1="50" start2="54" end2="55" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="59" end1="60" start2="64" end2="65" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="62" end1="62" start2="67" end2="68" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="63" end1="63" start2="69" end2="70" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="64" end1="70" start2="71" end2="75" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="72" end1="73" start2="77" end2="80" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="85" end1="85" start2="92" end2="126" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="86" end1="86" start2="127" end2="143" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java">
-      <ranges>
-        <range start1="14" end1="15" start2="14" end2="15" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="18" end1="19" start2="18" end2="19" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="24" end1="25" start2="24" end2="25" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="42" end1="43" start2="42" end2="43" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="52" end1="53" start2="52" end2="53" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="68" end1="69" start2="68" end2="69" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="73" end1="73" start2="73" end2="77" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/main/java/data/Production.java">
-      <ranges>
-        <range start1="5" end1="5" start2="5" end2="7" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="17" end1="18" start2="19" end2="20" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="52" end1="52" start2="54" end2="83" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="31" end1="31" start2="31" end2="33" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="37" end1="38" start2="39" end2="42" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="44" end1="44" start2="48" end2="51" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="46" end1="47" start2="53" end2="54" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="48" end1="49" start2="55" end2="56" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="56" end1="57" start2="63" end2="64" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="65" end1="78" start2="72" end2="95" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="79" end1="123" start2="96" end2="106" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="125" end1="126" start2="108" end2="108" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
       </ranges>
     </file>
   </component>
@@ -146,7 +119,7 @@
       <updated>1618902693988</updated>
       <workItem from="1618902697189" duration="883000" />
       <workItem from="1618904875475" duration="1589000" />
-      <workItem from="1618906505118" duration="13518000" />
+      <workItem from="1618906505118" duration="15597000" />
     </task>
     <servers />
   </component>

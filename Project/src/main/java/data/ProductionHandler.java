@@ -35,7 +35,9 @@ public class ProductionHandler {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } finally {
-            scanner.close();
+            if (scanner != null) {
+                scanner.close();
+            }
         }
         return null;
     }
@@ -46,7 +48,7 @@ public class ProductionHandler {
         RightsHolderHandler rhandler = RightsHolderHandler.getInstance();
         for (String rhRole: rightholdersWithRoles) {
             String[] splitted = rhRole.split(":");
-            List<String> roles = new ArrayList<>(Arrays.asList(splitted[2].split(",")));
+            List<String> roles = new ArrayList<>(Arrays.asList(splitted[1].split(",")));
             map.put(rhandler.readRightsholder(Integer.parseInt(splitted[0])), roles);
         }
         return map;
@@ -54,7 +56,7 @@ public class ProductionHandler {
 
     public IProduction readProduction(String id) {
         ArrayList<IProduction> productions = readPFile();
-        for (IProduction p: productions) {
+        for (IProduction p : productions) {
             if (((Production) p).getProductionID().equals(id)) {
                 return p;
             }
@@ -63,67 +65,47 @@ public class ProductionHandler {
     }
 
     public void saveProduction(IProduction production) {
-        Scanner scanner = null;
-        FileWriter fileWriter = null;
-        boolean exists = false;
-        try {
-            fileWriter = new FileWriter(this.file,true);
-            scanner = new Scanner(this.file);
-            while(scanner.hasNextLine()) {
-                if (scanner.nextLine().contains(production.getProductionID())) {
-                    exists = true;
-                    break;
-                }
-            }
-            if (!exists) {
-                fileWriter.write(production.getProductionID() + ";" + production.getName() + ";" + ((Production) production).mapToString() + "\n");
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            scanner.close();
-            try {
-                fileWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        ArrayList<IProduction> readings = readPFile();
+        boolean contains = false;
+        for (IProduction p: readings) {
+            p.getName().equals(production.)
         }
-        if (exists) {
+
+        if (readings.contains(production)) {
+            readings.remove(production);
+            file.delete();
+            FileWriter fileWriter = null;
             try {
-                List<String> list = new ArrayList<>();
-                scanner = new Scanner(this.file);
                 fileWriter = new FileWriter(this.file);
-                fileWriter.write("");
-                while (scanner.hasNextLine()) {
-                    list.add(scanner.nextLine());
-                }
-                for (String s: list) {
-                    if (s.contains(production.getProductionID())) {
-                        list.remove(s);
-                    } else {
-                        try {
-                            fileWriter.append(s);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                fileWriter.append("\n" + production.getProductionID() + ";" + production.getName() + ";" + ((Production) production).mapToString());
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
-                try {
-                    fileWriter.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (fileWriter != null) {
+                    try {
+                        fileWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-                scanner.close();
+            }
+        } else {
+            FileWriter fileWriter = null;
+            try {
+                fileWriter = new FileWriter(this.file, true);
+                fileWriter.write(production.getProductionID() + ";" + production.getName() + ";" + ((Production) production).mapToString() + "\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (fileWriter != null) {
+                    try {
+                        fileWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
-
     }
 
     public static ProductionHandler getInstance() {

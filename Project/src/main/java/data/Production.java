@@ -70,12 +70,16 @@ public class Production implements IProduction {
         System.out.println(map.get(1));
         String rightholderString = "";
         for (Integer rh: map.keySet()) {
-            rightholderString = rightholderString + "" + rh + ": [";
-            for (String word: map.get(rh)) {
-                rightholderString = rightholderString + word + ", ";
+            rightholderString = rightholderString + "" + rh + ":[";
+
+            for (int i = 0; i < map.get(rh).size(); i++) {
+                rightholderString = rightholderString + map.get(rh).get(i);
+                if (i < map.get(rh).size() - 1) {
+                    rightholderString = rightholderString + ",";
+                }
             }
 
-            rightholderString = rightholderString + "]¤ ";
+            rightholderString = rightholderString + "]¤";
         }
         return rightholderString;
     }
