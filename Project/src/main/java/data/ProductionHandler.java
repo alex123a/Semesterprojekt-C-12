@@ -34,7 +34,7 @@ public class ProductionHandler implements IProductionHandler {
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(this.file);
-            fileWriter.write(production.getProductionID() + "," + production.getName() + "," + production.getRightsholderRole + ",");
+            fileWriter.write(production.getProductionID() + "," + production.getName() + "," + production.getRightsholderRole() + ",");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
