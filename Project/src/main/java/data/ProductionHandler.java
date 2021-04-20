@@ -63,16 +63,7 @@ public class ProductionHandler {
         try {
             scanner = new Scanner(this.file);
             fileWriter = new FileWriter(this.file);
-            while (scanner.hasNextLine()) {
-                if (scanner.nextLine().contains(production.getName())) {
-                    fileWriter.append("");
-                } else {
-                    fileWriter.append(scanner.nextLine());
-                }
-            }
-            fileWriter.append(production.getProductionID() + ";" + production.getName() + ";" + production + "\n");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            fileWriter.write(production.getProductionID() + "," + production.getName() + "," + production.getRightsholderRole() + ",");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
