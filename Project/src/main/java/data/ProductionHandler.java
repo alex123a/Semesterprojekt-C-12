@@ -81,6 +81,10 @@ class ProductionHandler {
     }
 
     void saveProduction(IProduction production) {
+        if (!(production instanceof Production)) {
+            production = new Production(production.getProductionID(), production.getName(), production.getRightsholders());
+        }
+
         List<IProduction> readings = readPFile();
         boolean contains = false;
         for (int i = 0; i < readings.size(); i++) {
@@ -114,6 +118,7 @@ class ProductionHandler {
             FileWriter fileWriter = null;
             try {
                 fileWriter = new FileWriter(this.file, true);
+
                 if (readings.size() == 0) {
                     fileWriter.write(production.getProductionID() + ";" + production.getName() + ";" + ((Production) production).mapToString());
                 } else {

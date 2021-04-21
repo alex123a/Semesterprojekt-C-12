@@ -6,7 +6,6 @@ import Interfaces.IRightsholder;
 import java.util.List;
 
 public class NewRightsholder implements IRightsholder {
-
     String name;
     String description;
     List<String> roles;
@@ -17,6 +16,7 @@ public class NewRightsholder implements IRightsholder {
         this.description = description;
         this.roles = roles;
     }
+
 
     @Override
     public String getName() {

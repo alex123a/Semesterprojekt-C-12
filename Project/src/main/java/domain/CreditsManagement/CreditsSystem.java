@@ -81,4 +81,5 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     public List<IRightsholder> getAllRightsholders() {
         return facadeData.getRightsholders();
     }
+
 }

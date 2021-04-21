@@ -98,6 +98,9 @@ public class AddProductionController {
         // Map over rightholders with their roles
         Map<IRightsholder, List<String>> RhsRoles = new HashMap<>();
         for (IRightsholder rh: rightsholders) {
+            for (String role: ((NewRightsholder) rh).getRoles()) {
+                System.out.println(role);
+            }
             RhsRoles.put(rh, ((NewRightsholder) rh).getRoles());
         }
 
