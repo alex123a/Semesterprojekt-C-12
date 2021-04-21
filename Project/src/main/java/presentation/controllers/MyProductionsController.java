@@ -8,14 +8,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MyProductionsController implements Initializable {
     @FXML
-    ListView<IProduction> productionListView;
+    ListView<String> productionsListView;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        productionListView.getItems().setAll(CreditsSystem.getInstance().getProductions());
+        ArrayList<String> testData = new ArrayList<>();
+        testData.add("One");
+        testData.add("Two");
+        testData.add("Three");
+        testData.add("Four");
+        productionsListView.getItems().setAll(testData);
     }
 }

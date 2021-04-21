@@ -81,5 +81,9 @@ public class Production implements IProduction {
         return rightholderString;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 
 }

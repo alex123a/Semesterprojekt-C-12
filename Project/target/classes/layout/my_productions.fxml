@@ -46,7 +46,7 @@
                         <Insets bottom="30.0" left="30.0" right="30.0" />
                     </VBox.margin>
                     <children>
-                        <ListView fx:id="produtionListView" prefHeight="409.0" prefWidth="936.0" />
+                        <ListView fx:id="productionsListView" prefHeight="409.0" prefWidth="936.0" />
                     </children>
                 </HBox>
             </children>
