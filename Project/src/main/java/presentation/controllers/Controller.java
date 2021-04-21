@@ -104,6 +104,19 @@ public class Controller {
 
         }
 
+        @FXML
+        void onSearchClicked(){
+                try {
+                        Parent root = FXMLLoader.load(getClass().getResource("/layout/search.fxml"));
+                        Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+                        window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+
+                } catch (IOException e) {
+                        throw new RuntimeException(e);
+                }
+                System.out.println("Search");
+        }
+
 
         @FXML
         void onLoginClicked(MouseEvent event) {

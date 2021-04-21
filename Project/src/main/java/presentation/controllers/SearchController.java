@@ -1,9 +1,20 @@
 package presentation.controllers;
 
+import domain.CreditsManagement.CreditsSystem;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -11,16 +22,39 @@ import java.util.ResourceBundle;
 public class SearchController implements Initializable {
 
     @FXML
-    ListView<String> resultsList;
+    ListView<Object> resultsList;
+    @FXML
+    ComboBox<String> typeComboBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ArrayList<String> testData = new ArrayList<>();
-        testData.add("Program 1");
-        testData.add("Program 2");
-        testData.add("Program 3");
-        testData.add("Program 4");
-        testData.add("Program 5");
-        resultsList.getItems().setAll(testData);
+        ObservableList<String> options = FXCollections.observableArrayList("Udsendelser", "Medvirkende");
+        typeComboBox.setItems(options);
     }
+
+    public void onComboBoxSelection(ActionEvent e){
+        String value = typeComboBox.getValue();
+        if (value == null){
+            return;
+        } else if (value.equals("Udsendelser")){
+            resultsList.getItems().setAll(CreditsSystem.getInstance().getProductions());
+        } else if (value.equals("Medvirkende")){
+            resultsList.getItems().setAll(CreditsSystem.getInstance().getAllRightsholders());
+        }
+    }
+
+    public void backButtonClicked(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
+            //It's not very pretty to use the resultslist to get the scene
+            Stage window = (Stage) resultsList.getScene().getWindow();
+            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Menu");
+    }
+
+
 }
