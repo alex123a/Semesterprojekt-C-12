@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="700" prefWidth="1300" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.SearchController">
+   <children>
+      <ImageView fitHeight="50.0" fitWidth="100.0" layoutX="592.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+              <Image url="@/images/Tv2Logo.png" />
+          </image>
+      </ImageView>
+      <VBox layoutX="165.0" layoutY="91.0" prefHeight="606.0" prefWidth="994.0" style="-fx-background-color: white;">
+         <children>
+            <HBox prefHeight="142.0" prefWidth="994.0" style="-fx-alignment: center-left;">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="30.0" right="30.0" top="30.0" />
+               </VBox.margin>
+               <children>
+                  <ImageView fitHeight="41.0" fitWidth="42.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/BackArrow.jpg" />
+                     </image>
+                  </ImageView>
+                  <ComboBox fx:id="typeComboBox" onAction="#onComboBoxSelection" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: center-left;">
+                     <HBox.margin>
+                        <Insets bottom="30.0" left="30.0" top="30.0" />
+                     </HBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <TextField />
+                        <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="423.0" prefWidth="994.0">
+               <VBox.margin>
+                  <Insets bottom="30.0" left="30.0" right="30.0" />
+               </VBox.margin>
+               <children>
+                  <ListView fx:id="resultsList" prefHeight="409.0" prefWidth="936.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

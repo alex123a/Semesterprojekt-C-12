@@ -77,4 +77,8 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
         //Could save the data in an attribute
         return facadeData.getProductions();
     }
+
+    public List<IRightsholder> getAllRightsholders() {
+        return facadeData.getRightsholders();
+    }
 }
