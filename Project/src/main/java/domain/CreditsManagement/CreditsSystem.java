@@ -4,8 +4,6 @@ import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import Interfaces.ISeeCredits;
-import data.IProductionHandler;
-import data.IRightsHolderHandler;
 import data.ProductionHandler;
 import data.RightsHolderHandler;
 
@@ -15,14 +13,14 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
 
     private static CreditsSystem instance = null;
 
-    IProductionHandler productionHandler;
-    IRightsHolderHandler rightsholderHandler;
+    ProductionHandler productionHandler;
+    RightsHolderHandler rightsholderHandler;
 
     List<IProduction> changedProductions;
 
     private CreditsSystem() {
-        productionHandler = new ProductionHandler("productionData.dat");
-        rightsholderHandler = new RightsHolderHandler("rightsHolderData.dat");
+        productionHandler = ProductionHandler.getInstance();
+        rightsholderHandler = RightsHolderHandler.getInstance();
     }
 
     public static CreditsSystem getInstance() {
