@@ -1,9 +1,14 @@
 package presentation.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URI;
@@ -64,7 +69,15 @@ public class Controller {
 
         @FXML
         void onBroadcastClicked(MouseEvent event) {
-            //todo onBroadcast
+                try {
+
+                        Parent root = FXMLLoader.load(getClass().getResource("/layout/my_Productions.fxml"));
+                        Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+                        window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+
+                } catch (IOException e) {
+                        throw new RuntimeException(e);
+                }
             System.out.println("Broadcast");
         }
 
