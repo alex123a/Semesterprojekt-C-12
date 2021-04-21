@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitWidth="120.0" layoutX="590.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/images/Tv2Logo.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="250.0" layoutY="124.0" prefHeight="520.0" prefWidth="800.0" style="-fx-background-color: #ffffff;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#0000007e" offsetX="2.0" offsetY="2.0" />
+         </effect>
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="40.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/BackArrow.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="121.0" layoutY="13.0" prefHeight="71.0" prefWidth="553.0" style="-fx-alignment: CENTER;" text="Person Navn">
+               <font>
+                  <Font name="Calibri Bold" size="40.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="53.0" fitWidth="34.0" layoutX="729.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/Edit.jpg" />
+               </image>
+            </ImageView>
+            <ScrollPane hbarPolicy="NEVER" layoutX="100.0" layoutY="140.0" prefHeight="354.0" prefWidth="600.0">
+               <content>
+                  <VBox prefHeight="70.0" prefWidth="597.0" style="-fx-background-color: #BBBBBB; -fx-border-width: 1;">
+                     <children>
+                        <Pane prefHeight="70.0" prefWidth="805.0" style="-fx-border-width: 1; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF;">
+                           <children>
+                              <Label text="Filmnavn" textFill="#5c5c5c">
+                                 <font>
+                                    <Font name="Calibri Bold" size="28.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="25.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label layoutY="35.0" prefHeight="30.0" text="Rolle" textFill="#bbbbbb">
+                                 <font>
+                                    <Font name="Calibri" size="22.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="25.0" />
+                                 </padding>
+                              </Label>
+                              <ImageView fitWidth="40.0" layoutX="543.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                 <image>
+                                    <Image url="@/images/BackArrow.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+   </children>
+</Pane>
