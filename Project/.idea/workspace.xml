@@ -5,27 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/FacadeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Production.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IRightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IRightsholder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Production.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Production.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/ProductionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/ProductionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/RightsHolderHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/RightsHolderHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Rightsholder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Rightsholder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/productionData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/productionData.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/rightsHolderData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rightsHolderData.dat" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Production.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,11 +82,11 @@
         <range start1="7" end1="7" start2="8" end2="9" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
         <range start1="12" end1="13" start2="14" end2="14" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
         <range start1="26" end1="32" start2="27" end2="39" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="53" end1="55" start2="60" end2="63" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="59" end1="60" start2="67" end2="68" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="64" end1="65" start2="72" end2="73" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="69" end1="70" start2="77" end2="85" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="71" end1="71" start2="86" end2="91" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="53" end1="55" start2="60" end2="62" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="59" end1="60" start2="66" end2="67" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="64" end1="65" start2="71" end2="72" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="69" end1="70" start2="76" end2="84" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="71" end1="71" start2="85" end2="90" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/src/main/java/data/Test.java">
@@ -177,7 +163,7 @@
       <workItem from="1618906505118" duration="18646000" />
       <workItem from="1618931962131" duration="1751000" />
       <workItem from="1618988172306" duration="180000" />
-      <workItem from="1618988367344" duration="3944000" />
+      <workItem from="1618988367344" duration="4369000" />
     </task>
     <servers />
   </component>

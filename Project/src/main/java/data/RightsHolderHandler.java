@@ -60,7 +60,7 @@ class RightsHolderHandler {
         List<IRightsholder> readings = readRHFile();
         boolean contains = false;
         for (int i = 0; i < readings.size(); i++) {
-            if (readings.get(i).getId() == rightsholder.getId()) {
+            if (((Rightsholder) readings.get(i)).getId() == ((Rightsholder) rightsholder).getId()) {
                 contains = true;
                 readings.remove(i);
                 break;
@@ -71,9 +71,9 @@ class RightsHolderHandler {
             FileWriter fileWriter = null;
             try {
                 fileWriter = new FileWriter(this.file);
-                fileWriter.append(readings.get(0).getId() + ";" + readings.get(0).getName() + ";" + readings.get(0).getDescription() + ";" + ((Rightsholder) readings.get(0)).listToString());
+                fileWriter.append(((Rightsholder) readings.get(0)).getId() + ";" + readings.get(0).getName() + ";" + readings.get(0).getDescription() + ";" + ((Rightsholder) readings.get(0)).listToString());
                 for (int i = 1; i < readings.size(); i++) {
-                    fileWriter.append("\n" + readings.get(i).getId() + ";" + readings.get(i).getName() + ";" + readings.get(i).getDescription() + ";" + ((Rightsholder) readings.get(i)).listToString());
+                    fileWriter.append("\n" + ((Rightsholder)readings.get(i)).getId() + ";" + readings.get(i).getName() + ";" + readings.get(i).getDescription() + ";" + ((Rightsholder) readings.get(i)).listToString());
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -91,9 +91,9 @@ class RightsHolderHandler {
             try {
                 fileWriter = new FileWriter(this.file, true);
                 if (readings.size() == 0) {
-                    fileWriter.write(rightsholder.getId() + ";" + rightsholder.getName() + ";" + rightsholder.getDescription() + ";" + ((Rightsholder) rightsholder).listToString());
+                    fileWriter.write(((Rightsholder) rightsholder).getId() + ";" + rightsholder.getName() + ";" + rightsholder.getDescription() + ";" + ((Rightsholder) rightsholder).listToString());
                 } else {
-                    fileWriter.write("\n" + rightsholder.getId() + ";" + rightsholder.getName() + ";" + rightsholder.getDescription() + ";" + ((Rightsholder) rightsholder).listToString());
+                    fileWriter.write("\n" + ((Rightsholder)rightsholder).getId() + ";" + rightsholder.getName() + ";" + rightsholder.getDescription() + ";" + ((Rightsholder) rightsholder).listToString());
                 }
             } catch (IOException e) {
                 e.printStackTrace();

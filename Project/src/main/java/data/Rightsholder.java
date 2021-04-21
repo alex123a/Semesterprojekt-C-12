@@ -58,7 +58,6 @@ public class Rightsholder implements IRightsholder {
         this.productions = productions;
     }
 
-    @Override
     public int getId() {
         return id;
     }
