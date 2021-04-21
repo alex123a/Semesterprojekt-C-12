@@ -1,0 +1,4 @@
+.label:hover {
+    -fx-text-fill: #E0140A;
+    -fx-cursor:hand;
+}
