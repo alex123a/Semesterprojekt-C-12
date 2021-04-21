@@ -23,7 +23,7 @@
             </ImageView>
             <HBox alignment="CENTER_RIGHT" layoutX="1120.0" layoutY="15.0" prefHeight="61.0" prefWidth="160.0">
                <children>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView style="-fx-cursor:hand;" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@/images/Search_Grey.jpg" />
                      </image>
@@ -31,7 +31,7 @@
                         <Insets right="30.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView style="-fx-cursor:hand;" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@/images/Account_Grey.jpg" />
                      </image>
@@ -41,12 +41,12 @@
                   </ImageView>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0">
                      <children>
-                        <ImageView fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView style="-fx-cursor:hand;" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@/images/RedDot.png" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" layoutX="9.0" layoutY="12.0" prefHeight="27.0" prefWidth="32.0" text="0" textFill="WHITE">
+                        <Label style="-fx-cursor:hand;" alignment="CENTER" layoutX="9.0" layoutY="12.0" prefHeight="27.0" prefWidth="32.0" text="0" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -63,7 +63,7 @@
       </Pane>
       <HBox alignment="CENTER" layoutX="165.0" layoutY="91.0" prefHeight="45.0" prefWidth="800.0">
          <children>
-            <Button fx:id="menuMyBroadcast" mnemonicParsing="false" onMouseClicked="#onBroadcastClicked" style="-fx-background-color: #FFFFFF;" text="Mine udsendelser">
+            <Button fx:id="menuMyBroadcast" mnemonicParsing="false" onMouseClicked="#onBroadcastClicked" style="-fx-cursor:hand; -fx-background-color: #FFFFFF;" text="Mine udsendelser">
                <font>
                   <Font name="Calibri" size="20.0" />
                </font>
@@ -72,7 +72,7 @@
                </HBox.margin>
             </Button>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Button fx:id="menuHelp" mnemonicParsing="false" onMouseClicked="#onHelpClicked" style="-fx-background-color: #FFFFFF;" text="Hjælpeside">
+            <Button fx:id="menuHelp" mnemonicParsing="false" onMouseClicked="#onHelpClicked" style="-fx-cursor:hand; -fx-background-color: #FFFFFF;" text="Hjælpeside">
                <font>
                   <Font name="Calibri" size="20.0" />
                </font>
@@ -81,7 +81,7 @@
                </HBox.margin>
             </Button>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Button fx:id="menuHomepage" mnemonicParsing="false" onMouseClicked="#onHomepageClicked" style="-fx-background-color: #FFFFFF;" text="TV2.DK" textFill="#e40000">
+            <Button fx:id="menuHomepage" mnemonicParsing="false" onMouseClicked="#onHomepageClicked" style="-fx-cursor:hand; -fx-background-color: #FFFFFF;" text="TV2.DK" textFill="#e40000">
                <font>
                   <Font name="Calibri" size="24.0" />
                </font>
@@ -93,7 +93,7 @@
                </HBox.margin>
             </Button>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Button fx:id="menuEditUser" mnemonicParsing="false" onMouseClicked="#onEditUserClicked" style="-fx-background-color: #FFFFFF;" text="Rediger Brugere">
+            <Button fx:id="menuEditUser" mnemonicParsing="false" onMouseClicked="#onEditUserClicked" style="-fx-cursor:hand; -fx-background-color: #FFFFFF;" text="Rediger Brugere">
                <font>
                   <Font name="Calibri" size="20.0" />
                </font>
@@ -125,7 +125,7 @@
                         </ImageView>
                         <Separator layoutY="59.0" prefHeight="3.0" prefWidth="899.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
                         <Separator orientation="VERTICAL" layoutX="130.0" prefHeight="60.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
-                        <VBox alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0" prefWidth="770.0" >
+                        <VBox style="-fx-cursor:hand;" fx:id="defaultBox" onMouseClicked="#onDefaultBoxClicked" alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0" prefWidth="770.0" >
                            <children>
                               <Label text="TV2 Program Navn">
                                  <font>
@@ -159,7 +159,7 @@
                         </ImageView>
                         <Separator layoutY="59.0" prefHeight="3.0" prefWidth="899.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
                         <Separator orientation="VERTICAL" layoutX="130.0" prefHeight="60.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
-                        <VBox fx:id="sportXBox" alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0" prefWidth="770.0">
+                        <VBox style="-fx-cursor:hand;" onMouseClicked="#onSportBoxClicked" fx:id="sportBox" alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0" prefWidth="770.0">
                            <children>
                               <Label text="TV2 Sport Program Navn">
                                  <font>
@@ -193,7 +193,7 @@
                         </ImageView>
                         <Separator layoutY="59.0" prefHeight="3.0" prefWidth="899.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
                         <Separator orientation="VERTICAL" layoutX="130.0" prefHeight="60.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
-                        <VBox alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0" prefWidth="770.0">
+                        <VBox style="-fx-cursor:hand;" fx:id="sportXBox" onMouseClicked="#onSportXBoxClicked" alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0" prefWidth="770.0">
                            <children>
                               <Label text="TV2 Sport X Program Navn">
                                  <font>
@@ -227,7 +227,7 @@
                         </ImageView>
                         <Separator layoutY="59.0" prefHeight="3.0" prefWidth="899.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
                         <Separator orientation="VERTICAL" layoutX="130.0" prefHeight="60.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
-                        <VBox fx:id="charlieBox" alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0">
+                        <VBox style="-fx-cursor:hand;" fx:id="charlieBox" onMouseClicked="#onCharlieBoxClicked" alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0">
                            <children>
                               <Label text="TV2 Charlie Program Navn">
                                  <font>
@@ -261,7 +261,7 @@
                         </ImageView>
                         <Separator layoutY="59.0" prefHeight="3.0" prefWidth="899.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
                         <Separator orientation="VERTICAL" layoutX="130.0" prefHeight="60.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
-                        <VBox fx:id="newBox" alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0" prefWidth="770.0">
+                        <VBox style="-fx-cursor:hand;" fx:id="newBox" onMouseClicked="#onNewsBoxClicked" alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0" prefWidth="770.0">
                            <children>
                               <Label text="TV2 News Program Navn">
                                  <font>
@@ -295,7 +295,7 @@
                         </ImageView>
                         <Separator layoutY="59.0" prefHeight="3.0" prefWidth="899.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
                         <Separator orientation="VERTICAL" layoutX="130.0" prefHeight="60.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
-                        <VBox fx:id="zuluBox" alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0" prefWidth="770.0">
+                        <VBox style="-fx-cursor:hand;" fx:id="zuluBox" onMouseClicked="#onZuluBoxClicked" alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0" prefWidth="770.0">
                            <children>
                               <Label text="TV2 Zulu Program Navn">
                                  <font>
@@ -328,7 +328,7 @@
                            </image>
                         </ImageView>
                         <Separator orientation="VERTICAL" layoutX="130.0" prefHeight="60.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
-                        <VBox fx:id="friBox" alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0" prefWidth="770.0">
+                        <VBox style="-fx-cursor:hand;" fx:id="friBox" onMouseClicked="#onFriBoxClicked" alignment="CENTER_LEFT" layoutX="128.0" layoutY="1.0" prefHeight="60.0" prefWidth="770.0">
                            <children>
                               <Label text="TV2 Program Navn">
                                  <font>
