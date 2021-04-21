@@ -3,14 +3,15 @@ package data;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Rightsholder implements IRightsholder {
     private int id;
     private String name;
     private String description;
-    // TODO change to List
     private List<String> productions;
 
     public Rightsholder() {
@@ -24,12 +25,18 @@ public class Rightsholder implements IRightsholder {
         this.productions = Arrays.asList(productions);
     }
 
-
-
-
-    public int getId() {
-        return id;
+    public String listToString() {
+        String word = "[";
+        for (int i = 0; i < productions.size(); i++) {
+            word = word + productions.get(i);
+            if (i < productions.size() - 1) {
+                word = word + ",";
+            }
+        }
+        word = word + "]";
+        return word;
     }
+
 
     public void setId(int id) {
         this.id = id;
@@ -51,22 +58,35 @@ public class Rightsholder implements IRightsholder {
         this.productions = productions;
     }
 
-    public List<String> getProductions() {
-        return productions;
+    @Override
+    public int getId() {
+        return id;
     }
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return this.description;
     }
 
     @Override
     public List<IProduction> getRightsholderFor() {
-        return null;
+        ProductionHandler prhandler = ProductionHandler.getInstance();
+        List<IProduction> productionsList = new ArrayList<>();
+
+        for (String id: this.productions) {
+            productionsList.add(prhandler.readProduction(id));
+        }
+
+        return productionsList;
+    }
+
+    @Override
+    public String toString() {
+        return "Credit: " + id + " " + name + " " + description + " " + productions;
     }
 }
