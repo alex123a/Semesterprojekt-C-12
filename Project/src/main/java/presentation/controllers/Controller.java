@@ -73,7 +73,7 @@ public class Controller {
                 try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
                         Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
-                        window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+                        window.setScene(new Scene(root, 1300, 700));
 
                 } catch (IOException e) {
                         throw new RuntimeException(e);
