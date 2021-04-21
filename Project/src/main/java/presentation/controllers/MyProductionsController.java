@@ -61,6 +61,8 @@ public class MyProductionsController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    
     @FXML
     public void onRemoveProgramClicked(ActionEvent event){
         System.out.println(productionsListView.getSelectionModel().getSelectedItems().get(0));
