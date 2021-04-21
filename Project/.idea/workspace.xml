@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IRightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IRightsholder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" afterDir="false" />
     </list>
-    <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
+    <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Rightsholder.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +37,66 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/data/Production.java">
+      <ranges>
+        <range start1="5" end1="6" start2="5" end2="5" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="78" end1="79" start2="77" end2="78" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="82" end1="82" start2="81" end2="86" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="3" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="10" end1="10" start2="11" end2="12" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="12" end1="13" start2="14" end2="15" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="14" end1="14" start2="16" end2="17" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="24" end1="25" start2="27" end2="29" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="28" end1="29" start2="32" end2="33" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="42" end1="44" start2="46" end2="49" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="52" end1="64" start2="57" end2="107" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="68" end1="69" start2="111" end2="113" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="71" end1="72" start2="115" end2="115" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="74" end1="75" start2="117" end2="118" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="79" end1="80" start2="122" end2="123" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java">
+      <ranges>
+        <range start1="12" end1="13" start2="12" end2="13" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="14" end1="14" start2="14" end2="15" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="24" end1="25" start2="25" end2="27" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="28" end1="29" start2="30" end2="31" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="44" end1="44" start2="46" end2="48" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="55" end1="55" start2="59" end2="60" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="56" end1="58" start2="61" end2="74" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="66" end1="68" start2="82" end2="84" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="73" end1="73" start2="89" end2="90" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="118" end1="119" start2="135" end2="136" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="121" end1="133" start2="138" end2="138" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/data/Rightsholder.java">
+      <ranges>
+        <range start1="5" end1="5" start2="5" end2="6" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="7" end1="7" start2="8" end2="9" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="12" end1="13" start2="14" end2="14" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="26" end1="32" start2="27" end2="39" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="53" end1="55" start2="60" end2="62" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="59" end1="60" start2="66" end2="67" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="64" end1="65" start2="71" end2="72" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="69" end1="70" start2="76" end2="84" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="71" end1="71" start2="85" end2="90" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/data/Test.java">
+      <ranges>
+        <range start1="12" end1="12" start2="12" end2="14" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="17" end1="18" start2="19" end2="20" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
+        <range start1="20" end1="20" start2="22" end2="32" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectId" id="1rQK5Km5WstHAcTLM2GKVYa2GXO" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -54,16 +119,14 @@
     <property name="project.structure.side.proportion" value="0.35731414" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.NewMain">
-    <configuration name="NewMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="presentation.NewMain" />
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="presentation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -81,20 +144,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.NewMain" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -112,7 +163,7 @@
       <workItem from="1618906505118" duration="18646000" />
       <workItem from="1618931962131" duration="1751000" />
       <workItem from="1618988172306" duration="180000" />
-      <workItem from="1618988367344" duration="6586000" />
+      <workItem from="1618988367344" duration="4369000" />
     </task>
     <servers />
   </component>
