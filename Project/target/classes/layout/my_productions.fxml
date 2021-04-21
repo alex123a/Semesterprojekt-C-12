@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="1080" prefWidth="1920" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.MyProductionsController">
+<AnchorPane prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.MyProductionsController">
     <children>
-        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="846.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="50.0" fitWidth="100.0" layoutX="600.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@/images/Tv2Logo.png" />
             </image>
         </ImageView>
-        <VBox layoutX="458.0" layoutY="272.0" prefHeight="606.0" prefWidth="994.0" style="-fx-background-color: white;">
+        <VBox layoutX="231.0" layoutY="137.0" prefHeight="524.0" prefWidth="839.0" style="-fx-background-color: white;">
             <children>
                 <HBox prefHeight="142.0" prefWidth="994.0" style="-fx-alignment: center-left;">
                     <VBox.margin>
@@ -46,12 +46,10 @@
                         <Insets bottom="30.0" left="30.0" right="30.0" />
                     </VBox.margin>
                     <children>
-                        <ListView fx:id="productionsListView" prefHeight="409.0" prefWidth="936.0" />
+                        <ListView fx:id="productionsListView" prefHeight="263.0" prefWidth="779.0" />
                     </children>
                 </HBox>
             </children>
         </VBox>
     </children>
 </AnchorPane>
-
-
