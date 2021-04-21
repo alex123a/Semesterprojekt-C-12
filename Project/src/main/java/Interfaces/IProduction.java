@@ -6,6 +6,6 @@ import java.util.Map;
 public interface IProduction {
     String getProductionID();
     String getName();
-    Map<IRightsholder, List<String>> getRightsholder();
+    Map<IRightsholder, List<String>> getRightsholders();
     List<String> getRightsholderRole(IRightsholder rightsholder);
 }

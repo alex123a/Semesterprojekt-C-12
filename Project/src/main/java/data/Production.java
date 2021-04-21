@@ -31,6 +31,7 @@ public class Production implements IProduction {
         this.productionID = productionID;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -39,7 +40,8 @@ public class Production implements IProduction {
         this.name = name;
     }
 
-    public Map<IRightsholder, List<String>> getRightsholder() {
+    @Override
+    public Map<IRightsholder, List<String>> getRightsholders() {
         return rightsholder;
     }
 
