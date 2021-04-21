@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -67,6 +69,11 @@ public class Controller {
         private Label friProgramTime;
         @FXML
         private Label loginBtn;
+        @FXML
+        private ImageView accountImage;
+        @FXML
+        private ImageView searchImage;
+
 
         @FXML
         void onBroadcastClicked(MouseEvent event) {
@@ -164,6 +171,26 @@ public class Controller {
         void onFriBoxClicked(MouseEvent event) {
             //todo implement fri box
             System.out.println("Fri");
+        }
+
+        public void onMouseEnteredAccount(MouseEvent mouseEvent) {
+                Image image = new Image(getClass().getResourceAsStream("/images/Account_Red.jpg"));
+                accountImage.setImage(image);
+        }
+
+        public void onMouseExitedAccount(MouseEvent mouseEvent) {
+                Image image = new Image(getClass().getResourceAsStream("/images/Account_Grey.jpg"));
+                accountImage.setImage(image);
+        }
+
+        public void onMouseEnteredSearch(MouseEvent mouseEvent) {
+                Image image = new Image(getClass().getResourceAsStream("/images/Search_Red.jpg"));
+                searchImage.setImage(image);
+        }
+
+        public void onMouseExitedSearch(MouseEvent mouseEvent) {
+                Image image = new Image(getClass().getResourceAsStream("/images/Search_Grey.jpg"));
+                searchImage.setImage(image);
         }
 
 

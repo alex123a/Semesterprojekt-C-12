@@ -87,9 +87,13 @@ public class AddProductionController {
     @FXML
     public void onClickedAddProduction(ActionEvent event) {
         /*
-        TODO For now we ignore the description since it's not made in the other layers yet, because we forgot it
+        TODO For now we ignore the description since it's not made in the other layers yet, because we forgot it,
             will be added in iteration 2
         */
+
+        /*
+        TODO still needs a check for null values in domain layer when trying to pass it down to data layer
+         */
 
         String id = programIDField.getText();
         String name = programNameField.getText();

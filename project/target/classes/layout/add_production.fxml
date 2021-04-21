@@ -27,7 +27,7 @@
       <ListView fx:id="rightholderListview" layoutX="256.0" layoutY="444.0" prefHeight="237.0" prefWidth="375.0" />
       <ImageView fitHeight="25.0" fitWidth="58.0" layoutX="25.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/BackArrow.jpg" />
+            <Image url="@../images/BackArrow.png" />
          </image>
       </ImageView>
       <Label layoutX="655.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Navn:" />
