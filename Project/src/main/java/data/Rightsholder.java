@@ -18,6 +18,13 @@ public class Rightsholder implements IRightsholder {
 
     }
 
+    public Rightsholder(int id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.productions = new ArrayList<>();
+    }
+
     public Rightsholder(int id, String name, String description, String[] productions) {
         this.id = id;
         this.name = name;

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.AddProductionController">
+   <children>
+      <Label layoutX="584.0" layoutY="135.0" prefHeight="17.0" prefWidth="132.0" text="Indtast programmets ID:" />
+      <Label layoutX="579.0" layoutY="205.0" prefHeight="17.0" prefWidth="149.0" text="Indtast programmets navn:" />
+      <ImageView fitHeight="50.0" fitWidth="100.0" layoutX="600.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Tv2Logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="591.0" layoutY="416.0" prefHeight="17.0" prefWidth="118.0" text="Indtast ophavsmænd:" />
+      <Label layoutX="559.0" layoutY="275.0" prefHeight="17.0" prefWidth="189.0" text="Indtast beskrivelse til programmet:" />
+      <TextArea fx:id="descriptionProgramArea" layoutX="256.0" layoutY="303.0" prefHeight="98.0" prefWidth="794.0" />
+      <TextField fx:id="programIDField" layoutX="258.0" layoutY="159.0" prefHeight="25.0" prefWidth="794.0" />
+      <TextField fx:id="programNameField" layoutX="256.0" layoutY="232.0" prefHeight="25.0" prefWidth="794.0" />
+      <ListView fx:id="rightholderListview" layoutX="256.0" layoutY="444.0" prefHeight="237.0" prefWidth="375.0" />
+      <ImageView fitHeight="25.0" fitWidth="58.0" layoutX="25.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/BackArrow.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="655.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Navn:" />
+      <Label layoutX="657.0" layoutY="505.0" prefHeight="17.0" prefWidth="65.0" text="Description:" />
+      <Label layoutX="657.0" layoutY="565.0" prefHeight="17.0" prefWidth="142.0" text="Rolle/roller (split med &quot;,&quot;):" />
+      <TextField fx:id="rightholderName" layoutX="657.0" layoutY="462.0" prefHeight="25.0" prefWidth="394.0" />
+      <TextField fx:id="rightholderDescription" layoutX="657.0" layoutY="522.0" prefHeight="25.0" prefWidth="394.0" />
+      <TextField fx:id="rightholderRoles" layoutX="657.0" layoutY="582.0" prefHeight="25.0" prefWidth="394.0" />
+      <Button fx:id="addRightholderBut" layoutX="657.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedAddRightholder" text="Tilføj ophavsmand" />
+      <Button fx:id="addProductionBut" layoutX="952.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedAddProduction" prefHeight="25.0" prefWidth="100.0" text="Tilføj program" />
+      <Button fx:id="removeRightholder" layoutX="804.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedRemoveRightholder" text="Fjern ophavsmand" />
+   </children>
+</AnchorPane>

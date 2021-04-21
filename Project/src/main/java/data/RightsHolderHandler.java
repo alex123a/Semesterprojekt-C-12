@@ -57,15 +57,18 @@ class RightsHolderHandler {
     // Insert rightsholder or edit rightsholder
     void saveRightsholder(IRightsholder rightsholder) {
         List<IRightsholder> readings = readRHFile();
+        int oldID = 0;
         boolean contains = false;
         for (int i = 0; i < readings.size(); i++) {
             if (((Rightsholder) readings.get(i)).getId() == ((Rightsholder) rightsholder).getId()) {
                 contains = true;
+                oldID = ((Rightsholder) readings.get(i)).getId();
                 readings.remove(i);
                 break;
             }
         }
         if (contains) {
+            ((Rightsholder) rightsholder).setId(oldID);
             readings.add(rightsholder);
             FileWriter fileWriter = null;
             try {
