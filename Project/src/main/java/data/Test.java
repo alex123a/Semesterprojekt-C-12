@@ -17,11 +17,12 @@ public class Test {
         List<String> list = new ArrayList<>();
         list.add("Kamera");
         String[] productions = {"Star wars", "Sejt"};
-        rightsholder.put(rh.readRightsholder(3),list);
+        rightsholder.put(new Rightsholder(1,"Simon","jonnn",productions),list);
         ProductionHandler ph = ProductionHandler.getInstance();
-        ph.saveProduction(new Production("122r22t3","Janisdwa",rightsholder));
-        System.out.println(ph.readProduction("122r22t3").toString());
+        ph.saveProduction(new Production("12","Janisdwa",rightsholder));
+        //System.out.println(ph.readProduction("122223").toString());
 
+        System.out.println(ph.deleteProduction(new Production("12","Janisdwa",rightsholder)));
 
 
         // Test of RightsHolderHandler

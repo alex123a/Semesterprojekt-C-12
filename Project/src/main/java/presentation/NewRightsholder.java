@@ -9,10 +9,12 @@ public class NewRightsholder implements IRightsholder {
 
     String name;
     String description;
+    List<String> productions;
 
-    public NewRightsholder(String name, String description) {
+    public NewRightsholder(String name, String description, List<String> productions) {
         this.name = name;
         this.description = description;
+        this.productions = productions;
     }
 
     @Override
