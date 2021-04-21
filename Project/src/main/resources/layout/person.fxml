@@ -24,7 +24,7 @@
          <children>
             <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="34.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@/images/BackArrow.png" />
+                  <Image url="@/images/BackArrow.jpg" />
                </image>
             </ImageView>
             <Label layoutX="75.0" layoutY="17.0" prefHeight="71.0" prefWidth="550.0" style="-fx-alignment: CENTER;" text="Person Navn">
@@ -61,7 +61,7 @@
                               </Label>
                               <ImageView fitWidth="35.0" layoutX="501.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                                  <image>
-                                    <Image url="@/images/BackArrow.png" />
+                                    <Image url="@/images/BackArrow.jpg" />
                                  </image>
                               </ImageView>
                            </children>

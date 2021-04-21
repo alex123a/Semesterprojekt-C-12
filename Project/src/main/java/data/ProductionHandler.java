@@ -138,39 +138,6 @@ class ProductionHandler {
         }
     }
 
-    boolean deleteProduction(IProduction production) {
-        List<IProduction> readings = readPFile();
-        boolean contains = false;
-        for (int i = 0; i < readings.size(); i++) {
-            if (readings.get(i).getProductionID().equals(production.getProductionID())) {
-                contains = true;
-                readings.remove(i);
-                break;
-            }
-        }
-        if (contains) {
-            FileWriter fileWriter = null;
-            try {
-                fileWriter = new FileWriter(this.file);
-                fileWriter.append(readings.get(0).getProductionID() + ";" + readings.get(0).getName() + ";" + ((Production) readings.get(0)).mapToString());
-                for (int i = 1; i < readings.size(); i++) {
-                    fileWriter.append("\n" + readings.get(i).getProductionID() + ";" + readings.get(i).getName() + ";" + ((Production) readings.get(i)).mapToString());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (fileWriter != null) {
-                    try {
-                        fileWriter.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        return contains;
-    }
-
     static ProductionHandler getInstance() {
         return prHandler;
     }

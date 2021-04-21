@@ -56,7 +56,7 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
 
     @Override
     public void deleteProduction(IProduction production) {
-        facadeData.deleteProduction(production);
+
     }
 
     @Override
