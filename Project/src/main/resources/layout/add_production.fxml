@@ -21,10 +21,10 @@
       </ImageView>
       <Label layoutX="591.0" layoutY="416.0" prefHeight="17.0" prefWidth="118.0" text="Indtast ophavsmænd:" />
       <Label layoutX="559.0" layoutY="275.0" prefHeight="17.0" prefWidth="189.0" text="Indtast beskrivelse til programmet:" />
-      <TextArea layoutX="256.0" layoutY="303.0" prefHeight="98.0" prefWidth="794.0" />
-      <TextField layoutX="258.0" layoutY="159.0" prefHeight="25.0" prefWidth="794.0" />
-      <TextField layoutX="256.0" layoutY="232.0" prefHeight="25.0" prefWidth="794.0" />
-      <ListView layoutX="256.0" layoutY="444.0" prefHeight="237.0" prefWidth="375.0" />
+      <TextArea fx:id="descriptionProgramArea" layoutX="256.0" layoutY="303.0" prefHeight="98.0" prefWidth="794.0" />
+      <TextField fx:id="programIDField" layoutX="258.0" layoutY="159.0" prefHeight="25.0" prefWidth="794.0" />
+      <TextField fx:id="programNameField" layoutX="256.0" layoutY="232.0" prefHeight="25.0" prefWidth="794.0" />
+      <ListView fx:id="rightholderListview" layoutX="256.0" layoutY="444.0" prefHeight="237.0" prefWidth="375.0" />
       <ImageView fitHeight="25.0" fitWidth="58.0" layoutX="25.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/BackArrow.jpg" />
@@ -33,9 +33,10 @@
       <Label layoutX="655.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Navn:" />
       <Label layoutX="657.0" layoutY="505.0" prefHeight="17.0" prefWidth="65.0" text="Description:" />
       <Label layoutX="657.0" layoutY="565.0" prefHeight="17.0" prefWidth="142.0" text="Rolle/roller (split med &quot;,&quot;):" />
-      <TextField layoutX="657.0" layoutY="462.0" prefHeight="25.0" prefWidth="394.0" />
-      <TextField layoutX="657.0" layoutY="522.0" prefHeight="25.0" prefWidth="394.0" />
-      <TextField layoutX="657.0" layoutY="582.0" prefHeight="25.0" prefWidth="394.0" />
+      <TextField fx:id="rightholderName" layoutX="657.0" layoutY="462.0" prefHeight="25.0" prefWidth="394.0" />
+      <TextField fx:id="rightholderDescription" layoutX="657.0" layoutY="522.0" prefHeight="25.0" prefWidth="394.0" />
+      <TextField fx:id="rightholderRoles" layoutX="657.0" layoutY="582.0" prefHeight="25.0" prefWidth="394.0" />
       <Button fx:id="addRightholderBut" layoutX="657.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedAddRightholder" text="Tilføj ophavsmand" />
+      <Button fx:id="addProductionBut" layoutX="952.0" layoutY="656.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Tilføj program" />
    </children>
 </AnchorPane>
