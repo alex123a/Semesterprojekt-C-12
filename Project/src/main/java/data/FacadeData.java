@@ -12,7 +12,7 @@ public class FacadeData {
     /**
      * Returns one rightsholder
      * @param id Identification of the rightsholder
-     * @return Rightsholder Object
+     * @return Rightsholder object
      */
     public IRightsholder getRightsholder(int id) {
         return rhHolder.readRightsholder(id);
@@ -52,9 +52,17 @@ public class FacadeData {
 
     /**
      * Inserting or editing a rightsholder
-     * @param production Production Object
+     * @param production Production object
      */
     public void insertProduction(IProduction production) {
         pHandler.saveProduction(production);
+    }
+
+    /**
+     * Delete a production
+     * @param production Production object
+     */
+    public void deleteProduction(IProduction production) {
+        pHandler.deleteProduction(production);
     }
 }
