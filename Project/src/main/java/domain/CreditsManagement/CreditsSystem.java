@@ -4,10 +4,7 @@ import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import Interfaces.ISeeCredits;
-import data.IProductionHandler;
-import data.IRightsHolderHandler;
-import data.ProductionHandler;
-import data.RightsHolderHandler;
+import data.FacadeData;
 
 import java.util.List;
 
@@ -15,14 +12,12 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
 
     private static CreditsSystem instance = null;
 
-    IProductionHandler productionHandler;
-    IRightsHolderHandler rightsholderHandler;
+    FacadeData facadeData = new FacadeData();
 
     List<IProduction> changedProductions;
 
     private CreditsSystem() {
-        productionHandler = new ProductionHandler("productionData.dat");
-        rightsholderHandler = new RightsHolderHandler("rightsHolderData.dat");
+
     }
 
     public static CreditsSystem getInstance() {
@@ -56,7 +51,7 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
 
     @Override
     public void addProduction(IProduction production) {
-        productionHandler.saveProduction(production);
+        facadeData.insertProduction(production);
     }
 
     @Override
@@ -67,7 +62,7 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     @Override
     public void saveChanges() {
         for (IProduction production: changedProductions) {
-            productionHandler.saveProduction(production);
+            facadeData.insertProduction(production);
         }
         changedProductions.clear();
     }
@@ -80,6 +75,6 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     @Override
     public List<IProduction> getProductions() {
         //Could save the data in an attribute
-        return productionHandler.readPFile();
+        return facadeData.getProductions();
     }
 }

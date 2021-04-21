@@ -1,6 +1,5 @@
 package data;
 
-import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 
 import java.io.File;

@@ -11,7 +11,7 @@ import java.net.URISyntaxException;
 import java.util.*;
 
 class ProductionHandler {
-    private static File file;
+    private File file;
     // Singleton
     private final static ProductionHandler prHandler = new ProductionHandler("productionData");
 
