@@ -9,29 +9,33 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class RightsHolderHandler implements IRightsHolderHandler {
+class RightsHolderHandler {
     private File file;
+    // Singleton
+    private static final RightsHolderHandler rhHandler = new RightsHolderHandler("rightsHolderData");
 
-    public RightsHolderHandler(String fileName) {
+    private RightsHolderHandler(String fileName) {
         try {
-            this.file = new File(getClass().getResource("/" + fileName + ".txt").toURI().getPath());
+            this.file = new File(getClass().getResource("/" + fileName + ".dat").toURI().getPath());
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public ArrayList<IRightsholder> readRHFile() {
+    // Return all rightholders
+    List<IRightsholder> readRHFile() {
         Scanner scanner = null;
         try {
             scanner = new Scanner(this.file);
-            ArrayList<IRightsholder> rightsholder = new ArrayList<>();
+            List<IRightsholder> rightsholder = new ArrayList<>();
             while (scanner.hasNextLine()) {
-                String[] line = scanner.nextLine().split(",");
-                rightsholder.add(new Rightsholder(line[0], line[1], line[2]));
+                String[] line = scanner.nextLine().split(";");
+                rightsholder.add(new Rightsholder(Integer.parseInt(line[0]), line[1], line[2], convertToProduction(line[2])));
             }
+            return rightsholder;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } finally {
@@ -39,44 +43,84 @@ public class RightsHolderHandler implements IRightsHolderHandler {
         }
         return null;
     }
-    @Override
-    public IRightsholder readRightsholder(String id) {
+
+    // Return one rightholder with the use of id
+    IRightsholder readRightsholder(int id) {
+        List<IRightsholder> rightsholders = readRHFile();
+        for (IRightsholder rh: rightsholders) {
+            if (((Rightsholder) rh).getId() == id) {
+                return rh;
+            }
+        }
         return null;
     }
 
-    @Override
-    public void saveRightsholder(IRightsholder rightsHolder) {
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(this.file);
-            fileWriter.write(rightsHolder.getName() + "," + rightsHolder.getDescription() + "," + rightsHolder.getRightsHolderFor.toString() + ",");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
+    // Insert rightsholder or edit rightsholder
+    void saveRightsholder(IRightsholder rightsholder) {
+        List<IRightsholder> readings = readRHFile();
+        boolean contains = false;
+        for (int i = 0; i < readings.size(); i++) {
+            if (((Rightsholder) readings.get(i)).getId() == ((Rightsholder) rightsholder).getId()) {
+                contains = true;
+                readings.remove(i);
+                break;
+            }
+        }
+        if (contains) {
+            readings.add(rightsholder);
+            FileWriter fileWriter = null;
             try {
-                fileWriter.close();
+                fileWriter = new FileWriter(this.file);
+                fileWriter.append(((Rightsholder) readings.get(0)).getId() + ";" + readings.get(0).getName() + ";" + readings.get(0).getDescription() + ";" + ((Rightsholder) readings.get(0)).listToString());
+                for (int i = 1; i < readings.size(); i++) {
+                    fileWriter.append("\n" + ((Rightsholder)readings.get(i)).getId() + ";" + readings.get(i).getName() + ";" + readings.get(i).getDescription() + ";" + ((Rightsholder) readings.get(i)).listToString());
+                }
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                if (fileWriter != null) {
+                    try {
+                        fileWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        } else {
+            FileWriter fileWriter = null;
+            try {
+                fileWriter = new FileWriter(this.file, true);
+                if (readings.size() == 0) {
+                    fileWriter.write(((Rightsholder) rightsholder).getId() + ";" + rightsholder.getName() + ";" + rightsholder.getDescription() + ";" + ((Rightsholder) rightsholder).listToString());
+                } else {
+                    fileWriter.write("\n" + ((Rightsholder)rightsholder).getId() + ";" + rightsholder.getName() + ";" + rightsholder.getDescription() + ";" + ((Rightsholder) rightsholder).listToString());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (fileWriter != null) {
+                    try {
+                        fileWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
     }
 
-    public String[] convertToProduction(String stringProduction) {
+    // Converts string from file to a string away with the productions.
+    String[] convertToProduction(String stringProduction) {
         String[] productionArray = stringProduction.replace("[","").replace("]", "").split(",");
         return productionArray;
+    }
 
+    static RightsHolderHandler getInstance() {
+        return rhHandler;
     }
 
     @Override
-    public String toString() {
+     public String toString() {
         return "The name of the file is: " + this.file.getName();
-    }
-
-    public File getFile() {
-        return file;
-    }
-
-    public void setFile(File file) {
-        this.file = file;
     }
 }
