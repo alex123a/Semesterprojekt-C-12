@@ -3,37 +3,9 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-
-    <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/Production.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" afterDir="false" />
-    </list>
-    <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" afterDir="false" />
-
-    </list>
+    <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="" />
+    <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,19 +22,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java">
-      <ranges>
-        <range start1="11" end1="11" start2="11" end2="13" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="16" end1="17" start2="18" end2="19" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="24" end1="25" start2="26" end2="27" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="31" end1="32" start2="33" end2="34" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="41" end1="41" start2="43" end2="48" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="42" end1="47" start2="49" end2="54" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="52" end1="53" start2="59" end2="77" changelist="7459892f-f4aa-4fd0-9025-1be0d243d254" />
-        <range start1="56" end1="57" start2="80" end2="81" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-      </ranges>
-    </file>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1rQK5Km5WstHAcTLM2GKVYa2GXO" />
   <component name="ProjectViewState">
@@ -75,7 +41,6 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/Stylesheets" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -85,20 +50,13 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Mikkel P Larsen\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\resources\Stylesheets" />
-      <recent name="C:\Users\Mikkel P Larsen\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\resources\images" />
-      <recent name="C:\Users\Mikkel P Larsen\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\resources\layout" />
-    </key>
-  </component>
   <component name="RunManager">
-    <configuration name="NewMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="presentation.NewMain" />
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="data.Test" />
       <module name="Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="presentation.*" />
+          <option name="PATTERN" value="data.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -106,9 +64,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.NewMain" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -122,7 +91,8 @@
       <updated>1618902693988</updated>
       <workItem from="1618902697189" duration="883000" />
       <workItem from="1618904875475" duration="1589000" />
-      <workItem from="1618906505118" duration="8513000" />
+      <workItem from="1618906505118" duration="18646000" />
+      <workItem from="1618931962131" duration="1668000" />
     </task>
     <servers />
   </component>

@@ -12,17 +12,17 @@ import java.util.Scanner;
 
 public class RightsHolderHandler {
     private File file;
-    public static final RightsHolderHandler rhHandler = new RightsHolderHandler("rightsHolderData");
+    private static final RightsHolderHandler rhHandler = new RightsHolderHandler("rightsHolderData");
 
     private RightsHolderHandler(String fileName) {
         try {
-            this.file = new File(getClass().getResource("/" + fileName + ".txt").toURI().getPath());
+            this.file = new File(getClass().getResource("/" + fileName + ".dat").toURI().getPath());
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
 
-    private ArrayList<IRightsholder> readRHFile() {
+    public ArrayList<IRightsholder> readRHFile() {
         Scanner scanner = null;
         try {
             scanner = new Scanner(this.file);
@@ -40,7 +40,7 @@ public class RightsHolderHandler {
         return null;
     }
 
-    private IRightsholder readRightsholder(int id) {
+    public IRightsholder readRightsholder(int id) {
         ArrayList<IRightsholder> rightsholders = readRHFile();
         for (IRightsholder rh: rightsholders) {
             if (((Rightsholder) rh).getId() == id) {
@@ -50,11 +50,11 @@ public class RightsHolderHandler {
         return null;
     }
 
-    private void saveRightsholder(IRightsholder rightsholder) {
+    public void saveRightsholder(IRightsholder rightsholder) {
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(this.file);
-            fileWriter.write(rightsholder.getName() + ";" + rightsholder.getDescription() + ";" + rightsholder.getRightsholderFor() + "\n");
+            fileWriter.write(rightsholder.getId() + ";" + rightsholder.getName() + ";" + rightsholder.getDescription() + ";" + rightsholder.getRightsholderFor() + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -66,10 +66,14 @@ public class RightsHolderHandler {
         }
     }
 
-    private String[] convertToProduction(String stringProduction) {
+    public String[] convertToProduction(String stringProduction) {
         String[] productionArray = stringProduction.replace("[","").replace("]", "").split(",");
         return productionArray;
 
+    }
+
+    public static RightsHolderHandler getInstance() {
+        return rhHandler;
     }
 
     @Override

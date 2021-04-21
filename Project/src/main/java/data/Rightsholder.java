@@ -3,13 +3,15 @@ package data;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Rightsholder implements IRightsholder {
     private int id;
     private String name;
     private String description;
-    private String[] productions;
+    // TODO change to List
+    private List<String> productions;
 
     public Rightsholder() {
 
@@ -19,10 +21,10 @@ public class Rightsholder implements IRightsholder {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.productions = productions;
+        this.productions = Arrays.asList(productions);
     }
 
-    // TODO Convert productions string from only ids to Production instances.
+
 
 
     public int getId() {
@@ -42,10 +44,14 @@ public class Rightsholder implements IRightsholder {
     }
 
     public void setProductions(String[] productions) {
+        this.productions = Arrays.asList(productions);
+    }
+
+    public void setProductions(List<String> productions) {
         this.productions = productions;
     }
 
-    public String[] getProductions() {
+    public List<String> getProductions() {
         return productions;
     }
 
