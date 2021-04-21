@@ -15,6 +15,7 @@ class RightsHolderHandler {
     private File file;
     // Singleton
     private static final RightsHolderHandler rhHandler = new RightsHolderHandler("rightsHolderData");
+    private int idCounter = 0;
 
     private RightsHolderHandler(String fileName) {
         try {
@@ -57,15 +58,18 @@ class RightsHolderHandler {
     // Insert rightsholder or edit rightsholder
     void saveRightsholder(IRightsholder rightsholder) {
         List<IRightsholder> readings = readRHFile();
+        int oldID = 0;
         boolean contains = false;
         for (int i = 0; i < readings.size(); i++) {
             if (((Rightsholder) readings.get(i)).getId() == ((Rightsholder) rightsholder).getId()) {
                 contains = true;
+                oldID = ((Rightsholder) readings.get(i)).getId();
                 readings.remove(i);
                 break;
             }
         }
         if (contains) {
+            ((Rightsholder) rightsholder).setId(oldID);
             readings.add(rightsholder);
             FileWriter fileWriter = null;
             try {
@@ -87,6 +91,8 @@ class RightsHolderHandler {
             }
         } else {
             FileWriter fileWriter = null;
+            ((Rightsholder) rightsholder).setId(idCounter);
+            idCounter++;
             try {
                 fileWriter = new FileWriter(this.file, true);
                 if (readings.size() == 0) {
