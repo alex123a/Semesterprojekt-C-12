@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/NewRightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/NewRightsholder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/add_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/add_production.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/Production.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Production.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/RightsHolderHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/RightsHolderHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewRightsholder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/NewRightsholder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Project.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/add_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/add_production.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewProduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/NewProduction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +67,7 @@
     <property name="project.structure.side.proportion" value="0.35731414" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.NewMain">
     <configuration name="NewMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="presentation.NewMain" />
       <module name="Project" />
@@ -86,21 +94,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test" />
         <item itemvalue="Application.NewMain" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -117,7 +114,8 @@
       <workItem from="1618906505118" duration="18646000" />
       <workItem from="1618931962131" duration="1751000" />
       <workItem from="1618988172306" duration="180000" />
-      <workItem from="1618988367344" duration="15726000" />
+      <workItem from="1618988367344" duration="20426000" />
+      <workItem from="1619011753575" duration="617000" />
     </task>
     <servers />
   </component>

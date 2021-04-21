@@ -13,9 +13,10 @@ public class NewProduction implements IProduction {
     private String name;
     Map<IRightsholder, List<String>> rightsholders;
 
-    public NewProduction(String productionID, String name) {
+    public NewProduction(String productionID, String name, Map<IRightsholder, List<String>> rightsholders) {
         this.productionID = productionID;
         this.name = name;
+        this.rightsholders  = rightsholders;
     }
 
     @Override
