@@ -16,11 +16,6 @@ public class NewRightsholder implements IRightsholder {
     }
 
     @Override
-    public int getId() {
-        return 0;
-    }
-
-    @Override
     public String getName() {
         return name;
     }

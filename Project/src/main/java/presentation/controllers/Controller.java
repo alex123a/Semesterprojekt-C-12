@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -19,13 +20,13 @@ import java.net.URL;
 public class Controller {
 
         @FXML
-        private Label menuMyBroadcast;
+        private Button menuMyBroadcast;
         @FXML
-        private Label menuHelp;
+        private Button menuHelp;
         @FXML
-        private Label menuHomepage;
+        private Button menuHomepage;
         @FXML
-        private Label menuEditUser;
+        private Button menuEditUser;
         @FXML
         private VBox defaultBox;
         @FXML
