@@ -84,7 +84,7 @@ public class Production implements IProduction {
 
     @Override
     public String toString() {
-        return "This production has the id " + productionID + " and the name " + name + " and the rightholders: " + rightsholder;
+        return productionID + ": " + name;
     }
 
 
