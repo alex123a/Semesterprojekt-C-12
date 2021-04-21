@@ -40,7 +40,7 @@ public class Production implements IProduction {
         this.name = name;
     }
 
-    public Map<IRightsholder, List<String>> getRightsholder() {
+    public Map<IRightsholder, List<String>> getRightsholders() {
         return rightsholder;
     }
 
