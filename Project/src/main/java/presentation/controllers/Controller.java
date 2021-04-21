@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -67,13 +69,17 @@ public class Controller {
         private Label friProgramTime;
         @FXML
         private Label loginBtn;
+        @FXML
+        private ImageView accountImage;
+        @FXML
+        private ImageView searchImage;
 
         @FXML
         void onBroadcastClicked(MouseEvent event) {
                 try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
                         Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
-                        window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+                        window.setScene(new Scene(root, 1300, 700));
 
                 } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -166,5 +172,23 @@ public class Controller {
             System.out.println("Fri");
         }
 
+        public void onMouseEnteredAccount(MouseEvent mouseEvent) {
+                Image image = new Image(getClass().getResourceAsStream("/images/Account_Red.jpg"));
+                accountImage.setImage(image);
+        }
 
-    }
+        public void onMouseExitedAccount(MouseEvent mouseEvent) {
+                Image image = new Image(getClass().getResourceAsStream("/images/Account_Grey.jpg"));
+                accountImage.setImage(image);
+        }
+
+        public void onMouseEnteredSearch(MouseEvent mouseEvent) {
+                Image image = new Image(getClass().getResourceAsStream("/images/Search_Red.jpg"));
+                searchImage.setImage(image);
+        }
+
+        public void onMouseExitedSearch(MouseEvent mouseEvent) {
+                Image image = new Image(getClass().getResourceAsStream("/images/Search_Grey.jpg"));
+                searchImage.setImage(image);
+        }
+}
