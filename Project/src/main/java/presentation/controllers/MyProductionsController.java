@@ -9,9 +9,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,13 +36,34 @@ public class MyProductionsController implements Initializable {
         productionsListView.getItems().setAll(CreditsSystem.getInstance().getProductions());
     }
 
+    @FXML
+    public void onEditProgramClicked(ActionEvent event){
+        IProduction selected = productionsListView.getSelectionModel().getSelectedItem();
+        if (selected==null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Kan ikke ændre");
+            alert.setHeaderText(null);
+            alert.setContentText("Du skal vælge en produktion, før du kan ændre den");
 
+            alert.showAndWait();
+            return;
+        }
+        Repository.getInstance().setToEdit(selected);
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/edit_production.fxml"));
+            Stage window = Repository.getInstance().getWindow();
+            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @FXML
     public void onAddProgramClicked(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/add_production.fxml"));
-            Stage window = (Stage) addProgramBut.getScene().getWindow();
+            Stage window = Repository.getInstance().getWindow();
             window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
 
         } catch (IOException e) {
@@ -50,7 +73,6 @@ public class MyProductionsController implements Initializable {
 
     @FXML
     public void onRemoveProgramClicked(ActionEvent event){
-        System.out.println(productionsListView.getSelectionModel().getSelectedItems().get(0));
         CreditsSystem.getInstance().deleteProduction(productionsListView.getSelectionModel().getSelectedItem());
         productionsListView.getItems().setAll(CreditsSystem.getInstance().getProductions());
     }

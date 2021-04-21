@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URI;
@@ -72,7 +73,7 @@ public class Controller {
         void onBroadcastClicked(MouseEvent event) {
                 try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
-                        Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+                        Stage window = Repository.getInstance().getWindow();
                         window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
 
                 } catch (IOException e) {
@@ -108,7 +109,7 @@ public class Controller {
         void onSearchClicked(){
                 try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/search.fxml"));
-                        Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+                        Stage window = Repository.getInstance().getWindow();
                         window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
 
                 } catch (IOException e) {

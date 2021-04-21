@@ -13,6 +13,7 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
 
+        Repository.getInstance().setWindow(primaryStage);
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 1300, 700));
         primaryStage.show();

@@ -13,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,7 +48,7 @@ public class SearchController implements Initializable {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
             //It's not very pretty to use the resultslist to get the scene
-            Stage window = (Stage) resultsList.getScene().getWindow();
+            Stage window = Repository.getInstance().getWindow();
             window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
 
         } catch (IOException e) {

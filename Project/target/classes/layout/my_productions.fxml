@@ -45,12 +45,13 @@
                                 </Label>
                             </children>
                         </HBox>
-                  <Button fx:id="addProgramBut" mnemonicParsing="false" onAction="#onAddProgramClicked" text="Tilføj program">
+                  <Button fx:id="editProgramBut1" layoutX="669.0" layoutY="47.0" mnemonicParsing="false" onAction="#onEditProgramClicked" prefHeight="25.0" prefWidth="98.0" text="Ændre program" />
+                  <Button fx:id="addProgramBut" mnemonicParsing="false" onAction="#onAddProgramClicked" prefHeight="25.0" prefWidth="128.0" text="Tilføj program">
                      <HBox.margin>
                         <Insets left="300.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="removeProgramBut" layoutX="577.0" layoutY="47.0" mnemonicParsing="false" onAction="#onRemoveProgramClicked" text="Fjern program" />
+                  <Button fx:id="removeProgramBut" layoutX="577.0" layoutY="47.0" mnemonicParsing="false" onAction="#onRemoveProgramClicked" prefHeight="25.0" prefWidth="113.0" text="Fjern program" />
                     </children>
                 </HBox>
                 <HBox prefHeight="423.0" prefWidth="994.0">
