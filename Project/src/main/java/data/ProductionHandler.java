@@ -10,8 +10,9 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 
-public class ProductionHandler {
-    private static File file;
+class ProductionHandler {
+    private File file;
+    // Singleton
     private final static ProductionHandler prHandler = new ProductionHandler("productionData");
 
     private ProductionHandler(String fileName) {
@@ -22,11 +23,12 @@ public class ProductionHandler {
         }
     }
 
-    public ArrayList<IProduction> readPFile() {
+    // Reads the whole productionData file and returns all productions in an arraylist;
+    List<IProduction> readPFile() {
         Scanner scanner = null;
         try {
             scanner = new Scanner(this.file);
-            ArrayList<IProduction> productions = new ArrayList<>();
+            List<IProduction> productions = new ArrayList<>();
             while (scanner.hasNextLine()) {
                 String[] line = scanner.nextLine().split(";");
                 productions.add(new Production(line[0], line[1], convertToMap(line[2])));
@@ -42,6 +44,8 @@ public class ProductionHandler {
         return null;
     }
 
+    // Backup of old method - DO NOT DELETE FOR NOW
+    /*
     public Map<IRightsholder, List<String>> convertToMap(String rhRoles) {
         String[] rightholdersWithRoles = rhRoles.split("¤");
         Map<IRightsholder, List<String>> map = new HashMap<>();
@@ -53,9 +57,21 @@ public class ProductionHandler {
         }
         return map;
     }
+     */
 
-    public IProduction readProduction(String id) {
-        ArrayList<IProduction> productions = readPFile();
+    // Converting the string format from the file to a map.
+    Map<IRightsholder, List<String>> convertToMap(String rhRoles) {
+        Map<IRightsholder, List<String>> map = new HashMap<>();
+        RightsHolderHandler rhandler = RightsHolderHandler.getInstance();
+        String[] splitted = rhRoles.split(":");
+        List<String> roles = new ArrayList<>(Arrays.asList(splitted[1].replace("[", "").replace("]", "").split(",")));
+        map.put(rhandler.readRightsholder(Integer.parseInt(splitted[0])), roles);
+        return map;
+    }
+
+    // Reads specific production with productionID
+    IProduction readProduction(String id) {
+        List<IProduction> productions = readPFile();
         for (IProduction p : productions) {
             if (((Production) p).getProductionID().equals(id)) {
                 return p;
@@ -64,13 +80,14 @@ public class ProductionHandler {
         return null;
     }
 
-    public void saveProduction(IProduction production) {
-        ArrayList<IProduction> readings = readPFile();
+    void saveProduction(IProduction production) {
+        List<IProduction> readings = readPFile();
         boolean contains = false;
         for (int i = 0; i < readings.size(); i++) {
             if (readings.get(i).getProductionID().equals(production.getProductionID())) {
                 contains = true;
                 readings.remove(i);
+                break;
             }
         }
         if (contains) {
@@ -116,19 +133,7 @@ public class ProductionHandler {
         }
     }
 
-    public static ProductionHandler getInstance() {
+    static ProductionHandler getInstance() {
         return prHandler;
-    }
-
-    public String read() {
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(this.file);
-            System.out.println(this.file.getAbsolutePath());
-            return scanner.next();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

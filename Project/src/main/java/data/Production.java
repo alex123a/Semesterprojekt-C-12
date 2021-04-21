@@ -3,7 +3,6 @@ package data;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +31,7 @@ public class Production implements IProduction {
         this.productionID = productionID;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -40,6 +40,7 @@ public class Production implements IProduction {
         this.name = name;
     }
 
+    @Override
     public Map<IRightsholder, List<String>> getRightsholders() {
         return rightsholder;
     }
@@ -76,14 +77,15 @@ public class Production implements IProduction {
                 }
             }
 
-            rightholderString = rightholderString + "]¤";
+            rightholderString = rightholderString + "]";
         }
         return rightholderString;
     }
 
     @Override
     public String toString() {
-        return this.name;
+        return "This production has the id " + productionID + " and the name " + name + " and the rightholders: " + rightsholder;
     }
+
 
 }
