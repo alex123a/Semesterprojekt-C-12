@@ -24,12 +24,17 @@ public class MyProductionsController implements Initializable {
     public Button addProgramBut;
 
     @FXML
+    public Button removeProgramBut;
+
+    @FXML
     ListView<IProduction> productionsListView;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         productionsListView.getItems().setAll(CreditsSystem.getInstance().getProductions());
     }
+
+
 
     @FXML
     public void onAddProgramClicked(ActionEvent event) {
@@ -41,5 +46,12 @@ public class MyProductionsController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    public void onRemoveProgramClicked(ActionEvent event){
+        System.out.println(productionsListView.getSelectionModel().getSelectedItems().get(0));
+        CreditsSystem.getInstance().deleteProduction(productionsListView.getSelectionModel().getSelectedItem());
+        productionsListView.getItems().setAll(CreditsSystem.getInstance().getProductions());
     }
 }
