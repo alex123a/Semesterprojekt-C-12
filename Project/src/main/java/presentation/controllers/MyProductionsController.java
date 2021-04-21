@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.Repository;
 
@@ -24,6 +26,9 @@ public class MyProductionsController implements Initializable {
 
     @FXML
     public Button addProgramBut;
+
+    @FXML
+    public ImageView backButton;
 
     @FXML
     public Button removeProgramBut;
@@ -65,6 +70,17 @@ public class MyProductionsController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/add_production.fxml"));
             Stage window = Repository.getInstance().getWindow();
             window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void onBackClicked(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
+            Stage window = (Stage) addProgramBut.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
