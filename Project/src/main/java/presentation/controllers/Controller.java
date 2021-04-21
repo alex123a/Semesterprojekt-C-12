@@ -71,7 +71,7 @@ public class Controller {
         void onBroadcastClicked(MouseEvent event) {
                 try {
 
-                        Parent root = FXMLLoader.load(getClass().getResource("/layout/myProductions.fxml"));
+                        Parent root = FXMLLoader.load(getClass().getResource("/layout/my_Productions.fxml"));
                         Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
                         window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
 
