@@ -89,7 +89,17 @@ public class MyProductionsController implements Initializable {
 
     @FXML
     public void onRemoveProgramClicked(ActionEvent event){
-        CreditsSystem.getInstance().deleteProduction(productionsListView.getSelectionModel().getSelectedItem());
+        IProduction selected = productionsListView.getSelectionModel().getSelectedItem();
+        if (selected==null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Kan ikke slette");
+            alert.setHeaderText(null);
+            alert.setContentText("Du skal vælge en produktion, før du kan slette den");
+
+            alert.showAndWait();
+            return;
+        }
+        CreditsSystem.getInstance().deleteProduction(selected);
         productionsListView.getItems().setAll(CreditsSystem.getInstance().getProductions());
     }
 }

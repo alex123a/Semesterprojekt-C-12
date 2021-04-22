@@ -34,6 +34,9 @@ public class NewProduction implements IProduction {
         return name;
     }
 
+    @Override
+    public void setName(String name) {this.name = name;}
+
     public void addRightsholder(IRightsholder rightsholder, List<String> roles){
         rightsholders.put(rightsholder, roles);
     }

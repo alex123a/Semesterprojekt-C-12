@@ -6,6 +6,7 @@ import Interfaces.IRightsholder;
 import Interfaces.ISeeCredits;
 import data.FacadeData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CreditsSystem implements ICreditManagement, ISeeCredits {
@@ -17,7 +18,7 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     List<IProduction> changedProductions;
 
     private CreditsSystem() {
-
+        changedProductions = new ArrayList<>();
     }
 
     public static CreditsSystem getInstance() {
@@ -46,6 +47,11 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     @Override
     public void setProductionID(IProduction production, String productionID) {
         production.setProductionID(productionID);
+        changedProductions.add(production);
+    }
+
+    public void setName(IProduction production, String name) {
+        production.setName(name);
         changedProductions.add(production);
     }
 

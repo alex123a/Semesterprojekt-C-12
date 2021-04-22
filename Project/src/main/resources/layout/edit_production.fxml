@@ -36,7 +36,7 @@
       <TextField fx:id="rightholderDescription" layoutX="657.0" layoutY="522.0" prefHeight="25.0" prefWidth="394.0" />
       <TextField fx:id="rightholderRoles" layoutX="657.0" layoutY="582.0" prefHeight="25.0" prefWidth="394.0" />
       <Button fx:id="addRightholderBut" layoutX="659.0" layoutY="618.0" mnemonicParsing="false" onAction="#onClickedAddRightholder" text="Tilføj ophavsmand" />
-      <Button fx:id="addProductionBut" layoutX="952.0" layoutY="656.0" mnemonicParsing="false" onAction="#OnClickedSaveChanges" prefHeight="25.0" prefWidth="100.0" text="Gem ændringer" />
-      <Button fx:id="addRightholderBut1" layoutX="659.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedRemoveRightholder" text="Fjern ophavsmand" />
+      <Button fx:id="saveChangesBut" layoutX="952.0" layoutY="656.0" mnemonicParsing="false" onAction="#OnClickedSaveChanges" prefHeight="25.0" prefWidth="100.0" text="Gem ændringer" />
+      <Button fx:id="removeRightholderBut" layoutX="659.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedRemoveRightholder" text="Fjern ophavsmand" />
    </children>
 </AnchorPane>
