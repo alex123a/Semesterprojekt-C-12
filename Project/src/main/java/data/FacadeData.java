@@ -57,4 +57,13 @@ public class FacadeData {
     public void insertProduction(IProduction production) {
         pHandler.saveProduction(production);
     }
+
+    /**
+     * Delete a procution
+     * @param production Production object
+     */
+    public void deleteProduction(IProduction production) {
+        pHandler.deleteProduction(production);
+    }
+
 }
