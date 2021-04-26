@@ -16,15 +16,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.NewProduction;
 import presentation.NewRightsholder;
 import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class EditProductionController implements Initializable {
 
@@ -66,6 +64,15 @@ public class EditProductionController implements Initializable {
     void OnClickedSaveChanges(ActionEvent event) {
         CreditsSystem.getInstance().setProductionID(toEdit, programIDField.getText());
         CreditsSystem.getInstance().setName(toEdit, programNameField.getText());
+
+        IRightsholder[] rightsholders = rightholderListview.getItems().toArray(new IRightsholder[0]);
+        // Map over rightholders with their roles
+        Map<IRightsholder, List<String>> RhsRoles = new HashMap<>();
+        for (IRightsholder rh: rightsholders) {
+            RhsRoles.put(rh, ((NewRightsholder) rh).getRoles());
+        }
+
+        CreditsSystem.getInstance().setRoles(toEdit, RhsRoles);
         CreditsSystem.getInstance().saveChanges();
 
         if (!oldId.equals(programIDField.getText())) {

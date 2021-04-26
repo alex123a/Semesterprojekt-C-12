@@ -8,6 +8,7 @@ public interface IProduction {
     void setProductionID(String productionID);
     String getName();
     void setName(String name);
+    void setRoles(Map<IRightsholder, List<String>> roles);
     Map<IRightsholder, List<String>> getRightsholders();
     List<String> getRightsholderRole(IRightsholder rightsholder);
 }
