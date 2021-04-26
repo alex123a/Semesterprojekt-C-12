@@ -36,8 +36,8 @@
       <TextField fx:id="rightholderName" layoutX="657.0" layoutY="462.0" prefHeight="25.0" prefWidth="394.0" />
       <TextField fx:id="rightholderDescription" layoutX="657.0" layoutY="522.0" prefHeight="25.0" prefWidth="394.0" />
       <TextField fx:id="rightholderRoles" layoutX="657.0" layoutY="582.0" prefHeight="25.0" prefWidth="394.0" />
-      <Button fx:id="addRightholderBut" layoutX="657.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedAddRightholder" text="Tilføj ophavsmand" />
-      <Button fx:id="addProductionBut" layoutX="952.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedAddProduction" prefHeight="25.0" prefWidth="100.0" text="Tilføj program" />
-      <Button fx:id="removeRightholder" layoutX="804.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedRemoveRightholder" text="Fjern ophavsmand" />
+      <Button fx:id="addRightholderBut" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" layoutX="657.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedAddRightholder" text="Tilføj ophavsmand" />
+      <Button fx:id="addProductionBut" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" layoutX="952.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedAddProduction" prefHeight="25.0" prefWidth="100.0" text="Tilføj program" />
+      <Button fx:id="removeRightholder" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" layoutX="804.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedRemoveRightholder" text="Fjern ophavsmand" />
    </children>
 </AnchorPane>

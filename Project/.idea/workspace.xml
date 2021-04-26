@@ -6,21 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Production.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/NewProduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/NewProduction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/edit_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/edit_production.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/layout/my_productions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/my_productions.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IProduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IProduction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Production.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Production.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/edit_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/edit_production.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/my_productions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/my_productions.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewProduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/NewProduction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/productionData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/productionData.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/rightsHolderData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rightsHolderData.dat" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,6 +68,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.NewMain">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="NewMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="presentation.NewMain" />
       <module name="Project" />

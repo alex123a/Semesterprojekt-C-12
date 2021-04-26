@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 
 <AnchorPane prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.MyProductionsController">
     <children>
@@ -45,13 +39,13 @@
                                 </Label>
                             </children>
                         </HBox>
-                  <Button fx:id="editProgramBut1" layoutX="669.0" layoutY="47.0" mnemonicParsing="false" onAction="#onEditProgramClicked" prefHeight="25.0" prefWidth="113.0" text="Ændre program" />
-                  <Button fx:id="addProgramBut" layoutX="349.0" layoutY="47.0" mnemonicParsing="false" onAction="#onAddProgramClicked" prefHeight="25.0" prefWidth="128.0" text="Tilføj program">
+                  <Button fx:id="editProgramBut1" layoutX="696.0" layoutY="47.0" mnemonicParsing="false" onAction="#onEditProgramClicked" prefHeight="25.0" prefWidth="113.0" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" text="Ændre program" />
+                  <Button fx:id="addProgramBut" layoutX="414.0" layoutY="47.0" mnemonicParsing="false" onAction="#onAddProgramClicked" prefHeight="25.0" prefWidth="128.0" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" text="Tilføj program">
                      <HBox.margin>
                         <Insets left="300.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="removeProgramBut" layoutX="522.0" layoutY="47.0" mnemonicParsing="false" onAction="#onRemoveProgramClicked" prefHeight="25.0" prefWidth="113.0" text="Fjern program" />
+                  <Button fx:id="removeProgramBut" layoutX="563.0" layoutY="47.0" mnemonicParsing="false" onAction="#onRemoveProgramClicked" prefHeight="25.0" prefWidth="113.0" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" text="Fjern program" />
                     </children>
                 </Pane>
                 <HBox prefHeight="423.0" prefWidth="994.0">
