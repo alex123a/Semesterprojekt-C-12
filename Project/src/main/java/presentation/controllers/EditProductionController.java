@@ -15,7 +15,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import presentation.Credit;
 import presentation.NewRightsholder;
 import presentation.Repository;
 
@@ -60,7 +59,6 @@ public class EditProductionController implements Initializable {
 
     IProduction toEdit;
 
-    List<Credit> credits;
     String oldId = null;
 
     @FXML

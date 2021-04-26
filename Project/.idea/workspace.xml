@@ -5,23 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_153.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_152.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_153.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_152.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_15_0_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_15_0_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_153.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_152.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/ISeeCredits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ISeeCredits.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/NewRightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/NewRightsholder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/ISeeCredits.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/ISeeCredits.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewRightsholder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/NewRightsholder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/productionData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/productionData.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/rightsHolderData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rightsHolderData.dat" afterDir="false" />
     </list>
@@ -112,6 +95,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.NewMain" />
@@ -136,7 +130,7 @@
       <workItem from="1619011753575" duration="6410000" />
       <workItem from="1619019487078" duration="207000" />
       <workItem from="1619019843705" duration="4256000" />
-      <workItem from="1619421211040" duration="1446000" />
+      <workItem from="1619421211040" duration="1774000" />
     </task>
     <servers />
   </component>
