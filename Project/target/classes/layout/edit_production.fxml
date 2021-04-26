@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.AddProductionController">
+<AnchorPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.EditProductionController">
    <children>
-      <Label layoutX="584.0" layoutY="135.0" prefHeight="17.0" prefWidth="132.0" text="Indtast programmets ID:" />
-      <Label layoutX="579.0" layoutY="205.0" prefHeight="17.0" prefWidth="149.0" text="Indtast programmets navn:" />
+      <Label layoutX="600.0" layoutY="134.0" prefHeight="17.0" prefWidth="132.0" text="Productions ID:" />
+      <Label layoutX="626.0" layoutY="207.0" prefHeight="17.0" prefWidth="149.0" text="Navn:" />
       <ImageView fitHeight="50.0" fitWidth="100.0" layoutX="600.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Tv2Logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="591.0" layoutY="416.0" prefHeight="17.0" prefWidth="118.0" text="Indtast ophavsmænd:" />
-      <Label layoutX="559.0" layoutY="275.0" prefHeight="17.0" prefWidth="189.0" text="Indtast beskrivelse til programmet:" />
+      <Label layoutX="591.0" layoutY="416.0" prefHeight="17.0" prefWidth="118.0" text="      Ophavsmænd:" />
+      <Label layoutX="615.0" layoutY="277.0" prefHeight="17.0" prefWidth="189.0" text="Beskrivelse:" />
       <TextArea fx:id="descriptionProgramArea" layoutX="256.0" layoutY="303.0" prefHeight="98.0" prefWidth="794.0" />
       <TextField fx:id="programIDField" layoutX="258.0" layoutY="159.0" prefHeight="25.0" prefWidth="794.0" />
       <TextField fx:id="programNameField" layoutX="256.0" layoutY="232.0" prefHeight="25.0" prefWidth="794.0" />
@@ -36,8 +30,8 @@
       <TextField fx:id="rightholderName" layoutX="657.0" layoutY="462.0" prefHeight="25.0" prefWidth="394.0" />
       <TextField fx:id="rightholderDescription" layoutX="657.0" layoutY="522.0" prefHeight="25.0" prefWidth="394.0" />
       <TextField fx:id="rightholderRoles" layoutX="657.0" layoutY="582.0" prefHeight="25.0" prefWidth="394.0" />
-      <Button fx:id="addRightholderBut" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" layoutX="657.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedAddRightholder" text="Tilføj ophavsmand" />
-      <Button fx:id="addProductionBut" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" layoutX="952.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedAddProduction" prefHeight="25.0" prefWidth="100.0" text="Tilføj program" />
-      <Button fx:id="removeRightholder" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" layoutX="804.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedRemoveRightholder" text="Fjern ophavsmand" />
+      <Button fx:id="addRightholderBut" layoutX="657.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedAddRightholder" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" text="Tilføj ophavsmand" />
+      <Button fx:id="saveChangesBut" layoutX="932.0" layoutY="656.0" mnemonicParsing="false" onAction="#OnClickedSaveChanges" prefHeight="25.0" prefWidth="120.0" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" text="Gem ændringer" />
+      <Button fx:id="removeRightholderBut" layoutX="794.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedRemoveRightholder" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" text="Fjern ophavsmand" />
    </children>
 </AnchorPane>

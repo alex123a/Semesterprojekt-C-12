@@ -6,6 +6,7 @@ import Interfaces.IRightsholder;
 import Interfaces.ISeeCredits;
 import data.FacadeData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CreditsSystem implements ICreditManagement, ISeeCredits {
@@ -17,7 +18,7 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     List<IProduction> changedProductions;
 
     private CreditsSystem() {
-
+        changedProductions = new ArrayList<>();
     }
 
     public static CreditsSystem getInstance() {
@@ -49,6 +50,11 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
         changedProductions.add(production);
     }
 
+    public void setName(IProduction production, String name) {
+        production.setName(name);
+        changedProductions.add(production);
+    }
+
     @Override
     public void addProduction(IProduction production) {
         facadeData.insertProduction(production);
@@ -77,6 +83,12 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
         //Could save the data in an attribute
         return facadeData.getProductions();
     }
+
+    @Override
+    public IProduction getProduction(String id) {
+        return facadeData.getProduction(id);
+    }
+
 
     public List<IRightsholder> getAllRightsholders() {
         return facadeData.getRightsholders();

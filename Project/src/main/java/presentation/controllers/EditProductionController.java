@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,13 +16,17 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import presentation.NewProduction;
 import presentation.NewRightsholder;
+import presentation.Repository;
 
 import java.io.IOException;
-import java.util.*;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class AddProductionController {
+public class EditProductionController implements Initializable {
 
     @FXML
     private TextArea descriptionProgramArea;
@@ -48,15 +53,37 @@ public class AddProductionController {
     private Button addRightholderBut;
 
     @FXML
-    private Button addProductionBut;
+    private Button saveChangesBut;
 
     @FXML
-    private Button removeRightholder;
+    private Button removeRightholderBut;
 
-    private CreditsSystem creditsSystem = CreditsSystem.getInstance();
+    IProduction toEdit;
+
+    String oldId = null;
 
     @FXML
-    public void onClickedAddRightholder(ActionEvent event) {
+    void OnClickedSaveChanges(ActionEvent event) {
+        CreditsSystem.getInstance().setProductionID(toEdit, programIDField.getText());
+        CreditsSystem.getInstance().setName(toEdit, programNameField.getText());
+        CreditsSystem.getInstance().saveChanges();
+
+        if (!oldId.equals(programIDField.getText())) {
+            CreditsSystem.getInstance().deleteProduction(CreditsSystem.getInstance().getProduction(oldId));
+        }
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
+            Stage window = Repository.getInstance().getWindow();
+            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void onClickedAddRightholder(ActionEvent event) {
         String name = null;
         String description = null;
         List<String> roles = new ArrayList<>();
@@ -86,42 +113,24 @@ public class AddProductionController {
     }
 
     @FXML
-    public void onClickedRemoveRightholder(ActionEvent event) {
+    void onClickedRemoveRightholder(ActionEvent event) {
         rightholderListview.getItems().remove(rightholderListview.getSelectionModel().getSelectedItem());
     }
 
-    @FXML
-    public void onClickedAddProduction(ActionEvent event) {
-        /*
-        TODO For now we ignore the description since it's not made in the other layers yet, because we forgot it,
-            will be added in iteration 2
-        */
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        toEdit = Repository.getInstance().getToEdit();
+        programIDField.setText(toEdit.getProductionID());
+        oldId = toEdit.getProductionID();
+        programNameField.setText(toEdit.getName());
 
-        /*
-        TODO still needs a check for null values in domain layer when trying to pass it down to data layer
-         */
-
-        String id = programIDField.getText();
-        String name = programNameField.getText();
-        String description = descriptionProgramArea.getText();
-        IRightsholder[] rightsholders = rightholderListview.getItems().toArray(new IRightsholder[0]);
-        // Map over rightholders with their roles
-        Map<IRightsholder, List<String>> RhsRoles = new HashMap<>();
-        for (IRightsholder rh: rightsholders) {
-            RhsRoles.put(rh, ((NewRightsholder) rh).getRoles());
+        //Doesn't work because of the persistence-layer
+        List<IRightsholder> credits = new ArrayList<>();
+        for (IRightsholder rh : toEdit.getRightsholders().keySet()){
+            credits.add(new NewRightsholder(rh.getName(), rh.getDescription(), toEdit.getRightsholders().get(rh)));
+            System.out.println("read one");
         }
-
-        IProduction newProduction = new NewProduction(id, name, RhsRoles);
-        creditsSystem.addProduction(newProduction);
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
-            Stage window = (Stage) addRightholderBut.getScene().getWindow();
-            window.setScene(new Scene(root, 1300, 700));
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        rightholderListview.getItems().setAll(credits);
     }
 
     public void onBackClicked(MouseEvent mouseEvent) {
