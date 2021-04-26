@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/productionData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/productionData.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/rightsHolderData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rightsHolderData.dat" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,6 +124,7 @@
       <workItem from="1619019843705" duration="4256000" />
       <workItem from="1619421211040" duration="1774000" />
       <workItem from="1619427956659" duration="1628000" />
+      <workItem from="1619429941866" duration="519000" />
     </task>
     <servers />
   </component>
