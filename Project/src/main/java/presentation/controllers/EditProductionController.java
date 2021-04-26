@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.NewRightsholder;
 import presentation.Repository;
@@ -130,5 +131,16 @@ public class EditProductionController implements Initializable {
             System.out.println("read one");
         }
         rightholderListview.getItems().setAll(credits);
+    }
+
+    public void onBackClicked(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
+            Stage window = (Stage) addRightholderBut.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

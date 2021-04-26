@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.EditProductionController">
    <children>
@@ -24,9 +19,9 @@
       <TextField fx:id="programIDField" layoutX="258.0" layoutY="159.0" prefHeight="25.0" prefWidth="794.0" />
       <TextField fx:id="programNameField" layoutX="256.0" layoutY="232.0" prefHeight="25.0" prefWidth="794.0" />
       <ListView fx:id="rightholderListview" layoutX="256.0" layoutY="444.0" prefHeight="237.0" prefWidth="375.0" />
-      <ImageView fitHeight="25.0" fitWidth="58.0" layoutX="25.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backButton" fitHeight="25.0" fitWidth="46.0" layoutX="30.0" layoutY="21.0" onMouseClicked="#onBackClicked" pickOnBounds="true" preserveRatio="true" style="-fx-cursor:hand;">
          <image>
-            <Image url="@../images/BackArrow.jpg" />
+            <Image url="@/images/BackArrow.png" />
          </image>
       </ImageView>
       <Label layoutX="655.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Navn:" />
@@ -35,8 +30,8 @@
       <TextField fx:id="rightholderName" layoutX="657.0" layoutY="462.0" prefHeight="25.0" prefWidth="394.0" />
       <TextField fx:id="rightholderDescription" layoutX="657.0" layoutY="522.0" prefHeight="25.0" prefWidth="394.0" />
       <TextField fx:id="rightholderRoles" layoutX="657.0" layoutY="582.0" prefHeight="25.0" prefWidth="394.0" />
-      <Button fx:id="addRightholderBut" layoutX="659.0" layoutY="618.0" mnemonicParsing="false" onAction="#onClickedAddRightholder" text="Tilføj ophavsmand" />
-      <Button fx:id="saveChangesBut" layoutX="952.0" layoutY="656.0" mnemonicParsing="false" onAction="#OnClickedSaveChanges" prefHeight="25.0" prefWidth="100.0" text="Gem ændringer" />
-      <Button fx:id="removeRightholderBut" layoutX="659.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedRemoveRightholder" text="Fjern ophavsmand" />
+      <Button fx:id="addRightholderBut" layoutX="657.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedAddRightholder" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" text="Tilføj ophavsmand" />
+      <Button fx:id="saveChangesBut" layoutX="932.0" layoutY="656.0" mnemonicParsing="false" onAction="#OnClickedSaveChanges" prefHeight="25.0" prefWidth="120.0" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" text="Gem ændringer" />
+      <Button fx:id="removeRightholderBut" layoutX="794.0" layoutY="656.0" mnemonicParsing="false" onAction="#onClickedRemoveRightholder" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" text="Fjern ophavsmand" />
    </children>
 </AnchorPane>
