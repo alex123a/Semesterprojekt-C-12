@@ -6,13 +6,19 @@ import domain.CreditsManagement.CreditsSystem;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import presentation.NewProduction;
 import presentation.NewRightsholder;
 
+import java.io.IOException;
 import java.util.*;
 
 public class AddProductionController {
@@ -109,4 +115,14 @@ public class AddProductionController {
         creditsSystem.addProduction(newProduction);
     }
 
+    public void onBackClicked(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
+            Stage window = (Stage) addRightholderBut.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
