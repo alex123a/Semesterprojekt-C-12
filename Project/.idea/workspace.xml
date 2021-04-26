@@ -5,20 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_153.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_152.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_153.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_152.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_15_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_15_0_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_153.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_152.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Production.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/ISeeCredits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ISeeCredits.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/NewProduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/NewProduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/NewRightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/NewRightsholder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/edit_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/edit_production.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/my_productions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/my_productions.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IProduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IProduction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Production.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Production.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/edit_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/edit_production.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/my_productions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/my_productions.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewProduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/NewProduction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/ISeeCredits.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/ISeeCredits.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewRightsholder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/NewRightsholder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/productionData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/productionData.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/rightsHolderData.dat" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rightsHolderData.dat" afterDir="false" />
     </list>
@@ -57,6 +60,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
@@ -132,6 +136,7 @@
       <workItem from="1619011753575" duration="6410000" />
       <workItem from="1619019487078" duration="207000" />
       <workItem from="1619019843705" duration="4256000" />
+      <workItem from="1619421211040" duration="1446000" />
     </task>
     <servers />
   </component>
@@ -149,44 +154,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1619104294580">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1619104294580" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1619104294580">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1619104294580" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1619104294580">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1619104294580" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1619104294580">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1619104294580" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1619103482822">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1619103482822" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1619103482822">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1619103482822" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1619103482821">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1619103482821" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1619103482822">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1619103482822" />
-    <state x="-1902" y="-13" width="1412" height="716" maximized="true" key="dock-window-1" timestamp="1619102896947">
-      <screen x="-1920" y="0" width="1536" height="832" />
-    </state>
-    <state x="-1902" y="-13" width="1412" height="716" maximized="true" key="dock-window-1/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1619102896947" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

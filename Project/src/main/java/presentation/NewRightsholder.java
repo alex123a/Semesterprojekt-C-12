@@ -28,6 +28,8 @@ public class NewRightsholder implements IRightsholder {
         return description;
     }
 
+
+
     @Override
     public List<IProduction> getRightsholderFor() {
         //TODO Should we get this from the database or?? how does the rightsholder class work?

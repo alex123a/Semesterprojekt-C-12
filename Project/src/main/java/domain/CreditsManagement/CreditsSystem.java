@@ -84,6 +84,12 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
         return facadeData.getProductions();
     }
 
+    @Override
+    public IProduction getProduction(String id) {
+        return facadeData.getProduction(id);
+    }
+
+
     public List<IRightsholder> getAllRightsholders() {
         return facadeData.getRightsholders();
     }
