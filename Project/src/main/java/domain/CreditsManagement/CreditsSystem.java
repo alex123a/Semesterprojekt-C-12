@@ -8,6 +8,7 @@ import data.FacadeData;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class CreditsSystem implements ICreditManagement, ISeeCredits {
 
@@ -52,6 +53,11 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
 
     public void setName(IProduction production, String name) {
         production.setName(name);
+        changedProductions.add(production);
+    }
+
+    public void setRoles(IProduction production, Map<IRightsholder, List<String>> roles) {
+        production.setRoles(roles);
         changedProductions.add(production);
     }
 

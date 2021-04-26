@@ -45,6 +45,11 @@ public class Production implements IProduction {
     }
 
     @Override
+    public void setRoles(Map<IRightsholder, List<String>> roles) {
+        rightsholder = roles;
+    }
+
+    @Override
     public Map<IRightsholder, List<String>> getRightsholders() {
         return rightsholder;
     }
