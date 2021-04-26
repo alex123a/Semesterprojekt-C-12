@@ -113,6 +113,15 @@ public class AddProductionController {
 
         IProduction newProduction = new NewProduction(id, name, RhsRoles);
         creditsSystem.addProduction(newProduction);
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
+            Stage window = (Stage) addRightholderBut.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void onBackClicked(MouseEvent mouseEvent) {
