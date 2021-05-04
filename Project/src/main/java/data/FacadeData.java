@@ -47,7 +47,7 @@ public class FacadeData {
      * @return list with productions
      */
     public List<IProduction> getProductions() {
-        return pHandler.readPFile();
+        return pHandler.getAllProductions();
     }
 
     /**
