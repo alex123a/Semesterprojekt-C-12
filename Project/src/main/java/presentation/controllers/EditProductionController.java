@@ -61,7 +61,8 @@ public class EditProductionController implements Initializable {
 
     String oldId = null;
 
-    private ICreditManagement creditsSystem = CreditsSystem.getInstance();
+    private Repository rep = Repository.getInstance();
+    private ICreditManagement creditsSystem = rep.creditsSystem;
 
     @FXML
     void OnClickedSaveChanges(ActionEvent event) {
