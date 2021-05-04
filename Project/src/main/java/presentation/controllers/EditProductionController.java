@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import domain.CreditsManagement.CreditsSystem;
@@ -60,10 +61,13 @@ public class EditProductionController implements Initializable {
 
     String oldId = null;
 
+    private Repository rep = Repository.getInstance();
+    private ICreditManagement creditsSystem = rep.creditsSystem;
+
     @FXML
     void OnClickedSaveChanges(ActionEvent event) {
-        CreditsSystem.getInstance().setProductionID(toEdit, programIDField.getText());
-        CreditsSystem.getInstance().setName(toEdit, programNameField.getText());
+        creditsSystem.setProductionID(toEdit, programIDField.getText());
+        creditsSystem.setName(toEdit, programNameField.getText());
 
         IRightsholder[] rightsholders = rightholderListview.getItems().toArray(new IRightsholder[0]);
         // Map over rightholders with their roles
@@ -72,11 +76,11 @@ public class EditProductionController implements Initializable {
             RhsRoles.put(rh, ((NewRightsholder) rh).getRoles());
         }
 
-        CreditsSystem.getInstance().setRoles(toEdit, RhsRoles);
-        CreditsSystem.getInstance().saveChanges();
+        creditsSystem.setRoles(toEdit, RhsRoles);
+        creditsSystem.saveChanges();
 
         if (!oldId.equals(programIDField.getText())) {
-            CreditsSystem.getInstance().deleteProduction(CreditsSystem.getInstance().getProduction(oldId));
+            creditsSystem.deleteProduction(CreditsSystem.getInstance().getProduction(oldId));
         }
 
         try {

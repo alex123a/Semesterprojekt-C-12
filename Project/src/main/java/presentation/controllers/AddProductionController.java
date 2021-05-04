@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import domain.CreditsManagement.CreditsSystem;
@@ -17,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.NewProduction;
 import presentation.NewRightsholder;
+import presentation.Repository;
 
 import java.io.IOException;
 import java.util.*;
@@ -53,7 +55,8 @@ public class AddProductionController {
     @FXML
     private Button removeRightholder;
 
-    private CreditsSystem creditsSystem = CreditsSystem.getInstance();
+    private Repository rep = Repository.getInstance();
+    private ICreditManagement creditsSystem = rep.creditsSystem;
 
     @FXML
     public void onClickedAddRightholder(ActionEvent event) {

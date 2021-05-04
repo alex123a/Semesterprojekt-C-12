@@ -1,10 +1,12 @@
 package presentation;
 
+import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
+import domain.CreditsManagement.CreditsSystem;
 import javafx.stage.Stage;
 
 public class Repository {
-    private static Repository instance = new Repository();
+    private final static Repository instance = new Repository();
 
     public static Repository getInstance() {return instance;}
 
@@ -27,6 +29,6 @@ public class Repository {
         this.toEdit = toEdit;
     }
 
-
+    public ICreditManagement creditsSystem = CreditsSystem.getInstance();
 
 }
