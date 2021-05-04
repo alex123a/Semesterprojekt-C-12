@@ -6,27 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="dc0b63e4-b636-432b-b1f1-028729a0ad22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/ICreditManagement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/ISeeCredits.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/ProductionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/RightsHolderHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Rightsholder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewProduction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewRightsholder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/Repository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/productionData.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/rightsHolderData.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/ProductionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/ProductionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/RightsHolderHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/RightsHolderHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/Test.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

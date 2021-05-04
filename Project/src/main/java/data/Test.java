@@ -1,8 +1,6 @@
 package data;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 
 public class Test {
@@ -16,7 +14,14 @@ public class Test {
             throwables.printStackTrace();
         }
         try {
-            connection.prepareStatement("SELECT * FROM persons");
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM title");
+            ResultSet queryResultSet = queryStatement.executeQuery();
+
+            //Write to console
+            System.out.println("The following titles matched the query:");
+            while (queryResultSet.next()) {
+                System.out.println("" + queryResultSet.getString("title")); //getString parameter can be column name or index
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
