@@ -1,38 +1,29 @@
 package data;
 
-import Interfaces.IProduction;
-import Interfaces.IRightsholder;
-import domain.CreditsManagement.CreditsSystem;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Test {
+    private static Connection connection = null;
+
 
     public static void main(String[] args) {
-        // Test of ProductionHandler
-        RightsHolderHandler rh = RightsHolderHandler.getInstance();
-        Map<IRightsholder, List<String>> rightsholder;
-        rightsholder = new HashMap<>();
-        List<String> list = new ArrayList<>();
-        list.add("Kamera");
-        String[] productions = {"Star wars", "Sejt"};
-        rightsholder.put(new Rightsholder(1,"Simon","jonnn",productions),list);
-        ProductionHandler ph = ProductionHandler.getInstance();
-        IProduction produc = new Production("122r22sdsdt3","Janisdwa",rightsholder);
-        ph.saveProduction(produc);
-        System.out.println(ph.readProduction("122r22t3").toString());
+        try {
+            connection = getConnection();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        connection.prepareStatement("SELECT * FROM persons");
 
+    }
 
-
-
-        // Test of RightsHolderHandler
-
-        String[] s = {"Skuespiller","Filmstjerne"};
-        rh.saveRightsholder(new Rightsholder(3,"Sim","Jeg er 24 år gammel og meget sej",s));
-        System.out.println(rh.readRightsholder(3));
-
+    private static Connection getConnection() throws SQLException {
+        DriverManager.registerDriver(new org.postgresql.Driver());
+        return DriverManager.getConnection(
+                "ec2-34-250-16-127.eu-west-1.compute.amazonaws.com:5432/d82q285u8akq13",
+                "pjmqbdledqjucs",
+                "030c8df346d06432b9a5a4ed0bf42e56dc34761fda8d3cc04af8085dfb4f7c2b");
     }
 }

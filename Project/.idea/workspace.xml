@@ -4,12 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" afterDir="false" />
+    <list default="true" id="dc0b63e4-b636-432b-b1f1-028729a0ad22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_2_10_jre7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_153.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_153.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_15_0_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_153.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/RightsHolderHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/productionData.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/rightsHolderData.dat" beforeDir="false" />
     </list>
-    <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,6 +101,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
