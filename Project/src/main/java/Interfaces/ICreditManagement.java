@@ -1,6 +1,7 @@
 package Interfaces;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ICreditManagement {
     //Adds a single rightsholder and their roles to a single production
@@ -22,4 +23,8 @@ public interface ICreditManagement {
 
     //Undo the changes made since the last saveChanges() call
     void cancelChanges();
+
+    void setName(IProduction production, String name);
+
+    void setRoles(IProduction production, Map<IRightsholder, List<String>> roles);
 }
