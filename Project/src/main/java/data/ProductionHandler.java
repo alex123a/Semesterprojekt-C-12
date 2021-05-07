@@ -2,9 +2,8 @@ package data;
 
 import Interfaces.IProduction;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 class ProductionHandler {
@@ -39,11 +38,33 @@ class ProductionHandler {
     }
 
     public IProduction readProduction(String id) {
-        return null;
+        Production production = null;
+        try {
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM production WHERE id = ?");
+            queryStatement.setString(1,id);
+            ResultSet queryResultSet = queryStatement.executeQuery();
+
+            //production = new Production(queryResultSet.getString("name"));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return production;
     }
 
-    public List<IProduction> readPFile() {
-        return null;
+    public List<IProduction> getAllProductions() {
+        List<IProduction> productions = new ArrayList<>();
+        try {
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM production");
+            ResultSet queryResultSet = queryStatement.executeQuery();
+
+            while (queryResultSet.next()) {
+                //TODO Production needs implementation
+                //productions.add(new Production(queryResultSet.getString("production_id")));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return productions;
     }
 
     public void saveProduction(IProduction production) {
