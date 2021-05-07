@@ -1,44 +1,44 @@
 CREATE TABLE producer(
     id SERIAL PRIMARY KEY, 
-    username VARCHAR(30) NOT NULL, 
-    producer_password BYTEA NOT NULL
+    username VARCHAR(30) UNIQUE NOT NULL, 
+    producer_password CHAR(128) NOT NULL
 );
 
 CREATE TABLE producer_notification(
     id SERIAL PRIMARY KEY,
     producer_id INT REFERENCES producer(id),
-    notification_text VARCHAR(1000),
-    viewed BOOLEAN
+    notification_text VARCHAR(1000) NOT NULL,
+    viewed BOOLEAN NOT NULL
 );
 
 CREATE TABLE genre(
     id SERIAL PRIMARY KEY,
-    genre_name VARCHAR(30)
+    genre_name VARCHAR(30) UNIQUE NOT NULL
 );
 
-CREATE TABLE types(
+CREATE TABLE category(
     id SERIAL PRIMARY KEY,
-    type_name VARCHAR(30)
+    category_name VARCHAR(30) UNIQUE NOT NULL
 );
 
 CREATE TABLE production(
     id INT PRIMARY KEY,
-    own_production_id VARCHAR(30),
+    own_production_id VARCHAR(30) UNIQUE,
     production_name VARCHAR(50) NOT NULL,
     year SMALLINT,
     genre_id INT REFERENCES genre(id),
-    type_id INT REFERENCES types(id),
-    producer_id INT REFERENCES producer(id)
+    category_id INT REFERENCES category(id),
+    producer_id INT REFERENCES producer(id) NOT NULL
 );
 
 CREATE TABLE production_approval(
     id SERIAL PRIMARY KEY,
-    own_production_id VARCHAR(30),
+    own_production_id VARCHAR(30) UNIQUE,
     production_name VARCHAR(50) NOT NULL,
     year SMALLINT,
     genre_id INT REFERENCES genre(id),
-    type_id INT REFERENCES types(id),
-    producer_id INT REFERENCES producer(id)
+    category_id INT REFERENCES category(id),
+    producer_id INT REFERENCES producer(id) NOT NULL
 );
 
 CREATE TABLE rightsholder(
@@ -57,8 +57,8 @@ CREATE TABLE rightsholder_approval(
 
 CREATE TABLE appears_in(
 	id SERIAL PRIMARY KEY,
-    production_id INT REFERENCES production(id),
-    rightsholder_id INT REFERENCES rightsholder(id)
+    production_id INT REFERENCES production(id) NOT NULL,
+    rightsholder_id INT REFERENCES rightsholder(id) NOT NULL
 );
 
 CREATE TABLE appears_in_approval(
@@ -69,24 +69,24 @@ CREATE TABLE appears_in_approval(
 
 CREATE TABLE title(
     id SERIAL PRIMARY KEY,
-    title VARCHAR(30)
+    title VARCHAR(30) UNIQUE NOT NULL
 );
 
 CREATE TABLE role(
     id SERIAL PRIMARY KEY,
-    appears_in_id INT REFERENCES appears_in(id),
-    title_id INT REFERENCES title(id)
+    appears_in_id INT REFERENCES appears_in(id) NOT NULL,
+    title_id INT REFERENCES title(id) NOT NULL
 );
 
 CREATE TABLE role_approval(
     id SERIAL PRIMARY KEY,
-    appears_in_id INT,
-    title_id INT
+    appears_in_id INT NOT NULL,
+    title_id INT NOT NULL
 );
 
 CREATE TABLE rolename(
     role_id INT PRIMARY KEY REFERENCES role(id),
-    rolename VARCHAR(50)
+    rolename VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE rolename_approval(
@@ -96,28 +96,31 @@ CREATE TABLE rolename_approval(
 
 CREATE TABLE administrator(
     id SERIAL PRIMARY KEY,
-    username VARCHAR(30),
-    administrator_password BYTEA
+    username VARCHAR(30) UNIQUE NOT NULL,
+    administrator_password CHAR(128) NOT NULL
 );
 
 CREATE TABLE approval_notification(
     id SERIAL PRIMARY KEY,
-    notification_text VARCHAR(1000),
-    production_id INT REFERENCES production(id)
-    approval_status_id INT REFERENCES approval_status(id)
+    notification_text VARCHAR(1000) NOT NULL,
+    production_id INT REFERENCES production(id) NOT NULL
+    approval_status_id INT REFERENCES approval_status(id) NOT NULL
 );
 
 CREATE TABLE approval_status(
 	id SERIAL PRIMARY KEY,
-	status VARCHAR(12)
+	status VARCHAR(12) UNIQUE NOT NULL
 );
 
 CREATE TABLE not_viewed(
     administrator_id INT REFERENCES administrator(id),
     notification_id INT REFERENCES administrator_notification(id)
+    PRIMARY KEY(administrator_id, notification_id)
 );
 
 --INSERT DATA
 
 INSERT INTO title(title) VALUES ('Billedkunstnere'),('Billed- og lydredigering'),('Casting'),('Colourgrading'),('Dirigenter'),('Drone'),('Dukkefører'),('Dukkeskaber'),('Fortæller'),('Fotografer'),('Forlæg'),('Grafiske designere'),('Indtalere'),('Kapelmester'),('Klipper'),('Koncept'),('Konsulent'),('Kor'),('Koreografi'),('Lyd/tonemester'),('Lydredigering'),('Lys'),('Medvirkende'),('Musikalsk arrangement'),('Orkester/band'),('Oversættere'),('Producent'),('Produktionskoordinator/leder'),('Programansvarlige'),('Redaktion/tilrettelæggelse'),('Redaktøren'),('Rekvisitør'),('Scenografer'),('Scripter/producerassistent'),('Special effects'),('Sponsorer'),('Tegnefilm/animation'),('Tekstere'),('Tekst og musik'),('Uhonoreret indsats');
+INSERT INTO category(category_name) VALUES ('Serier'),('Film'),('Reality'),('Underholdning'),('Comedy'),('Dokumentar'),('Rejser og Eventyr'),('Livsstil'),('Magasiner');
+INSERT INTO genre(genre_name) VALUES ('Action'),('Børnefilm'),('Dokumentar'),('Drama'),('Familiefilm'),('Gyser'),('Komedie'),('Romantik'),('Thriller');
 INSERT INTO approval_status(status) VALUES ('Waiting'), ('Approved'), ('Not Approved');
