@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dc0b63e4-b636-432b-b1f1-028729a0ad22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/FacadeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/FacadeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ProductionHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,13 +93,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

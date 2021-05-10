@@ -100,10 +100,10 @@ CREATE TABLE administrator(
     administrator_password CHAR(128) NOT NULL
 );
 
-CREATE TABLE approval_notification(
+CREATE TABLE administrator_notification(
     id SERIAL PRIMARY KEY,
     notification_text VARCHAR(1000) NOT NULL,
-    production_id INT REFERENCES production(id) NOT NULL
+    production_id INT REFERENCES production(id) NOT NULL,
     approval_status_id INT REFERENCES approval_status(id) NOT NULL
 );
 
@@ -114,8 +114,14 @@ CREATE TABLE approval_status(
 
 CREATE TABLE not_viewed(
     administrator_id INT REFERENCES administrator(id),
-    notification_id INT REFERENCES administrator_notification(id)
+    notification_id INT REFERENCES administrator_notification(id),
     PRIMARY KEY(administrator_id, notification_id)
+);
+
+CREATE TABLE approved(
+    notification_id INT REFERENCES administrator_notification(id),
+    approved_time TIMESTAMP NOT NULL,
+    approved_by INT REFERENCES administrator(id)
 );
 
 --INSERT DATA
