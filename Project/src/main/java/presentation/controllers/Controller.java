@@ -268,4 +268,15 @@ public class Controller implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
+    public void goToLogin(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/login.fxml"));
+            Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
