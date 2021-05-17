@@ -7,6 +7,8 @@ import data.userHandling.UserFacade;
 import java.util.List;
 
 public class PersistenceFacade implements IPersistenceFacade {
+    private static final PersistenceFacade PERSISTENCE_FACADE = new PersistenceFacade();
+
     @Override
     public List<IUser> getUsers() {
         return UserFacade.getInstance().getUsers();
@@ -33,7 +35,11 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public String getDatabasePassword(String username) {
-        return UserFacade.getInstance().getDatabasePassword(username);
+    public String getDatabasePassword(IUser user) {
+        return UserFacade.getInstance().getDatabasePassword(user);
+    }
+
+    public static PersistenceFacade getInstance() {
+        return PERSISTENCE_FACADE;
     }
 }
