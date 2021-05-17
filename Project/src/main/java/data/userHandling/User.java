@@ -27,5 +27,14 @@ public abstract class User implements IUser {
 
     }
 
+    @Override
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
 }
