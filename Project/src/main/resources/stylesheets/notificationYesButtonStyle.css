@@ -1,0 +1,9 @@
+.button {
+  -fx-background-color: #4CAF50;
+  -fx-cursor:hand;
+  -fx-min-width: 80px;
+  -fx-min-height: 50px;
+  -fx-font-weight: bold;
+  -fx-font-size: 14px;
+  -fx-cursor: hand;
+}
