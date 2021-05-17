@@ -18,9 +18,6 @@ class ProductionHandler {
 
     private static Connection connection = null;
 
-    // Singleton
-    private final static ProductionHandler prHandler = new ProductionHandler();
-
     public ProductionHandler() {
         try {
             connection = getConnection();

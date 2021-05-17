@@ -100,16 +100,16 @@ CREATE TABLE administrator(
     administrator_password CHAR(128) NOT NULL
 );
 
+CREATE TABLE approval_status(
+    id SERIAL PRIMARY KEY,
+    status VARCHAR(12) UNIQUE NOT NULL
+);
+
 CREATE TABLE administrator_notification(
     id SERIAL PRIMARY KEY,
     notification_text VARCHAR(1000) NOT NULL,
     production_id INT REFERENCES production(id) NOT NULL,
     approval_status_id INT REFERENCES approval_status(id) NOT NULL
-);
-
-CREATE TABLE approval_status(
-	id SERIAL PRIMARY KEY,
-	status VARCHAR(12) UNIQUE NOT NULL
 );
 
 CREATE TABLE not_viewed(
