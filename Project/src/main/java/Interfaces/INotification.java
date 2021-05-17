@@ -4,14 +4,16 @@ public interface INotification {
 
     void setViewed(boolean status);
 
-    String getViewed();
-
-    void setApproval(String approval);
-
-    String getApproval();
+    boolean getViewed();
 
     String getText();
 
     int getProductionId();
+
+    void setApproval(int approval);
+
+    int getApproval();
+
+    int getID();
 
 }

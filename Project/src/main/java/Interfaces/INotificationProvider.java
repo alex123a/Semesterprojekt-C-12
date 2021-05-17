@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface INotificationProvider {
 
-    List<INotification> getNotifications(int userId);
+    List<INotification> getNotifications(IUser user);
 
 
 

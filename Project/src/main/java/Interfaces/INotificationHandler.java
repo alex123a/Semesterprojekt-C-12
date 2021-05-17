@@ -1,11 +1,13 @@
 package Interfaces;
 
 public interface INotificationHandler {
-    boolean createProducerNotification(int userId, INotification notification);
+    boolean createProducerNotification(IUser user, INotification notification);
 
     boolean createAdminNotification(INotification notification);
 
-    boolean deleteNotification(int notificationId);
+    boolean deleteAdminNotification(INotification notification);
+
+    boolean deleteProducerNotification(INotification notification);
 
     boolean editNotification(INotification newNotification);
 
