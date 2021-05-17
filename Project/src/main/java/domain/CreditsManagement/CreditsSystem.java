@@ -62,6 +62,11 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     }
 
     @Override
+    public boolean editCredit(IRightsholder credit) {
+        return false;
+    }
+
+    @Override
     public void addProduction(IProduction production) {
         facadeData.insertProduction(production);
     }
