@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.personController">
    <children>
       <ImageView fitWidth="120.0" layoutX="590.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,9 +22,9 @@
             <DropShadow blurType="GAUSSIAN" color="#0000007e" offsetX="2.0" offsetY="2.0" />
          </effect>
          <children>
-            <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="34.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView onMouseClicked="#goBack" style="-fx-cursor: hand;" fitHeight="25.0" fitWidth="34.0" layoutX="34.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@/images/BackArrow.jpg" />
+                  <Image url="@/images/BackArrow.png" />
                </image>
             </ImageView>
             <Label layoutX="75.0" layoutY="17.0" prefHeight="71.0" prefWidth="550.0" style="-fx-alignment: CENTER;" text="Person Navn">
@@ -32,40 +32,16 @@
                   <Font name="Calibri Bold" size="40.0" />
                </font>
             </Label>
-            <ImageView fitHeight="47.0" fitWidth="32.0" layoutX="641.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView onMouseClicked="#editUser" style="-fx-cursor: hand;" fitHeight="47.0" fitWidth="32.0" layoutX="641.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@/images/Edit.jpg" />
                </image>
             </ImageView>
             <ScrollPane hbarPolicy="NEVER" layoutX="75.0" layoutY="150.0" prefHeight="350.0" prefWidth="550.0">
                <content>
-                  <VBox prefHeight="50.0" prefWidth="548.0" style="-fx-background-color: #BBBBBB; -fx-border-width: 1;">
+                  <VBox fx:id="scrollpaneVBox" prefWidth="548.0" style="-fx-background-color: #BBBBBB; -fx-border-width: 1;">
                      <children>
-                        <Pane prefHeight="50.0" prefWidth="548.0" style="-fx-border-width: 1; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF;">
-                           <children>
-                              <Label layoutY="1.0" text="Filmnavn" textFill="#5c5c5c">
-                                 <font>
-                                    <Font name="Calibri Bold" size="22.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets left="25.0" />
-                                 </padding>
-                              </Label>
-                              <Label layoutX="-1.0" layoutY="21.0" prefHeight="30.0" text="Rolle" textFill="#bbbbbb">
-                                 <font>
-                                    <Font name="Calibri" size="20.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets left="25.0" />
-                                 </padding>
-                              </Label>
-                              <ImageView fitWidth="35.0" layoutX="501.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
-                                 <image>
-                                    <Image url="@/images/BackArrow.jpg" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
+
                      </children>
                   </VBox>
                </content>

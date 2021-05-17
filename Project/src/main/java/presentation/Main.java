@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/layout/person.fxml"));
 
         Repository.getInstance().setWindow(primaryStage);
         primaryStage.setTitle("TV2 Krediteringssystem");
