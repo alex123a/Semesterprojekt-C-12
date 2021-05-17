@@ -3,7 +3,6 @@ package data.userHandling;
 import Interfaces.IUser;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class User implements IUser {
@@ -25,7 +24,16 @@ public abstract class User implements IUser {
     @Override
     public String getPassword() {
         return password;
-    }
+
+    @Override
+    public String getDatabasePassword() {
+            try {
+                Connection connection = UserManager.getInstance().getConnection();
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
 
 
 }
