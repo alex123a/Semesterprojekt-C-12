@@ -30,5 +30,5 @@ public interface ICreditManagement {
 
     void setRoles(IProduction production, Map<IRightsholder, List<String>> roles);
 
-    boolean editCredit(ICredit credit);
+    boolean editCredit(IRightsholder credit);
 }
