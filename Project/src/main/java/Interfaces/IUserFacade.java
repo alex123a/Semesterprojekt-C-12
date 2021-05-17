@@ -2,7 +2,7 @@ package Interfaces;
 
 import java.util.List;
 
-public interface IPersistenceFacade {
+public interface IUserFacade {
 
     List<IUser> getUsers();
 

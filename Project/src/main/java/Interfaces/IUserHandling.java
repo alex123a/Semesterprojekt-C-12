@@ -2,7 +2,7 @@ package Interfaces;
 
 import java.util.List;
 
-public interface IUserhandling {
+public interface IUserHandling {
 
     List<IUser> getUsers();
 
@@ -13,4 +13,6 @@ public interface IUserhandling {
     boolean deleteUser(IUser user);
 
     boolean editUser(IUser user);
+
+    String getDatabasePassword(String username);
 }
