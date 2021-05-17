@@ -25,15 +25,7 @@ public abstract class User implements IUser {
     public String getPassword() {
         return password;
 
-    @Override
-    public String getDatabasePassword() {
-            try {
-                Connection connection = UserManager.getInstance().getConnection();
-
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
+    }
 
 
 }

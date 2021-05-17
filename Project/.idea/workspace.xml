@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ISearchable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/enumerations/ProductionGenre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/enumerations/ProductionSorting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/enumerations/ProductionType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/enumerations/RightholderSorting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/ICreditManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ICreditManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/ISearchCredits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ISearchCredits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserhandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,9 +25,9 @@
       <list>
         <option value="FxmlFile" />
         <option value="Kotlin Class" />
-        <option value="Class" />
         <option value="Interface" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -102,15 +102,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

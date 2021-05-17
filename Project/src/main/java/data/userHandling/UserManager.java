@@ -1,12 +1,12 @@
 package data.userHandling;
 
 import Interfaces.IUser;
-import Interfaces.IUserhandling;
+import Interfaces.IUserHandling;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserManager implements IUserhandling {
+public class UserManager implements IUserHandling {
     private static Connection connection = null;
     private static final UserManager USERMANAGER = new UserManager();
 
@@ -16,6 +16,19 @@ public class UserManager implements IUserhandling {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    @Override
+    public String getDatabasePassword(String username) {
+        try {
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
+            queryStatement.setString(1,username);
+            ResultSet resultSet = queryStatement.executeQuery();
+            return resultSet.getString("user_password");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
     }
 
     @Override

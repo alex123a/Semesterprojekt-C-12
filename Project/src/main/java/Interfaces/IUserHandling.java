@@ -2,7 +2,7 @@ package Interfaces;
 
 import java.util.List;
 
-public interface IUserFacade {
+public interface IUserHandling {
 
     List<IUser> getUsers();
 

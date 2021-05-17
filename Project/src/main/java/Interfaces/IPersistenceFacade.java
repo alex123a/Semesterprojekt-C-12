@@ -2,7 +2,7 @@ package Interfaces;
 
 import java.util.List;
 
-public interface IUserhandling {
+public interface IPersistenceFacade {
 
     List<IUser> getUsers();
 
@@ -14,5 +14,5 @@ public interface IUserhandling {
 
     boolean editUser(IUser user);
 
-    String getDatabasePassword();
+    String getDatabasePassword(String username);
 }

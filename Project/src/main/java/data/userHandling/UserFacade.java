@@ -6,6 +6,7 @@ import Interfaces.IUserFacade;
 import java.util.List;
 
 public class UserFacade implements IUserFacade {
+    private static final UserFacade USERFACADE = new UserFacade();
 
     @Override
     public List<IUser> getUsers() {
@@ -30,5 +31,14 @@ public class UserFacade implements IUserFacade {
     @Override
     public boolean editUser(IUser user) {
         return UserManager.getInstance().editUser(user);
+    }
+
+    @Override
+    public String getDatabasePassword(String username) {
+        return UserManager.getInstance().getDatabasePassword(username);
+    }
+
+    public static UserFacade getInstance() {
+        return USERFACADE;
     }
 }
