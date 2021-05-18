@@ -31,7 +31,7 @@
                         <Insets right="30.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fx:id="accountImage" onMouseClicked="#goToLogin" onMouseEntered="#onMouseEnteredAccount" onMouseExited="#onMouseExitedAccount" style="-fx-cursor:hand;" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" disable="true">
+                  <ImageView fx:id="accountImage" onMouseClicked="#goToLogin" onMouseEntered="#onMouseEnteredAccount" onMouseExited="#onMouseExitedAccount" style="-fx-cursor:hand;" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@/images/Account_Grey.jpg" />
                      </image>
@@ -93,7 +93,7 @@
                </HBox.margin>
             </Button>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Button fx:id="menuEditUser" mnemonicParsing="false" onMouseClicked="#onEditUserClicked" stylesheets="@/stylesheets/ButtonStyle.css" text="Rediger Brugere">
+            <Button fx:id="menuEditUser" mnemonicParsing="false" onMouseClicked="#onEditUserClicked" stylesheets="@/stylesheets/ButtonStyle.css" text="Rediger Brugere" visible="false">
                <font>
                   <Font name="Calibri" size="20.0" />
                </font>

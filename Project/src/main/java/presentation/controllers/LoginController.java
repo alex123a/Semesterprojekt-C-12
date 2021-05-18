@@ -1,6 +1,8 @@
 package presentation.controllers;
 
+import data.userHandling.SystemAdministrator;
 import domain.DomainFacade;
+import domain.authentication.AuthenticationHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
 
 import java.io.IOException;
@@ -63,13 +66,24 @@ public class LoginController {
         } else {
             User user = new User(usernameInput.getText(), passwordHiddenInput.getText());
             if (DomainFacade.getInstance().login(user)) {
-
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
-                    Stage window = (Stage) backArrow.getScene().getWindow();
-                    window.setScene(new Scene(root, 1300, 700));
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (DomainFacade.getInstance().isSystemAdministrator(DomainFacade.getInstance().getUser(user))) {
+                    DomainFacade.getInstance().setCurrentUser(new Systemadministrator(usernameInput.getText(), passwordHiddenInput.getText()));
+                    try {
+                        Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
+                        Stage window = (Stage) backArrow.getScene().getWindow();
+                        window.setScene(new Scene(root, 1300, 700));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    DomainFacade.getInstance().setCurrentUser(new Systemadministrator(usernameInput.getText(), passwordHiddenInput.getText()));
+                    try {
+                        Parent root = FXMLLoader.load(getClass().getResource("/layout/menuProducer.fxml"));
+                        Stage window = (Stage) backArrow.getScene().getWindow();
+                        window.setScene(new Scene(root, 1300, 700));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             } else {
                 failedLogin();

@@ -3,7 +3,7 @@ package domain;
 import Interfaces.*;
 import data.PersistenceFacade;
 import domain.authentication.AuthenticationHandler;
-import domain.authentication.LoginAuthentication;
+import domain.session.CurrentSession;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
 import enumerations.ProductionType;
@@ -101,8 +101,8 @@ public class DomainFacade implements IDomainFacade {
     }
 
     @Override
-    public boolean validateUser(IUser user) {
-        throw new UnsupportedOperationException("Not implemented yet");
+    public boolean isSystemAdministrator(IUser user) {
+        return AuthenticationHandler.getUserInstance().isSystemAdministrator(user);
     }
 
     public static DomainFacade getInstance() {
@@ -142,5 +142,15 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public String getDatabasePassword(IUser user) {
         return PersistenceFacade.getInstance().getDatabasePassword(user);
+    }
+
+    @Override
+    public IUser getCurrentUser() {
+        return CurrentSession.getInstance().getCurrentUser();
+    }
+
+    @Override
+    public void setCurrentUser(IUser user) {
+        CurrentSession.getInstance().setCurrentUser(user);
     }
 }
