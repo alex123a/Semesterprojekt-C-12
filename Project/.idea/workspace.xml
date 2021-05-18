@@ -6,15 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/INotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/AdminNotifcation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/AdminNotifcation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/ProducerNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/ProducerNotification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/Test.class" beforeDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +130,7 @@
       <workItem from="1621237740230" duration="2697000" />
       <workItem from="1621240973258" duration="1185000" />
       <workItem from="1621322469572" duration="191000" />
-      <workItem from="1621322679507" duration="3370000" />
+      <workItem from="1621322679507" duration="4688000" />
     </task>
     <servers />
   </component>
