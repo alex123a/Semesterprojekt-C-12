@@ -11,13 +11,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
@@ -26,11 +28,27 @@ public class SearchController implements Initializable {
     ListView<Object> resultsList;
     @FXML
     ComboBox<String> typeComboBox;
+    @FXML
+    ImageView backButton;
+    @FXML
+    ComboBox<String> comboCategory;
+    @FXML
+    ComboBox<String> comboGenre;
+    @FXML
+    ComboBox<String> comboSort;
+    @FXML
+    TextField searchInput;
+    @FXML
+    VBox searchResultBox;
+    @FXML
+    Slider sliderYear;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> options = FXCollections.observableArrayList("Udsendelser", "Medvirkende");
-        typeComboBox.setItems(options);
+        ObservableList<String> categoryOptions = FXCollections.observableArrayList("Serier", "Film", "Reality", "Underholdning", "Stand up", "Dokumentar", "Rejser og Eventyr", "Livsstil", "Magasiner");
+        comboCategory.setItems(categoryOptions);
+        ObservableList<String> genreOptions = FXCollections.observableArrayList("Krimi", "Action", "Komedie", "Drama", "Romance", "Fantasy", "Eventyr", "Gyser", "Thriller");
+        comboGenre.setItems(genreOptions);
     }
 
     public void onComboBoxSelection(ActionEvent e){
@@ -44,18 +62,24 @@ public class SearchController implements Initializable {
         }
     }
 
-    public void backButtonClicked(MouseEvent event) {
+    public void goBack(MouseEvent mouseEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
-            //It's not very pretty to use the resultslist to get the scene
-            Stage window = Repository.getInstance().getWindow();
-            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+            Stage window = (Stage) backButton.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Menu");
     }
 
+    public void goToTop(MouseEvent mouseEvent) {
+        //todo : Scroll to the top of the scrollpane
+    }
 
+    public void onSearchClicked(MouseEvent mouseEvent) {
+        // Change to list
+        String searchParameters = searchInput.getText();
+        //todo : Call search
+    }
 }

@@ -3,7 +3,6 @@ package presentation.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -139,13 +138,12 @@ public class Controller implements Initializable {
     void onSearchClicked() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/search.fxml"));
-            Stage window = Repository.getInstance().getWindow();
-            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+            Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Search");
     }
 
 
@@ -255,6 +253,28 @@ public class Controller implements Initializable {
                 times[count].setText(formatter.format(startDate) + " - " + formatter.format(endDate));
                 count++;
             }
+        }
+    }
+
+    public void goToNotifications(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/notification.fxml"));
+            Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void goToLogin(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/login.fxml"));
+            Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
