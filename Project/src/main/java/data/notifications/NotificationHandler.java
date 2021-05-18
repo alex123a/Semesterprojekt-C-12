@@ -29,7 +29,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean createProducerNotification(IUser user, INotification notification) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("INSERT INTO producer_notification(producer_id, text, viewed, production_id) VALUES (?, ?, ?, ?)");
+            PreparedStatement statement = dbConnection.prepareStatement("INSERT INTO producer_notification(producer_id, notification_text, viewed, production_id) VALUES (?, ?, ?, ?)");
             statement.setInt(1, user.getId());
             statement.setString(2, notification.getText());
             statement.setBoolean(3, notification.getViewed());
@@ -44,7 +44,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean createAdminNotification(INotification notification) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("INSERT INTO administrator_notification(text, production_id, approval_status) VALUES (?, ?, ?)");
+            PreparedStatement statement = dbConnection.prepareStatement("INSERT INTO administrator_notification(notification_text, production_id, approval_status_id) VALUES (?, ?, ?)");
             statement.setString(1, notification.getText());
             statement.setInt(2, notification.getProductionId());
             statement.setInt(3, notification.getApproval());
@@ -82,7 +82,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean editAdminNotification(INotification newNotification) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification WHERE id = ? SET text = ?, production_id = ?, approval_status = ?");
+            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification WHERE id = ? SET notification_text = ?, production_id = ?, approval_status_id = ?");
             statement.setInt(1, newNotification.getID());
             statement.setString(2, newNotification.getText());
             statement.setInt(3, newNotification.getProductionId());
@@ -97,7 +97,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean editProducerNotification(INotification newNotification) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification WHERE id = ? SET producer_id = ?, text = ?, viewed = ?, production_id = ?");
+            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification WHERE id = ? SET producer_id = ?, notification_text = ?, viewed = ?, production_id = ?");
             statement.setInt(1, newNotification.getID());
             statement.setInt(2, newNotification.getProducerID());
             statement.setString(3, newNotification.getText());

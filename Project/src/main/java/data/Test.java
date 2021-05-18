@@ -22,15 +22,18 @@ public class Test {
 
         INotification adminNoti = new AdminNotifcation("Sej notification", 1, 1);
         INotification prodNoti = new ProducerNotification(1, "Sej notfification 2", false, 1);
-        IUser user = new Producer("sejereje3", "sikkerpassword3");
+        IUser user = new Producer(1, "sejt", "sejt");
 
         d.createProducerNotification(user, prodNoti);
         d.createAdminNotification(adminNoti);
 
+
         List<INotification> listProducer = d.getProducerNotifications(user);
+        System.out.println("size " + listProducer.size());
         for (INotification noti: listProducer) {
             System.out.println(noti.getText());
         }
+
 
         List<INotification> listAdmin = d.getAdminNotifications();
         for (INotification noti: listAdmin) {
