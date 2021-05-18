@@ -1,6 +1,7 @@
 package data;
 
 import Interfaces.*;
+import data.notifications.NotificationHandler;
 import data.userHandling.UserFacade;
 
 import java.util.List;
@@ -79,42 +80,42 @@ public class PersistenceFacade implements IPersistenceFacade {
 
     @Override
     public boolean createProducerNotification(IUser user, INotification notification) {
-        return false;
+       return NotificationHandler.getInstance().createProducerNotification(user, notification);
     }
 
     @Override
     public boolean createAdminNotification(INotification notification) {
-        throw new UnsupportedOperationException();
+        return NotificationHandler.getInstance().createAdminNotification(notification);
     }
 
     @Override
     public boolean deleteAdminNotification(INotification notification) {
-        return false;
+        return NotificationHandler.getInstance().deleteAdminNotification(notification);
     }
 
     @Override
     public boolean deleteProducerNotification(INotification notification) {
-        return false;
+        return NotificationHandler.getInstance().deleteProducerNotification(notification);
     }
 
     @Override
     public boolean editAdminNotification(INotification newNotification) {
-        return false;
+        return NotificationHandler.getInstance().editAdminNotification(newNotification);
     }
 
     @Override
     public boolean editProducerNotification(INotification newNotification) {
-        return false;
+        return NotificationHandler.getInstance().editProducerNotification(newNotification);
     }
 
     @Override
     public List<INotification> getAdminNotifications() {
-        return null;
+        return NotificationHandler.getInstance().getAdminNotifications();
     }
 
     @Override
     public List<INotification> getProducerNotifications(IUser user) {
-        return null;
+        return NotificationHandler.getInstance().getProducerNotifications(user);
     }
 
     @Override
