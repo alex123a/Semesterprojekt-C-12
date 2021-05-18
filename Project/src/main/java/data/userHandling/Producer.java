@@ -9,4 +9,5 @@ public class Producer extends User {
     public Producer(int ID, String username, String password) {
         super(ID, username, password);
     }
+
 }

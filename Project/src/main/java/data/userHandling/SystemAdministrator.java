@@ -10,4 +10,6 @@ public class SystemAdministrator extends User {
     public SystemAdministrator(int ID, String username, String password) {
         super(ID, username, password);
     }
+
+
 }

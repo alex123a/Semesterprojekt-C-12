@@ -34,8 +34,8 @@ public class UserFacade implements IUserFacade {
     }
 
     @Override
-    public String getDatabasePassword(String username) {
-        return UserManager.getInstance().getDatabasePassword(username);
+    public String getDatabasePassword(IUser user) {
+        return UserManager.getInstance().getDatabasePassword(user);
     }
 
     public static UserFacade getInstance() {
