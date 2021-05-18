@@ -1,9 +1,6 @@
 package Interfaces;
 
-public interface IPersistenceFacade extends
-        IReporting,
-        IFacadeData,
-        INotificationHandler,
-        IUserhandling,
-        INotificationProvider
-{ }
+import java.util.List;
+
+public interface IPersistenceFacade extends IReporting, IUserFacade, IFacadeData, INotificationHandler, INotificationProvider {
+}

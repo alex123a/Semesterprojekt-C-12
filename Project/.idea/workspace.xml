@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ISearchable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/enumerations/ProductionGenre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/enumerations/ProductionSorting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/enumerations/ProductionType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/enumerations/RightholderSorting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/ICreditManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ICreditManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/ISearchCredits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ISearchCredits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/Producer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/SystemAdministrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/SystemAdministrator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,9 +22,9 @@
       <list>
         <option value="FxmlFile" />
         <option value="Kotlin Class" />
-        <option value="Class" />
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -75,13 +72,26 @@
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\layout" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NewMain">
+  <component name="RunManager" selected="Application.Test (1)">
     <configuration name="NewMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="presentation.NewMain" />
       <module name="Project" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="presentation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="domain.authentication.Test" />
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.authentication.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -102,21 +112,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test (1)" />
         <item itemvalue="Application.NewMain" />
         <item itemvalue="Application.Test" />
       </list>
@@ -144,6 +142,8 @@
       <workItem from="1619429941866" duration="519000" />
       <workItem from="1621237740230" duration="2697000" />
       <workItem from="1621240973258" duration="1185000" />
+      <workItem from="1621274136159" duration="281000" />
+      <workItem from="1621321021816" duration="352000" />
     </task>
     <servers />
   </component>
