@@ -63,14 +63,16 @@ public class LoginController {
         } else {
             User user = new User(usernameInput.getText(), passwordHiddenInput.getText());
             if (DomainFacade.getInstance().login(user)) {
-                Parent root = null;
+
                 try {
-                    root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
                     Stage window = (Stage) backArrow.getScene().getWindow();
                     window.setScene(new Scene(root, 1300, 700));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            } else {
+                failedLogin();
             }
         }
     }
@@ -107,7 +109,7 @@ public class LoginController {
     // Method to go back to the menu
     public void goBack(MouseEvent mouseEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
             Stage window = (Stage) backArrow.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
         } catch (IOException e) {

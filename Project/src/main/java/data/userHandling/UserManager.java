@@ -135,6 +135,11 @@ public class UserManager implements IUserHandling {
         return false;
     }
 
+    @Override
+    public boolean addUser(IUser user) {
+        throw new UnsupportedOperationException("Unsupported operation");
+    }
+
     public static UserManager getInstance() {
         return USERMANAGER;
     }

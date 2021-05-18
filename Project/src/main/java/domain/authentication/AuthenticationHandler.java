@@ -46,6 +46,10 @@ public class AuthenticationHandler {
 
     static boolean validatePassword(String originalPassword, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException
     {
+        if (storedPassword == null) {
+            return false;
+        }
+
         int iterations = 1000;
         byte[] salt = fromHex(storedPassword.substring(0,32));
         byte[] hash = fromHex(storedPassword.substring(32));

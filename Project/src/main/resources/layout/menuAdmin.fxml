@@ -31,7 +31,7 @@
                         <Insets right="30.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fx:id="accountImage" onMouseClicked="#goToLogin" onMouseEntered="#onMouseEnteredAccount" onMouseExited="#onMouseExitedAccount" style="-fx-cursor:hand;" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="accountImage" onMouseClicked="#goToLogin" onMouseEntered="#onMouseEnteredAccount" onMouseExited="#onMouseExitedAccount" style="-fx-cursor:hand;" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@/images/Account_Grey.jpg" />
                      </image>
@@ -357,7 +357,7 @@
             </VBox>
          </children>
       </Pane>
-      <Label fx:id="menulogOut" stylesheets="@/stylesheets/LabelStyle.css" layoutX="1210.0" layoutY="109.0" text="Log ud">
+      <Label fx:id="menulogOut" stylesheets="@/stylesheets/LabelStyle.css" layoutX="1210.0" layoutY="109.0" text="Log ud" onMouseClicked="#logOut">
          <font>
             <Font name="Calibri" size="20.0" />
          </font>
