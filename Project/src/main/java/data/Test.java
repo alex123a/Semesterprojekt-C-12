@@ -36,5 +36,30 @@ public class Test {
         for (INotification noti: listAdmin) {
             System.out.println(noti.getText());
         }
+
+        listProducer.get(0).setText("Ny test text");
+        d.editProducerNotification(listProducer.get(0));
+
+        listAdmin.get(0).setText("My test text 2");
+        d.editAdminNotification(listAdmin.get(0));
+
+        for (INotification noti: listProducer) {
+            System.out.println(noti.getText());
+        }
+
+        for (INotification noti: listAdmin) {
+            System.out.println(noti.getText());
+        }
+
+        d.deleteProducerNotification(listProducer.get(0));
+        d.deleteAdminNotification(listAdmin.get(0));
+
+        for (INotification noti: listProducer) {
+            System.out.println(noti.getText());
+        }
+
+        for (INotification noti: listAdmin) {
+            System.out.println(noti.getText());
+        }
     }
 }

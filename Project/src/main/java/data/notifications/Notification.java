@@ -23,6 +23,8 @@ public class Notification implements INotification {
         this.productionID = productionID;
     }
 
+
+
     @Override
     public void setViewed(boolean status) {
         throw new UnsupportedOperationException("Not supported");
@@ -66,5 +68,10 @@ public class Notification implements INotification {
     @Override
     public void setProducerID(int producerID) {
         throw new UnsupportedOperationException("Not supported");
+    }
+
+    @Override
+    public void setText(String text) {
+        this.text = text;
     }
 }
