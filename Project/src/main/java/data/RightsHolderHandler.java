@@ -3,10 +3,16 @@ package data;
 import Interfaces.IRightsholder;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 class RightsHolderHandler {
     private Connection connection = null;

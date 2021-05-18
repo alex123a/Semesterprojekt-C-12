@@ -11,17 +11,6 @@ public abstract class User implements IUser {
     String username;
     String password;
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
-    public User(int ID, String username, String password) {
-        this.ID = ID;
-        this.username = username;
-        this.password = password;
-    }
-
     @Override
     public int getId() {
         return ID;
