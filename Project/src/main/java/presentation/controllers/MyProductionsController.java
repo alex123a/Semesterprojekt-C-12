@@ -1,7 +1,6 @@
 package presentation.controllers;
 
 import Interfaces.IProduction;
-import Interfaces.ISeeCredits;
 import domain.CreditsManagement.CreditsSystem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +18,6 @@ import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MyProductionsController implements Initializable {
@@ -78,7 +76,7 @@ public class MyProductionsController implements Initializable {
 
     public void onBackClicked(MouseEvent mouseEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
             Stage window = (Stage) addProgramBut.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
 

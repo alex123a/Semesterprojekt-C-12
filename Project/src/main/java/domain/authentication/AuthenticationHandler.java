@@ -11,8 +11,8 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
 public class AuthenticationHandler {
-    IUserAuthentication userAuthentication;
-    IAuthenticator loginAuthentication;
+    private static IUserAuthentication userAuthentication = UserAuthentication.getInstance();
+    private static IAuthenticator loginAuthentication = LoginAuthentication.getInstance();
 
 
     static String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
@@ -44,10 +44,15 @@ public class AuthenticationHandler {
         }
     }
 
-    static boolean validatePassword(String originalPassword, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException
-    {
+    static boolean validatePassword(String originalPassword, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        // Checks if the stored password from database is there (The username has a password)
+        if (storedPassword == null) {
+            return false;
+        }
+
+        // Iterations is how its hashed when saved, Salt is always the first 32 chars
         int iterations = 1000;
-        byte[] salt = fromHex(storedPassword.substring(0,32));
+        byte[] salt = fromHex(storedPassword.substring(0, 32));
         byte[] hash = fromHex(storedPassword.substring(32));
 
         PBEKeySpec spec = new PBEKeySpec(originalPassword.toCharArray(), salt, iterations, hash.length * 8);
@@ -55,19 +60,25 @@ public class AuthenticationHandler {
         byte[] testHash = skf.generateSecret(spec).getEncoded();
 
         int diff = hash.length ^ testHash.length;
-        for(int i = 0; i < hash.length && i < testHash.length; i++)
-        {
+        for (int i = 0; i < hash.length && i < testHash.length; i++) {
             diff |= hash[i] ^ testHash[i];
         }
         return diff == 0;
     }
-    private static byte[] fromHex(String hex) throws NoSuchAlgorithmException
-    {
+
+    private static byte[] fromHex(String hex) throws NoSuchAlgorithmException {
         byte[] bytes = new byte[hex.length() / 2];
-        for(int i = 0; i<bytes.length ;i++)
-        {
-            bytes[i] = (byte)Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
+        for (int i = 0; i < bytes.length; i++) {
+            bytes[i] = (byte) Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
         }
         return bytes;
+    }
+
+    public static LoginAuthentication getLoginInstance() {
+        return (LoginAuthentication) loginAuthentication;
+    }
+
+    public static IUserAuthentication getUserInstance() {
+        return userAuthentication;
     }
 }

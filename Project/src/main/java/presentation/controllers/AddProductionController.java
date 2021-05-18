@@ -3,7 +3,6 @@ package presentation.controllers;
 import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
-import domain.CreditsManagement.CreditsSystem;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

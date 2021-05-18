@@ -5,10 +5,75 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ISession.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/session/CurrentSession.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/PersonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentation/userManage/Producer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentation/userManage/Systemadministrator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentation/userManage/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/closedEye.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/openEye.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/layout/ManageUser.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/layout/login.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/layout/menuProducer.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/layout/notification.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Interfaces/ISession.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/domain/session/CurrentSession.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/layout/ManageUser.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/layout/login.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/layout/menuProducer.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/layout/notification.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ManageUserController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/presentation/userManage/Producer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/presentation/userManage/Systemadministrator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/presentation/userManage/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_15.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IDomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IDomainFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/LoginAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/LoginAuthentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/my_productions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/my_productions.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/person.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/person.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IDomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IDomainFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/AuthenticationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/AuthenticationHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/LoginAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/LoginAuthentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/my_productions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/my_productions.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/person.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/person.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/search.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +116,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/stylesheets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -65,6 +130,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project\src\main\resources" />
+      <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project\src\main\java" />
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\stylesheets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
