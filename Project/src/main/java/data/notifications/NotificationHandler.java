@@ -129,7 +129,8 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     public List<INotification> getProducerNotifications(IUser user) {
         try {
             List<INotification> list = new ArrayList<>();
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT * FROM producer_notification");
+            PreparedStatement statement = dbConnection.prepareStatement("SELECT * FROM producer_notification WHERE producer_id = ?");
+            statement.setInt(1, user.getId());
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 list.add(new ProducerNotification(result.getInt(1), result.getInt(2), result.getString(3), result.getBoolean(4), result.getInt(5)));

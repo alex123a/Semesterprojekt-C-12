@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/AdminNotifcation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/AdminNotifcation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/ProducerNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/ProducerNotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/Producer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,6 +101,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Test" />
@@ -130,7 +142,7 @@
       <workItem from="1621237740230" duration="2697000" />
       <workItem from="1621240973258" duration="1185000" />
       <workItem from="1621322469572" duration="191000" />
-      <workItem from="1621322679507" duration="4688000" />
+      <workItem from="1621322679507" duration="5474000" />
     </task>
     <servers />
   </component>
