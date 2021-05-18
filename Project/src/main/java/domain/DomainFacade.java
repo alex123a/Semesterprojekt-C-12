@@ -134,10 +134,12 @@ public class DomainFacade implements IDomainFacade {
         return PersistenceFacade.getInstance().editUser(user);
     }
 
+    /*
     @Override
     public boolean addUser(IUser user) {
         return PersistenceFacade.getInstance().addUser(user);
     }
+     */
 
     @Override
     public String getDatabasePassword(IUser user) {
