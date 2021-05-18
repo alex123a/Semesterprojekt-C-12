@@ -1,7 +1,11 @@
+CREATE TABLE users (
+                       id SERIAL PRIMARY KEY,
+                       username VARCHAR(30) UNIQUE NOT NULL,
+                       user_password CHAR(160) NOT NULL
+);
+
 CREATE TABLE producer(
-                         id SERIAL PRIMARY KEY,
-                         username VARCHAR(30) UNIQUE NOT NULL,
-                         producer_password CHAR(128) NOT NULL
+    id SERIAL PRIMARY KEY REFERENCES users(id)
 );
 
 CREATE TABLE producer_notification(
@@ -95,9 +99,7 @@ CREATE TABLE rolename_approval(
 );
 
 CREATE TABLE administrator(
-                              id SERIAL PRIMARY KEY,
-                              username VARCHAR(30) UNIQUE NOT NULL,
-                              administrator_password CHAR(128) NOT NULL
+    id SERIAL PRIMARY KEY REFERENCES users(id)
 );
 
 CREATE TABLE approval_status(
