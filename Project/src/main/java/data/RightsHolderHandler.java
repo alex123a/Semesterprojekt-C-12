@@ -7,25 +7,34 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 class RightsHolderHandler {
-    private File file;
+    private Connection connection = null;
+    private File file = null;
+
+    /**
+     * Establish a connection to the Database
+     * @return Connection
+     */
+
     // Singleton
     private static final RightsHolderHandler rhHandler = new RightsHolderHandler("rightsHolderData");
 
     private RightsHolderHandler(String fileName) {
-        try {
-            this.file = new File(getClass().getResource("/" + fileName + ".dat").toURI().getPath());
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+        this.connection = DatabaseConnection.getConnection();
     }
 
     // Return all rightholders
     List<IRightsholder> readRHFile() {
+        return null;
+
+        /*
         Scanner scanner = null;
         try {
             scanner = new Scanner(this.file);
@@ -41,6 +50,7 @@ class RightsHolderHandler {
             scanner.close();
         }
         return null;
+        */
     }
 
     // Return one rightholder with the use of id

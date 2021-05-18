@@ -7,6 +7,8 @@ public interface ICreditManagement {
     //Adds a single rightsholder and their roles to a single production
     void addCredit(IProduction production, IRightsholder rightsholder, List<String> roles);
 
+
+
     //Removes a rightsholder from a production
     void removeCredit(IProduction production, IRightsholder rightsholder);
 
@@ -27,4 +29,6 @@ public interface ICreditManagement {
     void setName(IProduction production, String name);
 
     void setRoles(IProduction production, Map<IRightsholder, List<String>> roles);
+
+    boolean editCredit(IRightsholder credit);
 }
