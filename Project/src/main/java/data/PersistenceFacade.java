@@ -1,7 +1,6 @@
 package data;
 
 import Interfaces.*;
-import data.notifications.NotificationHandler;
 import data.userHandling.UserFacade;
 
 import java.util.List;
@@ -84,43 +83,28 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public boolean createProducerNotification(IUser user, INotification notification) {
-       return NotificationHandler.getInstance().createProducerNotification(user, notification);
+    public boolean createProducerNotification(int userId, INotification notification) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean createAdminNotification(INotification notification) {
-        return NotificationHandler.getInstance().createAdminNotification(notification);
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public boolean deleteAdminNotification(INotification notification) {
-        return NotificationHandler.getInstance().deleteAdminNotification(notification);
+    public boolean deleteNotification(int notificationId) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public boolean deleteProducerNotification(INotification notification) {
-        return NotificationHandler.getInstance().deleteProducerNotification(notification);
+    public boolean editNotification(INotification newNotification) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public boolean editAdminNotification(INotification newNotification) {
-        return NotificationHandler.getInstance().editAdminNotification(newNotification);
-    }
-
-    @Override
-    public boolean editProducerNotification(INotification newNotification) {
-        return NotificationHandler.getInstance().editProducerNotification(newNotification);
-    }
-
-    @Override
-    public List<INotification> getAdminNotifications() {
-        return NotificationHandler.getInstance().getAdminNotifications();
-    }
-
-    @Override
-    public List<INotification> getProducerNotifications(IUser user) {
-        return NotificationHandler.getInstance().getProducerNotifications(user);
+    public List<INotification> getNotifications(int userId) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
