@@ -3,6 +3,7 @@ package data.credits;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import data.DatabaseConnection;
+import enumerations.ProductionGenre;
 import jdk.jshell.spi.ExecutionControl;
 
 import java.io.File;
@@ -30,16 +31,15 @@ class ProductionHandler {
         try {
             //Statement to get all productions and their attributes
             PreparedStatement productionsStatement = connection.prepareStatement("" +
-                    "SELECT (P.id, P.own_production_id, P.name, P.year, G.name, T.type) " +
-                    "FROM production as P, genre as G, type as T " +
-                    "WHERE G.id = P.genre_id AND T.id = P.type_id");
+                    "SELECT id, own_production_id, production_name, year, genre_id, category_id " +
+                    "FROM production");
             ResultSet productionsResult = productionsStatement.executeQuery();
 
             //For each production get the rightsholders and their roles
             while (productionsResult.next()) {
                 //Statement to get all rightsholders on each production
                 PreparedStatement RightsholdersStatement = connection.prepareStatement("" +
-                        "SELECT UNIQUE rightsholder_id " +
+                        "SELECT DISTINCT rightsholder_id " +
                         "FROM appears_in " +
                         "WHERE production_id = ?");
                 RightsholdersStatement.setInt(1, productionsResult.getInt(1));
@@ -50,9 +50,9 @@ class ProductionHandler {
                     int id = rightsholderIDs.getInt(1);
                     PreparedStatement rolesStatement = connection.prepareStatement("" +
                             "SELECT title, rolename.name FROM " +
-                            "appears_in LEFT JOIN role ON appears_in.id = role.appears_in_id" +
+                            "appears_in LEFT JOIN role ON appears_in.id = role.appears_in_id " +
                             "LEFT JOIN title ON role.title_id = title.id " +
-                            "LEFT JOIN rolename ON role.id = rolename.role_id" +
+                            "LEFT JOIN rolename ON role.id = rolename.role_id " +
                             "WHERE appears_in.production_id = ?" +
                             "AND appears_in.rightsholder_id = ?");
                     rolesStatement.setInt(1, productionsResult.getInt(1));
@@ -67,8 +67,8 @@ class ProductionHandler {
                     }
                     roleMap.put(id, rolesList);
                 }
-
-                Production p = new Production(productionsResult.getInt(1), productionsResult.getString(2), productionsResult.getString(3), roleMap);
+                ProductionGenre genre = ProductionGenre.getFromID(productionsResult.getInt())
+                Production p = new Production(productionsResult.getInt(1), productionsResult.getString(2), productionsResult.getString(3), productionsResult.getInt(4), roleMap);
                 productionList.add(p);
             }
             return productionList;

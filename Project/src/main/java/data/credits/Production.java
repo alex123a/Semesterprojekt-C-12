@@ -2,6 +2,8 @@ package data.credits;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import enumerations.ProductionGenre;
+import enumerations.ProductionType;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,16 +13,22 @@ public class Production implements IProduction {
     private int id;
     private String productionID;
     private String name;
+    private int year;
+    private ProductionGenre genre;
+    private ProductionType type;
     private Map<Integer, List<String>> rightsholders;
 
     public Production() {
 
     }
 
-    public Production(int id, String productionID, String name, Map<Integer,List<String>> rightsholders) {
+    public Production(int id, String productionID, String name, int year, ProductionGenre genre, ProductionType type, Map<Integer, List<String>> rightsholders) {
         this.id = id;
         this.productionID = productionID;
         this.name = name;
+        this.year = year;
+        this.genre = genre;
+        this.type = type;
         this.rightsholders = rightsholders;
     }
 
@@ -42,6 +50,36 @@ public class Production implements IProduction {
     @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int getYear() {
+        return 0;
+    }
+
+    @Override
+    public void setYear() {
+
+    }
+
+    @Override
+    public ProductionGenre getGenre() {
+        return null;
+    }
+
+    @Override
+    public void setGenre(ProductionGenre genre) {
+
+    }
+
+    @Override
+    public ProductionType getType() {
+        return null;
+    }
+
+    @Override
+    public void setType(ProductionType type) {
+
     }
 
     @Override

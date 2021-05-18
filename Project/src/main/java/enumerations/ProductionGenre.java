@@ -20,4 +20,13 @@ public enum ProductionGenre {
     public int getId() {
         return id;
     }
+
+    public static ProductionGenre getFromID(int id) {
+        for (ProductionGenre n: values()){
+            if (n.id == id) {
+                return n;
+            }
+        }
+        return null;
+    }
 }

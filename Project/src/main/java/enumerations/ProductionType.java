@@ -20,4 +20,13 @@ public enum ProductionType {
     public int getId() {
         return id;
     }
+
+    public static ProductionType getFromID(int id) {
+        for (ProductionType n: values()){
+            if (n.id == id) {
+                return n;
+            }
+        }
+        return null;
+    }
 }
