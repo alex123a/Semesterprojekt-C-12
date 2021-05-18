@@ -2,6 +2,6 @@ package Interfaces;
 
 public interface IAuthenticator {
 
-    IUser login(IUser user);
+    boolean login(IUser user);
 
 }
