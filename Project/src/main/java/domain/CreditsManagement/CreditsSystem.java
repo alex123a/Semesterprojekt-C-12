@@ -4,7 +4,7 @@ import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import Interfaces.ISeeCredits;
-import data.FacadeData;
+import data.credits.FacadeData;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,14 @@
-package data;
+package data.credits;
 
+import Interfaces.IFacadeData;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import data.credits.ProductionHandler;
+import data.credits.RightsHolderHandler;
 
 import java.util.List;
 
-public class FacadeData {
+public class FacadeData implements IFacadeData {
     private RightsHolderHandler rhHolder = RightsHolderHandler.getInstance();
     private ProductionHandler pHandler = ProductionHandler.getInstance();
 
@@ -15,7 +18,7 @@ public class FacadeData {
      * @return Rightsholder Object
      */
     public IRightsholder getRightsholder(int id) {
-        return rhHolder.readRightsholder(id);
+        return rhHolder.getRightsholder(id);
     }
 
     /**
@@ -23,7 +26,7 @@ public class FacadeData {
      * @return List of Rightsholders
      */
     public List<IRightsholder> getRightsholders() {
-        return rhHolder.readRHFile();
+        return rhHolder.getRightsholders();
     }
 
     /**
@@ -39,7 +42,7 @@ public class FacadeData {
      * @param id Identification of the production
      */
     public IProduction getProduction(String id) {
-        return pHandler.readProduction(id);
+        return pHandler.getProduction(Integer.parseInt(id));
     }
 
     /**
@@ -47,7 +50,7 @@ public class FacadeData {
      * @return list with productions
      */
     public List<IProduction> getProductions() {
-        return pHandler.readPFile();
+        return pHandler.getProductions();
     }
 
     /**
