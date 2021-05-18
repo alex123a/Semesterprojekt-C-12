@@ -16,7 +16,7 @@ import java.util.List;
 public class NotificationHandler implements INotificationHandler, INotificationProvider {
 
     private static final NotificationHandler handler = new NotificationHandler();
-    private Connection dbConnection = DatabaseConnection.getConnection();
+    private final Connection dbConnection = DatabaseConnection.getConnection();
 
     private NotificationHandler() {
 
