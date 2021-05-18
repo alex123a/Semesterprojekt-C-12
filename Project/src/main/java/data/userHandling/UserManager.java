@@ -2,6 +2,8 @@ package data.userHandling;
 
 import Interfaces.IUser;
 import Interfaces.IUserHandling;
+
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -178,6 +180,35 @@ public class UserManager implements IUserHandling {
             updateStatement.setString(2,user.getPassword());
             updateStatement.setInt(3,user.getId());
             updateStatement.execute();
+            return true;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean addUser(IUser user) {
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO users(username, password) VALUES (?, ?)");
+            insertStatement.setString(1, user.getUsername());
+            insertStatement.setString(2, user.getPassword());
+            insertStatement.execute();
+
+            PreparedStatement selectStatement = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
+            selectStatement.setString(1, user.getUsername());
+            ResultSet selectResult = selectStatement.executeQuery();
+            selectResult.next();
+            int userID = selectResult.getInt("id");
+
+            if(user instanceof Producer) {
+                insertStatement = connection.prepareStatement("INSERT INTO producers(id) VALUES ? ");
+            } else {
+                insertStatement = connection.prepareStatement("INSERT INTO administrator(id) VALUES ? ");
+            }
+            insertStatement.setInt(1, userID);
+            insertStatement.execute();
+
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();

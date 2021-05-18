@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.userManage.Producer;
 import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
 
@@ -66,6 +67,7 @@ public class LoginController {
             if (DomainFacade.getInstance().login(user)) {
                 if (DomainFacade.getInstance().validateUser(DomainFacade.getInstance().getUser(user))) {
                     DomainFacade.getInstance().setCurrentUser(new Systemadministrator(usernameInput.getText(), passwordHiddenInput.getText()));
+                    System.out.println("ADmini");
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
                         Stage window = (Stage) backArrow.getScene().getWindow();
@@ -74,7 +76,8 @@ public class LoginController {
                         e.printStackTrace();
                     }
                 } else {
-                    DomainFacade.getInstance().setCurrentUser(new Systemadministrator(usernameInput.getText(), passwordHiddenInput.getText()));
+                    DomainFacade.getInstance().setCurrentUser(new Producer(usernameInput.getText(), passwordHiddenInput.getText()));
+                    System.out.println("producer");
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/menuProducer.fxml"));
                         Stage window = (Stage) backArrow.getScene().getWindow();
