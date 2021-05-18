@@ -2,63 +2,93 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700" prefWidth="1300" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.SearchController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.SearchController">
    <children>
-      <ImageView fitHeight="50.0" fitWidth="100.0" layoutX="592.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
-          <image>
-              <Image url="@/images/Tv2Logo.png" />
-          </image>
+      <ImageView fitWidth="120.0" layoutX="590.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/images/Tv2Logo.png" />
+         </image>
       </ImageView>
-      <VBox layoutX="165.0" layoutY="91.0" prefHeight="606.0" prefWidth="994.0" style="-fx-background-color: white;">
+      <Pane layoutX="201.0" layoutY="146.0" prefHeight="503.0" prefWidth="898.0" style="-fx-background-color: #ffffff;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#0000007e" offsetX="2.0" offsetY="2.0" />
+         </effect>
          <children>
-            <HBox prefHeight="142.0" prefWidth="994.0" style="-fx-alignment: center-left;">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="30.0" right="30.0" top="30.0" />
-               </VBox.margin>
+            <ImageView fx:id="backButton" onMouseClicked="#goBack" fitHeight="25.0" fitWidth="34.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/BackArrow.png" />
+               </image>
+            </ImageView>
+            <ScrollPane hbarPolicy="NEVER" layoutX="82.0" layoutY="22.0" prefHeight="459.0" prefWidth="749.0" vbarPolicy="ALWAYS">
+               <content>
+                  <VBox fx:id="searchResultBox" prefHeight="200.0" prefWidth="734.0">
+                     <children>
+                        <Pane prefHeight="206.0" prefWidth="733.0" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9;">
+                           <children>
+                              <Label alignment="CENTER" layoutX="287.0" prefHeight="71.0" prefWidth="160.0" style="-fx-alignment: CENTER;" text="Søg" textFill="#4c4c4c">
+                                 <font>
+                                    <Font name="Calibri Bold" size="50.0" />
+                                 </font>
+                              </Label>
+                              <HBox layoutX="217.0" layoutY="77.0" prefHeight="43.0" prefWidth="505.0" style="-fx-alignment: CENTER; -fx-border-color: #c9c9c9; -fx-background-color: #ffffff; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                                 <children>
+                                    <TextField fx:id="searchInput" prefHeight="40.0" prefWidth="460.0" promptText="Indtast søgning" style="-fx-border-color: #ffffff; -fx-background-color: #ffffff; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets bottom="1.0" top="1.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                    <ImageView onMouseClicked="#onSearchClicked" fitHeight="32.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                                       <image>
+                                          <Image url="@/images/Search_Grey.jpg" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="2.0" right="5.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <ComboBox fx:id="comboCategory" layoutX="14.0" layoutY="77.0" prefHeight="43.0" prefWidth="190.0" promptText="Kategori" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
+                              <ComboBox fx:id="comboGenre" layoutX="14.0" layoutY="139.0" prefHeight="43.0" prefWidth="190.0" promptText="Genre" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
+                              <ComboBox fx:id="comboSort" layoutX="477.0" layoutY="139.0" prefHeight="43.0" prefWidth="245.0" promptText="Sortering" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
+                              <Slider fx:id="sliderYear" blockIncrement="1.0" layoutX="218.0" layoutY="161.0" majorTickUnit="15.0" max="2021.0" min="1900.0" prefHeight="14.0" prefWidth="245.0" showTickMarks="true" style="-fx-background-color: #ffffff;" />
+                              <Label layoutX="218.0" layoutY="139.0" text="Årstal" textFill="#4c4c4c">
+                                 <font>
+                                    <Font name="Calibri Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <Pane onMouseClicked="#goToTop" layoutX="843.0" layoutY="440.0" prefHeight="41.0" prefWidth="41.0" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px;" visible="false">
                <children>
-                  <ImageView fitHeight="41.0" fitWidth="42.0" onMouseClicked="#backButtonClicked" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="146.0" layoutX="4.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                      <image>
                         <Image url="@/images/BackArrow.png" />
                      </image>
                   </ImageView>
-                  <ComboBox fx:id="typeComboBox" onAction="#onComboBoxSelection" prefWidth="150.0">
-                     <HBox.margin>
-                        <Insets left="50.0" />
-                     </HBox.margin>
-                  </ComboBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: center-left;">
-                     <HBox.margin>
-                        <Insets bottom="30.0" left="30.0" top="30.0" />
-                     </HBox.margin>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <children>
-                        <TextField />
-                        <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-
-                        </ImageView>
-                     </children>
-                  </HBox>
                </children>
-            </HBox>
-            <HBox prefHeight="423.0" prefWidth="994.0">
-               <VBox.margin>
-                  <Insets bottom="30.0" left="30.0" right="30.0" />
-               </VBox.margin>
-               <children>
-                  <ListView fx:id="resultsList" prefHeight="409.0" prefWidth="936.0" />
-               </children>
-            </HBox>
+            </Pane>
          </children>
-      </VBox>
+      </Pane>
    </children>
-</AnchorPane>
+</Pane>
