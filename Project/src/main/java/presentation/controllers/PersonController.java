@@ -15,10 +15,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class personController {
+public class PersonController {
     @FXML
     VBox scrollpaneVBox;
 
+    // Method to create a box with the role
     public void createRole(String movieName, String role) {
         HBox notificationPane = new HBox();
         notificationPane.setAlignment(Pos.CENTER);
@@ -49,10 +50,11 @@ public class personController {
         scrollpaneVBox.getChildren().add(notificationPane);
     }
 
+    // Method to open edit user
     public void editUser(MouseEvent mouseEvent) {
-        createRole("Star Wars", "Han Solo");
     }
 
+    // Method to go back to the menu
     public void goBack(MouseEvent mouseEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));

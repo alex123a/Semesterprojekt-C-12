@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class notificationController {
+public class NotificationController {
     @FXML VBox notificationBox;
 
     public void createNotification(String productionName, String productionID, String date, String status) {
@@ -75,11 +75,9 @@ public class notificationController {
     }
 
     public void notificationYesClicked() {
-        createNotification("Star Wars", "SW01", "Fredag 9. April", "Afventer Status");
     }
 
     public void notificationNoClicked() {
-        createNotification("James Bond", "JB01", "Tirsdag 12. April", "Afventer Status");
     }
 
     public void backClicked(MouseEvent mouseEvent) {

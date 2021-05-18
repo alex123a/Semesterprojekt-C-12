@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class loginController {
+public class LoginController {
     @FXML
     ImageView backArrow;
     @FXML
@@ -30,6 +30,7 @@ public class loginController {
     Image openEye;
     Image closedEye;
 
+    // Sets up the toggle show/hide the password when the page loads
     @FXML
     public void initialize() {
         openEye = new Image(getClass().getResourceAsStream("/images/openEye.png"));
@@ -38,23 +39,39 @@ public class loginController {
         passwordToggle.setImage(closedEye);
     }
 
+    // Method for when the user clicks login
     public void loginClicked(MouseEvent mouseEvent) {
+        String password;
+        String username;
+
         wrongInput.setVisible(false);
 
+        // Checks if the input is empty
+        // There is two password inputs
+        // One for if the password is hidden and one for if the password isn't hidden
         if(passwordToggle.getImage().equals(closedEye)) {
             if (usernameInput.getText().equals("") && passwordHiddenInput.getText().equals("")) {
                 emptyLogin();
+            }
+            else {
+                username = usernameInput.getText();
+                password = passwordHiddenInput.getText();
             }
         }
         else {
             if (usernameInput.getText().equals("") && passwordShownInput.getText().equals("")) {
                 emptyLogin();
             }
+            else {
+                username = usernameInput.getText();
+                password = passwordHiddenInput.getText();
+            }
         }
 
         // todo: Send login information to be checked
     }
 
+    // Method to show that the login is wrong
     private void failedLogin() {
         wrongInput.setVisible(true);
         usernameInput.setText("");
@@ -62,11 +79,13 @@ public class loginController {
         passwordHiddenInput.setText("");
     }
 
+    // Method to show that the login is empty
     private void emptyLogin() {
         wrongInput.setVisible(true);
         wrongInput.setText("Udfyld felterne");
     }
 
+    // Method to toggle show/hide password
     public void togglePassword(MouseEvent mouseEvent) {
         if(passwordToggle.getImage().equals(closedEye)) {
             passwordToggle.setImage(openEye);
@@ -82,6 +101,7 @@ public class loginController {
         }
     }
 
+    // Method to go back to the menu
     public void goBack(MouseEvent mouseEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
