@@ -21,14 +21,14 @@ public class UserManager implements IUserHandling {
     @Override
     public String getDatabasePassword(IUser user) {
         try {
-            PreparedStatement queryStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT user_password FROM users WHERE username = ?");
             queryStatement.setString(1, user.getUsername());
             ResultSet resultSet = queryStatement.executeQuery();
+            resultSet.next();
             return resultSet.getString("user_password");
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     @Override

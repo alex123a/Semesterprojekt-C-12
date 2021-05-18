@@ -57,7 +57,7 @@ public class PersonController {
     // Method to go back to the menu
     public void goBack(MouseEvent mouseEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
             Stage window = (Stage) scrollpaneVBox.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
 

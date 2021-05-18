@@ -17,7 +17,6 @@ import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
@@ -46,7 +45,7 @@ public class SearchController implements Initializable {
 
     public void backButtonClicked(MouseEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
             //It's not very pretty to use the resultslist to get the scene
             Stage window = Repository.getInstance().getWindow();
             window.setScene(new Scene(root, window.getWidth(), window.getHeight()));

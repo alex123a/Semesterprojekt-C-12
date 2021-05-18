@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import domain.DomainFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.userManage.User;
 
 import java.io.IOException;
 
@@ -30,6 +32,8 @@ public class LoginController {
     Image openEye;
     Image closedEye;
 
+
+
     // Sets up the toggle show/hide the password when the page loads
     @FXML
     public void initialize() {
@@ -41,34 +45,34 @@ public class LoginController {
 
     // Method for when the user clicks login
     public void loginClicked(MouseEvent mouseEvent) {
-        String password;
-        String username;
-
         wrongInput.setVisible(false);
 
         // Checks if the input is empty
         // There is two password inputs
         // One for if the password is hidden and one for if the password isn't hidden
-        if(passwordToggle.getImage().equals(closedEye)) {
-            if (usernameInput.getText().equals("") && passwordHiddenInput.getText().equals("")) {
-                emptyLogin();
-            }
-            else {
-                username = usernameInput.getText();
-                password = passwordHiddenInput.getText();
-            }
+        if (passwordToggle.getImage().equals(closedEye)) {
+            checkPassword(passwordHiddenInput);
+        } else {
+            checkPassword(passwordShownInput);
         }
-        else {
-            if (usernameInput.getText().equals("") && passwordShownInput.getText().equals("")) {
-                emptyLogin();
-            }
-            else {
-                username = usernameInput.getText();
-                password = passwordHiddenInput.getText();
-            }
-        }
+    }
 
-        // todo: Send login information to be checked
+    private void checkPassword(TextField passwordShownInput) {
+        if (usernameInput.getText().equals("") && passwordShownInput.getText().equals("")) {
+            emptyLogin();
+        } else {
+            User user = new User(usernameInput.getText(), passwordHiddenInput.getText());
+            if (DomainFacade.getInstance().login(user)) {
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
+                    Stage window = (Stage) backArrow.getScene().getWindow();
+                    window.setScene(new Scene(root, 1300, 700));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     // Method to show that the login is wrong
@@ -87,13 +91,12 @@ public class LoginController {
 
     // Method to toggle show/hide password
     public void togglePassword(MouseEvent mouseEvent) {
-        if(passwordToggle.getImage().equals(closedEye)) {
+        if (passwordToggle.getImage().equals(closedEye)) {
             passwordToggle.setImage(openEye);
             passwordHiddenInput.setVisible(false);
             passwordShownInput.setVisible(true);
             passwordShownInput.setText(passwordHiddenInput.getText());
-        }
-        else {
+        } else {
             passwordToggle.setImage(closedEye);
             passwordHiddenInput.setVisible(true);
             passwordShownInput.setVisible(false);
@@ -104,10 +107,9 @@ public class LoginController {
     // Method to go back to the menu
     public void goBack(MouseEvent mouseEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
             Stage window = (Stage) backArrow.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

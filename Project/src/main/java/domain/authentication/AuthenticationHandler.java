@@ -11,8 +11,8 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
 public class AuthenticationHandler {
-    IUserAuthentication userAuthentication;
-    IAuthenticator loginAuthentication;
+    static IUserAuthentication userAuthentication = UserAuthentication.getInstance();
+    static IAuthenticator loginAuthentication = LoginAuthentication.getInstance();
 
 
     static String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
@@ -69,5 +69,9 @@ public class AuthenticationHandler {
             bytes[i] = (byte)Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
         }
         return bytes;
+    }
+
+    public static LoginAuthentication getLoginInstance() {
+        return (LoginAuthentication) loginAuthentication;
     }
 }

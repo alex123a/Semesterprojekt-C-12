@@ -82,7 +82,7 @@ public class NotificationController {
 
     public void backClicked(MouseEvent mouseEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
             Stage window = (Stage) notificationBox.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
 
