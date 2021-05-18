@@ -5,14 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/create_sample_data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/data/credits/FacadeData.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/data/credits/Production.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/data/credits/ProductionHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/data/credits/RightsHolderHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/data/credits/Rightsholder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/data/credits/Test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd/storage_v2/_src_/database/d82q285u8akq13.6r0x2g/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd/storage_v2/_src_/database/d82q285u8akq13.6r0x2g/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/enumerations/ProductionGenre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enumerations/ProductionGenre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/RightsHolderHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/enumerations/ProductionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enumerations/ProductionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/NewProduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/NewProduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IPersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IPersistenceFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IProduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IProduction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/Production.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/ProductionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/RightsHolderHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/Rightsholder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/Producer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/Producer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/SystemAdministrator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/SystemAdministrator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/LoginAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/LoginAuthentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/enumerations/ProductionGenre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/enumerations/ProductionGenre.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/enumerations/ProductionSorting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/enumerations/ProductionSorting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/enumerations/ProductionType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/enumerations/ProductionType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/enumerations/RightholderSorting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/enumerations/RightholderSorting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewProduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/NewProduction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/FacadeData.class" beforeDir="false" />
+    </list>
+    <list id="398e6fdf-0be6-40ca-90c6-9a77a5d92e74" name="Changes by alexv" comment="">
+      <change beforePath="$PROJECT_DIR$/create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/create_tables.sql" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +110,7 @@
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\layout" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test (1)">
+  <component name="RunManager" selected="Application.Test (2)">
     <configuration name="NewMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="presentation.NewMain" />
       <module name="Project" />
@@ -103,6 +137,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="data.credits.Test" />
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="data.credits.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="data.Test" />
       <module name="Project" />
@@ -116,8 +163,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test (2)" />
         <item itemvalue="Application.Test (1)" />
         <item itemvalue="Application.NewMain" />
         <item itemvalue="Application.Test" />
@@ -148,7 +207,7 @@
       <workItem from="1621240973258" duration="1185000" />
       <workItem from="1621274136159" duration="281000" />
       <workItem from="1621321021816" duration="352000" />
-      <workItem from="1621323867111" duration="2734000" />
+      <workItem from="1621323867111" duration="7825000" />
     </task>
     <servers />
   </component>

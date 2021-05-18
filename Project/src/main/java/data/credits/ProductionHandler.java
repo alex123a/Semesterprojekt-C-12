@@ -4,6 +4,7 @@ import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import data.DatabaseConnection;
 import enumerations.ProductionGenre;
+import enumerations.ProductionType;
 import jdk.jshell.spi.ExecutionControl;
 
 import java.io.File;
@@ -25,7 +26,6 @@ class ProductionHandler {
     }
 
     // Reads the whole productionData file and returns all productions in an arraylist;
-    // TODO: This hasn't been tested. Y'all owe me $100 if this works first try
     List<IProduction> getProductions() {
         List<IProduction> productionList = new ArrayList<>();
         try {
@@ -49,7 +49,7 @@ class ProductionHandler {
                     //for each rightsholder, get all the roles that rightsholder has in the production
                     int id = rightsholderIDs.getInt(1);
                     PreparedStatement rolesStatement = connection.prepareStatement("" +
-                            "SELECT title, rolename.name FROM " +
+                            "SELECT title, rolename.rolename FROM " +
                             "appears_in LEFT JOIN role ON appears_in.id = role.appears_in_id " +
                             "LEFT JOIN title ON role.title_id = title.id " +
                             "LEFT JOIN rolename ON role.id = rolename.role_id " +
@@ -67,8 +67,11 @@ class ProductionHandler {
                     }
                     roleMap.put(id, rolesList);
                 }
-                ProductionGenre genre = ProductionGenre.getFromID(productionsResult.getInt())
-                Production p = new Production(productionsResult.getInt(1), productionsResult.getString(2), productionsResult.getString(3), productionsResult.getInt(4), roleMap);
+                //Gets the genre and type enum based on the genre and type
+                ProductionGenre genre = ProductionGenre.getFromID(productionsResult.getInt(5));
+                ProductionType type = ProductionType.getFromID(productionsResult.getInt(6));
+
+                Production p = new Production(productionsResult.getInt(1), productionsResult.getString(2), productionsResult.getString(3), productionsResult.getInt(4), genre, type, roleMap);
                 productionList.add(p);
             }
             return productionList;
@@ -79,6 +82,8 @@ class ProductionHandler {
     }
 
     // Reads specific production with productionID
+    //TODO implement: the code for loading all the rightsholders in a production should
+    //TODO probably be extracted into a helper method
     IProduction getProduction(int id) {
         throw new UnsupportedOperationException("not implemented yet");
     }

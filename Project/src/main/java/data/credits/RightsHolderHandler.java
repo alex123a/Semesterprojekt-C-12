@@ -33,7 +33,7 @@ class RightsHolderHandler {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM rightsholder");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-
+                //TODO for each row in the resultset, make a rightsholder
             }
         } catch (SQLException e) {
             e.printStackTrace();

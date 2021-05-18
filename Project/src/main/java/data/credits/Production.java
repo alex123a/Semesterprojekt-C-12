@@ -54,37 +54,37 @@ public class Production implements IProduction {
 
     @Override
     public int getYear() {
-        return 0;
+        throw new UnsupportedOperationException("not implemented yet");
     }
 
     @Override
     public void setYear() {
-
+        throw new UnsupportedOperationException("not implemented yet");
     }
 
     @Override
     public ProductionGenre getGenre() {
-        return null;
+        throw new UnsupportedOperationException("not implemented yet");
     }
 
     @Override
     public void setGenre(ProductionGenre genre) {
-
+        throw new UnsupportedOperationException("not implemented yet");
     }
 
     @Override
     public ProductionType getType() {
-        return null;
+        throw new UnsupportedOperationException("not implemented yet");
     }
 
     @Override
     public void setType(ProductionType type) {
-
+        throw new UnsupportedOperationException("not implemented yet");
     }
 
     @Override
     public void setRoles(Map<IRightsholder, List<String>> roles) {
-        //TODO Implement
+        throw new UnsupportedOperationException("not implemented yet");
     }
 
     @Override
@@ -104,8 +104,14 @@ public class Production implements IProduction {
 
     @Override
     public String toString() {
-        return productionID + ": " + name;
+        return "Production{" +
+                "id=" + id +
+                ", productionID='" + productionID + '\'' +
+                ", name='" + name + '\'' +
+                ", year=" + year +
+                ", genre=" + genre +
+                ", type=" + type +
+                ", rightsholders=" + rightsholders +
+                '}';
     }
-
-
 }

@@ -2,6 +2,8 @@ package presentation;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import enumerations.ProductionGenre;
+import enumerations.ProductionType;
 
 import java.util.List;
 import java.util.Map;
@@ -32,6 +34,36 @@ public class NewProduction implements IProduction {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int getYear() {
+        return 0;
+    }
+
+    @Override
+    public void setYear() {
+
+    }
+
+    @Override
+    public ProductionGenre getGenre() {
+        return null;
+    }
+
+    @Override
+    public void setGenre(ProductionGenre genre) {
+
+    }
+
+    @Override
+    public ProductionType getType() {
+        return null;
+    }
+
+    @Override
+    public void setType(ProductionType type) {
+
     }
 
     @Override

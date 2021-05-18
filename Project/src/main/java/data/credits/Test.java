@@ -15,6 +15,7 @@ import java.util.Map;
 public class Test {
 
     public static void main(String[] args) {
-
+        List<IProduction> productionList = ProductionHandler.getInstance().getProductions();
+        System.out.println(productionList);
     }
 }
