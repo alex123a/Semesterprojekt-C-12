@@ -7,27 +7,25 @@ public class Notification implements INotification {
     private int ID;
     private String text;
     private int productionID;
-    private boolean viewed;
 
     public Notification() {
 
     }
 
-    public Notification(int ID, String text, int productionID, boolean viewed) {
+    public Notification(int ID, String text, int productionID) {
         this.ID = ID;
         this.text = text;
         this.productionID = productionID;
-        this.viewed = viewed;
     }
 
     @Override
     public void setViewed(boolean status) {
-        this.viewed = status;
+        throw new UnsupportedOperationException("Not supported");
     }
 
     @Override
     public boolean getViewed() {
-        return this.viewed;
+        throw new UnsupportedOperationException("Not supported");
     }
 
     @Override
@@ -52,6 +50,16 @@ public class Notification implements INotification {
 
     @Override
     public int getID() {
-        return 0;
+        return this.ID;
+    }
+
+    @Override
+    public int getProducerID() {
+        throw new UnsupportedOperationException("Not supported");
+    }
+
+    @Override
+    public void setProducerID(int producerID) {
+        throw new UnsupportedOperationException("Not supported");
     }
 }

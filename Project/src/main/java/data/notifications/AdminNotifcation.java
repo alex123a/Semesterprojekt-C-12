@@ -3,8 +3,8 @@ package data.notifications;
 public class AdminNotifcation extends Notification {
     private int approvalStatus;
 
-    public AdminNotifcation(int ID, String text, int productionID, boolean viewed, int approvalStatus) {
-        super(ID, text, productionID, viewed);
+    public AdminNotifcation(int ID, String text, int productionID, int approvalStatus) {
+        super(ID, text, productionID);
         this.approvalStatus = approvalStatus;
     }
 

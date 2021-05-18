@@ -16,4 +16,7 @@ public interface INotification {
 
     int getID();
 
+    int getProducerID();
+
+    void setProducerID(int producerID);
 }
