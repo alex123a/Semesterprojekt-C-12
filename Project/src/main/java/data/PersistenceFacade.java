@@ -78,8 +78,8 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public boolean createProducerNotification(int userId, INotification notification) {
-        throw new UnsupportedOperationException();
+    public boolean createProducerNotification(IUser user, INotification notification) {
+        return false;
     }
 
     @Override
@@ -88,18 +88,33 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public boolean deleteNotification(int notificationId) {
-        throw new UnsupportedOperationException();
+    public boolean deleteAdminNotification(INotification notification) {
+        return false;
     }
 
     @Override
-    public boolean editNotification(INotification newNotification) {
-        throw new UnsupportedOperationException();
+    public boolean deleteProducerNotification(INotification notification) {
+        return false;
     }
 
     @Override
-    public List<INotification> getNotifications(int userId) {
-        throw new UnsupportedOperationException();
+    public boolean editAdminNotification(INotification newNotification) {
+        return false;
+    }
+
+    @Override
+    public boolean editProducerNotification(INotification newNotification) {
+        return false;
+    }
+
+    @Override
+    public List<INotification> getAdminNotifications() {
+        return null;
+    }
+
+    @Override
+    public List<INotification> getProducerNotifications(IUser user) {
+        return null;
     }
 
     @Override
