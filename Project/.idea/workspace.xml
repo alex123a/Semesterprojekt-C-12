@@ -5,30 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/LoginAuthentication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IAuthenticator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IAuthenticator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/Producer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/SystemAdministrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/SystemAdministrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IAuthenticator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IAuthenticator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IDomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IDomainFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserhandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserhandling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/ProductionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/ProductionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/RightsHolderHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/RightsHolderHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/Producer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/Producer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/SystemAdministrator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/SystemAdministrator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,17 +112,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Test (1)" />
@@ -172,6 +142,8 @@
       <workItem from="1619429941866" duration="519000" />
       <workItem from="1621237740230" duration="2697000" />
       <workItem from="1621240973258" duration="1185000" />
+      <workItem from="1621274136159" duration="281000" />
+      <workItem from="1621321021816" duration="352000" />
     </task>
     <servers />
   </component>

@@ -45,7 +45,7 @@ public class UserManager implements IUserHandling {
                 list.add(new Producer(queryResultSet.getInt("id"), queryResultSet.getString("username"), queryResultSet.getString("user_password")));
             }
             //Administrator
-            PreparedStatement adminStatement = connection.prepareStatement("SELECT * FROM producer");
+            PreparedStatement adminStatement = connection.prepareStatement("SELECT * FROM administrator");
             ResultSet adminResult = adminStatement.executeQuery();
             while (adminResult.next()) {
                 PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
@@ -85,7 +85,7 @@ public class UserManager implements IUserHandling {
     @Override
     public boolean makeUserAdmin(IUser user) {
         try {
-            PreparedStatement selectStatement = connection.prepareStatement("SELECT id FROM producer WHERE id = ?");
+            PreparedStatement selectStatement = connection.prepareStatement("SELECT id FROM administrator WHERE id = ?");
             selectStatement.setInt(1, user.getId());
             ResultSet result = selectStatement.executeQuery();
             if (result != null) {
@@ -127,6 +127,7 @@ public class UserManager implements IUserHandling {
             updateStatement.setString(1,user.getUsername());
             updateStatement.setString(2,user.getPassword());
             updateStatement.setInt(3,user.getId());
+            updateStatement.execute();
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
