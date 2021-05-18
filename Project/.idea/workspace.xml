@@ -23,33 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ISession.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/session/CurrentSession.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/layout/menuProducer.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IDomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IDomainFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserAuthentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserAuthentication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserhandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserhandling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/AuthenticationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/AuthenticationHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/loginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/loginController.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
-    <list id="1e40d4ee-d836-4c78-8bc0-a3967d06936d" name="Changes by maxx0" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" afterDir="false" />
-    </list>
+    <list id="1e40d4ee-d836-4c78-8bc0-a3967d06936d" name="Changes by maxx0" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
