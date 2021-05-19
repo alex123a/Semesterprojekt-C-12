@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import Interfaces.IProduction;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -51,7 +52,7 @@ public class ProductionController implements Initializable {
         notificationPane.setAlignment(Pos.CENTER);
         notificationPane.setPrefHeight(50);
         notificationPane.setPrefWidth(548);
-        notificationPane.setStyle("-fx-border-radius: 8px; -fx-background-radius: 8px; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF;");
+        notificationPane.setStyle("-fx-border-radius: 8px; -fx-background-radius: 8px; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF; -fx-cursor: hand;");
 
         VBox labelBox = new VBox();
         labelBox.setPrefWidth(470);
@@ -88,5 +89,15 @@ public class ProductionController implements Initializable {
     }
 
     public void editClicked(MouseEvent mouseEvent) {
+        Repository r = Repository.getInstance();
+        Repository.getInstance().setToEdit(r.getToBeShown());
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/edit_production.fxml"));
+            Stage window = (Stage) movieLabel.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

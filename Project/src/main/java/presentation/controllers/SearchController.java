@@ -1,5 +1,7 @@
 package presentation.controllers;
 
+import Interfaces.IProduction;
+import domain.CreditsManagement.CreditsSystem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -54,7 +56,7 @@ public class SearchController implements Initializable {
         comboSort.setItems(sortOptions);
     }
 
-    public void createMovie(String movieName, String year, String productionID) {
+    public void createMovie(String movieName, String year, IProduction production) {
         HBox notificationPane = new HBox();
         notificationPane.setAlignment(Pos.CENTER);
         notificationPane.setPrefHeight(50);
@@ -66,7 +68,7 @@ public class SearchController implements Initializable {
                 Repository r = Repository.getInstance();
                 // todo : Skal indsætte en IProduction
                 // Men createMovie modtager ikke en IProduction fordi search ikke er lavet endnu
-                //r.setToBeShown(IProduction);
+                r.setToBeShown(production);
 
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("/layout/production.fxml"));
@@ -141,8 +143,8 @@ public class SearchController implements Initializable {
             comboGenre.setDisable(false);
 
             // todo : call search class and run through the list
-            for(int i = 0; i < 10; i++) {
-                createMovie("Star Wars " + i, "" + (2004 + i), "SW" + i);
+            for(IProduction ip : CreditsSystem.getInstance().getProductions()) {
+                createMovie(ip.getName(), "2021", ip);
             }
             /*for(IProduction pl : productionList) {
                 createMovie(pl.getName(), "NaN");
