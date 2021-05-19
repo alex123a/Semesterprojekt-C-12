@@ -1,22 +1,46 @@
 package data.logger;
 
-import java.io.File;
-import java.io.OutputStream;
+import Interfaces.IUser;
+
+import java.io.*;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class LogHandler {
 
-    private LogHandler logHandler = null;
+    private static LogHandler logHandler = null;
 
-    private OutputStream outputStream = null;
+    private PrintWriter outputStream = null;
 
     private File file = null;
 
+    private String fileName = "logfile.txt";
+
+    //format for timestamp
+    private static final SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+
     private LogHandler(){
-        //todo create file and output stream here
+
+        try{
+            file = new File(fileName);
+            if(file.createNewFile()){
+                System.out.println("File Created");
+            } else{
+                System.out.println("File already exist");
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        try{
+            outputStream = new PrintWriter(new FileOutputStream(file, true));
+        } catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+
     }
 
     //singleton getInstance architecture
-    public LogHandler getInstance(){
+    public static LogHandler getInstance(){
 
         if(logHandler == null){
             logHandler = new LogHandler();
@@ -25,6 +49,14 @@ public class LogHandler {
 
     }
 
-    //todo method to write to file
+    public void writeLog(String logTxt, IUser user) {
+
+        //output written
+        outputStream.println(sdf1.format(new Timestamp(System.currentTimeMillis())) + " : " + logTxt + " by: " + user.getUsername());
+        outputStream.flush();
+
+    }
 
 }
+
+
