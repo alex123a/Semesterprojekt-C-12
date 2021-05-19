@@ -51,6 +51,9 @@ public class LoginController {
 
     // Method for when the user clicks login
     public void loginClicked(MouseEvent mouseEvent) {
+        String password;
+        String username;
+
         wrongInput.setVisible(false);
 
         // Checks if the input is empty
@@ -94,6 +97,9 @@ public class LoginController {
                 failedLogin();
             }
         }
+
+
+        // todo: Send login information to be checked
     }
 
     // Method to show that the login is wrong

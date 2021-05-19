@@ -1,9 +1,9 @@
 package enumerations;
 
 public enum ProductionType {
-    SERIER("Action", 1), FILM("Børnefilm", 2), REALITY("Dokumentar", 3),
-    UNDERHOLDNING("Drama", 4), COMEDY("Familiefilm", 5), DOKUMENTAR("Gyser", 6),
-    REJSER_OG_EVENTYR("komedie", 7), LIVSSTIL("Romantik", 8), MAGASINER("Thriller", 9);
+    SERIER("Serier", 1), FILM("Film", 2), REALITY("Reality", 3),
+    UNDERHOLDNING("Underholdning", 4), COMEDY("Comedy", 5), DOKUMENTAR("Dokumentar", 6),
+    REJSER_OG_EVENTYR("Rejser og eventyr", 7), LIVSSTIL("livsstil", 8), MAGASINER("Magasiner", 9);
 
     private String typeWord;
     private int id;
@@ -19,5 +19,14 @@ public enum ProductionType {
 
     public int getId() {
         return id;
+    }
+
+    public static ProductionType getFromID(int id) {
+        for (ProductionType n: values()){
+            if (n.id == id) {
+                return n;
+            }
+        }
+        return null;
     }
 }

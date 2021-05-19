@@ -15,6 +15,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.CreditWrapper;
 import presentation.NewProduction;
 import presentation.NewRightsholder;
 import presentation.Repository;
@@ -34,7 +35,7 @@ public class AddProductionController {
     private TextField programNameField;
 
     @FXML
-    private ListView<IRightsholder> rightholderListview;
+    private ListView<CreditWrapper> rightholderListview;
 
     @FXML
     private TextField rightholderName;
@@ -81,9 +82,12 @@ public class AddProductionController {
         }
 
         if (name != null && description != null) {
-            IRightsholder newRightsholder = new NewRightsholder(name, description, roles);
-            ObservableList<IRightsholder> rightholders = rightholderListview.getItems();
-            rightholders.add(newRightsholder);
+            //TODO pass first name and last name seperately to the constructor
+            //TODO this should probably create a new creditWrapper
+            IRightsholder newRightsholder = new NewRightsholder(name, "", description);
+            CreditWrapper newCredit = new CreditWrapper(newRightsholder, roles);
+            ObservableList<CreditWrapper> rightholders = rightholderListview.getItems();
+            rightholders.add(newCredit);
         }
     }
 
@@ -106,11 +110,11 @@ public class AddProductionController {
         String id = programIDField.getText();
         String name = programNameField.getText();
         String description = descriptionProgramArea.getText();
-        IRightsholder[] rightsholders = rightholderListview.getItems().toArray(new IRightsholder[0]);
+        CreditWrapper[] rightsholders = rightholderListview.getItems().toArray(new CreditWrapper[0]);
         // Map over rightholders with their roles
         Map<IRightsholder, List<String>> RhsRoles = new HashMap<>();
-        for (IRightsholder rh: rightsholders) {
-            RhsRoles.put(rh, ((NewRightsholder) rh).getRoles());
+        for (CreditWrapper credit: rightsholders) {
+            RhsRoles.put(credit.getRightsholder(), credit.getRoles());
         }
 
         IProduction newProduction = new NewProduction(id, name, RhsRoles);

@@ -1,0 +1,8 @@
+.hbox {
+  -fx-background-color: #ffffff;
+  -fx-border-color: #c9c9c9;
+  -fx-max-width: 782px;
+  -fx-pref-height: 60px;
+  -fx-spacing: 10px;
+  -fx-alignment: CENTER_RIGHT;
+}

@@ -5,8 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/userManage/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/userManage/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menuProducer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menuProducer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserHandling.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/AuthenticationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/AuthenticationHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/menuProducer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/menuProducer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ManageUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ManageUserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/userManage/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/userManage/User.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +49,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="Kotlin Class" />
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -86,12 +116,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="domain.authentication.Test" />
+    <configuration name="ReportHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="data.reporting.ReportHandler" />
       <module name="Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="domain.authentication.*" />
+          <option name="PATTERN" value="data.reporting.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -126,7 +156,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.NewMain" />
-        <item itemvalue="Application.Test (1)" />
+        <item itemvalue="Application.ReportHandler" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -157,8 +187,11 @@
       <workItem from="1621322679507" duration="7159000" />
       <workItem from="1621331295897" duration="454000" />
       <workItem from="1621331791688" duration="6538000" />
-      <workItem from="1621369246420" duration="25000" />
-      <workItem from="1621408514482" duration="5809000" />
+      <workItem from="1621408677209" duration="2979000" />
+      <workItem from="1621411696022" duration="24000" />
+      <workItem from="1621411739786" duration="3016000" />
+      <workItem from="1621421254707" duration="42000" />
+      <workItem from="1621421316683" duration="4451000" />
     </task>
     <servers />
   </component>
