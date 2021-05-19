@@ -118,7 +118,7 @@ public class UserManager implements IUserHandling {
     @Override
     public boolean deleteUser(IUser user) {
         try {
-            PreparedStatement deleteStatement = connection.prepareStatement("DELETE id FROM users WHERE id = ?");
+            PreparedStatement deleteStatement = connection.prepareStatement(" DELETE FROM users WHERE id = ? ");
             deleteStatement.setInt(1, user.getId());
             deleteStatement.execute();
             return true;

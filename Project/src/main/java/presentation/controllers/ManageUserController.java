@@ -56,7 +56,21 @@ public class ManageUserController {
 
     @FXML
     void deleteUser(ActionEvent event) {
-
+        IUser currentUser = DomainFacade.getInstance().getCurrentUser();
+        boolean success = false;
+        if (DomainFacade.getInstance().validateUser(currentUser)) {
+            String removeUsername = removeSearchUsername.getText();
+            IUser tempUser = new User(removeUsername);
+            IUser removeUser = DomainFacade.getInstance().getUser(tempUser);
+            if (!removeUsername.equals("")) {
+                success = DomainFacade.getInstance().deleteUser(removeUser);
+            }
+        }
+        if(success) {
+            System.out.println("Nice");
+        } else {
+            System.out.println("Sheisse");
+        }
     }
 
     @FXML
