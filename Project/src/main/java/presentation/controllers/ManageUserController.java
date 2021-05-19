@@ -21,6 +21,7 @@ public class ManageUserController {
     private IUser createTempUser(String username) {
         return new User(username);
     }
+    
     private boolean changeUsername(String userUsername, String newUsername) {
         IUser currentUser = DomainFacade.getInstance().getCurrentUser();
         if (DomainFacade.getInstance().validateUser(currentUser)) {
