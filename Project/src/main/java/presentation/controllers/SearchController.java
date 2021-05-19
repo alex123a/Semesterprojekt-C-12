@@ -143,6 +143,8 @@ public class SearchController implements Initializable {
             comboGenre.setDisable(false);
 
             // todo : call search class and run through the list
+            // Make it search for only the chosen category
+            // Right now it gets all when choosing "Film"
             for(IProduction ip : CreditsSystem.getInstance().getProductions()) {
                 createMovie(ip.getName(), "2021", ip);
             }
