@@ -59,14 +59,15 @@ public class LoginController {
         }
     }
 
-    private void checkPassword(TextField passwordShownInput) {
-        if (usernameInput.getText().equals("") && passwordShownInput.getText().equals("")) {
+    private void checkPassword(TextField passwordInput) {
+        if (usernameInput.getText().equals("") && passwordInput.getText().equals("")) {
             emptyLogin();
         } else {
-            User user = new User(usernameInput.getText(), passwordHiddenInput.getText());
+            User user = new User(usernameInput.getText(), passwordInput.getText());
             if (DomainFacade.getInstance().login(user)) {
+                System.out.println(DomainFacade.getInstance().getUser(user)  Systemadministrator);
                 if (DomainFacade.getInstance().validateUser(DomainFacade.getInstance().getUser(user))) {
-                    DomainFacade.getInstance().setCurrentUser(new Systemadministrator(usernameInput.getText(), passwordHiddenInput.getText()));
+                    DomainFacade.getInstance().setCurrentUser(new Systemadministrator(usernameInput.getText(), passwordInput.getText()));
                     System.out.println("ADmini");
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
@@ -76,7 +77,7 @@ public class LoginController {
                         e.printStackTrace();
                     }
                 } else {
-                    DomainFacade.getInstance().setCurrentUser(new Producer(usernameInput.getText(), passwordHiddenInput.getText()));
+                    DomainFacade.getInstance().setCurrentUser(new Producer(usernameInput.getText(), passwordInput.getText()));
                     System.out.println("producer");
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/menuProducer.fxml"));

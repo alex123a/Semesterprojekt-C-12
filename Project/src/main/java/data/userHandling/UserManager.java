@@ -68,12 +68,14 @@ public class UserManager implements IUserHandling {
             // Finding out which list the user is and returns the user with the correct authentication/user type
             for (Integer theId: adminList) {
                 if (theId == id) {
+                    System.out.println(username + " " + password);
                     return new SystemAdministrator(theId, username, password);
                 }
             }
 
             for (Integer theId: producerList) {
                 if (theId == id) {
+                    System.out.println(username + " " + password);
                     return new Producer(theId, username, password);
                 }
             }
@@ -190,7 +192,7 @@ public class UserManager implements IUserHandling {
     @Override
     public boolean addUser(IUser user) {
         try {
-            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO users(username, password) VALUES (?, ?)");
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO users(username, user_password) VALUES (?, ?)");
             insertStatement.setString(1, user.getUsername());
             insertStatement.setString(2, user.getPassword());
             insertStatement.execute();

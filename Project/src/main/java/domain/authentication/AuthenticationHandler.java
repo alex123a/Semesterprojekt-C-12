@@ -47,6 +47,7 @@ public class AuthenticationHandler {
     static boolean validatePassword(String originalPassword, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
         // Checks if the stored password from database is there (The username has a password)
         if (storedPassword == null) {
+            System.out.println("Not in the database");
             return false;
         }
 
@@ -74,8 +75,8 @@ public class AuthenticationHandler {
         return bytes;
     }
 
-    public static LoginAuthentication getLoginInstance() {
-        return (LoginAuthentication) loginAuthentication;
+    public static IAuthenticator getLoginInstance() {
+        return loginAuthentication;
     }
 
     public static IUserAuthentication getUserInstance() {
