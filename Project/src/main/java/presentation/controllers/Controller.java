@@ -129,7 +129,14 @@ public class Controller implements Initializable {
 
     @FXML
     void onEditUserClicked(MouseEvent event) {
-        //todo onEditUser
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/ManageUser.fxml"));
+            Stage window = Repository.getInstance().getWindow();
+            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("Edit User");
 
     }
