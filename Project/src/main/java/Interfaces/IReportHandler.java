@@ -8,7 +8,7 @@ public interface IReportHandler {
 
     JSONObject getTotalCreditCount();
 
-    JSONObject generateProductionCreditsCount(IProduction production);
+    List<JSONObject> generateProductionCreditsCount(IProduction production);
 
     List<JSONObject> generateCreditTypeCount(String type);
 

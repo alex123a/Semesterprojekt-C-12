@@ -5,7 +5,10 @@ import Interfaces.IReportHandler;
 import data.PersistenceFacade;
 import org.json.simple.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ReportHandler implements IReportHandler {
     private static final ReportHandler report = new ReportHandler();
@@ -21,11 +24,15 @@ public class ReportHandler implements IReportHandler {
     }
 
     @Override
-    public JSONObject generateProductionCreditsCount(IProduction production) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("wd",PersistenceFacade.getInstance().generateProductionCreditsCount(production));
-
-        return jsonObject;
+    public List<JSONObject> generateProductionCreditsCount(IProduction production) {
+        Map<String, Integer> creditMap = new HashMap<>(PersistenceFacade.getInstance().generateProductionCreditsCount(production));
+        List<JSONObject> jsonObjectList = new ArrayList<>();
+        for (String i : creditMap.keySet()) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put(i,creditMap.get(i));
+            jsonObjectList.add(jsonObject);
+        }
+        return jsonObjectList;
     }
 
     @Override
