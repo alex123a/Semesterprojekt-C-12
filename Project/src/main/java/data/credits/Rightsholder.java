@@ -9,7 +9,8 @@ import java.util.List;
 
 public class Rightsholder implements IRightsholder {
     private int id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String description;
     private List<Integer> productions;
 
@@ -17,15 +18,12 @@ public class Rightsholder implements IRightsholder {
 
     }
 
-    public Rightsholder(int id, String name, String description) {
+    public Rightsholder(int id, String firstName, String lastName, String description, List<Integer> productions) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.description = description;
-        this.productions = new ArrayList<>();
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        this.productions = productions;
     }
 
     public int getId() {
@@ -41,8 +39,13 @@ public class Rightsholder implements IRightsholder {
     }
 
     @Override
-    public String getName() {
-        return this.name;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    @Override
+    public String getLastName() {
+        return lastName;
     }
 
     @Override
@@ -61,6 +64,6 @@ public class Rightsholder implements IRightsholder {
 
     @Override
     public String toString() {
-        return "Credit: " + id + " " + name + " " + description + " " + productions;
+        return "Credit: " + id + " " + firstName + " " + lastName + " " + description + " " + productions;
     }
 }

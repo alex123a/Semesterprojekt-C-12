@@ -31,7 +31,7 @@ class ProductionHandler {
         try {
             //Statement to get all productions and their attributes
             PreparedStatement productionsStatement = connection.prepareStatement("" +
-                    "SELECT id, own_production_id, production_name, year, genre_id, category_id " +
+                    "SELECT id, own_production_id, production_name, description, year, genre_id, category_id " +
                     "FROM production");
             ResultSet productionsResult = productionsStatement.executeQuery();
 
@@ -68,10 +68,10 @@ class ProductionHandler {
                     roleMap.put(id, rolesList);
                 }
                 //Gets the genre and type enum based on the genre and type
-                ProductionGenre genre = ProductionGenre.getFromID(productionsResult.getInt(5));
-                ProductionType type = ProductionType.getFromID(productionsResult.getInt(6));
+                ProductionGenre genre = ProductionGenre.getFromID(productionsResult.getInt(6));
+                ProductionType type = ProductionType.getFromID(productionsResult.getInt(7));
 
-                Production p = new Production(productionsResult.getInt(1), productionsResult.getString(2), productionsResult.getString(3), productionsResult.getInt(4), genre, type, roleMap);
+                Production p = new Production(productionsResult.getInt(1), productionsResult.getString(2), productionsResult.getString(3), productionsResult.getString(4), productionsResult.getInt(5), genre, type, roleMap);
                 productionList.add(p);
             }
             return productionList;

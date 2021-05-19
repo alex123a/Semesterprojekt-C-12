@@ -33,7 +33,7 @@ public class FacadeData implements IFacadeData {
      * Inserting or editing a rightsholder
      * @param rightsholder Rightsholder object
      */
-    public void insertRightsholder(IRightsholder rightsholder) {
+    public void saveRightsholder(IRightsholder rightsholder) {
         rhHolder.saveRightsholder(rightsholder);
     }
 
@@ -57,7 +57,7 @@ public class FacadeData implements IFacadeData {
      * Inserting or editing a rightsholder
      * @param production Production Object
      */
-    public void insertProduction(IProduction production) {
+    public void saveProduction(IProduction production) {
         pHandler.saveProduction(production);
     }
 

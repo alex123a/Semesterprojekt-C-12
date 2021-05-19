@@ -6,21 +6,14 @@ import Interfaces.IRightsholder;
 import java.util.List;
 
 public class NewRightsholder implements IRightsholder {
-    String name;
+    String firstName;
+    String lastName;
     String description;
-    List<String> roles;
 
-
-    public NewRightsholder(String name, String description, List<String> roles) {
-        this.name = name;
+    public NewRightsholder(String firstName, String lastName, String description) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.description = description;
-        this.roles = roles;
-    }
-
-
-    @Override
-    public String getName() {
-        return name;
     }
 
     @Override
@@ -28,20 +21,24 @@ public class NewRightsholder implements IRightsholder {
         return description;
     }
 
+    @Override
+    public String getFirstName() {
+        return firstName;
+    }
 
+    @Override
+    public String getLastName() {
+        return lastName;
+    }
 
     @Override
     public List<IProduction> getRightsholderFor() {
         //TODO Should we get this from the database or?? how does the rightsholder class work?
-        return null;
-    }
-
-    public List<String> getRoles() {
-        return this.roles;
+        throw new UnsupportedOperationException("not implemented yet");
     }
 
     @Override
     public String toString() {
-        return "Name: " + this.name + " Description: " + this.description + " Roles: " + this.roles;
+        return "Name: " + this.firstName + " " + this.lastName + " Description: " + this.description;
     }
 }

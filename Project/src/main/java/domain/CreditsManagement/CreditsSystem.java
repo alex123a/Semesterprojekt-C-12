@@ -57,7 +57,7 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     }
 
     public void setRoles(IProduction production, Map<IRightsholder, List<String>> roles) {
-        production.setRoles(roles);
+        production.setRightsholders(roles);
         changedProductions.add(production);
     }
 
@@ -68,7 +68,7 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
 
     @Override
     public void addProduction(IProduction production) {
-        facadeData.insertProduction(production);
+        facadeData.saveProduction(production);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     @Override
     public void saveChanges() {
         for (IProduction production: changedProductions) {
-            facadeData.insertProduction(production);
+            facadeData.saveProduction(production);
         }
         changedProductions.clear();
     }

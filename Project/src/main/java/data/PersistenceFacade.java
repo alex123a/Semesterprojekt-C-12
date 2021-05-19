@@ -53,7 +53,7 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public void insertRightsholder(IRightsholder rightsholder) {
+    public void saveRightsholder(IRightsholder rightsholder) {
         throw new UnsupportedOperationException();
     }
 
@@ -68,7 +68,7 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public void insertProduction(IProduction production) {
+    public void saveProduction(IProduction production) {
         throw new UnsupportedOperationException();
     }
 

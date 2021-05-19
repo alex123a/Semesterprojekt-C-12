@@ -13,6 +13,10 @@ public class NewProduction implements IProduction {
 
     private String productionID;
     private String name;
+    private String description;
+    private int year;
+    private ProductionGenre genre;
+    private ProductionType type;
     Map<IRightsholder, List<String>> rightsholders;
 
     public NewProduction(String productionID, String name, Map<IRightsholder, List<String>> rightsholders) {
@@ -37,45 +41,51 @@ public class NewProduction implements IProduction {
     }
 
     @Override
+    public void setName(String name) {this.name = name;}
+
+    @Override
     public int getYear() {
-        return 0;
+        return this.year;
     }
 
     @Override
-    public void setYear() {
-
+    public void setYear(int year) {
+        this.year = year;
     }
 
     @Override
     public ProductionGenre getGenre() {
-        return null;
+        return this.genre;
     }
 
     @Override
     public void setGenre(ProductionGenre genre) {
-
+        this.genre = genre;
     }
 
     @Override
     public ProductionType getType() {
-        return null;
+        return this.type;
     }
 
     @Override
     public void setType(ProductionType type) {
-
+        this.type = type;
     }
 
     @Override
-    public void setName(String name) {this.name = name;}
+    public String getDescription() {
+        return this.description;
+    }
 
     @Override
-    public void setRoles(Map<IRightsholder, List<String>> roles) {
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public void setRightsholders(Map<IRightsholder, List<String>> roles) {
         rightsholders = roles;
-    }
-
-    public void addRightsholder(IRightsholder rightsholder, List<String> roles){
-        rightsholders.put(rightsholder, roles);
     }
 
     @Override

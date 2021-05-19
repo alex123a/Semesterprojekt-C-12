@@ -13,6 +13,7 @@ public class Production implements IProduction {
     private int id;
     private String productionID;
     private String name;
+    private String description;
     private int year;
     private ProductionGenre genre;
     private ProductionType type;
@@ -22,14 +23,19 @@ public class Production implements IProduction {
 
     }
 
-    public Production(int id, String productionID, String name, int year, ProductionGenre genre, ProductionType type, Map<Integer, List<String>> rightsholders) {
+    public Production(int id, String productionID, String name, String description, int year, ProductionGenre genre, ProductionType type, Map<Integer, List<String>> rightsholders) {
         this.id = id;
         this.productionID = productionID;
         this.name = name;
+        this.description = description;
         this.year = year;
         this.genre = genre;
         this.type = type;
         this.rightsholders = rightsholders;
+    }
+
+    int getID() {
+        return this.id;
     }
 
     @Override
@@ -53,37 +59,47 @@ public class Production implements IProduction {
     }
 
     @Override
-    public int getYear() {
-        throw new UnsupportedOperationException("not implemented yet");
+    public String getDescription() {
+        return description;
     }
 
     @Override
-    public void setYear() {
-        throw new UnsupportedOperationException("not implemented yet");
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public int getYear() {
+        return this.year;
+    }
+
+    @Override
+    public void setYear(int year) {
+        this.year = year;
     }
 
     @Override
     public ProductionGenre getGenre() {
-        throw new UnsupportedOperationException("not implemented yet");
+        return this.genre;
     }
 
     @Override
     public void setGenre(ProductionGenre genre) {
-        throw new UnsupportedOperationException("not implemented yet");
+        this.genre = genre;
     }
 
     @Override
     public ProductionType getType() {
-        throw new UnsupportedOperationException("not implemented yet");
+        return this.type;
     }
 
     @Override
     public void setType(ProductionType type) {
-        throw new UnsupportedOperationException("not implemented yet");
+        this.type = type;
     }
 
     @Override
-    public void setRoles(Map<IRightsholder, List<String>> roles) {
+    public void setRightsholders(Map<IRightsholder, List<String>> roles) {
         throw new UnsupportedOperationException("not implemented yet");
     }
 
@@ -104,14 +120,6 @@ public class Production implements IProduction {
 
     @Override
     public String toString() {
-        return "Production{" +
-                "id=" + id +
-                ", productionID='" + productionID + '\'' +
-                ", name='" + name + '\'' +
-                ", year=" + year +
-                ", genre=" + genre +
-                ", type=" + type +
-                ", rightsholders=" + rightsholders +
-                '}';
+        return productionID + ": " + name;
     }
 }
