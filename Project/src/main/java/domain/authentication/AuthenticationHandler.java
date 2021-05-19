@@ -15,7 +15,7 @@ public class AuthenticationHandler {
     private static IAuthenticator loginAuthentication = LoginAuthentication.getInstance();
 
 
-    static String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    public static String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         int iterations = 1000;
         char[] chars = password.toCharArray();
         byte[] salt = getSalt();

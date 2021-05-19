@@ -37,9 +37,8 @@ public class UserManager implements IUserHandling {
     @Override
     public IUser getUser(IUser user) {
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ? and user_password = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
             statement.setString(1, user.getUsername());
-            statement.setString(2, user.getPassword());
             ResultSet result = statement.executeQuery();
             int id = 0;
             String username = "";
@@ -66,17 +65,15 @@ public class UserManager implements IUserHandling {
             }
             // Finding out which list the user is and returns the user with the correct authentication/user type
             for (Integer theId: adminList) {
-                System.out.println(theId + id);
+                System.out.println(theId + " " + id);
                 if (theId == id) {
-                    System.out.println(username + " " + password);
                     return new SystemAdministrator(theId, username, password);
                 }
             }
 
             for (Integer theId: producerList) {
-                System.out.println(theId + id);
+                System.out.println(theId + " " + id);
                 if (theId == id) {
-                    System.out.println(username + " " + password);
                     return new Producer(theId, username, password);
                 }
             }

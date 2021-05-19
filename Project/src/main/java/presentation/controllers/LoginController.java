@@ -1,6 +1,7 @@
 package presentation.controllers;
 
 import domain.DomainFacade;
+import domain.authentication.AuthenticationHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +18,8 @@ import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 public class LoginController {
     @FXML
@@ -65,10 +68,9 @@ public class LoginController {
         } else {
             User user = new User(usernameInput.getText(), passwordInput.getText());
             if (DomainFacade.getInstance().login(user)) {
-                System.out.println(DomainFacade.getInstance().getUser(user) instanceof Systemadministrator);
                 if (DomainFacade.getInstance().validateUser(DomainFacade.getInstance().getUser(user))) {
                     DomainFacade.getInstance().setCurrentUser(new Systemadministrator(usernameInput.getText(), passwordInput.getText()));
-                    System.out.println("ADmini");
+                    System.out.println("admin");
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
                         Stage window = (Stage) backArrow.getScene().getWindow();

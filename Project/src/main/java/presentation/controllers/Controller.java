@@ -150,7 +150,6 @@ public class Controller implements Initializable {
     @FXML
     void onLoginClicked(MouseEvent event) {
         //todo onLogin
-
     }
 
     @FXML
