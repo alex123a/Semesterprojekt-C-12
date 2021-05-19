@@ -1,14 +1,19 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(30) UNIQUE NOT NULL,
+    user_password CHAR(160) NOT NULL
+);
+
 CREATE TABLE producer(
-    id SERIAL PRIMARY KEY, 
-    username VARCHAR(30) UNIQUE NOT NULL, 
-    producer_password CHAR(128) NOT NULL
+    id SERIAL PRIMARY KEY REFERENCES users(id)
 );
 
 CREATE TABLE producer_notification(
     id SERIAL PRIMARY KEY,
     producer_id INT REFERENCES producer(id),
     notification_text VARCHAR(1000) NOT NULL,
-    viewed BOOLEAN NOT NULL
+    viewed BOOLEAN NOT NULL,
+    production_id INT REFERENCES production(id)
 );
 
 CREATE TABLE genre(
@@ -56,7 +61,7 @@ CREATE TABLE rightsholder_approval(
 );
 
 CREATE TABLE appears_in(
-	id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     production_id INT REFERENCES production(id) NOT NULL,
     rightsholder_id INT REFERENCES rightsholder(id) NOT NULL
 );
@@ -95,9 +100,7 @@ CREATE TABLE rolename_approval(
 );
 
 CREATE TABLE administrator(
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(30) UNIQUE NOT NULL,
-    administrator_password CHAR(128) NOT NULL
+    id SERIAL PRIMARY KEY REFERENCES users(id)
 );
 
 CREATE TABLE approval_status(
@@ -110,12 +113,6 @@ CREATE TABLE administrator_notification(
     notification_text VARCHAR(1000) NOT NULL,
     production_id INT REFERENCES production(id) NOT NULL,
     approval_status_id INT REFERENCES approval_status(id) NOT NULL
-);
-
-CREATE TABLE not_viewed(
-    administrator_id INT REFERENCES administrator(id),
-    notification_id INT REFERENCES administrator_notification(id),
-    PRIMARY KEY(administrator_id, notification_id)
 );
 
 CREATE TABLE approved(

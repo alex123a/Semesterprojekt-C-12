@@ -23,7 +23,7 @@
             </ImageView>
             <HBox alignment="CENTER_RIGHT" layoutX="1120.0" layoutY="15.0" prefHeight="61.0" prefWidth="160.0">
                <children>
-                  <ImageView fx:id="searchImage" onMouseEntered="#onMouseEnteredSearch" onMouseExited="#onMouseExitedSearch" style="-fx-cursor:hand;" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="searchImage" onMouseEntered="#onMouseEnteredSearch" onMouseExited="#onMouseExitedSearch" onMouseClicked="#onSearchClicked" style="-fx-cursor:hand;" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@/images/Search_Grey.jpg" />
                      </image>
@@ -31,7 +31,7 @@
                         <Insets right="30.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fx:id="accountImage" onMouseEntered="#onMouseEnteredAccount" onMouseExited="#onMouseExitedAccount" style="-fx-cursor:hand;" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="accountImage" onMouseClicked="#goToLogin" onMouseEntered="#onMouseEnteredAccount" onMouseExited="#onMouseExitedAccount" style="-fx-cursor:hand;" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@/images/Account_Grey.jpg" />
                      </image>
@@ -39,7 +39,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0">
+                  <Pane onMouseClicked="#goToNotifications" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0">
                      <children>
                         <ImageView style="-fx-cursor:hand;" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                            <image>

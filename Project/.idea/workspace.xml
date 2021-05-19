@@ -5,12 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentation/CreditWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd/storage_v2/_src_/database/d82q285u8akq13.6r0x2g/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd/storage_v2/_src_/database/d82q285u8akq13.6r0x2g/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_15.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_15.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_15_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_15.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/Producer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/SystemAdministrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/SystemAdministrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IFacadeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IFacadeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IRightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IRightsholder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Rightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Rightsholder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/NewProduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/NewProduction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/NewRightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/NewRightsholder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IRightsholder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/Production.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/Production.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewRightsholder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" beforeDir="false" />
     </list>
+    <list id="398e6fdf-0be6-40ca-90c6-9a77a5d92e74" name="Changes by alexv" comment="" />
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +66,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -72,7 +94,7 @@
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\layout" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test (1)">
+  <component name="RunManager" selected="Application.NewMain">
     <configuration name="NewMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="presentation.NewMain" />
       <module name="Project" />
@@ -99,6 +121,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="data.credits.Test" />
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="data.credits.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="data.Test" />
       <module name="Project" />
@@ -112,10 +147,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test (1)" />
         <item itemvalue="Application.NewMain" />
+        <item itemvalue="Application.Test (2)" />
+        <item itemvalue="Application.Test (1)" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -144,6 +191,12 @@
       <workItem from="1621240973258" duration="1185000" />
       <workItem from="1621274136159" duration="281000" />
       <workItem from="1621321021816" duration="352000" />
+      <workItem from="1621323867111" duration="7825000" />
+      <workItem from="1621346034841" duration="806000" />
+      <workItem from="1621346879205" duration="232000" />
+      <workItem from="1621347139750" duration="63000" />
+      <workItem from="1621353834550" duration="34000" />
+      <workItem from="1621408821978" duration="4051000" />
     </task>
     <servers />
   </component>
