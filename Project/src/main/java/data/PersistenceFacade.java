@@ -37,6 +37,11 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
+    public boolean addUser(IUser user) {
+        return UserFacade.getInstance().addUser(user);
+    }
+
+    @Override
     public IUser getUser(IUser user) {
         return UserFacade.getInstance().getUser(user);
     }

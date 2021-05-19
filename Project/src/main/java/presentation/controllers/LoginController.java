@@ -1,6 +1,8 @@
 package presentation.controllers;
 
+import Interfaces.IUser;
 import domain.DomainFacade;
+import domain.authentication.AuthenticationHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,10 +14,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.userManage.Producer;
 import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 public class LoginController {
     @FXML
@@ -61,14 +66,15 @@ public class LoginController {
         }
     }
 
-    private void checkPassword(TextField passwordShownInput) {
-        if (usernameInput.getText().equals("") && passwordShownInput.getText().equals("")) {
+    private void checkPassword(TextField passwordInput) {
+        if (usernameInput.getText().equals("") && passwordInput.getText().equals("")) {
             emptyLogin();
         } else {
-            User user = new User(usernameInput.getText(), passwordHiddenInput.getText());
-            if (DomainFacade.getInstance().login(user)) {
-                if (DomainFacade.getInstance().validateUser(DomainFacade.getInstance().getUser(user))) {
-                    DomainFacade.getInstance().setCurrentUser(new Systemadministrator(usernameInput.getText(), passwordHiddenInput.getText()));
+            IUser user = DomainFacade.getInstance().getUser(new User(usernameInput.getText(), passwordInput.getText()));
+            if (DomainFacade.getInstance().login(new User(usernameInput.getText(),passwordInput.getText()))) {
+                if (DomainFacade.getInstance().validateUser(user)) {
+                    DomainFacade.getInstance().setCurrentUser(user);
+                    System.out.println("admin");
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
                         Stage window = (Stage) backArrow.getScene().getWindow();
@@ -77,7 +83,8 @@ public class LoginController {
                         e.printStackTrace();
                     }
                 } else {
-                    DomainFacade.getInstance().setCurrentUser(new Systemadministrator(usernameInput.getText(), passwordHiddenInput.getText()));
+                    DomainFacade.getInstance().setCurrentUser(user);
+                    System.out.println("producer");
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/menuProducer.fxml"));
                         Stage window = (Stage) backArrow.getScene().getWindow();
