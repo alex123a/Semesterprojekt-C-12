@@ -9,6 +9,8 @@ import enumerations.ProductionSorting;
 import enumerations.ProductionType;
 import enumerations.RightholderSorting;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 import java.util.Map;
 
@@ -131,6 +133,7 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean editUser(IUser user) {
+
         return PersistenceFacade.getInstance().editUser(user);
     }
 
@@ -157,5 +160,15 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public void setCurrentUser(IUser user) {
         CurrentSession.getInstance().setCurrentUser(user);
+    }
+
+    @Override
+    public String generateStrongPasswordHash(String password) {
+        try {
+            return AuthenticationHandler.getInstance().generateStrongPasswordHash(password);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
