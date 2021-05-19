@@ -1,6 +1,7 @@
 package presentation.controllers;
 
 import Interfaces.IProduction;
+import Interfaces.IRightsholder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +19,8 @@ import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ProductionController implements Initializable {
@@ -37,7 +40,11 @@ public class ProductionController implements Initializable {
         // .getDescription() er ikke implementeret i IProduction
         //draw(r.getToBeShown().getName(), r.getToBeShown().getDescription());
 
-        draw("Star Wars", "It's a movie bro");
+        draw(r.getToBeShown().getName(), r.getToBeShown().getDescription());
+        // todo : Add rightsholders when getRightsholders is implemented
+        // getRightsholders er ikke implementeret endnu
+        //Map<IRightsholder, List<String>> rightsholders = r.getToBeShown().getRightsholders();
+
         createRole("John", "Han Solo");
     }
 
