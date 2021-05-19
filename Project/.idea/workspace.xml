@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/Producer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/SystemAdministrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/SystemAdministrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +19,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="Kotlin Class" />
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -45,13 +42,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/stylesheets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -65,6 +63,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project\src\main\resources" />
+      <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project\src\main\java" />
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\stylesheets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -72,7 +72,7 @@
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\layout" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test (1)">
+  <component name="RunManager" selected="Application.NewMain">
     <configuration name="NewMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="presentation.NewMain" />
       <module name="Project" />
@@ -112,10 +112,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test (1)" />
         <item itemvalue="Application.NewMain" />
+        <item itemvalue="Application.Test (1)" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -142,8 +153,12 @@
       <workItem from="1619429941866" duration="519000" />
       <workItem from="1621237740230" duration="2697000" />
       <workItem from="1621240973258" duration="1185000" />
-      <workItem from="1621274136159" duration="281000" />
-      <workItem from="1621321021816" duration="352000" />
+      <workItem from="1621322469572" duration="191000" />
+      <workItem from="1621322679507" duration="7159000" />
+      <workItem from="1621331295897" duration="454000" />
+      <workItem from="1621331791688" duration="6538000" />
+      <workItem from="1621369246420" duration="25000" />
+      <workItem from="1621408514482" duration="5809000" />
     </task>
     <servers />
   </component>

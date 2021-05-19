@@ -1,8 +1,8 @@
 package presentation.controllers;
 
 import Interfaces.IProduction;
-import Interfaces.ISeeCredits;
 import domain.CreditsManagement.CreditsSystem;
+import domain.DomainFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +19,6 @@ import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MyProductionsController implements Initializable {
@@ -77,13 +76,22 @@ public class MyProductionsController implements Initializable {
     }
 
     public void onBackClicked(MouseEvent mouseEvent) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
-            Stage window = (Stage) addProgramBut.getScene().getWindow();
-            window.setScene(new Scene(root, 1300, 700));
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (DomainFacade.getInstance().validateUser(DomainFacade.getInstance().getCurrentUser())) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
+                Stage window = (Stage) addProgramBut.getScene().getWindow();
+                window.setScene(new Scene(root, 1300, 700));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/layout/menuProducer.fxml"));
+                Stage window = (Stage) addProgramBut.getScene().getWindow();
+                window.setScene(new Scene(root, 1300, 700));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
