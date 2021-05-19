@@ -39,7 +39,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Pane onMouseClicked="#goToNotifications" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0">
+                  <Pane onMouseClicked="#goToNotifications" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" visible="false">
                      <children>
                         <ImageView style="-fx-cursor:hand;" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -63,7 +63,7 @@
       </Pane>
       <HBox alignment="CENTER" layoutX="165.0" layoutY="91.0" prefHeight="45.0" prefWidth="800.0">
          <children>
-            <Button fx:id="menuMyBroadcast" mnemonicParsing="false" onMouseClicked="#onBroadcastClicked" stylesheets="@/stylesheets/ButtonStyle.css" text="Mine udsendelser">
+            <Button fx:id="menuMyBroadcast" mnemonicParsing="false" onMouseClicked="#onBroadcastClicked" stylesheets="@/stylesheets/ButtonStyle.css" text="Mine udsendelser" visible="false">
                <font>
                   <Font name="Calibri" size="20.0" />
                </font>
@@ -93,7 +93,7 @@
                </HBox.margin>
             </Button>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Button fx:id="menuEditUser" mnemonicParsing="false" onMouseClicked="#onEditUserClicked" stylesheets="@/stylesheets/ButtonStyle.css" text="Rediger Brugere">
+            <Button fx:id="menuEditUser" mnemonicParsing="false" onMouseClicked="#onEditUserClicked" stylesheets="@/stylesheets/ButtonStyle.css" text="Rediger Brugere" visible="false">
                <font>
                   <Font name="Calibri" size="20.0" />
                </font>
@@ -357,7 +357,7 @@
             </VBox>
          </children>
       </Pane>
-      <Label stylesheets="@/stylesheets/LabelStyle.css" layoutX="1210.0" layoutY="109.0" text="Log ud">
+      <Label fx:id="menulogOut" stylesheets="@/stylesheets/LabelStyle.css" layoutX="1210.0" layoutY="109.0" text="Log ud" visible="false">
          <font>
             <Font name="Calibri" size="20.0" />
          </font>

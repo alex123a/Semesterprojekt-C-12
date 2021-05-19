@@ -2,6 +2,8 @@ package data.userHandling;
 
 import Interfaces.IUser;
 import Interfaces.IUserHandling;
+
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +23,10 @@ public class UserManager implements IUserHandling {
     @Override
     public String getDatabasePassword(IUser user) {
         try {
-            PreparedStatement queryStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT user_password FROM users WHERE username = ?");
             queryStatement.setString(1, user.getUsername());
             ResultSet resultSet = queryStatement.executeQuery();
+            resultSet.next();
             return resultSet.getString("user_password");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -34,9 +37,8 @@ public class UserManager implements IUserHandling {
     @Override
     public IUser getUser(IUser user) {
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE username = ? and user_password = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
             statement.setString(1, user.getUsername());
-            statement.setString(2, user.getPassword());
             ResultSet result = statement.executeQuery();
             int id = 0;
             String username = "";
@@ -54,14 +56,13 @@ public class UserManager implements IUserHandling {
             PreparedStatement admins = connection.prepareStatement("SELECT id FROM administrator");
             ResultSet resultAdmin = admins.executeQuery();
             while (resultAdmin.next()) {
-                adminList.add(result.getInt(1));
+                adminList.add(resultAdmin.getInt(1));
             }
             PreparedStatement producers = connection.prepareStatement("SELECT id FROM producer");
             ResultSet resultProducer = producers.executeQuery();
             while (resultProducer.next()) {
                 producerList.add(resultProducer.getInt(1));
             }
-
             // Finding out which list the user is and returns the user with the correct authentication/user type
             for (Integer theId: adminList) {
                 if (theId == id) {
@@ -76,6 +77,7 @@ public class UserManager implements IUserHandling {
             }
 
         } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
         return null;
     }
@@ -177,6 +179,35 @@ public class UserManager implements IUserHandling {
             updateStatement.setString(2,user.getPassword());
             updateStatement.setInt(3,user.getId());
             updateStatement.execute();
+            return true;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean addUser(IUser user) {
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO users(username, user_password) VALUES (?, ?)");
+            insertStatement.setString(1, user.getUsername());
+            insertStatement.setString(2, user.getPassword());
+            insertStatement.execute();
+
+            PreparedStatement selectStatement = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
+            selectStatement.setString(1, user.getUsername());
+            ResultSet selectResult = selectStatement.executeQuery();
+            selectResult.next();
+            int userID = selectResult.getInt("id");
+
+            if(user instanceof Producer) {
+                insertStatement = connection.prepareStatement("INSERT INTO producers(id) VALUES ? ");
+            } else {
+                insertStatement = connection.prepareStatement("INSERT INTO administrator(id) VALUES ? ");
+            }
+            insertStatement.setInt(1, userID);
+            insertStatement.execute();
+
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();

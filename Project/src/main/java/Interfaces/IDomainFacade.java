@@ -5,6 +5,8 @@ public interface IDomainFacade extends
         IUserAuthentication,
         IAuthenticator,
         ISeeCredits,
-        ICreditManagement {
+        ICreditManagement,
+        IUserHandling,
+        ISession {
 
 }

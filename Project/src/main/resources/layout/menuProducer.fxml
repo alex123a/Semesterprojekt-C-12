@@ -31,7 +31,7 @@
                         <Insets right="30.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fx:id="accountImage" onMouseClicked="#goToLogin" onMouseEntered="#onMouseEnteredAccount" onMouseExited="#onMouseExitedAccount" style="-fx-cursor:hand;" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="accountImage" onMouseClicked="#goToLogin" onMouseEntered="#onMouseEnteredAccount" onMouseExited="#onMouseExitedAccount" style="-fx-cursor:hand;" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@/images/Account_Grey.jpg" />
                      </image>
@@ -39,7 +39,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Pane onMouseClicked="#goToNotifications" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" visible="false">
+                  <Pane onMouseClicked="#goToNotifications" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="50.0">
                      <children>
                         <ImageView style="-fx-cursor:hand;" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -63,7 +63,7 @@
       </Pane>
       <HBox alignment="CENTER" layoutX="165.0" layoutY="91.0" prefHeight="45.0" prefWidth="800.0">
          <children>
-            <Button fx:id="menuMyBroadcast" mnemonicParsing="false" onMouseClicked="#onBroadcastClicked" stylesheets="@/stylesheets/ButtonStyle.css" text="Mine udsendelser" visible="false">
+            <Button fx:id="menuMyBroadcast" mnemonicParsing="false" onMouseClicked="#onBroadcastClicked" stylesheets="@/stylesheets/ButtonStyle.css" text="Mine udsendelser">
                <font>
                   <Font name="Calibri" size="20.0" />
                </font>
@@ -256,7 +256,7 @@
                      <children>
                         <ImageView fitHeight="45.0" fitWidth="96.0" layoutX="18.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/TV2News.jpg" />
+                              <Image url="/images/TV2News.jpg" />
                            </image>
                         </ImageView>
                         <Separator layoutY="59.0" prefHeight="3.0" prefWidth="899.0" stylesheets="@/stylesheets/SeperatorStyle.css" />
@@ -357,7 +357,7 @@
             </VBox>
          </children>
       </Pane>
-      <Label fx:id="menulogOut" stylesheets="@/stylesheets/LabelStyle.css" layoutX="1210.0" layoutY="109.0" text="Log ud" visible="false">
+      <Label fx:id="menulogOut" stylesheets="@/stylesheets/LabelStyle.css" layoutX="1210.0" layoutY="109.0" text="Log ud" onMouseClicked="#logOut">
          <font>
             <Font name="Calibri" size="20.0" />
          </font>

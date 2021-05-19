@@ -12,14 +12,15 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,6 +28,10 @@ import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
 
+    @FXML
+    ImageView backButton;
+    @FXML
+    ComboBox<String> typeComboBox;
     @FXML
     ImageView backButton;
     @FXML
