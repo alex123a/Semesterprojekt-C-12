@@ -3,7 +3,6 @@ package data.reporting;
 import Interfaces.IReporting;
 import data.DatabaseConnection;
 import data.Production;
-import enumerations.Roles;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,12 +36,20 @@ public class ReportHandler implements IReporting {
     }
 
     @Override
-    public void generateProductionCreditsCount(Production production, Roles role) {
+    public int generateProductionCreditsCount(Production production, String title) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(id) FROM appears_in ap, role r, title t" +
+            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(ap.id) FROM appears_in ap, role r, title t" +
                     " WHERE ap.production_id = ? and t.title = ? and r.title_id = t.id and r.appears_in_id = ap.id");
+            statement.setInt(1, production.getProductionID());
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                return result.getInt(1);
+            } else {
+                return 0;
+            }
         } catch (SQLException e) {
-
+            e.printStackTrace();
+            return -1;
         }
     }
 
