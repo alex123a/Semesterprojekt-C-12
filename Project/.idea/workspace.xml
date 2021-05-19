@@ -7,8 +7,11 @@
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menuProducer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menuProducer.fxml" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -160,7 +163,7 @@
       <workItem from="1621331295897" duration="454000" />
       <workItem from="1621331791688" duration="6538000" />
       <workItem from="1621369246420" duration="25000" />
-      <workItem from="1621408514482" duration="4241000" />
+      <workItem from="1621408514482" duration="5809000" />
     </task>
     <servers />
   </component>
