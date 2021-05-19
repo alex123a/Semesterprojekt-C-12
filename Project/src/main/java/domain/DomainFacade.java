@@ -117,23 +117,12 @@ public class DomainFacade implements IDomainFacade {
     }
 
     @Override
-    public boolean makeUserProducer(IUser user) {
-        return PersistenceFacade.getInstance().makeUserProducer(user);
-    }
-
-    @Override
-    public boolean makeUserAdmin(IUser user) {
-        return PersistenceFacade.getInstance().makeUserAdmin(user);
-    }
-
-    @Override
     public boolean deleteUser(IUser user) {
         return PersistenceFacade.getInstance().deleteUser(user);
     }
 
     @Override
     public boolean editUser(IUser user) {
-
         return PersistenceFacade.getInstance().editUser(user);
     }
 
@@ -144,7 +133,10 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean addUser(IUser user) {
-        return PersistenceFacade.getInstance().addUser(user);
+        if (PersistenceFacade.getInstance().getUser(user) == null) {
+            return PersistenceFacade.getInstance().addUser(user);
+        }
+        return false;
     }
 
     @Override

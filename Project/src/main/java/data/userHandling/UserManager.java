@@ -1,5 +1,7 @@
 package data.userHandling;
 
+import Interfaces.IAdministrator;
+import Interfaces.IProducer;
 import Interfaces.IUser;
 import Interfaces.IUserHandling;
 
@@ -66,13 +68,15 @@ public class UserManager implements IUserHandling {
             // Finding out which list the user is and returns the user with the correct authentication/user type
             for (Integer theId: adminList) {
                 if (theId == id) {
-                    return new SystemAdministrator(theId, username, password);
+                    IAdministrator administrator = new SystemAdministrator(theId, username, password);
+                    return administrator;
                 }
             }
 
             for (Integer theId: producerList) {
                 if (theId == id) {
-                    return new Producer(theId, username, password);
+                    IProducer producer = new Producer(theId, username, password);
+                    return producer;
                 }
             }
 
@@ -109,53 +113,6 @@ public class UserManager implements IUserHandling {
             System.out.println(exception.getMessage());
         }
         return list;
-    }
-
-    @Override
-    public boolean makeUserProducer(IUser user) {
-        try {
-            PreparedStatement selectStatement = connection.prepareStatement("SELECT id FROM producer WHERE id = ?");
-            selectStatement.setInt(1, user.getId());
-            ResultSet result = selectStatement.executeQuery();
-            if (result != null) {
-                PreparedStatement deleteStatement = connection.prepareStatement("DELETE id FROM administrator WHERE id = ?");
-                deleteStatement.setInt(1, user.getId());
-                deleteStatement.execute();
-            }
-            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO producer(id) VALUES (?)");
-            insertStatement.setInt(1, user.getId());
-            insertStatement.execute();
-            return true;
-        } catch (SQLException exception) {
-            System.out.println("Error making user producer");
-            System.out.println(exception.getMessage());
-        }
-        return false;
-    }
-
-    @Override
-    public boolean makeUserAdmin(IUser user) {
-        try {
-            PreparedStatement selectStatement = connection.prepareStatement("SELECT id FROM administrator WHERE id = ?");
-            selectStatement.setInt(1, user.getId());
-            ResultSet result = selectStatement.executeQuery();
-            if (result != null) {
-                PreparedStatement deleteStatement = connection.prepareStatement("DELETE id FROM producer WHERE id = ? ");
-                deleteStatement.setInt(1, user.getId());
-                deleteStatement.execute();
-            }
-
-            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO administrator(id) VALUES (?)");
-            insertStatement.setInt(1, user.getId());
-            insertStatement.execute();
-            return true;
-
-
-        } catch (SQLException exception) {
-            System.out.println("Error making user administrator");
-            System.out.println(exception.getMessage());
-        }
-        return false;
     }
 
     @Override
@@ -200,10 +157,10 @@ public class UserManager implements IUserHandling {
             selectResult.next();
             int userID = selectResult.getInt("id");
 
-            if(user instanceof Producer) {
-                insertStatement = connection.prepareStatement("INSERT INTO producers(id) VALUES ? ");
+            if(user instanceof IProducer) {
+                insertStatement = connection.prepareStatement("INSERT INTO producer(id) VALUES (?) ");
             } else {
-                insertStatement = connection.prepareStatement("INSERT INTO administrator(id) VALUES ? ");
+                insertStatement = connection.prepareStatement("INSERT INTO administrator(id) VALUES (?) ");
             }
             insertStatement.setInt(1, userID);
             insertStatement.execute();

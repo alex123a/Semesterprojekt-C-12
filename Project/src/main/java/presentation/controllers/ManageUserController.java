@@ -1,5 +1,7 @@
 package presentation.controllers;
 
+import Interfaces.IAdministrator;
+import Interfaces.IProducer;
 import data.PersistenceFacade;
 import domain.DomainFacade;
 import Interfaces.IUser;
@@ -38,9 +40,6 @@ public class ManageUserController {
     private TextField changePassword;
 
     @FXML
-    private ComboBox<String> changeUserType;
-
-    @FXML
     private TextField removeSearchUsername;
 
     @FXML
@@ -48,13 +47,22 @@ public class ManageUserController {
         System.out.println("Test");
         IUser currentUser = DomainFacade.getInstance().getCurrentUser();
         System.out.println(DomainFacade.getInstance().validateUser(currentUser));
+        boolean success = false;
         if (DomainFacade.getInstance().validateUser(currentUser)) {
             String userUsername = username.getText();
-            String userPassword = password.getText();
-            String userUserType = userType.getValue().toString();
+            String userPassword = DomainFacade.getInstance().generateStrongPasswordHash(password.getText());
+            String userUserType = userType.getValue();
+            IUser user = (userUserType.equals("Systemadministrator")) ? new Systemadministrator(userUsername, userPassword) : new Producer(userUsername, userPassword);
+            success = DomainFacade.getInstance().addUser(user);
+
             System.out.println("Username: " + userUsername);
             System.out.println("Password: " + userPassword);
             System.out.println("Type: " + userUserType);
+        }
+        if(success) {
+            System.out.println("Nice");
+        } else {
+            System.out.println("Sheisse");
         }
     }
 
@@ -66,35 +74,21 @@ public class ManageUserController {
     @FXML
     void updateUser(ActionEvent event) {
         IUser currentUser = DomainFacade.getInstance().getCurrentUser();
-        boolean success = false;
         if (DomainFacade.getInstance().validateUser(currentUser)) {
             String searchedUser = editSearchUsername.getText();
             System.out.println("Search : " + searchedUser);
             IUser tempUser = new User(searchedUser);
             IUser user = DomainFacade.getInstance().getUser(tempUser);
-            System.out.println("user : " + user.getUsername());
             if (!changeUsername.getText().equals("") || !changePassword.getText().equals("")) {
                 if (!changeUsername.getText().equals("")) {
+                    System.out.println("username: " + changeUsername.getText());
                     user.setUsername(changeUsername.getText());
                 }
                 if (!changePassword.getText().equals("")) {
                     user.setPassword(DomainFacade.getInstance().generateStrongPasswordHash(changePassword.getText()));
                 }
-                success = DomainFacade.getInstance().editUser(user);
+                DomainFacade.getInstance().editUser(user);
             }
-//            if (changeUserType.getValue() != null) {
-//                String usertype = changeUserType.getValue();
-//                if (user instanceof Producer && usertype.equals("Systemadministrator")) {
-//                    success = DomainFacade.getInstance().makeUserAdmin(user);
-//                } else if (user instanceof Systemadministrator && usertype.equals("Producer")) {
-//                    success = DomainFacade.getInstance().makeUserProducer(user);
-//                }
-//            }
-        }
-        if (success) {
-            System.out.println("Nice");
-        } else {
-            System.out.println("Sheisse");
         }
     }
 
@@ -138,7 +132,6 @@ public class ManageUserController {
     public void initialize() {
         ObservableList<String> roles = FXCollections.observableArrayList("Producer", "Systemadministrator");
         userType.setItems(roles);
-        changeUserType.setItems(roles);
     }
 
 }
