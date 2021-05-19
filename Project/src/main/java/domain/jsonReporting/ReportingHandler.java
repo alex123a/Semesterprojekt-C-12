@@ -3,17 +3,17 @@ package domain.jsonReporting;
 import Interfaces.IProduction;
 import Interfaces.IReportHandler;
 import data.PersistenceFacade;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ReportHandler implements IReportHandler {
-    private static final ReportHandler report = new ReportHandler();
+public class ReportingHandler implements IReportHandler {
+    private static final ReportingHandler report = new ReportingHandler();
 
-    private ReportHandler() {}
+    private ReportingHandler() {}
 
     @Override
     public JSONObject getTotalCreditCount() {
@@ -24,15 +24,21 @@ public class ReportHandler implements IReportHandler {
     }
 
     @Override
-    public List<JSONObject> generateProductionCreditsCount(IProduction production) {
+    public JSONObject generateProductionCreditsCount(IProduction production) {
         Map<String, Integer> creditMap = new HashMap<>(PersistenceFacade.getInstance().generateProductionCreditsCount(production));
-        List<JSONObject> jsonObjectList = new ArrayList<>();
+        JSONObject jsonReturn = new JSONObject();
+        JSONArray jsonObjectList = new JSONArray();
+        int totalNumOfCredits = 0;
         for (String i : creditMap.keySet()) {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put(i,creditMap.get(i));
+            jsonObject.put("Role", i);
+            jsonObject.put("RoleCount",creditMap.get(i));
             jsonObjectList.add(jsonObject);
+            totalNumOfCredits += creditMap.get(i);
         }
-        return jsonObjectList;
+        jsonReturn.put("TotalNumberOfCredits",totalNumOfCredits);
+        jsonReturn.put("Credit types",jsonObjectList);
+        return jsonReturn;
     }
 
     @Override
@@ -50,7 +56,7 @@ public class ReportHandler implements IReportHandler {
         return null;
     }
 
-    public IReportHandler getInstance() {
+    public static IReportHandler getInstance() {
         return report;
     }
 }
