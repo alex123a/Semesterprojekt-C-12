@@ -46,6 +46,9 @@ public class LoginController {
 
     // Method for when the user clicks login
     public void loginClicked(MouseEvent mouseEvent) {
+        String password;
+        String username;
+
         wrongInput.setVisible(false);
 
         // Checks if the input is empty
@@ -87,6 +90,26 @@ public class LoginController {
                 failedLogin();
             }
         }
+        if(passwordToggle.getImage().equals(closedEye)) {
+            if (usernameInput.getText().equals("") && passwordHiddenInput.getText().equals("")) {
+                emptyLogin();
+            }
+            else {
+                username = usernameInput.getText();
+                password = passwordHiddenInput.getText();
+            }
+        }
+        else {
+            if (usernameInput.getText().equals("") && passwordShownInput.getText().equals("")) {
+                emptyLogin();
+            }
+            else {
+                username = usernameInput.getText();
+                password = passwordHiddenInput.getText();
+            }
+        }
+
+        // todo: Send login information to be checked
     }
 
     // Method to show that the login is wrong

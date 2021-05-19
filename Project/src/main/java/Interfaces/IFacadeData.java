@@ -8,13 +8,13 @@ public interface IFacadeData {
 
     List<IRightsholder> getRightsholders();
 
-    void insertRightsholder(IRightsholder rightsholder);
+    void saveRightsholder(IRightsholder rightsholder);
 
     IProduction getProduction(String id);
 
     List<IProduction> getProductions();
 
-    void insertProduction(IProduction production);
+    void saveProduction(IProduction production);
 
     void deleteProduction(IProduction production);
 }

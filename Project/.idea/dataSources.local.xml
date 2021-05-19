@@ -6,5 +6,20 @@
       <secret-storage>master_key</secret-storage>
       <schema-mapping />
     </data-source>
+    <data-source name="d82q285u8akq13@ec2-34-250-16-127.eu-west-1.compute.amazonaws.com" uuid="b2730d7a-0004-413c-8c4b-a30dffa035dd">
+      <database-info product="PostgreSQL" version="13.2 (Ubuntu 13.2-1.pgdg20.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="13.2" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>pjmqbdledqjucs</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="d82q285u8akq13">
+            <node kind="schema" qname="@" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
   </component>
 </project>
