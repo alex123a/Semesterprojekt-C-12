@@ -3,6 +3,8 @@ package presentation.controllers;
 import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,6 +33,8 @@ public class AddProductionController implements Initializable {
     private ComboBox<String> comboCategory;
     @FXML
     private ComboBox<String> comboProducer;
+    @FXML
+    private TextField yearInput;
 
     @FXML
     private TextArea descriptionProgramArea;
@@ -73,6 +77,16 @@ public class AddProductionController implements Initializable {
         comboGenre.setItems(genreOptions);
         ObservableList<String> sortOptions = FXCollections.observableArrayList("Kristian", "John");
         comboProducer.setItems(sortOptions);
+
+        yearInput.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    yearInput.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
 
     @FXML
@@ -127,6 +141,14 @@ public class AddProductionController implements Initializable {
         String id = programIDField.getText();
         String name = programNameField.getText();
         String description = descriptionProgramArea.getText();
+        int year = Integer.parseInt(yearInput.getText());
+        String genre = comboGenre.getValue();
+        String category = comboCategory.getValue();
+        // todo : Producer should be a IProducer
+        // so it's easier to handle,
+        // but we can't get a IProducer out of the comboBox since it's a string *thinking emoji*
+        String producer = comboProducer.getValue();
+
         CreditWrapper[] rightsholders = rightholderListview.getItems().toArray(new CreditWrapper[0]);
         // Map over rightholders with their roles
         Map<IRightsholder, List<String>> RhsRoles = new HashMap<>();
