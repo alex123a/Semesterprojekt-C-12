@@ -108,7 +108,7 @@
                               <Font size="16.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="searchUsername" layoutX="132.0" layoutY="102.0" prefHeight="43.0" prefWidth="229.0" promptText="Brugernavn" style="-fx-background-radius: 3px;">
+                        <TextField fx:id="editSearchUsername" layoutX="132.0" layoutY="102.0" prefHeight="43.0" prefWidth="229.0" promptText="Brugernavn" style="-fx-background-radius: 3px;">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -157,7 +157,7 @@
                               <Image url="@/images/Search_Grey.jpg" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="searchUsername" layoutX="112.0" layoutY="145.0" prefHeight="43.0" prefWidth="229.0" promptText="Brugernavn" style="-fx-background-radius: 3px;">
+                        <TextField fx:id="removeSearchUsername" layoutX="112.0" layoutY="145.0" prefHeight="43.0" prefWidth="229.0" promptText="Brugernavn" style="-fx-background-radius: 3px;">
                            <font>
                               <Font size="16.0" />
                            </font>

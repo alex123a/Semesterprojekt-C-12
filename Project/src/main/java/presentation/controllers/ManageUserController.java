@@ -1,7 +1,9 @@
 package presentation.controllers;
 
+import data.PersistenceFacade;
 import domain.DomainFacade;
 import Interfaces.IUser;
+import domain.authentication.AuthenticationHandler;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +14,9 @@ import javafx.scene.control.TextField;
 import presentation.userManage.Producer;
 import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 public class ManageUserController {
     @FXML
@@ -27,13 +32,16 @@ public class ManageUserController {
     private TextField changeUsername;
 
     @FXML
-    private TextField searchUsername;
+    private TextField editSearchUsername;
 
     @FXML
     private TextField changePassword;
 
     @FXML
     private ComboBox<String> changeUserType;
+
+    @FXML
+    private TextField removeSearchUsername;
 
     @FXML
     void addUser(ActionEvent event) {
@@ -57,7 +65,37 @@ public class ManageUserController {
 
     @FXML
     void updateUser(ActionEvent event) {
-
+        IUser currentUser = DomainFacade.getInstance().getCurrentUser();
+        boolean success = false;
+        if (DomainFacade.getInstance().validateUser(currentUser)) {
+            String searchedUser = editSearchUsername.getText();
+            System.out.println("Search : " + searchedUser);
+            IUser tempUser = new User(searchedUser);
+            IUser user = DomainFacade.getInstance().getUser(tempUser);
+            System.out.println("user : " + user.getUsername());
+            if (!changeUsername.getText().equals("") || !changePassword.getText().equals("")) {
+                if (!changeUsername.getText().equals("")) {
+                    user.setUsername(changeUsername.getText());
+                }
+                if (!changePassword.getText().equals("")) {
+                    user.setPassword(DomainFacade.getInstance().generateStrongPasswordHash(changePassword.getText()));
+                }
+                success = DomainFacade.getInstance().editUser(user);
+            }
+//            if (changeUserType.getValue() != null) {
+//                String usertype = changeUserType.getValue();
+//                if (user instanceof Producer && usertype.equals("Systemadministrator")) {
+//                    success = DomainFacade.getInstance().makeUserAdmin(user);
+//                } else if (user instanceof Systemadministrator && usertype.equals("Producer")) {
+//                    success = DomainFacade.getInstance().makeUserProducer(user);
+//                }
+//            }
+        }
+        if (success) {
+            System.out.println("Nice");
+        } else {
+            System.out.println("Sheisse");
+        }
     }
 
     private boolean createUser(String username, String password, String type) {
