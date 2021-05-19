@@ -136,8 +136,8 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public int generateProductionCreditsCount(IProduction production, String title) {
-        return ReportHandler.getInstance().generateProductionCreditsCount(production, title);
+    public Map<String, Integer> generateProductionCreditsCount(IProduction production) {
+        return ReportHandler.getInstance().generateProductionCreditsCount(production);
     }
 
     @Override

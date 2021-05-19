@@ -9,10 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class ReportHandler implements IReporting {
@@ -42,40 +39,38 @@ public class ReportHandler implements IReporting {
     }
 
     @Override
-    public int generateProductionCreditsCount(IProduction production, String title) {
-        List<Integer> titles = null;
-        List<String> titleName = null;
+    public Map<String, Integer> generateProductionCreditsCount(IProduction production) {
+        Set<String> titleName = new TreeSet<>();
         try {
             PreparedStatement statement = dbConnection.prepareStatement(
-                    "SELECT r.title_id, t.title FROM appears_in AS ap, role AS r, title AS t" +
+                    "SELECT t.title FROM appears_in AS ap, role AS r, title AS t" +
                     " WHERE ap.production_id = ? and r.title_id = t.id and r.appears_in_id = ap.id");
             statement.setInt(1, ((Production) production).getID());
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                titles.add(result.getInt("title_id"));
                 titleName.add(result.getString("title"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return -1;
+            return null;
         }
-
-        for (Integer tit: titles) {
+        Map<String,Integer> jsonReady = new HashMap<>();
+        for (String tit: titleName) {
             try {
                 PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(ap.id) FROM appears_in AS ap, role AS r, title AS t" +
                         " WHERE ap.production_id = ? and t.title = ? and r.title_id = t.id and r.appears_in_id = ap.id");
                 statement.setInt(1, ((Production) production).getID());
-                statement.setInt(2, tit);
+                statement.setString(2, tit);
                 ResultSet result = statement.executeQuery();
                 while (result.next()) {
-
+                    jsonReady.put(tit,result.getInt(1));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
-                return -1;
+                return null;
             }
         }
-        return 0;
+        return jsonReady;
     }
 
     @Override

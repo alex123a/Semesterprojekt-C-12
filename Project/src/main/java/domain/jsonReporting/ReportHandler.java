@@ -21,9 +21,9 @@ public class ReportHandler implements IReportHandler {
     }
 
     @Override
-    public JSONObject generateProductionCreditsCount(IProduction production, String title) {
+    public JSONObject generateProductionCreditsCount(IProduction production) {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("wd",PersistenceFacade.getInstance().generateProductionCreditsCount(production,title));
+        jsonObject.put("wd",PersistenceFacade.getInstance().generateProductionCreditsCount(production));
 
         return jsonObject;
     }
