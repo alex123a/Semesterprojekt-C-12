@@ -18,9 +18,8 @@ public class Notification implements INotification {
     }
 
     public Notification(int ID, String text, int productionID) {
+        this(text, productionID);
         this.ID = ID;
-        this.text = text;
-        this.productionID = productionID;
     }
 
 

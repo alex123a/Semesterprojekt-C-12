@@ -2,7 +2,9 @@ package data;
 
 import Interfaces.*;
 import data.notifications.NotificationHandler;
+import data.reporting.ReportHandler;
 import data.userHandling.UserFacade;
+import enumerations.Roles;
 
 import java.util.List;
 
@@ -125,11 +127,11 @@ public class PersistenceFacade implements IPersistenceFacade {
 
     @Override
     public int getTotalCreditCount() {
-        throw new UnsupportedOperationException();
+        return ReportHandler.getInstance().getTotalCreditCount();
     }
 
     @Override
-    public void generateProducerCreditsCount() {
+    public void generateProductionCreditsCount(Production production, Roles role) {
         throw new UnsupportedOperationException();
     }
 

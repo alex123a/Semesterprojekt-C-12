@@ -1,10 +1,13 @@
 package Interfaces;
 
+import data.Production;
+import enumerations.Roles;
+
 public interface IReporting {
 
     int getTotalCreditCount();
 
-    void generateProducerCreditsCount();
+    void generateProductionCreditsCount(Production production, Roles role)
 
     void generateCreditTypeCount();
 
