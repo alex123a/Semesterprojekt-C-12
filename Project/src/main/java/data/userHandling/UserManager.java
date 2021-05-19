@@ -65,14 +65,12 @@ public class UserManager implements IUserHandling {
             }
             // Finding out which list the user is and returns the user with the correct authentication/user type
             for (Integer theId: adminList) {
-                System.out.println(theId + " " + id);
                 if (theId == id) {
                     return new SystemAdministrator(theId, username, password);
                 }
             }
 
             for (Integer theId: producerList) {
-                System.out.println(theId + " " + id);
                 if (theId == id) {
                     return new Producer(theId, username, password);
                 }

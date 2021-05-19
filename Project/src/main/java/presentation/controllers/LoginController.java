@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import Interfaces.IUser;
 import domain.DomainFacade;
 import domain.authentication.AuthenticationHandler;
 import javafx.fxml.FXML;
@@ -66,10 +67,10 @@ public class LoginController {
         if (usernameInput.getText().equals("") && passwordInput.getText().equals("")) {
             emptyLogin();
         } else {
-            User user = new User(usernameInput.getText(), passwordInput.getText());
-            if (DomainFacade.getInstance().login(user)) {
-                if (DomainFacade.getInstance().validateUser(DomainFacade.getInstance().getUser(user))) {
-                    DomainFacade.getInstance().setCurrentUser(new Systemadministrator(usernameInput.getText(), passwordInput.getText()));
+            IUser user = DomainFacade.getInstance().getUser(new User(usernameInput.getText(), passwordInput.getText()));
+            if (DomainFacade.getInstance().login(new User(usernameInput.getText(),passwordInput.getText()))) {
+                if (DomainFacade.getInstance().validateUser(user)) {
+                    DomainFacade.getInstance().setCurrentUser(user);
                     System.out.println("admin");
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
@@ -79,7 +80,7 @@ public class LoginController {
                         e.printStackTrace();
                     }
                 } else {
-                    DomainFacade.getInstance().setCurrentUser(new Producer(usernameInput.getText(), passwordInput.getText()));
+                    DomainFacade.getInstance().setCurrentUser(user);
                     System.out.println("producer");
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/menuProducer.fxml"));
