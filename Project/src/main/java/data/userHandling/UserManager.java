@@ -37,7 +37,7 @@ public class UserManager implements IUserHandling {
     @Override
     public IUser getUser(IUser user) {
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE username = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
             statement.setString(1, user.getUsername());
             ResultSet result = statement.executeQuery();
             int id = 0;
