@@ -19,14 +19,63 @@ public class UserManager implements IUserHandling {
     }
 
     @Override
-    public String getDatabasePassword(String username) {
+    public String getDatabasePassword(IUser user) {
         try {
             PreparedStatement queryStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
-            queryStatement.setString(1,username);
+            queryStatement.setString(1, user.getUsername());
             ResultSet resultSet = queryStatement.executeQuery();
             return resultSet.getString("user_password");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public IUser getUser(IUser user) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE username = ? and user_password = ?");
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getPassword());
+            ResultSet result = statement.executeQuery();
+            int id = 0;
+            String username = "";
+            String password = "";
+            while (result.next()) {
+                id = result.getInt(1);
+                username = result.getString(2);
+                password = result.getString(3);
+            }
+
+            List<Integer> adminList = new ArrayList<>();
+            List<Integer> producerList = new ArrayList<>();
+
+            // Here we select all IDs from administrator and producer
+            PreparedStatement admins = connection.prepareStatement("SELECT id FROM administrator");
+            ResultSet resultAdmin = admins.executeQuery();
+            while (resultAdmin.next()) {
+                adminList.add(result.getInt(1));
+            }
+            PreparedStatement producers = connection.prepareStatement("SELECT id FROM producer");
+            ResultSet resultProducer = producers.executeQuery();
+            while (resultProducer.next()) {
+                producerList.add(resultProducer.getInt(1));
+            }
+
+            // Finding out which list the user is and returns the user with the correct authentication/user type
+            for (Integer theId: adminList) {
+                if (theId == id) {
+                    return new SystemAdministrator(theId, username, password);
+                }
+            }
+
+            for (Integer theId: producerList) {
+                if (theId == id) {
+                    return new Producer(theId, username, password);
+                }
+            }
+
+        } catch (SQLException throwables) {
         }
         return null;
     }
@@ -45,7 +94,7 @@ public class UserManager implements IUserHandling {
                 list.add(new Producer(queryResultSet.getInt("id"), queryResultSet.getString("username"), queryResultSet.getString("user_password")));
             }
             //Administrator
-            PreparedStatement adminStatement = connection.prepareStatement("SELECT * FROM producer");
+            PreparedStatement adminStatement = connection.prepareStatement("SELECT * FROM administrator");
             ResultSet adminResult = adminStatement.executeQuery();
             while (adminResult.next()) {
                 PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
@@ -85,7 +134,7 @@ public class UserManager implements IUserHandling {
     @Override
     public boolean makeUserAdmin(IUser user) {
         try {
-            PreparedStatement selectStatement = connection.prepareStatement("SELECT id FROM producer WHERE id = ?");
+            PreparedStatement selectStatement = connection.prepareStatement("SELECT id FROM administrator WHERE id = ?");
             selectStatement.setInt(1, user.getId());
             ResultSet result = selectStatement.executeQuery();
             if (result != null) {
@@ -127,6 +176,7 @@ public class UserManager implements IUserHandling {
             updateStatement.setString(1,user.getUsername());
             updateStatement.setString(2,user.getPassword());
             updateStatement.setInt(3,user.getId());
+            updateStatement.execute();
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();

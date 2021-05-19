@@ -1,7 +1,13 @@
 package data;
 
+import Interfaces.INotification;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import Interfaces.IUser;
+import data.notifications.AdminNotifcation;
+import data.notifications.NotificationHandler;
+import data.notifications.ProducerNotification;
+import data.userHandling.Producer;
 import domain.CreditsManagement.CreditsSystem;
 
 import java.util.ArrayList;
@@ -12,27 +18,51 @@ import java.util.Map;
 public class Test {
 
     public static void main(String[] args) {
-        // Test of ProductionHandler
-        RightsHolderHandler rh = RightsHolderHandler.getInstance();
-        Map<IRightsholder, List<String>> rightsholder;
-        rightsholder = new HashMap<>();
-        List<String> list = new ArrayList<>();
-        list.add("Kamera");
-        String[] productions = {"Star wars", "Sejt"};
-        rightsholder.put(new Rightsholder(1,"Simon","jonnn",productions),list);
-        ProductionHandler ph = ProductionHandler.getInstance();
-        IProduction produc = new Production("122r22sdsdt3","Janisdwa",rightsholder);
-        ph.saveProduction(produc);
-        System.out.println(ph.readProduction("122r22t3").toString());
+        NotificationHandler d = NotificationHandler.getInstance();
+
+        INotification adminNoti = new AdminNotifcation("Sej notification", 1, 1);
+        INotification prodNoti = new ProducerNotification(1, "Sej notfification 2", false, 1);
+        IUser user = new Producer(1, "sejt", "sejt");
+
+        d.createProducerNotification(user, prodNoti);
+        d.createAdminNotification(adminNoti);
 
 
+        List<INotification> listProducer = d.getProducerNotifications(user);
+        System.out.println("size " + listProducer.size());
+        for (INotification noti: listProducer) {
+            System.out.println(noti.getText());
+        }
 
 
-        // Test of RightsHolderHandler
+        List<INotification> listAdmin = d.getAdminNotifications();
+        for (INotification noti: listAdmin) {
+            System.out.println(noti.getText());
+        }
 
-        String[] s = {"Skuespiller","Filmstjerne"};
-        rh.saveRightsholder(new Rightsholder(3,"Sim","Jeg er 24 år gammel og meget sej",s));
-        System.out.println(rh.readRightsholder(3));
+        listProducer.get(0).setText("Ny test text");
+        d.editProducerNotification(listProducer.get(0));
 
+        listAdmin.get(0).setText("My test text 2");
+        d.editAdminNotification(listAdmin.get(0));
+
+        for (INotification noti: listProducer) {
+            System.out.println(noti.getText());
+        }
+
+        for (INotification noti: listAdmin) {
+            System.out.println(noti.getText());
+        }
+
+        d.deleteProducerNotification(listProducer.get(0));
+        d.deleteAdminNotification(listAdmin.get(0));
+
+        for (INotification noti: listProducer) {
+            System.out.println(noti.getText());
+        }
+
+        for (INotification noti: listAdmin) {
+            System.out.println(noti.getText());
+        }
     }
 }

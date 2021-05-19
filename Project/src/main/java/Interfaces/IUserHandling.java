@@ -14,5 +14,7 @@ public interface IUserHandling {
 
     boolean editUser(IUser user);
 
-    String getDatabasePassword(String username);
+    IUser getUser(IUser user);
+    
+    String getDatabasePassword(IUser user);
 }
