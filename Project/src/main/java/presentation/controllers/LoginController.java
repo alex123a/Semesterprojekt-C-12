@@ -90,24 +90,7 @@ public class LoginController {
                 failedLogin();
             }
         }
-        if(passwordToggle.getImage().equals(closedEye)) {
-            if (usernameInput.getText().equals("") && passwordHiddenInput.getText().equals("")) {
-                emptyLogin();
-            }
-            else {
-                username = usernameInput.getText();
-                password = passwordHiddenInput.getText();
-            }
-        }
-        else {
-            if (usernameInput.getText().equals("") && passwordShownInput.getText().equals("")) {
-                emptyLogin();
-            }
-            else {
-                username = usernameInput.getText();
-                password = passwordHiddenInput.getText();
-            }
-        }
+
 
         // todo: Send login information to be checked
     }

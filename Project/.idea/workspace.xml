@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IReporting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IReporting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/reporting/ReportHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/reporting/ReportHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/enumerations/Roles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +81,7 @@
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\layout" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ReportHandler">
+  <component name="RunManager" selected="Application.NewMain">
     <configuration name="NewMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="presentation.NewMain" />
       <module name="Project" />
@@ -128,8 +134,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ReportHandler" />
         <item itemvalue="Application.NewMain" />
+        <item itemvalue="Application.ReportHandler" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -163,6 +169,8 @@
       <workItem from="1621408677209" duration="2979000" />
       <workItem from="1621411696022" duration="24000" />
       <workItem from="1621411739786" duration="3016000" />
+      <workItem from="1621421254707" duration="42000" />
+      <workItem from="1621421316683" duration="528000" />
     </task>
     <servers />
   </component>
