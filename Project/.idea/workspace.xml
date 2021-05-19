@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/production.fxml" beforeDir="false" />
     </list>
+    <list id="398e6fdf-0be6-40ca-90c6-9a77a5d92e74" name="Changes by alexv" comment="" />
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,17 +93,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
