@@ -34,7 +34,8 @@ public class Production implements IProduction {
         this.rightsholders = rightsholders;
     }
 
-    int getID() {
+
+    public int getID() {
         return this.id;
     }
 

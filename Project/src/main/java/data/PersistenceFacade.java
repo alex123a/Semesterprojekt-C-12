@@ -2,9 +2,11 @@ package data;
 
 import Interfaces.*;
 import data.notifications.NotificationHandler;
+import data.reporting.ReportHandler;
 import data.userHandling.UserFacade;
 
 import java.util.List;
+import java.util.Map;
 
 public class PersistenceFacade implements IPersistenceFacade {
     private static final PersistenceFacade PERSISTENCE_FACADE = new PersistenceFacade();
@@ -130,22 +132,22 @@ public class PersistenceFacade implements IPersistenceFacade {
 
     @Override
     public int getTotalCreditCount() {
-        throw new UnsupportedOperationException();
+        return ReportHandler.getInstance().getTotalCreditCount();
     }
 
     @Override
-    public void generateProducerCreditsCount() {
-        throw new UnsupportedOperationException();
+    public int generateProductionCreditsCount(IProduction production, String title) {
+        return ReportHandler.getInstance().generateProductionCreditsCount(production, title);
     }
 
     @Override
-    public void generateCreditTypeCount() {
-        throw new UnsupportedOperationException();
+    public int generateCreditTypeCount(String type) {
+        return ReportHandler.getInstance().generateCreditTypeCount(type);
     }
 
     @Override
-    public void generate10MostCredited() {
-        throw new UnsupportedOperationException();
+    public Map<Integer, Integer> generate10MostCredited() {
+        return ReportHandler.getInstance().generate10MostCredited();
     }
 
     @Override

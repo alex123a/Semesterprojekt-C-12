@@ -6,9 +6,5 @@
       <secret-storage>master_key</secret-storage>
       <schema-mapping />
     </data-source>
-    <data-source name="d82q285u8akq13@ec2-34-250-16-127.eu-west-1.compute.amazonaws.com" uuid="b2730d7a-0004-413c-8c4b-a30dffa035dd">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" exact-version="0" />
-      <schema-mapping />
-    </data-source>
   </component>
 </project>
