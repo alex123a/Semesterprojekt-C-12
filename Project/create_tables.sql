@@ -5,15 +5,15 @@ CREATE TABLE users (
 );
 
 CREATE TABLE producer(
-    id SERIAL PRIMARY KEY REFERENCES users(id)
+    id SERIAL PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE producer_notification(
     id SERIAL PRIMARY KEY,
-    producer_id INT REFERENCES producer(id),
+    producer_id INT REFERENCES producer(id) ON DELETE CASCADE,
     notification_text VARCHAR(1000) NOT NULL,
     viewed BOOLEAN NOT NULL,
-    production_id INT REFERENCES production(id)
+    production_id INT REFERENCES production(id) ON DELETE CASCADE
 );
 
 CREATE TABLE genre(
@@ -33,7 +33,7 @@ CREATE TABLE production(
     year SMALLINT,
     genre_id INT REFERENCES genre(id),
     category_id INT REFERENCES category(id),
-    producer_id INT REFERENCES producer(id) NOT NULL
+    producer_id INT REFERENCES producer(id) NOT NULL ON DELETE CASCADE
 );
 
 CREATE TABLE production_approval(
@@ -43,7 +43,7 @@ CREATE TABLE production_approval(
     year SMALLINT,
     genre_id INT REFERENCES genre(id),
     category_id INT REFERENCES category(id),
-    producer_id INT REFERENCES producer(id) NOT NULL
+    producer_id INT REFERENCES producer(id) NOT NULL ON DELETE CASCADE
 );
 
 CREATE TABLE rightsholder(
@@ -62,13 +62,13 @@ CREATE TABLE rightsholder_approval(
 
 CREATE TABLE appears_in(
     id SERIAL PRIMARY KEY,
-    production_id INT REFERENCES production(id) NOT NULL,
-    rightsholder_id INT REFERENCES rightsholder(id) NOT NULL
+    production_id INT REFERENCES production(id) NOT NULL ON DELETE CASCADE,
+    rightsholder_id INT REFERENCES rightsholder(id) NOT NULL ON DELETE CASCADE
 );
 
 CREATE TABLE appears_in_approval(
-    production_id INT REFERENCES production(id),
-    rightsholder_id INT REFERENCES rightsholder(id),
+    production_id INT REFERENCES production(id) ON DELETE CASCADE,
+    rightsholder_id INT REFERENCES rightsholder(id) ON DELETE CASCADE,
     PRIMARY KEY (production_id, rightsholder_id)
 );
 
@@ -79,7 +79,7 @@ CREATE TABLE title(
 
 CREATE TABLE role(
     id SERIAL PRIMARY KEY,
-    appears_in_id INT REFERENCES appears_in(id) NOT NULL,
+    appears_in_id INT REFERENCES appears_in(id) NOT NULL ON DELETE CASCADE,
     title_id INT REFERENCES title(id) NOT NULL
 );
 
@@ -90,7 +90,7 @@ CREATE TABLE role_approval(
 );
 
 CREATE TABLE rolename(
-    role_id INT PRIMARY KEY REFERENCES role(id),
+    role_id INT PRIMARY KEY REFERENCES role(id) ON DELETE CASCADE,
     rolename VARCHAR(50) NOT NULL
 );
 
@@ -100,7 +100,7 @@ CREATE TABLE rolename_approval(
 );
 
 CREATE TABLE administrator(
-    id SERIAL PRIMARY KEY REFERENCES users(id)
+    id SERIAL PRIMARY KEY REFERENCES users(id) ON DELETE CASECADE
 );
 
 CREATE TABLE approval_status(
@@ -111,14 +111,14 @@ CREATE TABLE approval_status(
 CREATE TABLE administrator_notification(
     id SERIAL PRIMARY KEY,
     notification_text VARCHAR(1000) NOT NULL,
-    production_id INT REFERENCES production(id) NOT NULL,
+    production_id INT REFERENCES production(id) NOT NULL ON DELETE CASCADE,
     approval_status_id INT REFERENCES approval_status(id) NOT NULL
 );
 
 CREATE TABLE approved(
     notification_id INT REFERENCES administrator_notification(id),
     approved_time TIMESTAMP NOT NULL,
-    approved_by INT REFERENCES administrator(id)
+    approved_by INT REFERENCES administrator(id) ON DELETE CASCADE
 );
 
 --INSERT DATA
