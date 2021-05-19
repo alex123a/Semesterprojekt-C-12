@@ -18,12 +18,27 @@ public class ManageUserController {
         return false;
     }
 
-    private boolean changeUsername(String oldUsername, String newUsername) {
+    private IUser createTempUser(String username) {
+        return new User(username);
+    }
+    private boolean changeUsername(String userUsername, String newUsername) {
         IUser currentUser = DomainFacade.getInstance().getCurrentUser();
         if (DomainFacade.getInstance().validateUser(currentUser)) {
-            IUser tempUser = new User(oldUsername, null);
+            IUser tempUser = createTempUser(userUsername);
             IUser user = DomainFacade.getInstance().getUser(tempUser);
             user.setUsername(newUsername);
+            return DomainFacade.getInstance().editUser(user);
+        }
+        return false;
+    }
+
+    private boolean changePassword(String userUsername, String newPassword) {
+        IUser currentUser = DomainFacade.getInstance().getCurrentUser();
+        if(DomainFacade.getInstance().validateUser(currentUser))
+        {
+            IUser tempUser = createTempUser(userUsername);
+            IUser user = DomainFacade.getInstance().getUser(tempUser);
+            user.setPassword(newPassword);
             return DomainFacade.getInstance().editUser(user);
         }
         return false;

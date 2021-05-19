@@ -7,18 +7,17 @@ public class User implements IUser {
     String username;
     String password;
 
-    public User(String username) {
-        this.username = username;
+    public User(int ID, String username, String password) {
+        this(username, password);
+        this.ID = ID;
     }
     public User(String username, String password) {
         this(username);
         this.password = password;
     }
-    public User(int ID, String username, String password) {
-        this(username, password);
-        this.ID = ID;
+    public User(String username) {
+        this.username = username;
     }
-
     @Override
     public int getId() {
         return ID;

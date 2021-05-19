@@ -37,7 +37,7 @@ public class UserManager implements IUserHandling {
     @Override
     public IUser getUser(IUser user) {
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE username = ? and user_password = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ? and user_password = ?");
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getPassword());
             ResultSet result = statement.executeQuery();
@@ -57,16 +57,16 @@ public class UserManager implements IUserHandling {
             PreparedStatement admins = connection.prepareStatement("SELECT id FROM administrator");
             ResultSet resultAdmin = admins.executeQuery();
             while (resultAdmin.next()) {
-                adminList.add(result.getInt(1));
+                adminList.add(resultAdmin.getInt(1));
             }
             PreparedStatement producers = connection.prepareStatement("SELECT id FROM producer");
             ResultSet resultProducer = producers.executeQuery();
             while (resultProducer.next()) {
                 producerList.add(resultProducer.getInt(1));
             }
-
             // Finding out which list the user is and returns the user with the correct authentication/user type
             for (Integer theId: adminList) {
+                System.out.println(theId + id);
                 if (theId == id) {
                     System.out.println(username + " " + password);
                     return new SystemAdministrator(theId, username, password);
@@ -74,6 +74,7 @@ public class UserManager implements IUserHandling {
             }
 
             for (Integer theId: producerList) {
+                System.out.println(theId + id);
                 if (theId == id) {
                     System.out.println(username + " " + password);
                     return new Producer(theId, username, password);
@@ -81,6 +82,7 @@ public class UserManager implements IUserHandling {
             }
 
         } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
         return null;
     }

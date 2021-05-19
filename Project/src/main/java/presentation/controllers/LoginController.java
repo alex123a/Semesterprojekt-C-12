@@ -65,7 +65,7 @@ public class LoginController {
         } else {
             User user = new User(usernameInput.getText(), passwordInput.getText());
             if (DomainFacade.getInstance().login(user)) {
-                System.out.println(DomainFacade.getInstance().getUser(user)  Systemadministrator);
+                System.out.println(DomainFacade.getInstance().getUser(user) instanceof Systemadministrator);
                 if (DomainFacade.getInstance().validateUser(DomainFacade.getInstance().getUser(user))) {
                     DomainFacade.getInstance().setCurrentUser(new Systemadministrator(usernameInput.getText(), passwordInput.getText()));
                     System.out.println("ADmini");

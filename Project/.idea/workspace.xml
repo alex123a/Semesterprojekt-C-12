@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <list id="a8b95ede-44d1-44ab-85f1-a534ec8c9186" name="Changes by maxx0" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/userManage/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/userManage/User.java" afterDir="false" />
     </list>
@@ -44,15 +39,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java">
-      <ranges>
-        <range start1="70" end1="70" start2="70" end2="71" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="76" end1="76" start2="77" end2="78" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="192" end1="193" start2="194" end2="195" changelist="a8b95ede-44d1-44ab-85f1-a534ec8c9186" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1rQK5Km5WstHAcTLM2GKVYa2GXO" />
   <component name="ProjectViewState">
@@ -176,7 +162,7 @@
       <workItem from="1621331295897" duration="454000" />
       <workItem from="1621331791688" duration="6538000" />
       <workItem from="1621369246420" duration="25000" />
-      <workItem from="1621408514482" duration="3046000" />
+      <workItem from="1621408514482" duration="3414000" />
     </task>
     <servers />
   </component>
