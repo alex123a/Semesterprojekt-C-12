@@ -2,6 +2,8 @@ package presentation;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import enumerations.ProductionGenre;
+import enumerations.ProductionType;
 
 import java.util.List;
 import java.util.Map;
@@ -11,6 +13,10 @@ public class NewProduction implements IProduction {
 
     private String productionID;
     private String name;
+    private String description;
+    private int year;
+    private ProductionGenre genre;
+    private ProductionType type;
     Map<IRightsholder, List<String>> rightsholders;
 
     public NewProduction(String productionID, String name, Map<IRightsholder, List<String>> rightsholders) {
@@ -38,12 +44,48 @@ public class NewProduction implements IProduction {
     public void setName(String name) {this.name = name;}
 
     @Override
-    public void setRoles(Map<IRightsholder, List<String>> roles) {
-        rightsholders = roles;
+    public int getYear() {
+        return this.year;
     }
 
-    public void addRightsholder(IRightsholder rightsholder, List<String> roles){
-        rightsholders.put(rightsholder, roles);
+    @Override
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    @Override
+    public ProductionGenre getGenre() {
+        return this.genre;
+    }
+
+    @Override
+    public void setGenre(ProductionGenre genre) {
+        this.genre = genre;
+    }
+
+    @Override
+    public ProductionType getType() {
+        return this.type;
+    }
+
+    @Override
+    public void setType(ProductionType type) {
+        this.type = type;
+    }
+
+    @Override
+    public String getDescription() {
+        return this.description;
+    }
+
+    @Override
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public void setRightsholders(Map<IRightsholder, List<String>> roles) {
+        rightsholders = roles;
     }
 
     @Override
