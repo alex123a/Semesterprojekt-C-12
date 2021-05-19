@@ -63,7 +63,7 @@
                                     </ImageView>
                                  </children>
                               </HBox>
-                              <ComboBox onMouseClicked="#onComboBoxSelection" fx:id="comboCategory" layoutX="14.0" layoutY="77.0" prefHeight="43.0" prefWidth="190.0" promptText="Kategori" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
+                              <ComboBox fx:id="comboCategory" layoutX="14.0" layoutY="77.0" prefHeight="43.0" prefWidth="190.0" promptText="Kategori" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
                               <ComboBox fx:id="comboGenre" layoutX="14.0" layoutY="139.0" prefHeight="43.0" prefWidth="190.0" promptText="Genre" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
                               <ComboBox fx:id="comboSort" layoutX="477.0" layoutY="139.0" prefHeight="43.0" prefWidth="245.0" promptText="Sortering" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
                               <Label layoutX="218.0" layoutY="150.0" text="Årstal" textFill="#4c4c4c">

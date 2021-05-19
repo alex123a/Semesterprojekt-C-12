@@ -43,27 +43,45 @@ public class ReportHandler implements IReporting {
 
     @Override
     public int generateProductionCreditsCount(IProduction production, String title) {
+        List<Integer> titles = null;
+        List<String> titleName = null;
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(ap.id) FROM appears_in ap, role r, title t" +
-                    " WHERE ap.production_id = ? and t.title = ? and r.title_id = t.id and r.appears_in_id = ap.id");
+            PreparedStatement statement = dbConnection.prepareStatement(
+                    "SELECT r.title_id, t.title FROM appears_in AS ap, role AS r, title AS t" +
+                    " WHERE ap.production_id = ? and r.title_id = t.id and r.appears_in_id = ap.id");
             statement.setInt(1, ((Production) production).getID());
-            statement.setString(2, title);
             ResultSet result = statement.executeQuery();
-            if (result.next()) {
-                return result.getInt(1);
-            } else {
-                return 0;
+            while (result.next()) {
+                titles.add(result.getInt("title_id"));
+                titleName.add(result.getString("title"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
             return -1;
         }
+
+        for (Integer tit: titles) {
+            try {
+                PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(ap.id) FROM appears_in AS ap, role AS r, title AS t" +
+                        " WHERE ap.production_id = ? and t.title = ? and r.title_id = t.id and r.appears_in_id = ap.id");
+                statement.setInt(1, ((Production) production).getID());
+                statement.setInt(2, tit);
+                ResultSet result = statement.executeQuery();
+                while (result.next()) {
+
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return -1;
+            }
+        }
+        return 0;
     }
 
     @Override
     public int generateCreditTypeCount(String type) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(r.id) FROM role r, title t" +
+            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(r.id) FROM role AS r, title AS t" +
                     " WHERE t.title = ? and t.id = r.title_id");
             ResultSet result = statement.executeQuery();
             if (result.next()) {
