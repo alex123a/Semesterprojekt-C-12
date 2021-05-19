@@ -44,25 +44,13 @@ public class ManageUserController {
 
     @FXML
     void addUser(ActionEvent event) {
-        System.out.println("Test");
         IUser currentUser = DomainFacade.getInstance().getCurrentUser();
-        System.out.println(DomainFacade.getInstance().validateUser(currentUser));
-        boolean success = false;
         if (DomainFacade.getInstance().validateUser(currentUser)) {
             String userUsername = username.getText();
             String userPassword = DomainFacade.getInstance().generateStrongPasswordHash(password.getText());
             String userUserType = userType.getValue();
             IUser user = (userUserType.equals("Systemadministrator")) ? new Systemadministrator(userUsername, userPassword) : new Producer(userUsername, userPassword);
-            success = DomainFacade.getInstance().addUser(user);
-
-            System.out.println("Username: " + userUsername);
-            System.out.println("Password: " + userPassword);
-            System.out.println("Type: " + userUserType);
-        }
-        if(success) {
-            System.out.println("Nice");
-        } else {
-            System.out.println("Sheisse");
+            DomainFacade.getInstance().addUser(user);
         }
     }
 
