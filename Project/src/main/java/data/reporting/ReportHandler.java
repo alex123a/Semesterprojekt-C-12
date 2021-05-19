@@ -39,8 +39,8 @@ public class ReportHandler implements IReporting {
     @Override
     public void generateProductionCreditsCount(Production production, Roles role) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(id) FROM appears_in, role, title" +
-                    " WHERE production_id = ? and title.title = ? and role = ?");
+            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(id) FROM appears_in ap, role r, title t" +
+                    " WHERE ap.production_id = ? and t.title = ? and r.title_id = t.id and r.appears_in_id = ap.id");
         } catch (SQLException e) {
 
         }
