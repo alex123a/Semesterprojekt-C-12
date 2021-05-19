@@ -3,17 +3,15 @@ package presentation.controllers;
 import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
-import domain.CreditsManagement.CreditsSystem;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.NewProduction;
@@ -21,9 +19,17 @@ import presentation.NewRightsholder;
 import presentation.Repository;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.*;
 
-public class AddProductionController {
+public class AddProductionController implements Initializable {
+
+    @FXML
+    private ComboBox<String> comboGenre;
+    @FXML
+    private ComboBox<String> comboCategory;
+    @FXML
+    private ComboBox<String> comboProducer;
 
     @FXML
     private TextArea descriptionProgramArea;
@@ -57,6 +63,16 @@ public class AddProductionController {
 
     private Repository rep = Repository.getInstance();
     private ICreditManagement creditsSystem = rep.creditsSystem;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<String> categoryOptions = FXCollections.observableArrayList("Serier", "Film", "Reality", "Underholdning", "Stand up", "Dokumentar", "Rejser og Eventyr", "Livsstil", "Magasiner", "Medvirkende");
+        comboCategory.setItems(categoryOptions);
+        ObservableList<String> genreOptions = FXCollections.observableArrayList("Krimi", "Action", "Komedie", "Drama", "Romance", "Fantasy", "Eventyr", "Gyser", "Thriller");
+        comboGenre.setItems(genreOptions);
+        ObservableList<String> sortOptions = FXCollections.observableArrayList("Kristian", "John");
+        comboProducer.setItems(sortOptions);
+    }
 
     @FXML
     public void onClickedAddRightholder(ActionEvent event) {

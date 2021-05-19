@@ -23,7 +23,7 @@
             <DropShadow blurType="GAUSSIAN" color="#0000007e" offsetX="2.0" offsetY="2.0" />
          </effect>
          <children>
-            <ImageView onMouseClicked="#goBack" fitHeight="25.0" fitWidth="34.0" layoutX="40.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView onMouseClicked="#goBack" style="-fx-cursor: hand;" fitHeight="25.0" fitWidth="34.0" layoutX="40.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@/images/BackArrow.png" />
                </image>
@@ -33,7 +33,7 @@
                   <Font name="Calibri Bold" size="40.0" />
                </font>
             </Label>
-            <ImageView onMouseClicked="#editClicked" fx:id="editImage" fitHeight="53.0" fitWidth="34.0" layoutX="729.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView onMouseClicked="#editClicked" style="-fx-cursor: hand;" fx:id="editImage" fitHeight="53.0" fitWidth="34.0" layoutX="729.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@/images/Edit.jpg" />
                </image>
