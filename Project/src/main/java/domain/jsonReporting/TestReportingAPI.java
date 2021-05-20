@@ -14,5 +14,6 @@ public class TestReportingAPI {
         Production production = new Production(1,null,null,null,0,null,null,null);
         System.out.println(reportHandler.generateProductionCreditsCount(production));
 
+
     }
 }
