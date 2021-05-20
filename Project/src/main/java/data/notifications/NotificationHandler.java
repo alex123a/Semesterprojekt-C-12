@@ -3,6 +3,7 @@ package data.notifications;
 import Interfaces.*;
 import data.DatabaseConnection;
 import data.credits.Production;
+import data.userHandling.Producer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -84,10 +85,10 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     public boolean editAdminNotification(INotification newNotification) {
         try {
             PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification SET notification_text = ?, production_id = ?, approval_status_id = ? WHERE id = ? ");
-            statement.setInt(1, ((Notification) newNotification).getID());
-            statement.setString(2, newNotification.getText());
-            statement.setInt(3, ((ProducerNotification) newNotification).getDb_id_production());
-            statement.setInt(4, newNotification.getApproval());
+            statement.setString(1, newNotification.getText());
+            statement.setInt(2, ((AdminNotification) newNotification).getDb_id_production());
+            statement.setInt(3, newNotification.getApproval());
+            statement.setInt(4, ((Notification) newNotification).getID());
             statement.execute();
             return true;
         } catch (SQLException e) {
@@ -98,7 +99,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean editProducerNotification(INotification newNotification) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification SET producer_id = ?, notification_text = ?, viewed = ?, production_id = ? WHERE id = ?");
+            PreparedStatement statement = dbConnection.prepareStatement("UPDATE producer_notification SET producer_id = ?, notification_text = ?, viewed = ?, production_id = ? WHERE id = ?");
             statement.setInt(1, ((Notification) newNotification).getID());
             statement.setInt(2, newNotification.getProducerID());
             statement.setString(3, newNotification.getText());
@@ -135,13 +136,16 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     public List<INotification> getProducerNotifications(IUser user) {
         try {
             List<INotification> list = new ArrayList<>();
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT  " +
+            PreparedStatement statement = dbConnection.prepareStatement("SELECT pn.id, p.own_production_id," +
+                    " pn.notification_text, pn.viewed, p.production_name, pn.production_id" +
                     " FROM producer_notification pn, production p" +
                     " WHERE producer_id = ?");
             statement.setInt(1, user.getId());
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                list.add(new ProducerNotification());
+                list.add(new ProducerNotification(result.getInt(1), result.getString(2),
+                        result.getString(3), result.getBoolean(4), ((Producer) user).getId(),
+                        result.getString(5), result.getInt(6)));
             }
             return list;
         } catch (SQLException e) {
