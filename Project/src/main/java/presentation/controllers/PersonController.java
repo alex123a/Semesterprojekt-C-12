@@ -2,6 +2,7 @@ package presentation.controllers;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -39,29 +40,40 @@ public class PersonController implements Initializable {
 
         setup(r.getRightsholderToBeShown().getFirstName() + " " + r.getRightsholderToBeShown().getLastName(), r.getRightsholderToBeShown().getDescription());
 
-        // todo : Get all productions for this rightsholder and make a role for each
-        String roles = "";
         for(IProduction p : r.getRightsholderToBeShown().getRightsholderFor()) {
-            for(String s : p.getRightsholderRole(r.getRightsholderToBeShown())) {
+            String roles = "";
+            for(String s : new CreditWrapper(r.getRightsholderToBeShown(), r.getProductionToBeShown().getRightsholders().get(r.getRightsholderToBeShown())).getRoles()) {
                 roles += s + ",";
             }
-            createRole(p.getName(), roles);
+            createRole(p.getName(), roles, p);
         }
     }
 
     private void setup(String personName, String description) {
         nameLabel.setText(personName);
-        descriptionBox.setText("");
-
+        descriptionBox.setText(description);
     }
 
     // Method to create a box with the role
-    public void createRole(String movieName, String role) {
+    public void createRole(String movieName, String role, IProduction p) {
         HBox notificationPane = new HBox();
         notificationPane.setAlignment(Pos.CENTER);
         notificationPane.setPrefHeight(50);
         notificationPane.setPrefWidth(548);
         notificationPane.setStyle("-fx-border-width: 1; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF;");
+        notificationPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            public void handle(final MouseEvent mouseEvent) {
+                Repository.getInstance().setProductionToBeShown(p);
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/layout/production.fxml"));
+                    Stage window = (Stage) descriptionBox.getScene().getWindow();
+                    window.setScene(new Scene(root, 1300, 700));
+                }
+                catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
         VBox labelBox = new VBox();
         labelBox.setPrefWidth(470);

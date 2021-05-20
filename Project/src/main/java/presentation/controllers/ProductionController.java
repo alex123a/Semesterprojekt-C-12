@@ -38,16 +38,10 @@ public class ProductionController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Repository r = Repository.getInstance();
 
-        // .getDescription() er ikke implementeret i IProduction
         draw(r.getProductionToBeShown().getName(), r.getProductionToBeShown().getDescription());
 
-        // todo : Add rightsholders when getRightsholders is implemented
-        // getRightsholders er ikke implementeret endnu
         for (IRightsholder rh : r.getProductionToBeShown().getRightsholders().keySet()){
             createRightsholder(new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRightsholder(), new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRoles());
-            for(String s : new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRoles()) {
-                System.out.println(s);
-            }
         }
     }
 
@@ -68,7 +62,7 @@ public class ProductionController implements Initializable {
                 Repository.getInstance().setRightsholderToBeShown(rh);
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("/layout/person.fxml"));
-                    Stage window = Repository.getInstance().getWindow();
+                    Stage window = (Stage) movieLabel.getScene().getWindow();
                     window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
                 }
                 catch (IOException e) {
@@ -83,12 +77,9 @@ public class ProductionController implements Initializable {
         Label personLabel = new Label(rh.getFirstName() + " " + rh.getLastName());
         Label roleLabel = new Label("");
 
-        // todo : role is null
-        /*
         for(String s : role) {
             roleLabel.setText(roleLabel.getText() + s + ", ");
         }
-         */
 
         labelBox.getChildren().addAll(personLabel, roleLabel);
 
