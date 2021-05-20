@@ -75,6 +75,10 @@ public class ReportingHandler implements IReportHandler {
         for (int i = 0; i < strings.size()-2; i += 2) {
             JSONObject participants = new JSONObject();
             if (strings.get(i).equals("New Production")) {
+                if(!(i == 0)) {
+                    show.add(jsonArray);
+                    jsonArray = new JSONArray();
+                }
                 JSONObject jsonObject1 = new JSONObject();
                 strings.remove(i);
                 jsonObject1.put("ID",strings.get(i));
@@ -84,12 +88,12 @@ public class ReportingHandler implements IReportHandler {
                 participants.put("id", strings.get(i));
                 participants.put("Name", strings.get(i+1));
                 jsonArray.add(participants);
-                show.add(jsonArray);
-                jsonArray = new JSONArray();
             }
         }
+        show.add(jsonArray);
         return show;
     }
+
 
     public static IReportHandler getInstance() {
         return report;
