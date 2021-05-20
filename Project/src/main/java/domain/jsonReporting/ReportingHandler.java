@@ -75,11 +75,11 @@ public class ReportingHandler implements IReportHandler {
         for (int i = 0; i < strings.size()-2; i += 2) {
             JSONObject participants = new JSONObject();
             if (strings.get(i).equals("New Production")) {
+                JSONObject jsonObject1 = new JSONObject();
                 if(!(i == 0)) {
-                    show.add(jsonArray);
+                    jsonObject1.put("Participants",jsonArray);
                     jsonArray = new JSONArray();
                 }
-                JSONObject jsonObject1 = new JSONObject();
                 strings.remove(i);
                 jsonObject1.put("ID",strings.get(i));
                 jsonObject1.put("ProgramName",strings.get(i+1));
