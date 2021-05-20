@@ -33,7 +33,7 @@
             </ImageView>
             <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="82.0" layoutY="22.0" prefHeight="459.0" prefWidth="749.0" vbarPolicy="ALWAYS">
                <content>
-                  <VBox fx:id="searchResultBox" prefHeight="200.0" prefWidth="734.0">
+                  <VBox prefHeight="200.0" prefWidth="734.0">
                      <children>
                         <Pane minHeight="206.0" prefHeight="206.0" minWidth="733.0" prefWidth="733.0" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9;">
                            <children>
@@ -83,6 +83,11 @@
                               </TextField>
                            </children>
                         </Pane>
+                        <VBox fx:id="searchResultBox" prefHeight="200.0" prefWidth="734.0">
+                           <children>
+
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </content>

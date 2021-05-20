@@ -2,6 +2,7 @@ package presentation.controllers;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import Interfaces.ISearchable;
 import Interfaces.IUser;
 import domain.CreditsManagement.CreditsSystem;
 import domain.DomainFacade;
@@ -22,7 +23,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import presentation.CreditWrapper;
 import presentation.Repository;
 
 import java.io.IOException;
@@ -107,15 +107,31 @@ public class SearchController implements Initializable {
         searchResultBox.getChildren().add(notificationPane);
     }
 
-    public void createPerson(String personName, String description) {
+    public void createPerson(String personName, String description, IRightsholder rightsholder) {
         HBox notificationPane = new HBox();
         notificationPane.setAlignment(Pos.CENTER);
         notificationPane.setPrefHeight(50);
-        notificationPane.setPrefWidth(548);
-        notificationPane.setStyle("-fx-border-width: 1; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF;");
+        notificationPane.setPrefWidth(733);
+        notificationPane.setStyle("-fx-cursor: hand; -fx-border-width: 1; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF;");
+        notificationPane.setOnMouseClicked(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                Repository r = Repository.getInstance();
+                r.setRightsholderToBeShown(rightsholder);
+
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/layout/person.fxml"));
+                    Stage window = (Stage) backButton.getScene().getWindow();
+                    window.setScene(new Scene(root, 1300, 700));
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
         VBox labelBox = new VBox();
-        labelBox.setPrefWidth(470);
+        labelBox.setPrefWidth(650);
 
         Label personNameLabel = new Label(personName);
         Label descriptionLabel = new Label(description);
@@ -133,7 +149,6 @@ public class SearchController implements Initializable {
         arrow.setPreserveRatio(true);
 
         notificationPane.getChildren().addAll(labelBox, arrow);
-        notificationPane.setStyle("-fx-cursor: hand");
 
         searchResultBox.getChildren().add(notificationPane);
     }
@@ -155,13 +170,12 @@ public class SearchController implements Initializable {
             comboGenre.setDisable(true);
 
             // todo : Use Search to get all rightsholders
-            /*
-            Repository r = Repository.getInstance();
+
             List<IRightsholder> rightsholderList = CreditsSystem.getInstance().getAllRightsholders();
             for(IRightsholder r : rightsholderList) {
-                createPerson(r.getFirstName() + " " + r.getLastName(), r.getDescription());
+                createPerson(r.getFirstName() + " " + r.getLastName(), r.getDescription(), r);
             }
-            */
+
         }
     }
 
@@ -197,6 +211,8 @@ public class SearchController implements Initializable {
     public void onSearchClicked(MouseEvent mouseEvent) {
         // Change to list
         String searchParameters = searchInput.getText();
+
+        searchResultBox.getChildren().clear();
         //todo : Call search
         onComboBoxSelection();
     }

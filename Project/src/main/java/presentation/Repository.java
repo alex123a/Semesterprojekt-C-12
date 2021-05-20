@@ -4,6 +4,7 @@ import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import domain.CreditsManagement.CreditsSystem;
+import domain.searchEngine.SearchEngineHandler;
 import javafx.stage.Stage;
 
 public class Repository {
@@ -49,5 +50,7 @@ public class Repository {
     }
 
     public ICreditManagement creditsSystem = CreditsSystem.getInstance();
+
+    public SearchEngineHandler searchEngineHandler = SearchEngineHandler.getInstance();
 
 }

@@ -3,6 +3,7 @@ package domain.searchEngine;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import Interfaces.ISearchable;
+import domain.CreditsManagement.CreditsSystem;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
 import enumerations.ProductionType;
@@ -11,6 +12,15 @@ import enumerations.RightholderSorting;
 import java.util.*;
 
 public class SearchEngineHandler implements Interfaces.ISearchCredits {
+    private static SearchEngineHandler instance = null;
+
+    public static SearchEngineHandler getInstance() {
+        if (instance==null) {
+            instance = new SearchEngineHandler();
+        }
+        return instance;
+    }
+
     @Override
     public List<ISearchable> findMatch(List<ISearchable> list, String target) {
 
