@@ -58,65 +58,69 @@ public class NotificationController implements Initializable {
     }
 
     public void createNotification(String productionName, String productionID, String status, int index) {
-        // VBox for all the labels
-        VBox vbox = new VBox();
-        Label labelName = new Label(productionName);
-        labelName.setFont(new Font(14));
-        Label labelID = new Label("Produktions ID: " + productionID);
-        labelID.setFont(new Font(14));
-        Label labelStatus = new Label("Status: " + status);
-        labelStatus.setFont(new Font(14));
-        vbox.getChildren().addAll(labelName, labelID, labelStatus);
-        vbox.setPrefWidth(585);
+            // VBox for all the labels
+            VBox vbox = new VBox();
+            Label labelName = new Label(productionName);
+            labelName.setFont(new Font(14));
+            Label labelID = new Label("Produktions ID: " + productionID);
+            labelID.setFont(new Font(14));
+            Label labelStatus = new Label("Status: " + status);
+            labelStatus.setFont(new Font(14));
+            vbox.getChildren().addAll(labelName, labelID, labelStatus);
+            vbox.setPrefWidth(585);
 
-        // HBox for the whole notification
-        HBox hbox = new HBox();
-        hbox.getChildren().addAll(vbox);
+            // HBox for the whole notification
+            HBox hbox = new HBox();
+            hbox.getChildren().addAll(vbox);
 
-        // Make decline Button
-        Button declineBut = new Button("Afvis");
-        declineBut.setId("" + index);
-        declineBut.getStylesheets().add(getClass().getResource("/stylesheets/notificationNoButtonStyle.css").toExternalForm());
+            if (domain.getCurrentUser() instanceof IAdministrator) {
 
-        // Make approve Button and set action on the button
-        Button approveBut = new Button("Godkend");
-        approveBut.setId("" + index);
-        approveBut.getStylesheets().add(getClass().getResource("/stylesheets/notificationYesButtonStyle.css").toExternalForm());
-        approveBut.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                declineBut.setVisible(false);
-                notificationYesClicked(Integer.parseInt(approveBut.getId()));
+                // Make decline Button
+                Button declineBut = new Button("Afvis");
+                declineBut.setId("" + index);
+                declineBut.getStylesheets().add(getClass().getResource("/stylesheets/notificationNoButtonStyle.css").toExternalForm());
+
+                // Make approve Button and set action on the button
+                Button approveBut = new Button("Godkend");
+                approveBut.setId("" + index);
+                approveBut.getStylesheets().add(getClass().getResource("/stylesheets/notificationYesButtonStyle.css").toExternalForm());
+                approveBut.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        declineBut.setVisible(false);
+                        notificationYesClicked(Integer.parseInt(approveBut.getId()));
+                    }
+                });
+                hbox.getChildren().addAll(approveBut);
+                if (status.equals("Not Approved")) {
+                    approveBut.setVisible(false);
+                }
+
+                // Set action on declineBut
+                declineBut.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        approveBut.setVisible(false);
+                        notificationNoClicked(Integer.parseInt(declineBut.getId()));
+                    }
+                });
+                hbox.getChildren().addAll(declineBut);
+                if (status.equals("Approved")) {
+                    declineBut.setVisible(false);
+                }
             }
-        });
-        hbox.getChildren().addAll(approveBut);
-        if (status.equals("Not Approved")) {
-            approveBut.setVisible(false);
-        }
 
-        // Set action on declineBut
-        declineBut.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                approveBut.setVisible(false);
-                notificationNoClicked(Integer.parseInt(declineBut.getId()));
-            }
-        });
-        hbox.getChildren().addAll(declineBut);
-        if (status.equals("Approved")) {
-            declineBut.setVisible(false);
-        }
+            // Needed for spacing in HBox
+            Label space = new Label("");
+            hbox.getChildren().addAll(space);
 
-        // Needed for spacing in HBox
-        Label space = new Label("");
-        hbox.getChildren().addAll(space);
+            // HBox style
+            hbox.getStylesheets().add(getClass().getResource("/stylesheets/hboxStyle.css").toExternalForm());
+            hbox.getStyleClass().add("hbox");
 
-        // HBox style
-        hbox.getStylesheets().add(getClass().getResource("/stylesheets/hboxStyle.css").toExternalForm());
-        hbox.getStyleClass().add("hbox");
+            // Add HBox to the VBox in the scrollpane
+            notificationBox.getChildren().addAll(hbox);
 
-        // Add HBox to the VBox in the scrollpane
-        notificationBox.getChildren().addAll(hbox);
     }
 
     public void loadNotifications() {
@@ -144,7 +148,7 @@ public class NotificationController implements Initializable {
             boolean booleanStatus = status == 1;
             notifications.get(index).setViewed(booleanStatus);
             domain.editProducerNotification(notifications.get(index));
-            
+
              */
         }
         try {
@@ -170,13 +174,24 @@ public class NotificationController implements Initializable {
     }
 
     public void backClicked(MouseEvent mouseEvent) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
-            Stage window = (Stage) notificationBox.getScene().getWindow();
-            window.setScene(new Scene(root, 1300, 700));
+        if (domain.getCurrentUser() instanceof IAdministrator) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
+                Stage window = (Stage) notificationBox.getScene().getWindow();
+                window.setScene(new Scene(root, 1300, 700));
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (domain.getCurrentUser() instanceof IProducer) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/layout/menuProducer.fxml"));
+                Stage window = (Stage) notificationBox.getScene().getWindow();
+                window.setScene(new Scene(root, 1300, 700));
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

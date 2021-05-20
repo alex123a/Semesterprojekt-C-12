@@ -46,7 +46,7 @@
                               <Image url="@/images/RedDot.png" />
                            </image>
                         </ImageView>
-                        <Label style="-fx-cursor:hand;" alignment="CENTER" layoutX="9.0" layoutY="12.0" prefHeight="27.0" prefWidth="32.0" text="0" textFill="WHITE">
+                        <Label fx:id="numberOfNotifications" style="-fx-cursor:hand;" alignment="CENTER" layoutX="9.0" layoutY="12.0" prefHeight="27.0" prefWidth="32.0" text="0" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>

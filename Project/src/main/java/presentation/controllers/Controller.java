@@ -264,12 +264,13 @@ public class Controller implements Initializable {
                 programs[count].setText(s.substring(s.lastIndexOf("title=\"") + 7, s.lastIndexOf("data-program-id") - 2));
                 times[count].setText(formatter.format(startDate) + " - " + formatter.format(endDate));
                 count++;
+
+                if (domain.getCurrentUser() instanceof IAdministrator) {
+                    numberOfNotifications.setText("" + domain.countUnreadAdminNotifications());
+                } else if (domain.getCurrentUser() instanceof IProducer) {
+                    numberOfNotifications.setText("" + domain.countUnreadProducerNotifications(domain.getCurrentUser()));
+                }
             }
-        }
-        if (domain.getCurrentUser() instanceof IAdministrator) {
-            numberOfNotifications.setText("" + domain.countUnreadAdminNotifications());
-        } else if (domain.getCurrentUser() instanceof IProducer) {
-            numberOfNotifications.setText("" + domain.countUnreadProducerNotifications(domain.getCurrentUser()));
         }
     }
 
