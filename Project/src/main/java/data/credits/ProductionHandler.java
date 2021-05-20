@@ -144,7 +144,7 @@ class ProductionHandler {
 
 
 
-        IProduction toReturn = null;
+        Production toReturn = null;
 
         try {
             ResultSet resultProduction = insertStatement.executeQuery();
@@ -154,20 +154,68 @@ class ProductionHandler {
             throwables.printStackTrace();
         }
 
+
+        int productionID = toReturn.getID();
+
+        // Following block adds appears_in if they are in the production but not in the DB
         Map<IRightsholder, List<String>> rightsholders = production.getRightsholders();
         for (IRightsholder rightsholder: rightsholders.keySet()) {
             //This line saves the rightsholder and gets the rightsholder with the ID back
-            rightsholder = RightsHolderHandler.getInstance().saveRightsholder(rightsholder);
-            //Insert a new line in appears_in_approval
+            Rightsholder r = (Rightsholder) RightsHolderHandler.getInstance().saveRightsholder(rightsholder);
+
             try {
-                PreparedStatement appears_in_statement = connection.prepareStatement("" +
-                        "INSERT INTO appears_in_approval (production_id, rightsholder_id) " +
-                        "VALUES (?, ?);");
+                int rightsholderID = r.getId();
+                //Checks if the appears_in is already in the table
+                PreparedStatement checkExistsStatement = connection.prepareStatement("" +
+                        "SELECT * FROM appears_in " +
+                        "WHERE rightsholder_id=?" +
+                        "AND production_id=?");
+                checkExistsStatement.setInt(1, rightsholderID);
+                checkExistsStatement.setInt(2, productionID);
+                ResultSet existing = checkExistsStatement.executeQuery();
+                if (!existing.next()) {// the appears_in is not in the table and thus should be inserted
+                    PreparedStatement insertAppears_inStatement = connection.prepareStatement("" +
+                            "INSERT INTO appears_in_approval (production_id, rightsholder_id) " +
+                            "VALUES (?, ?)");
+                    insertAppears_inStatement.setInt(1, productionID);
+                    insertAppears_inStatement.setInt(2, rightsholderID);
+                }
+
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-
         }
+
+        // the following block removes the appears_in if they are in the DB but not in the production
+        try {
+            PreparedStatement getAllAppearsinStatement = connection.prepareStatement("" +
+                    "SELECT rightsholder_id " +
+                    "FROM appears_in " +
+                    "WHERE production_id=?");
+            getAllAppearsinStatement.setInt(1, productionID);
+            ResultSet allAppearsinResult = getAllAppearsinStatement.executeQuery();
+
+            //gets all the ids of the rightsholders in the production
+            //so they can be compared to the ids in the database
+            List<Integer> rightsholderIDs = new ArrayList<>();
+            for (IRightsholder r: rightsholders.keySet()) {
+                if (r instanceof Rightsholder) {
+                    rightsholderIDs.add(((Rightsholder)r).getId());
+                }
+            }
+            while (allAppearsinResult.next()){
+                if (!rightsholderIDs.contains(allAppearsinResult.getInt(1))){
+                    //TODO write statement to insert into approvaltable
+                    PreparedStatement insertToBeDeleted = connection.prepareStatement("" +
+                            "INSERT INTO appears_in_approval (production_id, rightsholder_id)" +
+                            "VALUES (?, ?)");
+                    insertToBeDeleted
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
 
         return toReturn;
     }
@@ -233,8 +281,6 @@ class ProductionHandler {
         Production p = new Production(productionsResult.getInt(1), productionsResult.getString(2), productionsResult.getString(3), productionsResult.getString(4), productionsResult.getInt(5), genre, type, roleMap);
         return p;
     }
-
-
 
     static ProductionHandler getInstance() {
         return prHandler;
