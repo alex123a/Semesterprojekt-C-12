@@ -26,6 +26,23 @@ class RightsHolderHandler {
         this.connection = DatabaseConnection.getConnection();
     }
 
+    private List<Integer> getRightsholdersProductions(ResultSet rightsholderSet) throws SQLException {
+
+        List<Integer> idList = new ArrayList<>();
+        PreparedStatement productionStatement = connection.prepareStatement("" +
+                "SELECT DISTINCT production_id " +
+                "FROM appears_in " +
+                "WHERE rightsholder_id = ?");
+        productionStatement.setInt(1, rightsholderSet.getInt(1));
+        ResultSet productionIDs = productionStatement.executeQuery();
+
+        while(productionIDs.next()){
+            idList.add( productionIDs.getInt(1) );
+        }
+
+        return idList;
+    }
+
     // Return all rightholders
     List<IRightsholder> getRightsholders() {
         List<IRightsholder> rightsholderList = new ArrayList<>();

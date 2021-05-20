@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.helppageController">
+   <children>
+      <ImageView fitWidth="120.0" layoutX="590.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/images/Tv2Logo.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="200.0" layoutY="141.0" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #ffffff;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#0000007e" offsetX="2.0" offsetY="2.0" />
+         </effect>
+         <children>
+            <ImageView onMouseClicked="#goBack" style="-fx-cursor: hand;" fitHeight="25.0" fitWidth="34.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/BackArrow.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="295.0" prefHeight="70.0" prefWidth="310.0" style="-fx-alignment: CENTER;" text="Hjælpeside" textFill="#4c4c4c">
+               <font>
+                  <Font name="Calibri Bold" size="50.0" />
+               </font>
+            </Label>
+            <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="100.0" prefHeight="350.0" prefWidth="800.0" style="-fx-border-color: #c9c9c9;" vbarPolicy="ALWAYS">
+               <content>
+                  <Pane minHeight="350.0" prefWidth="781.0">
+                     <children>
+                        <TextArea fx:id="informationText" editable="false" minHeight="350.0" prefWidth="781.0" text="*Brugbar information*" />
+                     </children>
+                  </Pane>
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+   </children>
+</Pane>
