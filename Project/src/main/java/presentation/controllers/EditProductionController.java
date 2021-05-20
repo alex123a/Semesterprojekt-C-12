@@ -41,7 +41,10 @@ public class EditProductionController implements Initializable {
     private ListView<CreditWrapper> rightholderListview;
 
     @FXML
-    private TextField rightholderName;
+    private TextField rightholderFirstName;
+
+    @FXML
+    private TextField rightholderLastName;
 
     @FXML
     private TextField rightholderDescription;
@@ -101,8 +104,8 @@ public class EditProductionController implements Initializable {
             will be changed in iteration 2 if we run out of time in iteration 1
         */
 
-        if (rightholderName.getText() != null || !rightholderName.getText().trim().isEmpty()) {
-            name = rightholderName.getText();
+        if (rightholderFirstName.getText() != null || !rightholderFirstName.getText().trim().isEmpty()) {
+            name = rightholderFirstName.getText();
         }
 
         if (rightholderDescription.getText() != null || !rightholderDescription.getText().trim().isEmpty()) {
@@ -152,5 +155,17 @@ public class EditProductionController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void getClickedRightsholder(MouseEvent mouseEvent) {
+        CreditWrapper cw = rightholderListview.getSelectionModel().getSelectedItem();
+        rightholderFirstName.setText(cw.getRightsholder().getFirstName());
+        rightholderLastName.setText(cw.getRightsholder().getLastName());
+        rightholderDescription.setText(cw.getRightsholder().getDescription());
+        String roles = "";
+        for(String s : cw.getRoles()) {
+            roles += s + ", ";
+        }
+        rightholderRoles.setText(roles);
     }
 }

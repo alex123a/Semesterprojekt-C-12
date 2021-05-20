@@ -113,7 +113,7 @@ public class MyProductionsController implements Initializable {
     public void onAddProgramClicked(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/add_production.fxml"));
-            Stage window = Repository.getInstance().getWindow();
+            Stage window = (Stage) addProgramBut.getScene().getWindow();
             window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
 
         } catch (IOException e) {
