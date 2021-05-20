@@ -1,7 +1,7 @@
 package presentation.controllers;
 
-import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,12 +15,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import presentation.CreditWrapper;
 import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ProductionController implements Initializable {
@@ -38,14 +39,16 @@ public class ProductionController implements Initializable {
         Repository r = Repository.getInstance();
 
         // .getDescription() er ikke implementeret i IProduction
-        //draw(r.getToBeShown().getName(), r.getToBeShown().getDescription());
+        draw(r.getProductionToBeShown().getName(), r.getProductionToBeShown().getDescription());
 
-        draw(r.getToBeShown().getName(), r.getToBeShown().getDescription());
         // todo : Add rightsholders when getRightsholders is implemented
         // getRightsholders er ikke implementeret endnu
-        //Map<IRightsholder, List<String>> rightsholders = r.getToBeShown().getRightsholders();
-
-        createRole("John", "Han Solo");
+        for (IRightsholder rh : r.getProductionToBeShown().getRightsholders().keySet()){
+            createRightsholder(new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRightsholder(), new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRoles());
+            for(String s : new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRoles()) {
+                System.out.println(s);
+            }
+        }
     }
 
     public void draw(String title, String description) {
@@ -54,18 +57,38 @@ public class ProductionController implements Initializable {
     }
 
     // Method to create a box with the role
-    public void createRole(String personName, String role) {
+    public void createRightsholder(IRightsholder rh, List<String> role) {
         HBox notificationPane = new HBox();
         notificationPane.setAlignment(Pos.CENTER);
         notificationPane.setPrefHeight(50);
         notificationPane.setPrefWidth(548);
         notificationPane.setStyle("-fx-border-radius: 8px; -fx-background-radius: 8px; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF; -fx-cursor: hand;");
+        notificationPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            public void handle(final MouseEvent mouseEvent) {
+                Repository.getInstance().setRightsholderToBeShown(rh);
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/layout/person.fxml"));
+                    Stage window = Repository.getInstance().getWindow();
+                    window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+                }
+                catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
         VBox labelBox = new VBox();
         labelBox.setPrefWidth(470);
 
-        Label personLabel = new Label(personName);
-        Label roleLabel = new Label(role);
+        Label personLabel = new Label(rh.getFirstName() + " " + rh.getLastName());
+        Label roleLabel = new Label("");
+
+        // todo : role is null
+        /*
+        for(String s : role) {
+            roleLabel.setText(roleLabel.getText() + s + ", ");
+        }
+         */
 
         labelBox.getChildren().addAll(personLabel, roleLabel);
 
@@ -97,7 +120,7 @@ public class ProductionController implements Initializable {
 
     public void editClicked(MouseEvent mouseEvent) {
         Repository r = Repository.getInstance();
-        Repository.getInstance().setToEdit(r.getToBeShown());
+        Repository.getInstance().setToEdit(r.getProductionToBeShown());
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/edit_production.fxml"));
             Stage window = (Stage) movieLabel.getScene().getWindow();
