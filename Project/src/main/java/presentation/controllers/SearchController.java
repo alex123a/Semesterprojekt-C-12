@@ -1,6 +1,7 @@
 package presentation.controllers;
 
 import Interfaces.IProduction;
+import Interfaces.IRightsholder;
 import domain.CreditsManagement.CreditsSystem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,10 +20,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import presentation.CreditWrapper;
 import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
@@ -66,8 +69,6 @@ public class SearchController implements Initializable {
             @Override
             public void handle(Event event) {
                 Repository r = Repository.getInstance();
-                // todo : Skal indsætte en IProduction
-                // Men createMovie modtager ikke en IProduction fordi search ikke er lavet endnu
                 r.setProductionToBeShown(production);
 
                 try {
@@ -148,16 +149,17 @@ public class SearchController implements Initializable {
             for(IProduction ip : CreditsSystem.getInstance().getProductions()) {
                 createMovie(ip.getName(), "2021", ip);
             }
-            /*for(IProduction pl : productionList) {
-                createMovie(pl.getName(), "NaN");
-            }*/
         } else if (value.equals("Medvirkende")){
             comboGenre.setDisable(true);
 
-            /*List<IRightsholder> rightsholderList = CreditsSystem.getInstance().getAllRightsholders();
-            for(IRightsholder rl : rightsholderList) {
-                createMovie(rl.getName(), rl.getDescription());
-            }*/
+            // todo : Use Search to get all rightsholders
+            /*
+            Repository r = Repository.getInstance();
+            List<IRightsholder> rightsholderList = CreditsSystem.getInstance().getAllRightsholders();
+            for(IRightsholder r : rightsholderList) {
+                createPerson(r.getFirstName() + " " + r.getLastName(), r.getDescription());
+            }
+            */
         }
     }
 
