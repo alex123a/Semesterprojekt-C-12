@@ -31,8 +31,8 @@
             <Image url="@/images/BackArrow.png" />
          </image>
       </ImageView>
-      <Label layoutX="657.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Navn:" />
-      <TextField fx:id="rightholderFirstName" layoutX="657.0" layoutY="462.0" prefHeight="26.0" prefWidth="394.0" />
+      <Label layoutX="657.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Fornavn:" />
+      <TextField fx:id="rightholderFirstName" layoutX="657.0" layoutY="462.0" prefHeight="26.0" prefWidth="185.0" />
       <Label layoutX="657.0" layoutY="505.0" prefHeight="17.0" prefWidth="65.0" text="Beskrivelse:" />
       <Label layoutX="657.0" layoutY="565.0" prefHeight="17.0" prefWidth="142.0" text="Rolle/roller (split med &quot;,&quot;):" />
       <TextField fx:id="rightholderDescription" layoutX="657.0" layoutY="522.0" prefHeight="25.0" prefWidth="394.0" />
@@ -50,5 +50,7 @@
       </Label>
       <ComboBox layoutX="899.0" layoutY="160.0" prefWidth="150.0" promptText="Type" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 4px; -fx-background-radius: 4px;" />
       <ComboBox layoutX="657.0" layoutY="231.0" prefHeight="27.0" prefWidth="394.0" promptText="Producer" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 4px; -fx-background-radius: 4px;" />
+      <TextField fx:id="rightholderFirstName1" layoutX="865.0" layoutY="462.0" prefHeight="26.0" prefWidth="185.0" />
+      <Label layoutX="865.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Efternavn:" />
    </children>
 </AnchorPane>

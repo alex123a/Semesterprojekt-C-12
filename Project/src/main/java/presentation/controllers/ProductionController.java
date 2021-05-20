@@ -1,6 +1,5 @@
 package presentation.controllers;
 
-import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -23,7 +22,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ProductionController implements Initializable {
@@ -41,15 +39,12 @@ public class ProductionController implements Initializable {
         Repository r = Repository.getInstance();
 
         // .getDescription() er ikke implementeret i IProduction
-        draw(r.getToBeShown().getName(), r.getToBeShown().getDescription());
+        draw(r.getProductionToBeShown().getName(), r.getProductionToBeShown().getDescription());
 
         // todo : Add rightsholders when getRightsholders is implemented
         // getRightsholders er ikke implementeret endnu
-        List<CreditWrapper> credits = new ArrayList<>();
-        for (IRightsholder rh : r.getToBeShown().getRightsholders().keySet()){
-            System.out.println(rh.getFirstName());
-            // new CreditWrapper(rh, r.getToBeShown().getRightsholders().get(rh)).getRoles()
-            createRole(new CreditWrapper(rh, r.getToBeShown().getRightsholders().get(rh)).getRightsholder(), new CreditWrapper(rh, r.getToBeShown().getRightsholders().get(rh)).getRoles());
+        for (IRightsholder rh : r.getProductionToBeShown().getRightsholders().keySet()){
+            createRightsholder(new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRightsholder(), new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRoles());
         }
     }
 
@@ -59,7 +54,7 @@ public class ProductionController implements Initializable {
     }
 
     // Method to create a box with the role
-    public void createRole(IRightsholder rh, List<String> role) {
+    public void createRightsholder(IRightsholder rh, List<String> role) {
         HBox notificationPane = new HBox();
         notificationPane.setAlignment(Pos.CENTER);
         notificationPane.setPrefHeight(50);
@@ -67,10 +62,9 @@ public class ProductionController implements Initializable {
         notificationPane.setStyle("-fx-border-radius: 8px; -fx-background-radius: 8px; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF; -fx-cursor: hand;");
         notificationPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             public void handle(final MouseEvent mouseEvent) {
-                // todo : Fix
-                //Repository.getInstance().setToBeShown(p);
+                Repository.getInstance().setRightsholderToBeShown(rh);
                 try {
-                    Parent root = FXMLLoader.load(getClass().getResource("/layout/edit_production.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("/layout/person.fxml"));
                     Stage window = Repository.getInstance().getWindow();
                     window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
                 }
@@ -120,7 +114,7 @@ public class ProductionController implements Initializable {
 
     public void editClicked(MouseEvent mouseEvent) {
         Repository r = Repository.getInstance();
-        Repository.getInstance().setToEdit(r.getToBeShown());
+        Repository.getInstance().setToEdit(r.getProductionToBeShown());
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/edit_production.fxml"));
             Stage window = (Stage) movieLabel.getScene().getWindow();

@@ -27,7 +27,7 @@
                   <Image url="@/images/BackArrow.png" />
                </image>
             </ImageView>
-            <Label layoutX="75.0" layoutY="17.0" prefHeight="71.0" prefWidth="550.0" style="-fx-alignment: CENTER;" text="Person Navn">
+            <Label fx:id="nameLabel" layoutX="75.0" layoutY="17.0" prefHeight="71.0" prefWidth="550.0" style="-fx-alignment: CENTER;" text="Person Navn">
                <font>
                   <Font name="Calibri Bold" size="40.0" />
                </font>

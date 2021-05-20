@@ -68,7 +68,7 @@ public class SearchController implements Initializable {
                 Repository r = Repository.getInstance();
                 // todo : Skal indsætte en IProduction
                 // Men createMovie modtager ikke en IProduction fordi search ikke er lavet endnu
-                r.setToBeShown(production);
+                r.setProductionToBeShown(production);
 
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("/layout/production.fxml"));

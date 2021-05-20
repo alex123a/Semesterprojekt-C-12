@@ -1,7 +1,10 @@
 package presentation.controllers;
 
+import Interfaces.IProduction;
+import Interfaces.IRightsholder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,12 +15,40 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import presentation.CreditWrapper;
+import presentation.Repository;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class PersonController {
+public class PersonController implements Initializable {
+    @FXML
+    private Label nameLabel;
     @FXML
     VBox scrollpaneVBox;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Repository r = Repository.getInstance();
+
+        setup(r.getRightsholderToBeShown().getFirstName() + " " + r.getRightsholderToBeShown().getLastName());
+
+        // todo : Get all productions for this rightsholder and make a role for each
+        String roles = "";
+        for(IProduction p : r.getRightsholderToBeShown().getRightsholderFor()) {
+            for(String s : p.getRightsholderRole(r.getRightsholderToBeShown())) {
+                roles += s + ",";
+            }
+            createRole(p.getName(), roles);
+        }
+    }
+
+    private void setup(String personName) {
+        nameLabel.setText(personName);
+    }
 
     // Method to create a box with the role
     public void createRole(String movieName, String role) {
@@ -48,10 +79,6 @@ public class PersonController {
         notificationPane.getChildren().addAll(labelBox, arrow);
 
         scrollpaneVBox.getChildren().add(notificationPane);
-    }
-
-    // Method to open edit user
-    public void editUser(MouseEvent mouseEvent) {
     }
 
     // Method to go back to the menu
