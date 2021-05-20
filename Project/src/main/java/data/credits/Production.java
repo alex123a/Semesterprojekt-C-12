@@ -5,6 +5,7 @@ import Interfaces.IRightsholder;
 import enumerations.ProductionGenre;
 import enumerations.ProductionType;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,8 @@ class Production implements IProduction {
     private ProductionGenre genre;
     private ProductionType type;
     private Map<Integer, List<String>> rightsholders;
+    //Saves the rightsholder, so the list above doesn't need to be converted each time
+    private Map<IRightsholder, List<String>> cachedMap;
 
     public Production() {
 
@@ -106,10 +109,14 @@ class Production implements IProduction {
     @Override
     public Map<IRightsholder, List<String>> getRightsholders() {
         //Converts a map of <int, List<String>> to map of <Rightsholder, List<String>>
+        if (cachedMap != null) {
+            return cachedMap;
+        }
         Map<IRightsholder, List<String>> map = new HashMap<>();
         for (int i: rightsholders.keySet()) {
             map.put(RightsHolderHandler.getInstance().getRightsholder(i), rightsholders.get(i));
         }
+        cachedMap = map;
         return map;
     }
 
