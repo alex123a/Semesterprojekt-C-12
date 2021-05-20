@@ -5,38 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/notifications/AdminNotification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/notification/AdminNotification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/notification/Notification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/notification/ProducerNotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd/storage_v2/_src_/database/d82q285u8akq13.6r0x2g.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd/storage_v2/_src_/database/d82q285u8akq13.6r0x2g/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd/storage_v2/_src_/database/d82q285u8akq13.6r0x2g/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b2730d7a-0004-413c-8c4b-a30dffa035dd/storage_v2/_src_/database/d82q285u8akq13.6r0x2g/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IDomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IDomainFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IFacadeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IFacadeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/INotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/FacadeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/FacadeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/AdminNotifcation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/ProducerNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/ProducerNotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/userManage/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/userManage/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menuProducer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menuProducer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserHandling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IFacadeData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IFacadeData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/INotification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/INotification.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/INotificationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/INotificationHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/FacadeData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/FacadeData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/ProductionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/ProductionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/AdminNotifcation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/notifications/AdminNotifcation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/Notification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/notifications/Notification.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/NotificationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/notifications/NotificationHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/AuthenticationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/AuthenticationHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/menuProducer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/menuProducer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ManageUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ManageUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/userManage/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/userManage/User.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,20 +87,21 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/domain/notification" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.35731414" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexv\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\java\domain\notification" />
       <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project\src\main\resources" />
       <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project\src\main\java" />
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\stylesheets" />
@@ -142,13 +151,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -192,6 +203,7 @@
       <workItem from="1621411739786" duration="3016000" />
       <workItem from="1621421254707" duration="42000" />
       <workItem from="1621421316683" duration="4451000" />
+      <workItem from="1621429793332" duration="10926000" />
     </task>
     <servers />
   </component>

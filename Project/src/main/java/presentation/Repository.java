@@ -3,6 +3,7 @@ package presentation;
 import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import domain.CreditsManagement.CreditsSystem;
+import domain.DomainFacade;
 import javafx.stage.Stage;
 
 public class Repository {
@@ -29,6 +30,6 @@ public class Repository {
         this.toEdit = toEdit;
     }
 
-    public ICreditManagement creditsSystem = CreditsSystem.getInstance();
+    public DomainFacade domainFacade = DomainFacade.getInstance();
 
 }

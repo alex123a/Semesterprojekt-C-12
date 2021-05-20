@@ -88,7 +88,7 @@ class ProductionHandler {
         throw new UnsupportedOperationException("not implemented yet");
     }
 
-    void saveProduction(IProduction production) {
+    IProduction saveProduction(IProduction production) {
         throw new UnsupportedOperationException("not implemented yet");
     }
 

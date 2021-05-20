@@ -14,7 +14,7 @@ public interface IFacadeData {
 
     List<IProduction> getProductions();
 
-    void saveProduction(IProduction production);
+    IProduction saveProduction(IProduction production);
 
     void deleteProduction(IProduction production);
 }

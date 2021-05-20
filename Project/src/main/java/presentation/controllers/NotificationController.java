@@ -1,9 +1,12 @@
 package presentation.controllers;
 
+import Interfaces.INotification;
+import domain.DomainFacade;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,11 +17,28 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import presentation.Repository;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class NotificationController {
+public class NotificationController implements Initializable {
     @FXML VBox notificationBox;
+
+    private Repository rep = Repository.getInstance();
+    private DomainFacade domain = rep.domainFacade;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // TODO this should get the notification by sending the current user to the method
+        // For now it just always takes the admins notifications
+        List<INotification> notifications = domain.getAdminNotifications();
+        for (INotification notification: notifications) {
+            createNotification(notification.get);
+        }
+    }
 
     public void createNotification(String productionName, String productionID, String date, String status) {
         // VBox for all the labels

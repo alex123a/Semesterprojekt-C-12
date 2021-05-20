@@ -11,6 +11,15 @@ import java.util.List;
 public class FacadeData implements IFacadeData {
     private RightsHolderHandler rhHolder = RightsHolderHandler.getInstance();
     private ProductionHandler pHandler = ProductionHandler.getInstance();
+    private static final FacadeData FDATA = new FacadeData();
+
+    private FacadeData() {
+
+    }
+
+    public static FacadeData getInstance() {
+        return FDATA;
+    }
 
     /**
      * Returns one rightsholder
@@ -57,8 +66,8 @@ public class FacadeData implements IFacadeData {
      * Inserting or editing a rightsholder
      * @param production Production Object
      */
-    public void saveProduction(IProduction production) {
-        pHandler.saveProduction(production);
+    public IProduction saveProduction(IProduction production) {
+        return pHandler.saveProduction(production);
     }
 
     /**

@@ -1,14 +1,12 @@
-package data.notifications;
+package domain.notification;
 
 import Interfaces.INotification;
 
 public class Notification implements INotification {
 
-    private int ID;
     private String text;
     private String productionID;
     private String productionName;
-    private int db_id_production;
 
     public Notification() {
 
@@ -18,16 +16,10 @@ public class Notification implements INotification {
         this.text = text;
     }
 
-    public Notification(String text, String productionID, String productionName, int db_id_production) {
+    public Notification(String text, String productionID, String productionName) {
         this(text);
         this.productionID = productionID;
         this.productionName = productionName;
-        this.db_id_production = db_id_production;
-    }
-
-    public Notification(int ID, String text, String productionID, String productionName, int db_id_production) {
-        this(text, productionID, productionName, db_id_production);
-        this.ID = ID;
     }
 
 
@@ -62,10 +54,6 @@ public class Notification implements INotification {
         throw new UnsupportedOperationException("Not supported");
     }
 
-    public int getID() {
-        return this.ID;
-    }
-
     @Override
     public int getProducerID() {
         throw new UnsupportedOperationException();
@@ -91,11 +79,4 @@ public class Notification implements INotification {
         this.productionName = productionName;
     }
 
-    public int getDb_id_production() {
-        return db_id_production;
-    }
-
-    public void setDb_id_production(int db_id_production) {
-        this.db_id_production = db_id_production;
-    }
 }

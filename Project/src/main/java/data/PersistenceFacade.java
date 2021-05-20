@@ -1,6 +1,7 @@
 package data;
 
 import Interfaces.*;
+import data.credits.FacadeData;
 import data.notifications.NotificationHandler;
 import data.reporting.ReportHandler;
 import data.userHandling.UserFacade;
@@ -81,8 +82,8 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public void saveProduction(IProduction production) {
-        throw new UnsupportedOperationException();
+    public IProduction saveProduction(IProduction production) {
+        return FacadeData.getInstance().saveProduction(production);
     }
 
     @Override
@@ -96,8 +97,8 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public boolean createAdminNotification(INotification notification) {
-        return NotificationHandler.getInstance().createAdminNotification(notification);
+    public boolean createAdminNotification(INotification notification, IProduction production) {
+        return NotificationHandler.getInstance().createAdminNotification(notification, production);
     }
 
     @Override

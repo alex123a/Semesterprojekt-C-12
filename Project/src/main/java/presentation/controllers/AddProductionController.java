@@ -3,6 +3,7 @@ package presentation.controllers;
 import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import domain.DomainFacade;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,7 +57,7 @@ public class AddProductionController {
     private Button removeRightholder;
 
     private Repository rep = Repository.getInstance();
-    private ICreditManagement creditsSystem = rep.creditsSystem;
+    private DomainFacade domain = rep.domainFacade;
 
     @FXML
     public void onClickedAddRightholder(ActionEvent event) {
@@ -118,7 +119,7 @@ public class AddProductionController {
         }
 
         IProduction newProduction = new NewProduction(id, name, RhsRoles);
-        creditsSystem.addProduction(newProduction);
+        domain.addProduction(newProduction);
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));

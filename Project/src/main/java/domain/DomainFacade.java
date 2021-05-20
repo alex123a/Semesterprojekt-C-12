@@ -3,6 +3,7 @@ package domain;
 import Interfaces.*;
 import data.PersistenceFacade;
 import domain.authentication.AuthenticationHandler;
+import domain.notification.AdminNotification;
 import domain.session.CurrentSession;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
@@ -13,7 +14,16 @@ import java.util.List;
 import java.util.Map;
 
 public class DomainFacade implements IDomainFacade {
-    private static final DomainFacade domain = new DomainFacade();
+    private static final DomainFacade DOMAIN = new DomainFacade();
+
+    private DomainFacade() {
+
+    }
+
+    public static DomainFacade getInstance() {
+        return DOMAIN;
+    }
+
 
     @Override
     public boolean login(IUser user) {
@@ -37,7 +47,10 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public void addProduction(IProduction production) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        IProduction returnedProduction = PersistenceFacade.getInstance().saveProduction(production);
+        String notificationMSG = "Produktionen med produktions ID'et  "
+                + returnedProduction.getProductionID() + " har ændringer";
+        PersistenceFacade.getInstance().createAdminNotification(new AdminNotification(notificationMSG, 0), returnedProduction);
     }
 
     @Override
@@ -105,9 +118,6 @@ public class DomainFacade implements IDomainFacade {
         return AuthenticationHandler.getUserInstance().validateUser(user);
     }
 
-    public static DomainFacade getInstance() {
-        return domain;
-    }
 
     @Override
     public List<IUser> getUsers() {
@@ -157,5 +167,45 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public void setCurrentUser(IUser user) {
         CurrentSession.getInstance().setCurrentUser(user);
+    }
+
+    @Override
+    public boolean createProducerNotification(IUser user, INotification notification) {
+        return PersistenceFacade.getInstance().createProducerNotification(user, notification);
+    }
+
+    @Override
+    public boolean createAdminNotification(INotification notification, IProduction production) {
+        return PersistenceFacade.getInstance().createAdminNotification(notification, production);
+    }
+
+    @Override
+    public boolean deleteAdminNotification(INotification notification) {
+        return PersistenceFacade.getInstance().deleteAdminNotification(notification);
+    }
+
+    @Override
+    public boolean deleteProducerNotification(INotification notification) {
+        return PersistenceFacade.getInstance().deleteProducerNotification(notification);
+    }
+
+    @Override
+    public boolean editAdminNotification(INotification newNotification) {
+        return PersistenceFacade.getInstance().editAdminNotification(newNotification);
+    }
+
+    @Override
+    public boolean editProducerNotification(INotification newNotification) {
+        return PersistenceFacade.getInstance().editProducerNotification(newNotification);
+    }
+
+    @Override
+    public List<INotification> getAdminNotifications() {
+        return PersistenceFacade.getInstance().getAdminNotifications();
+    }
+
+    @Override
+    public List<INotification> getProducerNotifications(IUser user) {
+        return PersistenceFacade.getInstance().getProducerNotifications(user);
     }
 }

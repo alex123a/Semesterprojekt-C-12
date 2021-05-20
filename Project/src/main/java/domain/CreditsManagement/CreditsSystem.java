@@ -14,7 +14,7 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
 
     private static CreditsSystem instance = null;
 
-    FacadeData facadeData = new FacadeData();
+    FacadeData facadeData = FacadeData.getInstance();
 
     List<IProduction> changedProductions;
 

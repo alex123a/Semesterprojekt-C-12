@@ -7,6 +7,8 @@ public interface IDomainFacade extends
         ISeeCredits,
         ICreditManagement,
         IUserHandling,
-        ISession {
+        ISession,
+        INotificationHandler,
+        INotificationProvider {
 
 }

@@ -1,10 +1,8 @@
 package data.notifications;
 
-import Interfaces.INotification;
-import Interfaces.INotificationHandler;
-import Interfaces.INotificationProvider;
-import Interfaces.IUser;
+import Interfaces.*;
 import data.DatabaseConnection;
+import data.credits.Production;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,11 +27,13 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean createProducerNotification(IUser user, INotification notification) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("INSERT INTO producer_notification(producer_id, notification_text, viewed, production_id) VALUES (?, ?, ?, ?)");
+            PreparedStatement statement = dbConnection.prepareStatement(
+                    "INSERT INTO producer_notification(producer_id, notification_text, viewed, production_id) " +
+                    "VALUES (?, ?, ?, ?)");
             statement.setInt(1, user.getId());
             statement.setString(2, notification.getText());
             statement.setBoolean(3, notification.getViewed());
-            statement.setInt(4, notification.getProductionId());
+            statement.setInt(4, ((ProducerNotification) notification).getDb_id_production());
             statement.execute();
             return true;
         } catch(SQLException e) {
@@ -42,11 +42,12 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     }
 
     @Override
-    public boolean createAdminNotification(INotification notification) {
+    public boolean createAdminNotification(INotification notification, IProduction production) {
         try {
+            notification.setProducerID(((Production) production).getID());
             PreparedStatement statement = dbConnection.prepareStatement("INSERT INTO administrator_notification(notification_text, production_id, approval_status_id) VALUES (?, ?, ?)");
             statement.setString(1, notification.getText());
-            statement.setInt(2, notification.getProductionId());
+            statement.setInt(2, ((AdminNotification) notification).getDb_id_production());
             statement.setInt(3, notification.getApproval());
             statement.execute();
             return true;
@@ -59,7 +60,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     public boolean deleteAdminNotification(INotification notification) {
         try {
             PreparedStatement statement = dbConnection.prepareStatement("DELETE FROM administrator_notification WHERE id = ?");
-            statement.setInt(1, notification.getID());
+            statement.setInt(1, ((Notification) notification).getID());
             statement.execute();
             return true;
         } catch(SQLException e) {
@@ -71,7 +72,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     public boolean deleteProducerNotification(INotification notification) {
         try {
             PreparedStatement statement = dbConnection.prepareStatement("DELETE FROM producer_notification WHERE id = ?");
-            statement.setInt(1, notification.getID());
+            statement.setInt(1, ((Notification) notification).getID());
             statement.execute();
             return true;
         } catch(SQLException e) {
@@ -82,10 +83,10 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean editAdminNotification(INotification newNotification) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification WHERE id = ? SET notification_text = ?, production_id = ?, approval_status_id = ?");
-            statement.setInt(1, newNotification.getID());
+            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification SET notification_text = ?, production_id = ?, approval_status_id = ? WHERE id = ? ");
+            statement.setInt(1, ((Notification) newNotification).getID());
             statement.setString(2, newNotification.getText());
-            statement.setInt(3, newNotification.getProductionId());
+            statement.setInt(3, ((ProducerNotification) newNotification).getDb_id_production());
             statement.setInt(4, newNotification.getApproval());
             statement.execute();
             return true;
@@ -97,12 +98,12 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean editProducerNotification(INotification newNotification) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification WHERE id = ? SET producer_id = ?, notification_text = ?, viewed = ?, production_id = ?");
-            statement.setInt(1, newNotification.getID());
+            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification SET producer_id = ?, notification_text = ?, viewed = ?, production_id = ? WHERE id = ?");
+            statement.setInt(1, ((Notification) newNotification).getID());
             statement.setInt(2, newNotification.getProducerID());
             statement.setString(3, newNotification.getText());
             statement.setBoolean(4, newNotification.getViewed());
-            statement.setInt(5, newNotification.getProductionId());
+            statement.setInt(5, ((ProducerNotification) newNotification).getDb_id_production());
             statement.execute();
             return true;
         } catch (SQLException e) {
@@ -114,10 +115,15 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     public List<INotification> getAdminNotifications() {
         try {
             List<INotification> list = new ArrayList<>();
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT * FROM administrator_notification");
+            PreparedStatement statement = dbConnection.prepareStatement("SELECT an.id, an.notification_text," +
+                    " p.own_production_id, p.production_name, an.approval_status_id, an.production_id" +
+                    " FROM administrator_notification AS an" +
+                    ", production AS p WHERE an.production_id = p.id");
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                list.add(new AdminNotifcation(result.getInt(1), result.getString(2), result.getInt(3), result.getInt(4)));
+                list.add(new AdminNotification(result.getInt(1), result.getString(2),
+                        result.getString(3), result.getString(4),
+                        result.getInt(5), result.getInt(6)));
             }
             return list;
         } catch (SQLException e) {
@@ -129,11 +135,13 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     public List<INotification> getProducerNotifications(IUser user) {
         try {
             List<INotification> list = new ArrayList<>();
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT * FROM producer_notification WHERE producer_id = ?");
+            PreparedStatement statement = dbConnection.prepareStatement("SELECT  " +
+                    " FROM producer_notification pn, production p" +
+                    " WHERE producer_id = ?");
             statement.setInt(1, user.getId());
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                list.add(new ProducerNotification(result.getInt(1), result.getInt(2), result.getString(3), result.getBoolean(4), result.getInt(5)));
+                list.add(new ProducerNotification());
             }
             return list;
         } catch (SQLException e) {
