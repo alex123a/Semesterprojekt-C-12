@@ -11,20 +11,25 @@ import java.util.List;
 public class FacadeData implements IFacadeData {
     private RightsHolderHandler rhHolder = RightsHolderHandler.getInstance();
     private ProductionHandler pHandler = ProductionHandler.getInstance();
+    private static FacadeData instance;
 
-    /**
-     * Returns one rightsholder
-     * @param id Identification of the rightsholder
-     * @return Rightsholder Object
-     */
-    public IRightsholder getRightsholder(int id) {
-        return rhHolder.getRightsholder(id);
+    public static FacadeData getInstance() {
+        if (instance == null) {
+            instance = new FacadeData();
+        }
+        return instance;
+    }
+
+    private FacadeData() {
+
     }
 
     /**
      * Returns all rightsholders
      * @return List of Rightsholders
      */
+
+    @Override
     public List<IRightsholder> getRightsholders() {
         return rhHolder.getRightsholders();
     }
@@ -33,22 +38,23 @@ public class FacadeData implements IFacadeData {
      * Inserting or editing a rightsholder
      * @param rightsholder Rightsholder object
      */
+
+    @Override
     public void saveRightsholder(IRightsholder rightsholder) {
         rhHolder.saveRightsholder(rightsholder);
     }
 
-    /**
-     * Returns one production
-     * @param id Identification of the production
-     */
-    public IProduction getProduction(String id) {
-        return pHandler.getProduction(Integer.parseInt(id));
+    @Override
+    public void approveChangesToRightsholder(IRightsholder rightsholder) {
+        throw new UnsupportedOperationException();
     }
 
     /**
      * Returns all productions
      * @return list with productions
      */
+
+    @Override
     public List<IProduction> getProductions() {
         return pHandler.getProductions();
     }
@@ -57,16 +63,25 @@ public class FacadeData implements IFacadeData {
      * Inserting or editing a rightsholder
      * @param production Production Object
      */
-    public void saveProduction(IProduction production) {
-        pHandler.saveProduction(production);
+
+    @Override
+    public IProduction saveProduction(IProduction production) {
+        return pHandler.saveProduction(production);
     }
 
     /**
      * Delete a procution
      * @param production Production object
      */
+
+    @Override
     public void deleteProduction(IProduction production) {
         pHandler.deleteProduction(production);
+    }
+
+    @Override
+    public void approveChangesToProduction(IProduction production) {
+        throw new UnsupportedOperationException();
     }
 
 }

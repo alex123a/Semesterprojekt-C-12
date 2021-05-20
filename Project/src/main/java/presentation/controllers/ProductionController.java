@@ -45,6 +45,9 @@ public class ProductionController implements Initializable {
         // getRightsholders er ikke implementeret endnu
         for (IRightsholder rh : r.getProductionToBeShown().getRightsholders().keySet()){
             createRightsholder(new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRightsholder(), new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRoles());
+            for(String s : new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRoles()) {
+                System.out.println(s);
+            }
         }
     }
 
@@ -80,9 +83,12 @@ public class ProductionController implements Initializable {
         Label personLabel = new Label(rh.getFirstName() + " " + rh.getLastName());
         Label roleLabel = new Label("");
 
+        // todo : role is null
+        /*
         for(String s : role) {
             roleLabel.setText(roleLabel.getText() + s + ", ");
         }
+         */
 
         labelBox.getChildren().addAll(personLabel, roleLabel);
 

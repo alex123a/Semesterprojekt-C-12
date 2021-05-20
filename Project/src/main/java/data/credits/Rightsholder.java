@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Rightsholder implements IRightsholder {
+class Rightsholder implements IRightsholder {
     private int id;
     private String firstName;
     private String lastName;
