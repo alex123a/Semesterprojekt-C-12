@@ -4,6 +4,7 @@ import Interfaces.IProduction;
 import Interfaces.IReporting;
 import data.DatabaseConnection;
 import data.credits.Production;
+import data.credits.Rightsholder;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 
@@ -134,40 +135,35 @@ public class ReportHandler implements IReporting {
     }
 
     @Override
-    public JSONObject generateCreditsReport() {
-        JSONObject jsonObject = new JSONObject();
+    public List<String> generateCreditsReport() {
+        List<String> jsonReady = new ArrayList<>();
         try {
             PreparedStatement productionQuery = dbConnection.prepareStatement("SELECT production.id, production.production_name FROM production");
             ResultSet productionSet = productionQuery.executeQuery();
             while (productionSet.next()) {
-                jsonObject.put("ProgramId",productionSet.getString(1));
-                jsonObject.put("ProgramName",productionSet.getString(2));
+                jsonReady.add("New Production");
+                jsonReady.add(productionSet.getString(1));
+                jsonReady.add(productionSet.getString(2));
                 PreparedStatement titleQuery = dbConnection.prepareStatement(
                         "SELECT DISTINCT t.title FROM appears_in AS ap, role AS r, title AS t" +
                                 " WHERE ap.production_id = ? AND r.title_id = t.id AND r.appears_in_id = ap.id");
                 titleQuery.setInt(1, productionSet.getInt(1));
                 ResultSet result = titleQuery.executeQuery();
                 while (result.next()) {
-                    JSONObject jsonObject1 = new JSONObject();
-                    jsonObject1.put("TitleName",result.getString("title"));
-                    JSONArray jsonArray = new JSONArray();
                     PreparedStatement personQuery = dbConnection.prepareStatement("SELECT r.id, first_name, last_name FROM rightsholder r, appears_in ap, role, title t " +
                             "WHERE t.title = ? AND role.title_id = t.id AND role.appears_in_id = ap.id AND ap.production_id = ? AND ap.rightsholder_id = r.id");
                     personQuery.setString(1, result.getString("title"));
                     personQuery.setInt(2, productionSet.getInt(1));
                     ResultSet persons = personQuery.executeQuery();
                     while (persons.next()) {
-                        jsonArray.add(persons.getString(1));
-                        jsonArray.add(persons.getString(2) + " " + persons.getString(3));
+                        jsonReady.add(persons.getString(1));
+                        jsonReady.add(persons.getString(2) + " " + persons.getString(3));
                     }
-                    jsonObject1.put("participants",jsonArray);
-                    jsonObject.put("Titles",jsonObject1);
                 }
-
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return jsonObject;
+        return jsonReady;
     }
 }

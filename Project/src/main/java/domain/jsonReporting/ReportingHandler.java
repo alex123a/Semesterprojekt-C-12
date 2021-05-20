@@ -6,7 +6,6 @@ import data.PersistenceFacade;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,8 +68,27 @@ public class ReportingHandler implements IReportHandler {
     }
 
     @Override
-    public JSONObject generateCreditsReport() {
-        return PersistenceFacade.getInstance().generateCreditsReport();
+    public JSONArray generateCreditsReport() {
+        List<String> strings = PersistenceFacade.getInstance().generateCreditsReport();
+        JSONArray show = new JSONArray();
+        JSONArray jsonArray = new JSONArray();
+        for (int i = 0; i < strings.size()-2; i += 2) {
+            JSONObject participants = new JSONObject();
+            if (strings.get(i).equals("New Production")) {
+                JSONObject jsonObject1 = new JSONObject();
+                strings.remove(i);
+                jsonObject1.put("ID",strings.get(i));
+                jsonObject1.put("ProgramName",strings.get(i+1));
+                show.add(jsonObject1);
+            } else {
+                participants.put("id", strings.get(i));
+                participants.put("Name", strings.get(i+1));
+                jsonArray.add(participants);
+                show.add(jsonArray);
+                jsonArray = new JSONArray();
+            }
+        }
+        return show;
     }
 
     public static IReportHandler getInstance() {

@@ -152,7 +152,7 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public JSONObject generateCreditsReport() {
+    public List<String> generateCreditsReport() {
         return ReportHandler.getInstance().generateCreditsReport();
     }
 }

@@ -1,5 +1,6 @@
 package Interfaces;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.List;
@@ -14,6 +15,6 @@ public interface IReportHandler {
 
     List<JSONObject> generate10MostCredited();
 
-    JSONObject generateCreditsReport();
+    JSONArray generateCreditsReport();
 
 }
