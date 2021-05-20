@@ -1,12 +1,7 @@
 package presentation.controllers;
 
-import Interfaces.IAdministrator;
-import Interfaces.IProducer;
-import data.PersistenceFacade;
 import domain.DomainFacade;
 import Interfaces.IUser;
-import domain.authentication.AuthenticationHandler;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,9 +11,6 @@ import javafx.scene.control.TextField;
 import presentation.userManage.Producer;
 import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
-
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 
 public class ManageUserController {
     @FXML
