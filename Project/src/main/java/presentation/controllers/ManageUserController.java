@@ -1,6 +1,6 @@
 package presentation.controllers;
 
-import domain.DomainFacade;
+import presentation.Repository;
 import Interfaces.IUser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -60,12 +60,12 @@ public class ManageUserController {
     void addUser(ActionEvent event) {
         boolean success = false;
         String userUsername = username.getText();
-        String userPassword = DomainFacade.getInstance().generateStrongPasswordHash(password.getText());
+        String userPassword = Repository.getInstance().domainFacade.generateStrongPasswordHash(password.getText());
         String userUserType = userType.getValue();
-        IUser currentUser = DomainFacade.getInstance().getCurrentUser();
-        if (DomainFacade.getInstance().validateUser(currentUser)) {
+        IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
+        if (Repository.getInstance().domainFacade.validateUser(currentUser)) {
             IUser user = (userUserType.equals("Systemadministrator")) ? new Systemadministrator(userUsername, userPassword) : new Producer(userUsername, userPassword);
-            success = DomainFacade.getInstance().addUser(user);
+            success = Repository.getInstance().domainFacade.addUser(user);
         }
         if (success) {
             username.setText("");
@@ -82,14 +82,14 @@ public class ManageUserController {
     @FXML
     void deleteUser(ActionEvent event) {
         String removeUsername = removeSearchUsername.getText();
-        IUser currentUser = DomainFacade.getInstance().getCurrentUser();
+        IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
         boolean success = false;
-        if (DomainFacade.getInstance().validateUser(currentUser)) {
+        if (Repository.getInstance().domainFacade.validateUser(currentUser)) {
             IUser tempUser = new User(removeUsername);
-            IUser removeUser = DomainFacade.getInstance().getUser(tempUser);
+            IUser removeUser = Repository.getInstance().domainFacade.getUser(tempUser);
             if (removeUser != null) {
                 if (!removeUsername.equals("")) {
-                    success = DomainFacade.getInstance().deleteUser(removeUser);
+                    success = Repository.getInstance().domainFacade.deleteUser(removeUser);
                 }
             }
         }
@@ -105,20 +105,25 @@ public class ManageUserController {
 
     @FXML
     void updateUser(ActionEvent event) {
-        boolean success = false;
-        IUser currentUser = DomainFacade.getInstance().getCurrentUser();
-        if (DomainFacade.getInstance().validateUser(currentUser)) {
+        boolean success = true;
+        IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
+        if (Repository.getInstance().domainFacade.validateUser(currentUser)) {
             String searchedUser = editSearchUsername.getText();
             IUser tempUser = new User(searchedUser);
-            IUser user = DomainFacade.getInstance().getUser(tempUser);
-
+            IUser user = Repository.getInstance().domainFacade.getUser(tempUser);
             if (!changeUsername.getText().equals("")) {
                 user.setUsername(changeUsername.getText());
+                if(Repository.getInstance().domainFacade.getUser(user) != null){
+                    success = false;
+                } else {
+                    success = Repository.getInstance().domainFacade.editUser(user);
+                }
+
             }
-            if (!changePassword.getText().equals("")) {
-                user.setPassword(DomainFacade.getInstance().generateStrongPasswordHash(changePassword.getText()));
+            if (!changePassword.getText().equals("") && success) {
+                user.setPassword(Repository.getInstance().domainFacade.generateStrongPasswordHash(changePassword.getText()));
+                success = Repository.getInstance().domainFacade.editUser(user);
             }
-            success = DomainFacade.getInstance().editUser(user);
         }
         if (success) {
             changeUsername.setText("");

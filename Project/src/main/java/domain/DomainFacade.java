@@ -123,10 +123,8 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean editUser(IUser user) {
-        if (PersistenceFacade.getInstance().getUser(user) == null) {
-            return PersistenceFacade.getInstance().editUser(user);
-        }
-        return false;
+        System.out.println("6");
+        return PersistenceFacade.getInstance().editUser(user);
     }
 
     @Override
