@@ -152,4 +152,29 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             return null;
         }
     }
+
+    @Override
+    public int countUnreadAdminNotifications() {
+        try {
+            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(id)" +
+                    " FROM administrator_notification WHERE approval_status_id = 1");
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                return result.getInt(1);
+            } else {
+                return 0;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    @Override
+    public int countUnreadProducerNotifications(IUser user) {
+        return 0;
+    }
+
+
 }

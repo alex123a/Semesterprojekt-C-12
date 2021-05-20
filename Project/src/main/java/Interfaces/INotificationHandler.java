@@ -19,4 +19,8 @@ public interface INotificationHandler {
 
     List<INotification> getProducerNotifications(IUser user);
 
+    int countUnreadAdminNotifications();
+
+    int countUnreadProducerNotifications(IUser user);
+
 }

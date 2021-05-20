@@ -208,4 +208,14 @@ public class DomainFacade implements IDomainFacade {
     public List<INotification> getProducerNotifications(IUser user) {
         return PersistenceFacade.getInstance().getProducerNotifications(user);
     }
+
+    @Override
+    public int countUnreadAdminNotifications() {
+        return PersistenceFacade.getInstance().countUnreadAdminNotifications();
+    }
+
+    @Override
+    public int countUnreadProducerNotifications(IUser user) {
+        return PersistenceFacade.getInstance().countUnreadProducerNotifications(user);
+    }
 }

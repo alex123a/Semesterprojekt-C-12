@@ -132,6 +132,16 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
+    public int countUnreadAdminNotifications() {
+        return NotificationHandler.getInstance().countUnreadAdminNotifications();
+    }
+
+    @Override
+    public int countUnreadProducerNotifications(IUser user) {
+        return NotificationHandler.getInstance().countUnreadProducerNotifications(user);
+    }
+
+    @Override
     public int getTotalCreditCount() {
         return ReportHandler.getInstance().getTotalCreditCount();
     }

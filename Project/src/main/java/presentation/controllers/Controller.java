@@ -255,7 +255,9 @@ public class Controller implements Initializable {
 
         // TODO Check for if which user is logged in to load number of notifications for right corner
         //if (domain.getCurrentUser() )
-        numberOfNotifications.setText("" + domain.getAdminNotifications().size());
+        if (domain.getCurrentUser() != null) {
+            numberOfNotifications.setText("" + domain.countUnreadAdminNotifications());
+        }
         // TODO Update label for producer notifications when Magnus is done
         // numberOfNotifications.setText("" + domain.getProducerNotifications().size());
     }
