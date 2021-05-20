@@ -8,10 +8,7 @@ import enumerations.ProductionSorting;
 import enumerations.ProductionType;
 import enumerations.RightholderSorting;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class SearchEngineHandler implements Interfaces.ISearchCredits {
     @Override
@@ -45,7 +42,7 @@ public class SearchEngineHandler implements Interfaces.ISearchCredits {
           list.sort((o1, o2) -> o1.getLastName().compareTo(o2.getLastName()));
             return list;
         }
-//todo rightsholder get lastname
+
         if(type == RightholderSorting.LAST_NAME_REVERSE){
             list.sort((o1, o2) -> o2.getLastName().compareTo(o1.getLastName()));
             return list;
@@ -99,13 +96,18 @@ public class SearchEngineHandler implements Interfaces.ISearchCredits {
             }
 
             //for every production, check if its year is inside the range
-            for (IProduction prod : list){
+            Iterator<IProduction> iter = list.iterator();
+
+            while (iter.hasNext()) {
+                IProduction prod = iter.next();
                 int year = prod.getYear();
-                if (year < lowestYr || year > highestYr){
-                    list.remove(prod);
+
+                    if (year < lowestYr || year > highestYr) {
+                        iter.remove();
+                    }
                 }
             }
-        }
+
 
         if(genre != null){
            list.removeIf(prod -> prod.getGenre() != genre);

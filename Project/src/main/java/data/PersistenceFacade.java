@@ -56,8 +56,8 @@ public class PersistenceFacade implements IPersistenceFacade {
 
     @Override
     public List<IRightsholder> getRightsholders() {
-        FacadeData.getInstance().getRightsholders();
-        return null;
+        return FacadeData.getInstance().getRightsholders();
+
     }
 
     @Override
