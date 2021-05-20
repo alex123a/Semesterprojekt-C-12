@@ -31,7 +31,7 @@
                   <Button fx:id="addProgramBut" layoutX="697.0" layoutY="46.0" mnemonicParsing="false" onAction="#onAddProgramClicked" prefHeight="25.0" prefWidth="128.0" style="-fx-cursor: hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0; -fx-border-radius: 4px; -fx-background-radius: 4px;" text="Tilføj program" />
                     </children>
                 </Pane>
-            <ScrollPane maxWidth="807.0" prefHeight="397.0" prefWidth="807.0" vbarPolicy="ALWAYS">
+            <ScrollPane hbarPolicy="NEVER" maxWidth="807.0" prefHeight="397.0" prefWidth="807.0" vbarPolicy="ALWAYS">
                <content>
                       <VBox fx:id="productionList" alignment="TOP_CENTER" maxWidth="792.0" prefHeight="395.0" prefWidth="792.0" />
                </content>

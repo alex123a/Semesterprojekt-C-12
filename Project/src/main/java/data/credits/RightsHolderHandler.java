@@ -26,6 +26,23 @@ class RightsHolderHandler {
         this.connection = DatabaseConnection.getConnection();
     }
 
+    private List<Integer> getRightsholdersProductions(ResultSet rightsholderSet) throws SQLException {
+
+        List<Integer> idList = new ArrayList<>();
+        PreparedStatement productionStatement = connection.prepareStatement("" +
+                "SELECT DISTINCT production_id " +
+                "FROM appears_in " +
+                "WHERE rightsholder_id = ?");
+        productionStatement.setInt(1, rightsholderSet.getInt(1));
+        ResultSet productionIDs = productionStatement.executeQuery();
+
+        while(productionIDs.next()){
+            idList.add( productionIDs.getInt(1) );
+        }
+
+        return idList;
+    }
+
     // Return all rightholders
     List<IRightsholder> getRightsholders() {
         List<IRightsholder> rightsholderList = new ArrayList<>();
@@ -44,7 +61,21 @@ class RightsHolderHandler {
 
     // Return one rightholder with the use of id
     IRightsholder getRightsholder(int id) {
-        throw new UnsupportedOperationException("not implemented yet");
+        Rightsholder r = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM rightsholder WHERE id = ?");
+            statement.setInt(1, id);
+            ResultSet rightsholderResult = statement.executeQuery();
+
+            while (rightsholderResult.next()) {
+                r = new Rightsholder(rightsholderResult.getInt(1), rightsholderResult.getString(2), rightsholderResult.getString(3), rightsholderResult.getString(4), getRightsholdersProductions(rightsholderResult));
+            }
+
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return r;
     }
 
     // Insert rightsholder or edit rightsholder
