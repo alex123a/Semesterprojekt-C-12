@@ -146,6 +146,11 @@ public class DomainFacade implements IDomainFacade {
     }
 
     @Override
+    public List<IUser> getUsersBySearch(IUser user) {
+        return PersistenceFacade.getInstance().getUsersBySearch(user);
+    }
+
+    @Override
     public IUser getCurrentUser() {
         return CurrentSession.getInstance().getCurrentUser();
     }

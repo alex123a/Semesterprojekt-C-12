@@ -18,9 +18,9 @@
             <Image url="@/images/Tv2Logo.png" />
          </image>
       </ImageView>
-      <TabPane layoutX="433.0" layoutY="126.0" prefHeight="503.0" prefWidth="434.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPane" layoutX="433.0" layoutY="126.0" prefHeight="503.0" prefWidth="434.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab style="-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-border-color: #c9c9c9; -fx-border-radius: 10px;" text="Tilføj bruger">
+            <Tab fx:id="tab1" style="-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-border-color: #c9c9c9; -fx-border-radius: 10px;" text="Tilføj bruger">
                <content>
                   <Pane prefHeight="473.0" prefWidth="468.0" style="-fx-background-color: #ffffff;">
                      <children>
@@ -79,7 +79,7 @@
                   </Pane>
                </content>
             </Tab>
-          <Tab style="-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-border-color: #c9c9c9; -fx-border-radius: 10px;" text="Ændre bruger">
+          <Tab fx:id="tab2" style="-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-border-color: #c9c9c9; -fx-border-radius: 10px;" text="Ændre bruger">
                <content>
                   <Pane prefHeight="473.0" prefWidth="468.0" style="-fx-background-color: #ffffff;">
                      <children>
@@ -98,22 +98,12 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="32.0" fitWidth="38.0" layoutX="362.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/images/Search_Grey.jpg" />
-                           </image>
-                        </ImageView>
                         <Label alignment="CENTER" layoutX="1.0" layoutY="186.0" prefHeight="32.0" prefWidth="128.0" style="-fx-alignment: CENTER;" text="Brugernavn:" textFill="#4c4c4c">
                            <font>
                               <Font name="Calibri" size="20.0" />
                            </font>
                         </Label>
                         <TextField fx:id="changeUsername" layoutX="132.0" layoutY="180.0" prefHeight="43.0" prefWidth="229.0" style="-fx-background-radius: 3px;">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="editSearchUsername" layoutX="132.0" layoutY="102.0" prefHeight="43.0" prefWidth="229.0" promptText="Brugernavn" style="-fx-background-radius: 3px;">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -143,11 +133,12 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
+                        <ComboBox fx:id="searchUsernameEdit" editable="true" layoutX="132.0" layoutY="102.0" onKeyReleased="#userSearcher" prefHeight="44.0" prefWidth="229.0" promptText="Brugernavn" />
                      </children>
                   </Pane>
                </content>
             </Tab>
-          <Tab style="-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-border-color: #c9c9c9; -fx-border-radius: 10px;" text="Fjern bruger">
+          <Tab fx:id="tab3" style="-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-border-color: #c9c9c9; -fx-border-radius: 10px;" text="Fjern bruger">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                      <children>
@@ -161,11 +152,6 @@
                               <Image url="@/images/Search_Grey.jpg" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="removeSearchUsername" layoutX="112.0" layoutY="145.0" prefHeight="43.0" prefWidth="229.0" promptText="Brugernavn" style="-fx-background-radius: 3px;">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </TextField>
                         <Label layoutX="130.0" layoutY="26.0" text="Fjern bruger">
                            <font>
                               <Font name="System Bold" size="30.0" />
@@ -186,6 +172,13 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
+                        <ComboBox fx:id="searchUsernameRemove" editable="true" layoutX="112.0" layoutY="145.0" onKeyReleased="#userSearcher" prefHeight="44.0" prefWidth="227.0" promptText="Brugernavn" />
+                        <Label layoutX="26.0" layoutY="245.0" text="Role:" textFill="#4c4c4c">
+                           <font>
+                              <Font name="Calibri Bold" size="28.0" />
+                           </font>
+                        </Label>
+                        <TextField disable="true" editable="false" layoutX="112.0" layoutY="241.0" prefHeight="41.0" prefWidth="227.0" />
                      </children>
                   </Pane>
                </content>

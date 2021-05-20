@@ -41,6 +41,11 @@ public class PersistenceFacade implements IPersistenceFacade {
         return UserFacade.getInstance().getDatabasePassword(user);
     }
 
+    @Override
+    public List<IUser> getUsersBySearch(IUser user) {
+        return UserFacade.getInstance().getUsersBySearch(user);
+    }
+
     public static PersistenceFacade getInstance() {
         return PERSISTENCE_FACADE;
     }

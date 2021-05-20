@@ -13,5 +13,8 @@ public class SystemAdministrator extends User implements IAdministrator {
         super(ID, username, password);
     }
 
+    public SystemAdministrator(String username) {
+        super(username);
+    }
 
 }
