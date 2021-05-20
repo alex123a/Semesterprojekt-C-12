@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +27,8 @@ import java.util.ResourceBundle;
 
 public class PersonController implements Initializable {
     @FXML
+    private TextArea descriptionBox;
+    @FXML
     private Label nameLabel;
     @FXML
     VBox scrollpaneVBox;
@@ -34,7 +37,7 @@ public class PersonController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Repository r = Repository.getInstance();
 
-        setup(r.getRightsholderToBeShown().getFirstName() + " " + r.getRightsholderToBeShown().getLastName());
+        setup(r.getRightsholderToBeShown().getFirstName() + " " + r.getRightsholderToBeShown().getLastName(), r.getRightsholderToBeShown().getDescription());
 
         // todo : Get all productions for this rightsholder and make a role for each
         String roles = "";
@@ -46,8 +49,10 @@ public class PersonController implements Initializable {
         }
     }
 
-    private void setup(String personName) {
+    private void setup(String personName, String description) {
         nameLabel.setText(personName);
+        descriptionBox.setText("");
+
     }
 
     // Method to create a box with the role
