@@ -2,6 +2,7 @@ package presentation;
 
 import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
+import Interfaces.IRightsholder;
 import domain.CreditsManagement.CreditsSystem;
 import javafx.stage.Stage;
 
@@ -12,6 +13,8 @@ public class Repository {
 
     private Stage window;
     private IProduction toEdit;
+    private IProduction productionToBeShown;
+    private IRightsholder rightsholderToBeShown;
 
     public Stage getWindow() {
         return window;
@@ -27,6 +30,22 @@ public class Repository {
 
     public void setToEdit(IProduction toEdit) {
         this.toEdit = toEdit;
+    }
+
+    public IProduction getProductionToBeShown() {
+        return productionToBeShown;
+    }
+
+    public void setProductionToBeShown(IProduction toBeShown) {
+        this.productionToBeShown = toBeShown;
+    }
+
+    public IRightsholder getRightsholderToBeShown() {
+        return rightsholderToBeShown;
+    }
+
+    public void setRightsholderToBeShown(IRightsholder toBeShown) {
+        this.rightsholderToBeShown = toBeShown;
     }
 
     public ICreditManagement creditsSystem = CreditsSystem.getInstance();

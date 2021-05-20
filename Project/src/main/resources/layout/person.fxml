@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,21 +22,17 @@
             <DropShadow blurType="GAUSSIAN" color="#0000007e" offsetX="2.0" offsetY="2.0" />
          </effect>
          <children>
-            <ImageView onMouseClicked="#goBack" style="-fx-cursor: hand;" fitHeight="25.0" fitWidth="34.0" layoutX="34.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="34.0" layoutY="41.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@/images/BackArrow.png" />
                </image>
             </ImageView>
-            <Label layoutX="75.0" layoutY="17.0" prefHeight="71.0" prefWidth="550.0" style="-fx-alignment: CENTER;" text="Person Navn">
+            <Label fx:id="nameLabel" layoutX="75.0" prefHeight="71.0" prefWidth="550.0" style="-fx-alignment: CENTER;" text="Person Navn">
                <font>
                   <Font name="Calibri Bold" size="40.0" />
                </font>
             </Label>
-            <ImageView onMouseClicked="#editUser" style="-fx-cursor: hand;" fitHeight="47.0" fitWidth="32.0" layoutX="641.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/images/Edit.jpg" />
-               </image>
-            </ImageView>
+            <TextArea fx:id="descriptionBox" layoutX="75.0" layoutY="71.0" prefHeight="71.0" prefWidth="550.0" style="-fx-background-color: #c9c9c9;" text="*Beskrivelse af personen*" />
             <ScrollPane hbarPolicy="NEVER" layoutX="75.0" layoutY="150.0" prefHeight="350.0" prefWidth="550.0">
                <content>
                   <VBox fx:id="scrollpaneVBox" prefWidth="548.0" style="-fx-background-color: #BBBBBB; -fx-border-width: 1;">
