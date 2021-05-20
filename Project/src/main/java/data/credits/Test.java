@@ -22,7 +22,6 @@ class Test {
         IProduction production = ProductionHandler.getInstance().getProduction(1);
         System.out.println(production);
 
-
         List<IRightsholder> rightholderList = RightsHolderHandler.getInstance().getRightsholders();
         System.out.println(rightholderList);
 
@@ -31,9 +30,9 @@ class Test {
 
         List<Integer> f = new ArrayList<>();
         f.add(1);
-        RightsHolderHandler.getInstance().saveRightsholder(new Rightsholder(7,"Hans","Hansen","Yoghurt", f));
+       // RightsHolderHandler.getInstance().saveRightsholder(new Rightsholder(7,"Hans","Hansen","Yoghurt", f));
 
-        RightsHolderHandler.getInstance().approveChangesToRightsholder(new Rightsholder(7,"Hans","Hansen","Yoghurt", f));
+        RightsHolderHandler.getInstance().approveChangesToRightsholder(new Rightsholder(7,"Hans","Hansen","jj", f));
 
     }
 

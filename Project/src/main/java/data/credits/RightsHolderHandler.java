@@ -90,7 +90,7 @@ class RightsHolderHandler {
                 Rightsholder r = (Rightsholder) rightsholder;
                 //try to get one rightsholder from shadow table, where id is equals rightsholder
                 //meant to check if rightsholder is already waiting for change approvals
-                PreparedStatement getRightsholderStatement = connection.prepareStatement("SELECT * FROM rightsholder_approval WHERE id = ?");
+                PreparedStatement getRightsholderStatement = connection.prepareStatement("SELECT 1 FROM rightsholder_approval WHERE id = ?");
                 getRightsholderStatement.setInt(1, r.getId());
                 ResultSet result = getRightsholderStatement.executeQuery();
 
@@ -144,7 +144,7 @@ class RightsHolderHandler {
             try {
                 //try to get one rightsholder from db, where id is equals rightsholder
                 //meant to check if rightsholder is created or being created for change approvals
-                PreparedStatement getRightsholderStatement = connection.prepareStatement("SELECT * FROM rightsholder WHERE id = ?");
+                PreparedStatement getRightsholderStatement = connection.prepareStatement("SELECT 1 FROM rightsholder WHERE id = ?");
                 getRightsholderStatement.setInt(1, r.getId());
                 ResultSet result = getRightsholderStatement.executeQuery();
 
@@ -159,22 +159,20 @@ class RightsHolderHandler {
                 else {
                     statement = connection.prepareStatement("INSERT INTO rightsholder (first_name, last_name, rightsholder_description, id) VALUES (?,?,?,?)");
                 }
+                //System.out.println("Id" + r.get)
                 statement.setString(1, r.getFirstName());
                 statement.setString(2, r.getLastName());
                 statement.setString(3, r.getDescription());
                 statement.setInt(4, r.getId());
                 System.out.println(r.getFirstName() + " " + r.getLastName() + " " + r.getDescription() + " " + r.getId());
 
-                boolean b = statement.execute();
-                System.out.println(b);
-                if (b) {
+                statement.execute();
+
                     System.out.println(3);
                     PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM rightsholder_approval WHERE id = ?");
                     deleteStatement.setInt(1, r.getId());
                     deleteStatement.execute();
-                } else {
-                    //throw new SQLException("INSERT/UPDATE QUERY FAILED");
-                }
+
 
 
             } catch (SQLException e) {
