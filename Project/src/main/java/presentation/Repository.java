@@ -13,6 +13,7 @@ public class Repository {
 
     private Stage window;
     private IProduction toEdit;
+    private IProduction toBeShown;
 
     public Stage getWindow() {
         return window;
@@ -31,5 +32,13 @@ public class Repository {
     }
 
     public DomainFacade domainFacade = DomainFacade.getInstance();
+    
+    public IProduction getToBeShown() {
+        return toBeShown;
+    }
+
+    public void setToBeShown(IProduction toBeShown) {
+        this.toBeShown = toBeShown;
+    }
 
 }

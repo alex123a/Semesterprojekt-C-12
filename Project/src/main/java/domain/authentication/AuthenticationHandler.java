@@ -1,5 +1,6 @@
 package domain.authentication;
 
+import Interfaces.IAuthenticationHandler;
 import Interfaces.IAuthenticator;
 import Interfaces.IUserAuthentication;
 
@@ -10,12 +11,13 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
-public class AuthenticationHandler {
+public class AuthenticationHandler implements IAuthenticationHandler {
+    private static final AuthenticationHandler authenticationHandler = new AuthenticationHandler();
     private static IUserAuthentication userAuthentication = UserAuthentication.getInstance();
     private static IAuthenticator loginAuthentication = LoginAuthentication.getInstance();
 
-
-    public static String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    @Override
+    public String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         // Explained in validate password except the salt is here random generated
         int iterations = 1000;
         char[] chars = password.toCharArray();
@@ -90,4 +92,6 @@ public class AuthenticationHandler {
     public static IUserAuthentication getUserInstance() {
         return userAuthentication;
     }
+
+    public static IAuthenticationHandler getInstance() {return authenticationHandler;}
 }

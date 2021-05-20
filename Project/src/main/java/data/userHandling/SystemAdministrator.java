@@ -1,6 +1,8 @@
 package data.userHandling;
 
-public class SystemAdministrator extends User {
+import Interfaces.IAdministrator;
+
+public class SystemAdministrator extends User implements IAdministrator {
     private static final UserManager USERMANAGER = UserManager.getInstance();
 
     public SystemAdministrator(String username, String password) {

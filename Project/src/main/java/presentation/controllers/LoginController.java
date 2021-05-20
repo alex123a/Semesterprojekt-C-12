@@ -20,8 +20,6 @@ import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 
 public class LoginController {
     @FXML
@@ -96,9 +94,6 @@ public class LoginController {
                 failedLogin();
             }
         }
-
-
-        // todo: Send login information to be checked
     }
 
     // Method to show that the login is wrong

@@ -10,6 +10,8 @@ import enumerations.ProductionSorting;
 import enumerations.ProductionType;
 import enumerations.RightholderSorting;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 import java.util.Map;
 
@@ -125,22 +127,13 @@ public class DomainFacade implements IDomainFacade {
     }
 
     @Override
-    public boolean makeUserProducer(IUser user) {
-        return PersistenceFacade.getInstance().makeUserProducer(user);
-    }
-
-    @Override
-    public boolean makeUserAdmin(IUser user) {
-        return PersistenceFacade.getInstance().makeUserAdmin(user);
-    }
-
-    @Override
     public boolean deleteUser(IUser user) {
         return PersistenceFacade.getInstance().deleteUser(user);
     }
 
     @Override
     public boolean editUser(IUser user) {
+        System.out.println("6");
         return PersistenceFacade.getInstance().editUser(user);
     }
 
@@ -151,7 +144,10 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean addUser(IUser user) {
-        return PersistenceFacade.getInstance().addUser(user);
+        if (PersistenceFacade.getInstance().getUser(user) == null) {
+            return PersistenceFacade.getInstance().addUser(user);
+        }
+        return false;
     }
 
     @Override
@@ -217,5 +213,12 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public int countUnreadProducerNotifications(IUser user) {
         return PersistenceFacade.getInstance().countUnreadProducerNotifications(user);
+    public String generateStrongPasswordHash(String password) {
+        try {
+            return AuthenticationHandler.getInstance().generateStrongPasswordHash(password);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
