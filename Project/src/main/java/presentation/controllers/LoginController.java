@@ -14,14 +14,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import java.io.IOException;
-import presentation.userManage.Producer;
-import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 
 public class LoginController {
     @FXML
@@ -58,25 +53,6 @@ public class LoginController {
         // Checks if the input is empty
         // There is two password inputs
         // One for if the password is hidden and one for if the password isn't hidden
-        if(passwordToggle.getImage().equals(closedEye)) {
-            if (usernameInput.getText().equals("") && passwordHiddenInput.getText().equals("")) {
-                emptyLogin();
-            }
-            else {
-                username = usernameInput.getText();
-                password = passwordHiddenInput.getText();
-            }
-        }
-        else {
-            if (usernameInput.getText().equals("") && passwordShownInput.getText().equals("")) {
-                emptyLogin();
-            }
-            else {
-                username = usernameInput.getText();
-                password = passwordHiddenInput.getText();
-            }
-        }
-
         if (passwordToggle.getImage().equals(closedEye)) {
             checkPassword(passwordHiddenInput);
         } else {
@@ -133,13 +109,12 @@ public class LoginController {
 
     // Method to toggle show/hide password
     public void togglePassword(MouseEvent mouseEvent) {
-        if(passwordToggle.getImage().equals(closedEye)) {
+        if (passwordToggle.getImage().equals(closedEye)) {
             passwordToggle.setImage(openEye);
             passwordHiddenInput.setVisible(false);
             passwordShownInput.setVisible(true);
             passwordShownInput.setText(passwordHiddenInput.getText());
-        }
-        else {
+        } else {
             passwordToggle.setImage(closedEye);
             passwordHiddenInput.setVisible(true);
             passwordShownInput.setVisible(false);
