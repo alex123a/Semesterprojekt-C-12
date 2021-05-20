@@ -6,14 +6,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 import presentation.userManage.Producer;
 import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
+
+import java.io.IOException;
 
 public class ManageUserController {
     @FXML
@@ -45,6 +52,9 @@ public class ManageUserController {
 
     @FXML
     private TextField removeSearchUsername;
+
+    @FXML
+    ImageView backButton;
 
     @FXML
     void addUser(ActionEvent event) {
@@ -119,6 +129,17 @@ public class ManageUserController {
         } else {
             changeUserResult.setText("Error: Something went wrong, try again. \nMake sure that the username does not already exist!");
             changeUserResult.setTextFill(Color.web("#FF0000"));
+        }
+    }
+
+    public void goBack(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
+            Stage window = (Stage) backButton.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
