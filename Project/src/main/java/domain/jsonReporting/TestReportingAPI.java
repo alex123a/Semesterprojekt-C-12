@@ -8,11 +8,17 @@ public class TestReportingAPI {
         IReportHandler reportHandler = ReportingHandler.getInstance();
 
         // Total number of credits in the Database
-        System.out.println(reportHandler.getTotalCreditCount());
+        //System.out.println(reportHandler.getTotalCreditCount());
 
         // Total number of credits for the production parsed (this should be implemented where you chose an excisting production)
         Production production = new Production(1,null,null,null,0,null,null,null);
-        System.out.println(reportHandler.generateProductionCreditsCount(production));
+        //System.out.println(reportHandler.generateProductionCreditsCount(production));
+
+        //System.out.println(reportHandler.generateCreditTypeCount());
+
+        //System.out.println(reportHandler.generate10MostCredited());
+
+        System.out.println(reportHandler.generateCreditsReport());
 
 
     }

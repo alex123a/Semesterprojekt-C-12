@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/Hash.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/create_sample_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/create_sample_data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IReportHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IReportHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IReporting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IReporting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/reporting/ReportHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/reporting/ReportHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/reporting/Test2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/reporting/Test2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/ReportingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/ReportingHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/TestReportingAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/TestReportingAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IReportHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IReportHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IReporting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IReporting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/reporting/ReportHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/reporting/ReportHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/reporting/Test2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/reporting/Test2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/jsonReporting/ReportingHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/jsonReporting/ReportingHandler.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,6 +87,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.TestReportingAPI">
+    <configuration name="Hash" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="domain.authentication.Hash" />
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.authentication.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="NewMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="presentation.NewMain" />
       <module name="Project" />
@@ -93,19 +119,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="data.reporting.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="data.Test" />
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="data.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -156,9 +169,9 @@
       <list>
         <item itemvalue="Application.TestReportingAPI" />
         <item itemvalue="Application.Test2" />
+        <item itemvalue="Application.Hash" />
         <item itemvalue="Application.NewMain" />
         <item itemvalue="Application.ReportHandler" />
-        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>

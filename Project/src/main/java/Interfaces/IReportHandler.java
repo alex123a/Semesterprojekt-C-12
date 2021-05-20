@@ -10,10 +10,10 @@ public interface IReportHandler {
 
     JSONObject generateProductionCreditsCount(IProduction production);
 
-    List<JSONObject> generateCreditTypeCount(String type);
+    List<JSONObject> generateCreditTypeCount();
 
     List<JSONObject> generate10MostCredited();
 
-    List<JSONObject> generateCreditsReport();
+    JSONObject generateCreditsReport();
 
 }

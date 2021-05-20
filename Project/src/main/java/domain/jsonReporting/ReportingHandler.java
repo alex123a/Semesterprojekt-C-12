@@ -6,6 +6,7 @@ import data.PersistenceFacade;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,8 +32,8 @@ public class ReportingHandler implements IReportHandler {
         int totalNumOfCredits = 0;
         for (String i : creditMap.keySet()) {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("Role", i);
-            jsonObject.put("RoleCount",creditMap.get(i));
+            jsonObject.put("Title", i);
+            jsonObject.put("TitleCount",creditMap.get(i));
             jsonObjectList.add(jsonObject);
             totalNumOfCredits += creditMap.get(i);
         }
@@ -42,18 +43,34 @@ public class ReportingHandler implements IReportHandler {
     }
 
     @Override
-    public List<JSONObject> generateCreditTypeCount(String type) {
-        return null;
+    public List<JSONObject> generateCreditTypeCount() {
+        Map<String, Integer> creditMap = new HashMap<>(PersistenceFacade.getInstance().generateCreditTypeCount());
+        JSONArray jsonObjectList = new JSONArray();
+        for (String i : creditMap.keySet()) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("CreditName",i);
+            jsonObject.put("CreditCount",creditMap.get(i));
+            jsonObjectList.add(jsonObject);
+        }
+        return jsonObjectList;
     }
 
     @Override
     public List<JSONObject> generate10MostCredited() {
-        return null;
+        Map<String, Integer> creditMap = new HashMap<>(PersistenceFacade.getInstance().generate10MostCredited());
+        JSONArray jsonObjectList = new JSONArray();
+        for (String i : creditMap.keySet()) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("CreditName",i);
+            jsonObject.put("CreditCount",creditMap.get(i));
+            jsonObjectList.add(jsonObject);
+        }
+        return jsonObjectList;
     }
 
     @Override
-    public List<JSONObject> generateCreditsReport() {
-        return null;
+    public JSONObject generateCreditsReport() {
+        return PersistenceFacade.getInstance().generateCreditsReport();
     }
 
     public static IReportHandler getInstance() {
