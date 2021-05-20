@@ -71,7 +71,7 @@ class ProductionHandler {
     }
 
     IProduction saveProduction(IProduction production){
-        //TODO insert rightsholders, appears_in and so on
+        //TODO insert into roleApproval
         //TODO insert Producer id
         //TODO All the statement.set() calls could be refactored
 
@@ -124,7 +124,6 @@ class ProductionHandler {
             //Run this if the production is a new production
             try {
 
-                //Run this
                 insertStatement = connection.prepareStatement("" +
                         "INSERT INTO production_approval (own_production_id, production_name, year, genre_id, category_id, description) " +
                         "VALUES (?, ?, ?, ?, ?, ?) " +
@@ -176,9 +175,22 @@ class ProductionHandler {
                 if (!existing.next()) {// the appears_in is not in the table and thus should be inserted
                     PreparedStatement insertAppears_inStatement = connection.prepareStatement("" +
                             "INSERT INTO appears_in_approval (production_id, rightsholder_id) " +
-                            "VALUES (?, ?)");
+                            "VALUES (?, ?)" +
+                            "RETURNING id");
                     insertAppears_inStatement.setInt(1, productionID);
                     insertAppears_inStatement.setInt(2, rightsholderID);
+                    ResultSet appears_in_id_result = insertAppears_inStatement.executeQuery();
+                    int appearsinID = appears_in_id_result.getInt(1);
+
+                    //Inserts into roleapproval
+                    //TODO insert into roleapproval
+                    for (String role: rightsholders.get(rightsholder)){
+                        PreparedStatement insertRoleStatement = connection.prepareStatement("" +
+                                "INSERT INTO role_approval (appears_in_id, title_id) " +
+                                "VALUES (?, ?)");
+                        //TODO pass the title_id of a title to the method below
+                        //insertRoleStatement.setInt(appearsinID, );
+                    }
                 }
 
             } catch (SQLException throwables) {
@@ -187,9 +199,10 @@ class ProductionHandler {
         }
 
         // the following block removes the appears_in if they are in the DB but not in the production
+        // meaning it creates a row in appears_in_approval with the id from appears_in row an null values
         try {
             PreparedStatement getAllAppearsinStatement = connection.prepareStatement("" +
-                    "SELECT rightsholder_id " +
+                    "SELECT rightsholder_id, id " +
                     "FROM appears_in " +
                     "WHERE production_id=?");
             getAllAppearsinStatement.setInt(1, productionID);
@@ -205,17 +218,15 @@ class ProductionHandler {
             }
             while (allAppearsinResult.next()){
                 if (!rightsholderIDs.contains(allAppearsinResult.getInt(1))){
-                    //TODO write statement to insert into approvaltable
                     PreparedStatement insertToBeDeleted = connection.prepareStatement("" +
-                            "INSERT INTO appears_in_approval (production_id, rightsholder_id)" +
-                            "VALUES (?, ?)");
-                    insertToBeDeleted
+                            "INSERT INTO appears_in_approval (id)" +
+                            "VALUES (?)");
+                    insertToBeDeleted.setInt(1, allAppearsinResult.getInt(2));
                 }
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
 
         return toReturn;
     }
@@ -281,6 +292,12 @@ class ProductionHandler {
         Production p = new Production(productionsResult.getInt(1), productionsResult.getString(2), productionsResult.getString(3), productionsResult.getString(4), productionsResult.getInt(5), genre, type, roleMap);
         return p;
     }
+
+    public void approveChangesToProduction(IProduction production) {
+
+    }
+
+
 
     static ProductionHandler getInstance() {
         return prHandler;

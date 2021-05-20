@@ -67,9 +67,9 @@ CREATE TABLE appears_in(
 );
 
 CREATE TABLE appears_in_approval(
+    id SERIAL PRIMARY KEY,
     production_id INT REFERENCES production(id),
-    rightsholder_id INT REFERENCES rightsholder(id),
-    PRIMARY KEY (production_id, rightsholder_id)
+    rightsholder_id INT REFERENCES rightsholder(id)
 );
 
 CREATE TABLE title(
