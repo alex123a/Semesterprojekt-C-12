@@ -71,7 +71,6 @@ class ProductionHandler {
     }
 
     IProduction saveProduction(IProduction production){
-        //TODO insert into roleApproval
         //TODO insert Producer id
         //TODO All the statement.set() calls could be refactored
 
@@ -124,9 +123,10 @@ class ProductionHandler {
             //Run this if the production is a new production
             try {
 
+                //TODO THE HARDCODED VALUE FOR PRODUCER_ID IS FOR TESTING PURPOSE AND SHOULD BE CHANGED
                 insertStatement = connection.prepareStatement("" +
-                        "INSERT INTO production_approval (own_production_id, production_name, year, genre_id, category_id, description) " +
-                        "VALUES (?, ?, ?, ?, ?, ?) " +
+                        "INSERT INTO production_approval (own_production_id, production_name, year, genre_id, category_id, producer_id, description) " +
+                        "VALUES (?, ?, ?, ?, ?, 2, ?) " +
                         "RETURNING id, own_production_id, production_name, description, year, genre_id, category_id;");
                 insertStatement.setString(1, production.getProductionID());
                 insertStatement.setString(2, production.getName());
@@ -180,16 +180,47 @@ class ProductionHandler {
                     insertAppears_inStatement.setInt(1, productionID);
                     insertAppears_inStatement.setInt(2, rightsholderID);
                     ResultSet appears_in_id_result = insertAppears_inStatement.executeQuery();
+                    appears_in_id_result.next();
                     int appearsinID = appears_in_id_result.getInt(1);
 
                     //Inserts into roleapproval
-                    //TODO insert into roleapproval
+
                     for (String role: rightsholders.get(rightsholder)){
+
+                        //The role string might consist of e.g. "medvirkende: darth vader" therefore has to be split
+                        String title;
+                        if (role.contains(": ")) {
+                            title = role.split(": ")[0];
+                        }else {
+                            title = role;
+                        }
+
+                        PreparedStatement getTitleIdStatement = connection.prepareStatement("" +
+                                "SELECT id " +
+                                "FROM title " +
+                                "WHERE title.title = ?");
+                        getTitleIdStatement.setString(1, title);
+                        ResultSet titleIdResultSet = getTitleIdStatement.executeQuery();
+                        titleIdResultSet.next();
+
                         PreparedStatement insertRoleStatement = connection.prepareStatement("" +
                                 "INSERT INTO role_approval (appears_in_id, title_id) " +
-                                "VALUES (?, ?)");
-                        //TODO pass the title_id of a title to the method below
-                        //insertRoleStatement.setInt(appearsinID, );
+                                "VALUES (?, ?)" +
+                                "RETURNING id");
+
+                        insertRoleStatement.setInt(1, appearsinID);
+                        insertRoleStatement.setInt(2, titleIdResultSet.getInt(1));
+                        ResultSet roleIdResult = insertRoleStatement.executeQuery();
+                        roleIdResult.next();
+                        if (role.contains(": ")) {
+                            PreparedStatement insertRoleNameStatement = connection.prepareStatement("" +
+                                    "INSERT INTO rolename_approval (role_id, rolename)" +
+                                    "VALUES (?, ?)");
+                            insertRoleNameStatement.setInt(1, roleIdResult.getInt(1));
+                            insertRoleNameStatement.setString(2, role.split(": ")[1]);
+                            insertRoleNameStatement.execute();
+                        }
+
                     }
                 }
 
@@ -294,7 +325,26 @@ class ProductionHandler {
     }
 
     public void approveChangesToProduction(IProduction production) {
+        //todo finish implementation
+        //production is always persistense production. Therefore instant typecast.
+        //is used for id. Pull information out of approved table, put it into table, then delete
+        Production prod = (Production) production;
 
+        try{
+            //if id exists in table, overwrite
+            //if not, create new
+            //if full null, delete
+            PreparedStatement prodStatement = connection.prepareStatement("SELECT 1 FROM production WHERE id = ?");
+            prodStatement.setInt(1, prod.getID());
+            ResultSet res = prodStatement.executeQuery();
+
+            if(res.next()){
+
+            }
+
+        } catch (SQLException e){
+          e.printStackTrace();
+        }
     }
 
 
