@@ -139,7 +139,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             PreparedStatement statement = dbConnection.prepareStatement("SELECT pn.id, p.own_production_id," +
                     " pn.notification_text, pn.viewed, p.production_name, pn.production_id" +
                     " FROM producer_notification pn, production p" +
-                    " WHERE producer_id = ?");
+                    " WHERE pn.producer_id = ?");
             statement.setInt(1, user.getId());
             ResultSet result = statement.executeQuery();
             while (result.next()) {
@@ -173,7 +173,21 @@ public class NotificationHandler implements INotificationHandler, INotificationP
 
     @Override
     public int countUnreadProducerNotifications(IUser user) {
-        return 0;
+        try {
+            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(id)" +
+                    " FROM producer_notification WHERE viewed = 'false' and producer_id = ?");
+            statement.setInt(1, user.getId());
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                return result.getInt(1);
+            } else {
+                return 0;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
 

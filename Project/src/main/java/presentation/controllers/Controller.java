@@ -1,5 +1,7 @@
 package presentation.controllers;
 
+import Interfaces.IAdministrator;
+import Interfaces.IProducer;
 import domain.DomainFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -99,7 +101,7 @@ public class Controller implements Initializable {
     private ImageView searchImage;
 
     @FXML
-    private Label numberOfNotifications;
+    private Label numberOfNotifications = new Label();
 
     private DomainFacade domain = Repository.getInstance().domainFacade;
 
@@ -264,14 +266,11 @@ public class Controller implements Initializable {
                 count++;
             }
         }
-
-        // TODO Check for if which user is logged in to load number of notifications for right corner
-        //if (domain.getCurrentUser() )
-        if (domain.getCurrentUser() != null) {
+        if (domain.getCurrentUser() instanceof IAdministrator) {
             numberOfNotifications.setText("" + domain.countUnreadAdminNotifications());
+        } else if (domain.getCurrentUser() instanceof IProducer) {
+            numberOfNotifications.setText("" + domain.countUnreadProducerNotifications(domain.getCurrentUser()));
         }
-        // TODO Update label for producer notifications when Magnus is done
-        // numberOfNotifications.setText("" + domain.getProducerNotifications().size());
     }
 
     public void goToNotifications(MouseEvent mouseEvent) {

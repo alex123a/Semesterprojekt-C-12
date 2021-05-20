@@ -1,6 +1,8 @@
 package presentation.controllers;
 
+import Interfaces.IAdministrator;
 import Interfaces.INotification;
+import Interfaces.IProducer;
 import domain.DomainFacade;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,6 +23,7 @@ import presentation.userManage.Systemadministrator;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -30,7 +33,7 @@ public class NotificationController implements Initializable {
     private Repository rep = Repository.getInstance();
     private DomainFacade domain = rep.domainFacade;
 
-    List<INotification> notifications = null;
+    List<INotification> notifications = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,6 +51,10 @@ public class NotificationController implements Initializable {
             default:
                 return "Unknown status";
         }
+    }
+
+    public String viewedConverter(boolean viewed) {
+        return viewed ? "Viewed" : "Not viewed";
     }
 
     public void createNotification(String productionName, String productionID, String status, int index) {
@@ -113,28 +120,33 @@ public class NotificationController implements Initializable {
     }
 
     public void loadNotifications() {
-        // TODO this should get the notification by sending the current user to the method
-        // TODO Need the interface to check for which type of user it is
-        // notifications = domain.getCurrentUser() instanceof Systemadministrator ? domain.getAdminNotifications() : domain.getProducerNotifications(domain.getCurrentUser());
+        notifications = domain.getCurrentUser() instanceof IAdministrator ? domain.getAdminNotifications() : domain.getProducerNotifications(domain.getCurrentUser());
 
-        // For now it just always takes the admins notifications
-        notifications = domain.getAdminNotifications();
-
-        // TODO Do so status match the type of user
-        // String status = "";
+        String status = "";
 
         for (int i = 0; i < notifications.size(); i++) {
-            // TODO Need a method to convert boolean for producer to String like I have done for administrator and approval
-            String status = approvalConverter(notifications.get(i).getApproval());
+            if (domain.getCurrentUser() instanceof IAdministrator) {
+                status = approvalConverter(notifications.get(i).getApproval());
+            } else if (domain.getCurrentUser() instanceof IProducer) {
+                status = viewedConverter(notifications.get(i).getViewed());
+            }
             createNotification(notifications.get(i).getProductionName(), notifications.get(i).getProductionId(), status, i);
         }
     }
 
     public void refreshPage(int index, int status) {
-        // TODO do some it depends on the type of user
-        // For now it is just admin
-        notifications.get(index).setApproval(status);
-        domain.editAdminNotification(notifications.get(index));
+        if (domain.getCurrentUser() instanceof IAdministrator) {
+            notifications.get(index).setApproval(status);
+            domain.editAdminNotification(notifications.get(index));
+        } else if (domain.getCurrentUser() instanceof IProducer) {
+            // TODO This should probably be somewhere else
+            /*
+            boolean booleanStatus = status == 1;
+            notifications.get(index).setViewed(booleanStatus);
+            domain.editProducerNotification(notifications.get(index));
+            
+             */
+        }
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/notification.fxml"));
             Stage window = (Stage) notificationBox.getScene().getWindow();

@@ -213,6 +213,8 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public int countUnreadProducerNotifications(IUser user) {
         return PersistenceFacade.getInstance().countUnreadProducerNotifications(user);
+    }
+
     public String generateStrongPasswordHash(String password) {
         try {
             return AuthenticationHandler.getInstance().generateStrongPasswordHash(password);
