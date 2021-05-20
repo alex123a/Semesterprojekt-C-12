@@ -37,71 +37,55 @@ public class ReportHandler implements IReporting {
                 return 0;
             }
         } catch (SQLException e) {
+            e.printStackTrace();
             return -1;
         }
     }
 
     @Override
     public Map<String, Integer> generateProductionCreditsCount(IProduction production) {
-        Set<String> titleName = new TreeSet<>();
+        Map<String, Integer> jsonReady = new HashMap<>();
         try {
+            //Selects all the titles existing for the production(id)
             PreparedStatement statement = dbConnection.prepareStatement(
                     "SELECT t.title FROM appears_in AS ap, role AS r, title AS t" +
                             " WHERE ap.production_id = ? and r.title_id = t.id and r.appears_in_id = ap.id");
             statement.setInt(1, ((Production) production).getID());
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                titleName.add(result.getString("title"));
+                //Counts how many works in every title for that specific production
+                PreparedStatement countStatement = dbConnection.prepareStatement("SELECT COUNT(ap.id) FROM appears_in AS ap, role AS r, title AS t" +
+                        " WHERE ap.production_id = ? and t.title = ? and r.title_id = t.id and r.appears_in_id = ap.id");
+                countStatement.setInt(1, ((Production) production).getID());
+                countStatement.setString(2, result.getString(1));
+                ResultSet resultCount = countStatement.executeQuery();
+                while (resultCount.next()) {
+                    jsonReady.put(result.getString(1), resultCount.getInt(1));
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
-        }
-        Map<String, Integer> jsonReady = new HashMap<>();
-        for (String tit : titleName) {
-            try {
-                PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(ap.id) FROM appears_in AS ap, role AS r, title AS t" +
-                        " WHERE ap.production_id = ? and t.title = ? and r.title_id = t.id and r.appears_in_id = ap.id");
-                statement.setInt(1, ((Production) production).getID());
-                statement.setString(2, tit);
-                ResultSet result = statement.executeQuery();
-                while (result.next()) {
-                    jsonReady.put(tit, result.getInt(1));
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                return null;
-            }
         }
         return jsonReady;
     }
 
     @Override
     public Map<String, Integer> generateCreditTypeCount() {
-        List<String> titles = new ArrayList<>();
+        Map<String, Integer> jsonReady = new HashMap<>();
         try {
             PreparedStatement titleQuery = dbConnection.prepareStatement("SELECT title.title FROM title");
             ResultSet resultSet = titleQuery.executeQuery();
             while (resultSet.next()) {
-                titles.add(resultSet.getString("title"));
+                    PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(r.id) FROM role AS r, title AS t" +
+                            " WHERE t.title = ? AND t.id = r.title_id");
+                    statement.setString(1, resultSet.getString("title"));
+                    ResultSet result = statement.executeQuery();
+                    while (result.next()) {
+                        jsonReady.put(resultSet.getString("title"), result.getInt(1));
+                    }
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }
-        Map<String, Integer> jsonReady = new HashMap<>();
-        for (String s : titles) {
-            try {
-                PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(r.id) FROM role AS r, title AS t" +
-                        " WHERE t.title = ? AND t.id = r.title_id");
-                statement.setString(1, s);
-                ResultSet result = statement.executeQuery();
-                while (result.next()) {
-                    jsonReady.put(s, result.getInt(1));
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                return jsonReady;
-            }
         }
         return jsonReady;
     }

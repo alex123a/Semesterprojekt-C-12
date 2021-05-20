@@ -31,13 +31,13 @@ public class ReportingHandler implements IReportHandler {
         int totalNumOfCredits = 0;
         for (String i : creditMap.keySet()) {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("Title", i);
-            jsonObject.put("TitleCount",creditMap.get(i));
+            jsonObject.put("title", i);
+            jsonObject.put("titleCount",creditMap.get(i));
             jsonObjectList.add(jsonObject);
             totalNumOfCredits += creditMap.get(i);
         }
-        jsonReturn.put("TotalNumberOfCredits",totalNumOfCredits);
-        jsonReturn.put("Credit types",jsonObjectList);
+        jsonReturn.put("totalNumberOfCredits",totalNumOfCredits);
+        jsonReturn.put("creditTypes",jsonObjectList);
         return jsonReturn;
     }
 
@@ -47,8 +47,8 @@ public class ReportingHandler implements IReportHandler {
         JSONArray jsonObjectList = new JSONArray();
         for (String i : creditMap.keySet()) {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("CreditName",i);
-            jsonObject.put("CreditCount",creditMap.get(i));
+            jsonObject.put("creditName",i);
+            jsonObject.put("creditCount",creditMap.get(i));
             jsonObjectList.add(jsonObject);
         }
         return jsonObjectList;
@@ -60,8 +60,8 @@ public class ReportingHandler implements IReportHandler {
         JSONArray jsonObjectList = new JSONArray();
         for (String i : creditMap.keySet()) {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("CreditName",i);
-            jsonObject.put("CreditCount",creditMap.get(i));
+            jsonObject.put("creditName",i);
+            jsonObject.put("creditCount",creditMap.get(i));
             jsonObjectList.add(jsonObject);
         }
         return jsonObjectList;
@@ -77,16 +77,16 @@ public class ReportingHandler implements IReportHandler {
             if (strings.get(i).equals("New Production")) {
                 JSONObject jsonObject1 = new JSONObject();
                 if(!(i == 0)) {
-                    jsonObject1.put("Participants",jsonArray);
+                    jsonObject1.put("participants",jsonArray);
                     jsonArray = new JSONArray();
                 }
                 strings.remove(i);
-                jsonObject1.put("ID",strings.get(i));
-                jsonObject1.put("ProgramName",strings.get(i+1));
+                jsonObject1.put("id",strings.get(i));
+                jsonObject1.put("programName",strings.get(i+1));
                 show.add(jsonObject1);
             } else {
                 participants.put("id", strings.get(i));
-                participants.put("Name", strings.get(i+1));
+                participants.put("name", strings.get(i+1));
                 jsonArray.add(participants);
             }
         }
