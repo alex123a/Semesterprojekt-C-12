@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import domain.DomainFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -102,19 +103,24 @@ public class Controller implements Initializable {
     void onBroadcastClicked(MouseEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
-            Stage window = Repository.getInstance().getWindow();
-            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+            Stage window = (Stage) tv2Default.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Broadcast");
     }
 
     @FXML
     void onHelpClicked(MouseEvent event) {
-        //todo onHelp
-        System.out.println("Help");
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/helppage.fxml"));
+            Stage window = (Stage) tv2Default.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -287,5 +293,6 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        DomainFacade.getInstance().setCurrentUser(null);
     }
 }

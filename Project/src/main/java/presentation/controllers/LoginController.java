@@ -14,13 +14,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import presentation.userManage.Producer;
-import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 
 public class LoginController {
     @FXML
@@ -38,8 +34,6 @@ public class LoginController {
     Image openEye;
     Image closedEye;
 
-
-
     // Sets up the toggle show/hide the password when the page loads
     @FXML
     public void initialize() {
@@ -51,6 +45,9 @@ public class LoginController {
 
     // Method for when the user clicks login
     public void loginClicked(MouseEvent mouseEvent) {
+        String password;
+        String username;
+
         wrongInput.setVisible(false);
 
         // Checks if the input is empty

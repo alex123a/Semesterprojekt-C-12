@@ -3,26 +3,38 @@ package presentation.controllers;
 import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.CreditWrapper;
 import presentation.NewProduction;
 import presentation.NewRightsholder;
 import presentation.Repository;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.*;
 
-public class AddProductionController {
+public class AddProductionController implements Initializable {
+
+    @FXML
+    private ComboBox<String> comboGenre;
+    @FXML
+    private ComboBox<String> comboCategory;
+    @FXML
+    private ComboBox<String> comboProducer;
+    @FXML
+    private TextField yearInput;
 
     @FXML
     private TextArea descriptionProgramArea;
@@ -34,7 +46,7 @@ public class AddProductionController {
     private TextField programNameField;
 
     @FXML
-    private ListView<IRightsholder> rightholderListview;
+    private ListView<CreditWrapper> rightholderListview;
 
     @FXML
     private TextField rightholderName;
@@ -56,6 +68,26 @@ public class AddProductionController {
 
     private Repository rep = Repository.getInstance();
     private ICreditManagement creditsSystem = rep.creditsSystem;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<String> categoryOptions = FXCollections.observableArrayList("Serier", "Film", "Reality", "Underholdning", "Stand up", "Dokumentar", "Rejser og Eventyr", "Livsstil", "Magasiner", "Medvirkende");
+        comboCategory.setItems(categoryOptions);
+        ObservableList<String> genreOptions = FXCollections.observableArrayList("Krimi", "Action", "Komedie", "Drama", "Romance", "Fantasy", "Eventyr", "Gyser", "Thriller");
+        comboGenre.setItems(genreOptions);
+        ObservableList<String> sortOptions = FXCollections.observableArrayList("Kristian", "John");
+        comboProducer.setItems(sortOptions);
+
+        yearInput.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    yearInput.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+    }
 
     @FXML
     public void onClickedAddRightholder(ActionEvent event) {
@@ -81,9 +113,12 @@ public class AddProductionController {
         }
 
         if (name != null && description != null) {
-            IRightsholder newRightsholder = new NewRightsholder(name, description, roles);
-            ObservableList<IRightsholder> rightholders = rightholderListview.getItems();
-            rightholders.add(newRightsholder);
+            //TODO pass first name and last name seperately to the constructor
+            //TODO this should probably create a new creditWrapper
+            IRightsholder newRightsholder = new NewRightsholder(name, "", description);
+            CreditWrapper newCredit = new CreditWrapper(newRightsholder, roles);
+            ObservableList<CreditWrapper> rightholders = rightholderListview.getItems();
+            rightholders.add(newCredit);
         }
     }
 
@@ -106,11 +141,19 @@ public class AddProductionController {
         String id = programIDField.getText();
         String name = programNameField.getText();
         String description = descriptionProgramArea.getText();
-        IRightsholder[] rightsholders = rightholderListview.getItems().toArray(new IRightsholder[0]);
+        int year = Integer.parseInt(yearInput.getText());
+        String genre = comboGenre.getValue();
+        String category = comboCategory.getValue();
+        // todo : Producer should be a IProducer
+        // so it's easier to handle,
+        // but we can't get a IProducer out of the comboBox since it's a string *thinking emoji*
+        String producer = comboProducer.getValue();
+
+        CreditWrapper[] rightsholders = rightholderListview.getItems().toArray(new CreditWrapper[0]);
         // Map over rightholders with their roles
         Map<IRightsholder, List<String>> RhsRoles = new HashMap<>();
-        for (IRightsholder rh: rightsholders) {
-            RhsRoles.put(rh, ((NewRightsholder) rh).getRoles());
+        for (CreditWrapper credit: rightsholders) {
+            RhsRoles.put(credit.getRightsholder(), credit.getRoles());
         }
 
         IProduction newProduction = new NewProduction(id, name, RhsRoles);

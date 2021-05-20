@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -27,16 +26,16 @@
             <DropShadow blurType="GAUSSIAN" color="#0000007e" offsetX="2.0" offsetY="2.0" />
          </effect>
          <children>
-            <ImageView fx:id="backButton" onMouseClicked="#goBack" fitHeight="25.0" fitWidth="34.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="backButton" style="-fx-cursor: hand;" fitHeight="25.0" fitWidth="34.0" layoutX="15.0" layoutY="14.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@/images/BackArrow.png" />
                </image>
             </ImageView>
-            <ScrollPane hbarPolicy="NEVER" layoutX="82.0" layoutY="22.0" prefHeight="459.0" prefWidth="749.0" vbarPolicy="ALWAYS">
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="82.0" layoutY="22.0" prefHeight="459.0" prefWidth="749.0" vbarPolicy="ALWAYS">
                <content>
                   <VBox fx:id="searchResultBox" prefHeight="200.0" prefWidth="734.0">
                      <children>
-                        <Pane prefHeight="206.0" prefWidth="733.0" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9;">
+                        <Pane minHeight="206.0" prefHeight="206.0" minWidth="733.0" prefWidth="733.0" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9;">
                            <children>
                               <Label alignment="CENTER" layoutX="287.0" prefHeight="71.0" prefWidth="160.0" style="-fx-alignment: CENTER;" text="Søg" textFill="#4c4c4c">
                                  <font>
@@ -54,7 +53,7 @@
                                        </HBox.margin>
                                     </TextField>
                                     <Separator orientation="VERTICAL" prefHeight="200.0" />
-                                    <ImageView onMouseClicked="#onSearchClicked" fitHeight="32.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                                    <ImageView fitHeight="32.0" fitWidth="59.0" onMouseClicked="#onSearchClicked" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                                        <image>
                                           <Image url="@/images/Search_Grey.jpg" />
                                        </image>
@@ -67,21 +66,30 @@
                               <ComboBox fx:id="comboCategory" layoutX="14.0" layoutY="77.0" prefHeight="43.0" prefWidth="190.0" promptText="Kategori" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
                               <ComboBox fx:id="comboGenre" layoutX="14.0" layoutY="139.0" prefHeight="43.0" prefWidth="190.0" promptText="Genre" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
                               <ComboBox fx:id="comboSort" layoutX="477.0" layoutY="139.0" prefHeight="43.0" prefWidth="245.0" promptText="Sortering" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
-                              <Slider fx:id="sliderYear" blockIncrement="1.0" layoutX="218.0" layoutY="161.0" majorTickUnit="15.0" max="2021.0" min="1900.0" prefHeight="14.0" prefWidth="245.0" showTickMarks="true" style="-fx-background-color: #ffffff;" />
-                              <Label layoutX="218.0" layoutY="139.0" text="Årstal" textFill="#4c4c4c">
+                              <Label layoutX="218.0" layoutY="150.0" text="Årstal" textFill="#4c4c4c">
                                  <font>
-                                    <Font name="Calibri Bold" size="18.0" />
+                                    <Font name="Calibri Bold" size="20.0" />
                                  </font>
                               </Label>
+                              <TextField fx:id="yearFrom" layoutX="279.0" layoutY="141.0" prefHeight="40.0" prefWidth="86.0" promptText="Fra" style="-fx-border-color: #c9c9c9; -fx-background-color: #ffffff; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="yearTo" layoutX="378.0" layoutY="141.0" prefHeight="40.0" prefWidth="86.0" promptText="Til" style="-fx-border-color: #c9c9c9; -fx-background-color: #ffffff; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
                            </children>
                         </Pane>
                      </children>
                   </VBox>
                </content>
             </ScrollPane>
-            <Pane onMouseClicked="#goToTop" layoutX="843.0" layoutY="440.0" prefHeight="41.0" prefWidth="41.0" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px;" visible="false">
+            <Pane onMouseClicked="#resetScrollHeight" layoutX="843.0" layoutY="440.0" prefHeight="41.0" prefWidth="41.0" style="-fx-cursor: hand; -fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px;">
                <children>
-                  <ImageView fitHeight="23.0" fitWidth="146.0" layoutX="4.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                  <ImageView onMouseClicked="#resetScrollHeight" style="-fx-cursor: hand;" fitHeight="23.0" fitWidth="146.0" layoutX="4.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                      <image>
                         <Image url="@/images/BackArrow.png" />
                      </image>

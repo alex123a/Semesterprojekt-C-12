@@ -181,16 +181,6 @@
                               <Font name="Calibri Bold" size="28.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="1.0" layoutY="236.0" prefHeight="32.0" prefWidth="128.0" style="-fx-alignment: CENTER;" text="Rolle:" textFill="#4c4c4c">
-                           <font>
-                              <Font name="Calibri" size="20.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="115.0" layoutY="236.0" prefHeight="32.0" prefWidth="229.0" text="*Rolle*" textFill="#4c4c4c">
-                           <font>
-                              <Font name="Calibri" size="16.0" />
-                           </font>
-                        </Label>
                         <Label fx:id="removeUserResult" alignment="CENTER" contentDisplay="CENTER" layoutY="322.0" prefHeight="50.0" prefWidth="434.0" textAlignment="CENTER" textFill="#04ff00">
                            <font>
                               <Font name="System Bold" size="16.0" />

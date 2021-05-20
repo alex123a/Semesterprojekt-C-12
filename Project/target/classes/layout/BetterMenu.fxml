@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.BetterController">
+   <children>
+      <Pane prefHeight="90.0" prefWidth="1300.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="100.0" layoutX="592.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/Tv2Logo.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER_RIGHT" layoutX="1120.0" layoutY="15.0" prefHeight="61.0" prefWidth="160.0">
+               <children>
+                  <ImageView fx:id="searchImage" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#onSearchClicked" onMouseEntered="#onMouseEnteredSearch" onMouseExited="#onMouseExitedSearch" pickOnBounds="true" preserveRatio="true" style="-fx-cursor:hand;">
+                     <image>
+                        <Image url="@/images/Search_Grey.jpg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="accountImage" fitWidth="25.0" onMouseClicked="#goToLogin" onMouseEntered="#onMouseEnteredAccount" onMouseExited="#onMouseExitedAccount" pickOnBounds="true" preserveRatio="true" style="-fx-cursor:hand;">
+                     <image>
+                        <Image url="@/images/Account_Grey.jpg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#goToNotifications" prefHeight="50.0" prefWidth="50.0">
+                     <children>
+                        <ImageView fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor:hand;">
+                           <image>
+                              <Image url="@/images/RedDot.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="9.0" layoutY="12.0" prefHeight="27.0" prefWidth="32.0" style="-fx-cursor:hand;" text="0" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <Line endX="1300.0" layoutY="90.0" strokeWidth="0.5" />
+         </children>
+      </Pane>
+      <HBox alignment="CENTER" layoutX="165.0" layoutY="91.0" prefHeight="45.0" prefWidth="800.0">
+         <children>
+            <Button fx:id="menuMyBroadcast" mnemonicParsing="false" onMouseClicked="#onBroadcastClicked" stylesheets="@/stylesheets/ButtonStyle.css" text="Mine udsendelser">
+               <font>
+                  <Font name="Calibri" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Button fx:id="menuHelp" mnemonicParsing="false" onMouseClicked="#onHelpClicked" stylesheets="@/stylesheets/ButtonStyle.css" text="Hjælpeside">
+               <font>
+                  <Font name="Calibri" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="7.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Button fx:id="menuHomepage" mnemonicParsing="false" onMouseClicked="#onHomepageClicked" style="-fx-cursor:hand; -fx-background-color: #FFFFFF;" text="TV2.DK" textFill="#e40000">
+               <font>
+                  <Font name="Calibri" size="24.0" />
+               </font>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="7.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Button fx:id="menuEditUser" mnemonicParsing="false" onMouseClicked="#onEditUserClicked" stylesheets="@/stylesheets/ButtonStyle.css" text="Rediger Brugere">
+               <font>
+                  <Font name="Calibri" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="7.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <Line endX="1300.0" endY="152.0" startY="152.0" strokeWidth="0.5" />
+      <Pane layoutX="115.0" layoutY="181.0" prefHeight="497.0" prefWidth="1070.0">
+         <children>
+            <Label fx:id="subject" layoutX="90.0" layoutY="-1.0" text="TV-GUIDE" textFill="#242424">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <VBox layoutX="85.0" layoutY="60.0" prefHeight="435.0" prefWidth="900.0">
+               <children>
+                  <HBox prefHeight="521.0" prefWidth="900.0">
+                     <children>
+                        <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="420.0" prefWidth="130.0">
+                           <children>
+                              <Pane prefHeight="97.0" prefWidth="130.0" style="-fx-border-color: #c9c9c9;">
+                                 <children>
+                                    <ImageView fitHeight="27.0" fitWidth="60.0" layoutX="34.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/images/Tv2Logo.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets right="-1.0" top="25.0" />
+                                 </VBox.margin>
+                              </Pane>
+                              <Pane prefHeight="98.0" style="-fx-border-color: #c9c9c9;">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="108.0" layoutX="12.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/images/TV2Sport.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets right="-1.0" top="-1.0" />
+                                 </VBox.margin>
+                              </Pane>
+                              <Pane prefHeight="100.0" style="-fx-border-color: #c9c9c9;">
+                                 <children>
+                                    <ImageView fitHeight="53.0" fitWidth="108.0" layoutX="11.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/images/TV2SportX.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets right="-1.0" top="-1.0" />
+                                 </VBox.margin>
+                              </Pane>
+                              <Pane prefHeight="100.0" style="-fx-border-color: #c9c9c9;">
+                                 <children>
+                                    <ImageView fitHeight="59.0" layoutX="5.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/images/TV2Charlie.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets right="-1.0" top="-1.0" />
+                                 </VBox.margin>
+                              </Pane>
+                              <Pane prefHeight="100.5" style="-fx-border-color: #c9c9c9;">
+                                 <children>
+                                    <ImageView fitHeight="45.0" fitWidth="96.0" layoutX="18.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/images/TV2News.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets right="-1.0" top="-1.0" />
+                                 </VBox.margin>
+                              </Pane>
+                              <Pane prefHeight="100.0" style="-fx-border-color: #c9c9c9;">
+                                 <children>
+                                    <ImageView fitHeight="51.0" fitWidth="111.0" layoutX="12.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/images/TV2Zulu.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets right="-1.0" top="-1.0" />
+                                 </VBox.margin>
+                              </Pane>
+                              <Pane prefHeight="100.0" style="-fx-border-color: #c9c9c9;">
+                                 <children>
+                                    <ImageView fitHeight="35.0" fitWidth="80.0" layoutX="30.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/images/TV2Fri.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets right="-1.0" top="-1.0" />
+                                 </VBox.margin>
+                              </Pane>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="454.0" prefWidth="770.0">
+                           <children>
+                              <ScrollPane hbarPolicy="ALWAYS" prefHeight="517.0" prefWidth="770.0" vbarPolicy="NEVER">
+                                 <content>
+                                    <VBox fx:id="testBox" prefHeight="420.0">
+                                       <children>
+                                          <HBox prefHeight="32.0">
+                                             <children>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="00:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="01:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="02:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="03:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="04:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="05:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="06:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="07:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="08:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="09:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="10:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="11:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="12:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="13:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="14:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="15:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="16:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="17:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="18:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="19:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="20:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="21:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="22:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                                <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5c5c5c;">
+                                                   <children>
+                                                      <Label text="23:00" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Calibri Bold" size="17.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="25.0" />
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <Separator prefWidth="200.0" />
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Label layoutX="1210.0" layoutY="109.0" stylesheets="@/stylesheets/LabelStyle.css" text="Log ud">
+         <font>
+            <Font name="Calibri" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
