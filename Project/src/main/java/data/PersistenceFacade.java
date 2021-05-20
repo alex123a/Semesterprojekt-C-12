@@ -1,6 +1,7 @@
 package data;
 
 import Interfaces.*;
+import data.credits.FacadeData;
 import data.notifications.NotificationHandler;
 import data.userHandling.UserFacade;
 
@@ -8,6 +9,10 @@ import java.util.List;
 
 public class PersistenceFacade implements IPersistenceFacade {
     private static final PersistenceFacade PERSISTENCE_FACADE = new PersistenceFacade();
+
+    public static PersistenceFacade getInstance() {
+        return PERSISTENCE_FACADE;
+    }
 
     @Override
     public List<IUser> getUsers() {
@@ -44,43 +49,40 @@ public class PersistenceFacade implements IPersistenceFacade {
         return UserFacade.getInstance().getDatabasePassword(user);
     }
 
-    public static PersistenceFacade getInstance() {
-        return PERSISTENCE_FACADE;
-    }
-
-    @Override
-    public IRightsholder getRightsholder(int id) {
-        throw new UnsupportedOperationException();
-    }
-
     @Override
     public List<IRightsholder> getRightsholders() {
-        throw new UnsupportedOperationException();
+        FacadeData.getInstance().getRightsholders();
+        return null;
     }
 
     @Override
     public void saveRightsholder(IRightsholder rightsholder) {
-        throw new UnsupportedOperationException();
+        FacadeData.getInstance().saveRightsholder(rightsholder);
     }
 
     @Override
-    public IProduction getProduction(String id) {
-        throw new UnsupportedOperationException();
+    public void approveChangesToRightsholder(IRightsholder rightsholder) {
+
     }
 
     @Override
     public List<IProduction> getProductions() {
-        throw new UnsupportedOperationException();
+        return FacadeData.getInstance().getProductions();
     }
 
     @Override
-    public void saveProduction(IProduction production) {
+    public IProduction saveProduction(IProduction production) {
         throw new UnsupportedOperationException();
     }
 
     @Override
     public void deleteProduction(IProduction production) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void approveChangesToProduction(IProduction production) {
+
     }
 
     @Override

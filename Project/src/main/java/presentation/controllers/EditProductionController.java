@@ -80,10 +80,6 @@ public class EditProductionController implements Initializable {
         creditsSystem.setRoles(toEdit, RhsRoles);
         creditsSystem.saveChanges();
 
-        if (!oldId.equals(programIDField.getText())) {
-            creditsSystem.deleteProduction(CreditsSystem.getInstance().getProduction(oldId));
-        }
-
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
             Stage window = Repository.getInstance().getWindow();

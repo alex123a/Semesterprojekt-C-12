@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Production implements IProduction {
+class Production implements IProduction {
     private int id;
     private String productionID;
     private String name;
