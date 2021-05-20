@@ -6,21 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/notification.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/notification.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IDomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IDomainFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/INotification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/INotification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/AdminNotifcation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/Notification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/notifications/Notification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/NotificationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/notifications/NotificationHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/notification/AdminNotifcation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/notification/Notification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/notification/Notification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/notification/ProducerNotification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/notification/ProducerNotification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/notification.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/notification.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/Repository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/Repository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -179,7 +169,7 @@
       <workItem from="1621411739786" duration="3016000" />
       <workItem from="1621421254707" duration="42000" />
       <workItem from="1621421316683" duration="4451000" />
-      <workItem from="1621429793332" duration="17840000" />
+      <workItem from="1621429793332" duration="19606000" />
     </task>
     <servers />
   </component>

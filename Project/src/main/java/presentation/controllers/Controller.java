@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import domain.DomainFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -97,6 +98,10 @@ public class Controller implements Initializable {
     @FXML
     private ImageView searchImage;
 
+    @FXML
+    private Label numberOfNotifications;
+
+    private DomainFacade domain = Repository.getInstance().domainFacade;
 
     @FXML
     void onBroadcastClicked(MouseEvent event) {
@@ -247,6 +252,12 @@ public class Controller implements Initializable {
                 count++;
             }
         }
+
+        // TODO Check for if which user is logged in to load number of notifications for right corner
+        //if (domain.getCurrentUser() )
+        numberOfNotifications.setText("" + domain.getAdminNotifications().size());
+        // TODO Update label for producer notifications when Magnus is done
+        // numberOfNotifications.setText("" + domain.getProducerNotifications().size());
     }
 
     public void goToNotifications(MouseEvent mouseEvent) {

@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.Repository;
 import presentation.userManage.Producer;
 import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
@@ -37,8 +38,6 @@ public class LoginController {
     ImageView passwordToggle;
     Image openEye;
     Image closedEye;
-
-
 
     // Sets up the toggle show/hide the password when the page loads
     @FXML
