@@ -6,7 +6,7 @@ import enumerations.ProductionType;
 import java.util.List;
 import java.util.Map;
 
-public interface IProduction {
+public interface IProduction extends ISearchable {
     String getProductionID();
     void setProductionID(String productionID);
     String getName();

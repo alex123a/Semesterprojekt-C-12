@@ -19,10 +19,14 @@ public class NewProduction implements IProduction {
     private ProductionType type;
     Map<IRightsholder, List<String>> rightsholders;
 
-    public NewProduction(String productionID, String name, Map<IRightsholder, List<String>> rightsholders) {
+    public NewProduction(String productionID, String name, String description, int year, ProductionGenre genre, ProductionType type, Map<IRightsholder, List<String>> rightsholders) {
         this.productionID = productionID;
         this.name = name;
-        this.rightsholders  = rightsholders;
+        this.description = description;
+        this.year = year;
+        this.genre = genre;
+        this.type = type;
+        this.rightsholders = rightsholders;
     }
 
     @Override

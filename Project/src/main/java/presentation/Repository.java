@@ -2,6 +2,7 @@ package presentation;
 
 import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
+import Interfaces.IRightsholder;
 import domain.CreditsManagement.CreditsSystem;
 import domain.DomainFacade;
 import javafx.stage.Stage;
@@ -13,7 +14,8 @@ public class Repository {
 
     private Stage window;
     private IProduction toEdit;
-    private IProduction toBeShown;
+    private IProduction productionToBeShown;
+    private IRightsholder rightsholderToBeShown;
 
     public Stage getWindow() {
         return window;
@@ -33,12 +35,20 @@ public class Repository {
 
     public DomainFacade domainFacade = DomainFacade.getInstance();
     
-    public IProduction getToBeShown() {
-        return toBeShown;
+    public IProduction getProductionToBeShown() {
+        return productionToBeShown;
     }
 
-    public void setToBeShown(IProduction toBeShown) {
-        this.toBeShown = toBeShown;
+    public void setProductionToBeShown(IProduction toBeShown) {
+        this.productionToBeShown = toBeShown;
+    }
+
+    public IRightsholder getRightsholderToBeShown() {
+        return rightsholderToBeShown;
+    }
+
+    public void setRightsholderToBeShown(IRightsholder toBeShown) {
+        this.rightsholderToBeShown = toBeShown;
     }
 
 }

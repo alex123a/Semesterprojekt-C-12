@@ -155,9 +155,12 @@ public class AddProductionController implements Initializable {
         for (CreditWrapper credit: rightsholders) {
             RhsRoles.put(credit.getRightsholder(), credit.getRoles());
         }
-
+        //TODO make this pass all values to the contructor
+        /*
         IProduction newProduction = new NewProduction(id, name, RhsRoles);
         domain.addProduction(newProduction);
+
+         */
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
