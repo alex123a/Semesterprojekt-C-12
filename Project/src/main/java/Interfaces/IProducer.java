@@ -1,4 +1,4 @@
 package Interfaces;
 
-public interface IProducer extends IUser{
+public interface IProducer extends IUser {
 }

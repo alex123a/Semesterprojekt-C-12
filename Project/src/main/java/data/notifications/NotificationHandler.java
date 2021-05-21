@@ -26,11 +26,12 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     }
 
     @Override
-    public boolean createProducerNotification(IUser user, INotification notification) {
+    public boolean createProducerNotification(INotification notification) {
         try {
             PreparedStatement statement = dbConnection.prepareStatement(
                     "INSERT INTO producer_notification(producer_id, notification_text, viewed, production_id) " +
                     "VALUES (?, ?, ?, ?)");
+            IUser user = new Producer(notification.getProducerID());
             statement.setInt(1, user.getId());
             statement.setString(2, notification.getText());
             statement.setBoolean(3, notification.getViewed());
@@ -112,6 +113,8 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+
+
     @Override
     public List<INotification> getAdminNotifications() {
         try {
@@ -119,7 +122,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             PreparedStatement statement = dbConnection.prepareStatement("SELECT an.id, an.notification_text," +
                     " p.own_production_id, p.production_name, an.approval_status_id, an.production_id" +
                     " FROM administrator_notification AS an" +
-                    ", production AS p WHERE an.production_id = p.id");
+                    ", production_approval AS p WHERE an.production_id = p.id");
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 list.add(new AdminNotification(result.getInt(1), result.getString(2),
@@ -138,7 +141,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             List<INotification> list = new ArrayList<>();
             PreparedStatement statement = dbConnection.prepareStatement("SELECT pn.id, p.own_production_id," +
                     " pn.notification_text, pn.viewed, p.production_name, pn.production_id" +
-                    " FROM producer_notification pn, production p" +
+                    " FROM producer_notification pn, production_approval p" +
                     " WHERE pn.producer_id = ?");
             statement.setInt(1, user.getId());
             ResultSet result = statement.executeQuery();
@@ -189,6 +192,4 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             return 0;
         }
     }
-
-
 }

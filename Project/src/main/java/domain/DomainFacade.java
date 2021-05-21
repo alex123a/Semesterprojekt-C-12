@@ -4,6 +4,7 @@ import Interfaces.*;
 import data.PersistenceFacade;
 import domain.authentication.AuthenticationHandler;
 import domain.notification.AdminNotification;
+import domain.notification.ProducerNotification;
 import domain.session.CurrentSession;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
@@ -133,7 +134,6 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean editUser(IUser user) {
-        System.out.println("6");
         return PersistenceFacade.getInstance().editUser(user);
     }
 
@@ -166,8 +166,8 @@ public class DomainFacade implements IDomainFacade {
     }
 
     @Override
-    public boolean createProducerNotification(IUser user, INotification notification) {
-        return PersistenceFacade.getInstance().createProducerNotification(user, notification);
+    public boolean createProducerNotification(INotification notification) {
+        return PersistenceFacade.getInstance().createProducerNotification(notification);
     }
 
     @Override
@@ -187,6 +187,11 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean editAdminNotification(INotification newNotification) {
+        if (newNotification.getApproval() == 2) {
+
+        } else if (newNotification.getApproval() == 3) {
+
+        }
         return PersistenceFacade.getInstance().editAdminNotification(newNotification);
     }
 
@@ -222,5 +227,10 @@ public class DomainFacade implements IDomainFacade {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public IProduction getProductionFromNotification(INotification notification) {
+        return PersistenceFacade.getInstance().getProductionFromNotification(notification);
     }
 }

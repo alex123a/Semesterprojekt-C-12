@@ -73,8 +73,9 @@ public class NotificationController implements Initializable {
             HBox hbox = new HBox();
             hbox.getChildren().addAll(vbox);
 
-            if (domain.getCurrentUser() instanceof IAdministrator) {
 
+
+            if (domain.getCurrentUser() instanceof IAdministrator) {
                 // Make decline Button
                 Button declineBut = new Button("Afvis");
                 declineBut.setId("" + index);
@@ -89,11 +90,13 @@ public class NotificationController implements Initializable {
                     public void handle(ActionEvent event) {
                         declineBut.setVisible(false);
                         notificationYesClicked(Integer.parseInt(approveBut.getId()));
+                        approveBut.setDisable(true);
                     }
                 });
                 hbox.getChildren().addAll(approveBut);
                 if (status.equals("Not Approved")) {
                     approveBut.setVisible(false);
+                    declineBut.setDisable(true);
                 }
 
                 // Set action on declineBut
@@ -102,11 +105,13 @@ public class NotificationController implements Initializable {
                     public void handle(ActionEvent event) {
                         approveBut.setVisible(false);
                         notificationNoClicked(Integer.parseInt(declineBut.getId()));
+                        declineBut.setDisable(true);
                     }
                 });
                 hbox.getChildren().addAll(declineBut);
                 if (status.equals("Approved")) {
                     declineBut.setVisible(false);
+                    approveBut.setDisable(true);
                 }
             }
 

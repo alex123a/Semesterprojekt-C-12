@@ -2,6 +2,7 @@ package data;
 
 import Interfaces.*;
 import data.credits.FacadeData;
+import data.notifications.AdminNotification;
 import data.notifications.NotificationHandler;
 import data.reporting.ReportHandler;
 import data.userHandling.UserFacade;
@@ -83,8 +84,8 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public boolean createProducerNotification(IUser user, INotification notification) {
-       return NotificationHandler.getInstance().createProducerNotification(user, notification);
+    public boolean createProducerNotification(INotification notification) {
+       return NotificationHandler.getInstance().createProducerNotification(notification);
     }
 
     @Override
@@ -155,5 +156,10 @@ public class PersistenceFacade implements IPersistenceFacade {
     @Override
     public void generateCreditsReport() {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public IProduction getProductionFromNotification(INotification notification) {
+        return FacadeData.getInstance().getProduction(((AdminNotification)notification).getDb_id_production());
     }
 }
