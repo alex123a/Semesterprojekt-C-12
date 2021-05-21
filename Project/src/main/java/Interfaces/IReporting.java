@@ -1,16 +1,17 @@
 package Interfaces;
 
+import java.util.List;
 import java.util.Map;
 
 public interface IReporting {
 
     int getTotalCreditCount();
 
-    Map<String, Integer> generateProductionCreditsCount(IProduction production);
+    int generateProductionCreditsCount(IProduction production, String title);
 
-    Map<String, Integer> generateCreditTypeCount();
+    int generateCreditTypeCount(String type);
 
-    Map<String, Integer> generate10MostCredited();
+    Map<Integer, Integer> generate10MostCredited();
 
-    Object generateCreditsReport();
+    void generateCreditsReport();
 }

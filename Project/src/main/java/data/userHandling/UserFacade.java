@@ -38,11 +38,6 @@ public class UserFacade implements IUserFacade {
         return UserManager.getInstance().getDatabasePassword(user);
     }
 
-    @Override
-    public List<IUser> getUsersBySearch(IUser user) {
-        return UserManager.getInstance().getUsersBySearch(user);
-    }
-
     public static UserFacade getInstance() {
         return USERFACADE;
     }
