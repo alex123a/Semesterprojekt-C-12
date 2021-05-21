@@ -74,18 +74,21 @@ public class ManageUserController {
     @FXML
     void addUser(ActionEvent event) {
         String userUsername = username.getText();
-        String userPassword = Repository.getInstance().domainFacade.generateStrongPasswordHash(password.getText());
+        String userPassword = password.getText();
         String userUserType = userType.getValue();
-        IUser user = (userUserType.equals("Systemadministrator")) ? new Systemadministrator(userUsername, userPassword) : new Producer(userUsername, userPassword);
-        boolean success = Repository.getInstance().domainFacade.addUser(user);
+        boolean success = false;
+        if(userUserType != null) {
+            IUser user = (userUserType.equals("Systemadministrator")) ? new Systemadministrator(userUsername, userPassword) : new Producer(userUsername, userPassword);
+            success = Repository.getInstance().domainFacade.addUser(user);
+        }
         if (success) {
             username.clear();
             password.clear();
             userType.setValue("");
-            addUserResult.setText("Successfully added user: " + userUsername );
+            addUserResult.setText("Brugeren: " + userUsername + " blev tilføjet!");
             addUserResult.setTextFill(Color.web("#4BB543"));
         } else {
-            addUserResult.setText("Error: Something went wrong, try again. \nMake sure that the username does not already exist!");
+            addUserResult.setText("Der skete en fejl, prøv igen. \nTjek at brugernavnet ikke allerede eksisterer!");
             addUserResult.setTextFill(Color.web("#FF0000"));
         }
         resetSearches();
@@ -108,11 +111,11 @@ public class ManageUserController {
             changeUsername.clear();
             changePassword.clear();
             changeUsername.clear();
-            changeUserResult.setText("Successfully changed the information");
+            changeUserResult.setText("Informationerne blev ændret");
             changeUserResult.setTextFill(Color.web("#4BB543"));
             searchUsernameEdit.setValue("");
         } else {
-            changeUserResult.setText("Error: Something went wrong, try again. \nMake sure that the username does not already exist!");
+            changeUserResult.setText("Der skete en fejl, prøv igen. \nTjek at brugernavnet ikke allerede eksisterer!");
             changeUserResult.setTextFill(Color.web("#FF0000"));
         }
         resetSearches();
@@ -127,11 +130,11 @@ public class ManageUserController {
         if(success) {
             searchUsernameRemove.setValue("");
             removeUserRoleField.clear();
-            removeUserResult.setText("Successfully removed the user: " +  removeUsername);
+            removeUserResult.setText("Brugeren: " +  removeUsername + " blev fjernet!");
             removeUserResult.setTextFill(Color.web("#4BB543"));
             removeUserBtn.setDisable(true);
         } else {
-            removeUserResult.setText("Error: Something went wrong, try again. \nMake sure that the user exist! \n You can not remove yourself!");
+            removeUserResult.setText("Der skete en fejl, prøv igen. \nTjek at brugeren eksisterer! \n Du kan ikke fjerne dig selv!");
             removeUserResult.setTextFill(Color.web("#FF0000"));
             removeUserBtn.setDisable(false);
         }

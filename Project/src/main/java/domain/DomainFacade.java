@@ -130,7 +130,7 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public boolean editUser(IUser user) {
         IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
-        if (validateUser(currentUser)) {
+        if (validateUser(currentUser) && !user.getUsername().equals("") && !user.getPassword().equals("")) {
             return PersistenceFacade.getInstance().editUser(user);
         }
         return false;
@@ -144,7 +144,12 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public boolean addUser(IUser user) {
         IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
-        if (validateUser(currentUser)) {
+        if (validateUser(currentUser) && !user.getUsername().equals("") && !user.getPassword().equals("")) {
+            try {
+                user.setPassword(AuthenticationHandler.getInstance().generateStrongPasswordHash(user.getPassword()));
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+                e.printStackTrace();
+            }
             return PersistenceFacade.getInstance().addUser(user);
         }
         return false;
