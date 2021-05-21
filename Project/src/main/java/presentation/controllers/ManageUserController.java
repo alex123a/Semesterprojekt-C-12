@@ -20,18 +20,10 @@ import javafx.stage.Stage;
 import presentation.userManage.Producer;
 import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ManageUserController {
-
-    @FXML
-    private TabPane tabPane;
 
     @FXML
     private Tab tab1;
@@ -74,9 +66,6 @@ public class ManageUserController {
     private TextField changePassword;
 
     @FXML
-    private TextField removeSearchUsername;
-
-    @FXML
     private TextField removeUserRoleField;
 
     @FXML
@@ -84,18 +73,14 @@ public class ManageUserController {
 
     @FXML
     void addUser(ActionEvent event) {
-        boolean success = false;
         String userUsername = username.getText();
         String userPassword = Repository.getInstance().domainFacade.generateStrongPasswordHash(password.getText());
         String userUserType = userType.getValue();
-        IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
-        if (Repository.getInstance().domainFacade.validateUser(currentUser)) {
-            IUser user = (userUserType.equals("Systemadministrator")) ? new Systemadministrator(userUsername, userPassword) : new Producer(userUsername, userPassword);
-            success = Repository.getInstance().domainFacade.addUser(user);
-        }
+        IUser user = (userUserType.equals("Systemadministrator")) ? new Systemadministrator(userUsername, userPassword) : new Producer(userUsername, userPassword);
+        boolean success = Repository.getInstance().domainFacade.addUser(user);
         if (success) {
-            username.setText("");
-            password.setText("");
+            username.clear();
+            password.clear();
             userType.setValue("");
             addUserResult.setText("Successfully added user: " + userUsername );
             addUserResult.setTextFill(Color.web("#4BB543"));
@@ -103,8 +88,8 @@ public class ManageUserController {
             addUserResult.setText("Error: Something went wrong, try again. \nMake sure that the username does not already exist!");
             addUserResult.setTextFill(Color.web("#FF0000"));
         }
+        resetSearches();
     }
-//    TODO SEARCH SHIT
 
     @FXML
     void updateUser(ActionEvent event) {
@@ -120,9 +105,9 @@ public class ManageUserController {
         boolean success = Repository.getInstance().domainFacade.editUser(user);
 
         if (success) {
-            changeUsername.setText("");
-            changePassword.setText("");
-            changeUsername.setText("");
+            changeUsername.clear();
+            changePassword.clear();
+            changeUsername.clear();
             changeUserResult.setText("Successfully changed the information");
             changeUserResult.setTextFill(Color.web("#4BB543"));
             searchUsernameEdit.setValue("");
@@ -130,6 +115,7 @@ public class ManageUserController {
             changeUserResult.setText("Error: Something went wrong, try again. \nMake sure that the username does not already exist!");
             changeUserResult.setTextFill(Color.web("#FF0000"));
         }
+        resetSearches();
     }
 
     @FXML
@@ -140,6 +126,7 @@ public class ManageUserController {
         boolean success = Repository.getInstance().domainFacade.deleteUser(removeUser);
         if(success) {
             searchUsernameRemove.setValue("");
+            removeUserRoleField.clear();
             removeUserResult.setText("Successfully removed the user: " +  removeUsername);
             removeUserResult.setTextFill(Color.web("#4BB543"));
             removeUserBtn.setDisable(true);
@@ -148,17 +135,18 @@ public class ManageUserController {
             removeUserResult.setTextFill(Color.web("#FF0000"));
             removeUserBtn.setDisable(false);
         }
+        resetSearches();
     }
 
     @FXML
     void getRemoveUsers(MouseEvent event) {
         String removeUserRole = Repository.getInstance().domainFacade.getInfoFromSearch(searchUsernameRemove.getValue(), "role");
         removeUserRoleField.setText(removeUserRole);
-        removeUserBtn.setDisable(false);
+        removeUserBtn.setDisable(removeUserRole.equals(""));
     }
 
     @FXML
-    void userSearcher(KeyEvent event2) {
+    void userSearcher(KeyEvent event) {
         List<IUser> matchedUsers;
         ObservableList<String> userInfo = FXCollections.observableArrayList();
         IUser tempUser;
@@ -173,6 +161,9 @@ public class ManageUserController {
             matchedUsers = Repository.getInstance().domainFacade.getUsersBySearch(tempUser);
             searchUsernameRemove.setItems(createList(matchedUsers));
         }
+        if (searchUsernameRemove.getEditor().getText().isEmpty()) {
+            removeUserBtn.setDisable(true);
+        }
     }
 
     private ObservableList<String> createList(List<IUser> list) {
@@ -180,10 +171,15 @@ public class ManageUserController {
         for(IUser user : list) {
             boolean isAdmin = user instanceof IAdministrator;
             String type = isAdmin ? "Systemadministrator" : "Producer";
-            String text = "Brugernavn: " + user.getUsername() + " Type: " + type;
+            String text = "Brugernavn: " + user.getUsername() + " Rolle: " + type;
             userInfo.add(text);
         }
         return userInfo;
+    }
+
+    private void resetSearches() {
+        searchUsernameEdit.setItems(createList(Repository.getInstance().domainFacade.getUsers()));
+        searchUsernameRemove.setItems(createList(Repository.getInstance().domainFacade.getUsers()));
     }
 
     public void goBack(MouseEvent mouseEvent) {
@@ -202,6 +198,7 @@ public class ManageUserController {
         ObservableList<String> roles = FXCollections.observableArrayList("Producer", "Systemadministrator");
         userType.setItems(roles);
         removeUserBtn.setDisable(true);
+        resetSearches();
     }
 
 }

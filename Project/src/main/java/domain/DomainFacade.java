@@ -121,7 +121,7 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public boolean deleteUser(IUser user) {
         IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
-        if (Repository.getInstance().domainFacade.validateUser(currentUser) && user != null) {
+        if (validateUser(currentUser) && user != null) {
             return PersistenceFacade.getInstance().deleteUser(user);
         }
         return false;
@@ -130,7 +130,7 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public boolean editUser(IUser user) {
         IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
-        if (Repository.getInstance().domainFacade.validateUser(currentUser)) {
+        if (validateUser(currentUser)) {
             return PersistenceFacade.getInstance().editUser(user);
         }
         return false;
@@ -143,7 +143,8 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean addUser(IUser user) {
-        if (PersistenceFacade.getInstance().getUser(user) == null) {
+        IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
+        if (validateUser(currentUser)) {
             return PersistenceFacade.getInstance().addUser(user);
         }
         return false;

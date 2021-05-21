@@ -13,7 +13,7 @@ public class SearchUserHandler implements ISearchUser {
     @Override
     public String getInfoFromSearch(String search, String resultType) {
         if(search != null) {
-            Pattern pattern = Pattern.compile("(Brugernavn: )([a-åA-Åø0-9]+)( Type: )([a-åA-Åø]+)", Pattern.CASE_INSENSITIVE);
+            Pattern pattern = Pattern.compile("(Brugernavn: )([a-åA-Åø0-9]+)( Rolle: )([a-åA-Åø]+)", Pattern.CASE_INSENSITIVE);
             Matcher matcher = pattern.matcher(search);
             boolean matchFound = matcher.find();
             if (matchFound) {

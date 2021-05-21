@@ -97,6 +97,7 @@ public class UserManager implements IUserHandling {
                 PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
                 queryStatement.setInt(1,producerResult.getInt("id"));
                 ResultSet queryResultSet = queryStatement.executeQuery();
+                queryResultSet.next();
                 list.add(new Producer(queryResultSet.getInt("id"), queryResultSet.getString("username"), queryResultSet.getString("user_password")));
             }
             //Administrator
@@ -106,6 +107,7 @@ public class UserManager implements IUserHandling {
                 PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
                 queryStatement.setInt(1,adminResult.getInt("id"));
                 ResultSet queryResultSet = queryStatement.executeQuery();
+                queryResultSet.next();
                 list.add(new SystemAdministrator(queryResultSet.getInt("id"), queryResultSet.getString("username"), queryResultSet.getString("user_password")));
             }
         } catch (SQLException exception) {
@@ -182,16 +184,23 @@ public class UserManager implements IUserHandling {
     @Override
     public boolean addUser(IUser user) {
         try {
+            PreparedStatement selectStatement = connection.prepareStatement("SELECT * FROM users");
+            ResultSet selectResult = selectStatement.executeQuery();
+            while(selectResult.next()) {
+                if (selectResult.getInt("id") != user.getId() && selectResult.getString("username").equals(user.getUsername())) {
+                    return false;
+                }
+            }
             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO users(username, user_password) VALUES (?, ?)");
             insertStatement.setString(1, user.getUsername());
             insertStatement.setString(2, user.getPassword());
             insertStatement.execute();
 
-            PreparedStatement selectStatement = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
-            selectStatement.setString(1, user.getUsername());
-            ResultSet selectResult = selectStatement.executeQuery();
-            selectResult.next();
-            int userID = selectResult.getInt("id");
+            PreparedStatement selectUserID = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
+            selectUserID.setString(1, user.getUsername());
+            ResultSet selectIDResult = selectUserID.executeQuery();
+            selectIDResult.next();
+            int userID = selectIDResult.getInt("id");
 
             if(user instanceof IProducer) {
                 insertStatement = connection.prepareStatement("INSERT INTO producer(id) VALUES (?) ");
