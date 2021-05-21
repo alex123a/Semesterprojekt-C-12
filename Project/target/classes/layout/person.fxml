@@ -32,7 +32,7 @@
                   <Font name="Calibri Bold" size="40.0" />
                </font>
             </Label>
-            <TextArea fx:id="descriptionBox" layoutX="75.0" layoutY="71.0" prefHeight="71.0" prefWidth="550.0" style="-fx-background-color: #c9c9c9;" text="*Beskrivelse af personen*" />
+            <TextArea fx:id="descriptionBox" editable="false" layoutX="75.0" layoutY="71.0" prefHeight="71.0" prefWidth="550.0" style="-fx-background-color: #c9c9c9;" text="*Personens beskrivelse*" wrapText="true" />
             <ScrollPane hbarPolicy="NEVER" layoutX="75.0" layoutY="150.0" prefHeight="350.0" prefWidth="550.0">
                <content>
                   <VBox fx:id="scrollpaneVBox" prefWidth="548.0" style="-fx-background-color: #BBBBBB; -fx-border-width: 1;">

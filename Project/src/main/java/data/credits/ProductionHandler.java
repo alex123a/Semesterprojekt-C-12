@@ -2,19 +2,16 @@ package data.credits;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import Interfaces.IUser;
 import data.DatabaseConnection;
 import data.userHandling.Producer;
 import data.userHandling.UserFacade;
 import data.userHandling.UserManager;
 import enumerations.ProductionGenre;
 import enumerations.ProductionType;
-import jdk.jshell.spi.ExecutionControl;
+import presentation.userManage.Systemadministrator;
+import presentation.userManage.User;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.sql.*;
 import java.util.*;
 
@@ -136,7 +133,7 @@ class ProductionHandler {
                 insertStatement.setString(1, production.getProductionID());
                 insertStatement.setString(2, production.getName());
                 insertStatement.setInt(3, production.getYear());
-                insertStatement.setInt(4,production.getGenre().getId());
+                insertStatement.setInt(4, production.getGenre().getId());
                 insertStatement.setInt(5, production.getType().getId());
                 insertStatement.setInt(6, production.getProducer().getId());
                 insertStatement.setString(7, production.getDescription());
@@ -150,7 +147,6 @@ class ProductionHandler {
                 throwables.printStackTrace();
             }
         }
-
 
 
         Production toReturn = null;
@@ -168,7 +164,7 @@ class ProductionHandler {
 
         // Following block adds ALL appears_in to appears_in_approval
         Map<IRightsholder, List<String>> rightsholders = production.getRightsholders();
-        for (IRightsholder rightsholder: rightsholders.keySet()) {
+        for (IRightsholder rightsholder : rightsholders.keySet()) {
             //This line saves the rightsholder and gets the rightsholder with the ID back
             Rightsholder r = (Rightsholder) RightsHolderHandler.getInstance().saveRightsholder(rightsholder);
 
@@ -210,6 +206,49 @@ class ProductionHandler {
                             "INSERT INTO role_approval (appears_in_id, title_id) " +
                             "VALUES (?, ?)" +
                             "RETURNING id");
+                    insertAppears_inStatement.setInt(1, productionID);
+                    insertAppears_inStatement.setInt(2, rightsholderID);
+                    ResultSet appears_in_id_result = insertAppears_inStatement.executeQuery();
+                    appears_in_id_result.next();
+                    int appearsinID = appears_in_id_result.getInt(1);
+
+                    //Inserts into roleapproval
+
+                    for (String role : rightsholders.get(rightsholder)) {
+
+                        //The role string might consist of e.g. "medvirkende: darth vader" therefore has to be split
+                        String title;
+                        if (role.contains(": ")) {
+                            title = role.split(": ")[0];
+                        } else {
+                            title = role;
+                        }
+
+                        PreparedStatement getTitleIdStatement = connection.prepareStatement("" +
+                                "SELECT id " +
+                                "FROM title " +
+                                "WHERE title.title = ?");
+                        getTitleIdStatement.setString(1, title);
+                        ResultSet titleIdResultSet = getTitleIdStatement.executeQuery();
+                        titleIdResultSet.next();
+
+                        PreparedStatement insertRoleStatement = connection.prepareStatement("" +
+                                "INSERT INTO role_approval (appears_in_id, title_id) " +
+                                "VALUES (?, ?)" +
+                                "RETURNING id");
+
+                        insertRoleStatement.setInt(1, appearsinID);
+                        insertRoleStatement.setInt(2, titleIdResultSet.getInt(1));
+                        ResultSet roleIdResult = insertRoleStatement.executeQuery();
+                        roleIdResult.next();
+                        if (role.contains(": ")) {
+                            PreparedStatement insertRoleNameStatement = connection.prepareStatement("" +
+                                    "INSERT INTO rolename_approval (role_id, rolename)" +
+                                    "VALUES (?, ?)");
+                            insertRoleNameStatement.setInt(1, roleIdResult.getInt(1));
+                            insertRoleNameStatement.setString(2, role.split(": ")[1]);
+                            insertRoleNameStatement.execute();
+                        }
 
                     insertRoleStatement.setInt(1, appearsinID);
                     insertRoleStatement.setInt(2, titleIdResultSet.getInt(1));
@@ -243,13 +282,13 @@ class ProductionHandler {
             //gets all the ids of the rightsholders in the production
             //so they can be compared to the ids in the database
             List<Integer> rightsholderIDs = new ArrayList<>();
-            for (IRightsholder r: rightsholders.keySet()) {
+            for (IRightsholder r : rightsholders.keySet()) {
                 if (r instanceof Rightsholder) {
-                    rightsholderIDs.add(((Rightsholder)r).getId());
+                    rightsholderIDs.add(((Rightsholder) r).getId());
                 }
             }
-            while (allAppearsinResult.next()){
-                if (!rightsholderIDs.contains(allAppearsinResult.getInt(1))){
+            while (allAppearsinResult.next()) {
+                if (!rightsholderIDs.contains(allAppearsinResult.getInt(1))) {
                     PreparedStatement insertToBeDeleted = connection.prepareStatement("" +
                             "INSERT INTO appears_in_approval (id)" +
                             "VALUES (?)");
@@ -309,9 +348,9 @@ class ProductionHandler {
                 String title = rolesResult.getString(1);
                 if (title == null) {
                     rolesList.add("MISSING TITLE");
-                }else if (title.equalsIgnoreCase("medvirkende")){
-                    rolesList.add(title+": "+rolesResult.getString(2));
-                }else {
+                } else if (title.equalsIgnoreCase("medvirkende")) {
+                    rolesList.add(title + ": " + rolesResult.getString(2));
+                } else {
                     rolesList.add(title);
                 }
             }
@@ -356,7 +395,7 @@ class ProductionHandler {
         //is used for id. Pull information out of approved table, put it into table, then delete
         Production prod = (Production) production;
 
-        try{
+        try {
             //if id exists in table, overwrite
             //if not, create new
             //if full null, delete
@@ -364,15 +403,119 @@ class ProductionHandler {
             prodStatement.setInt(1, prod.getID());
             ResultSet res = prodStatement.executeQuery();
 
-            if(res.next()){
+            if (res.next()) {
 
             }
 
-        } catch (SQLException e){
-          e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
+    public List<IProduction> getProductionChanged(IUser user) {
+        if (user instanceof Systemadministrator) {
+            List<IProduction> productions = new ArrayList<>();
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT producer.id, users.username, users.user_password FROM producer, users WHERE users.id = producer.id");
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    productions.addAll(getProductionsChanged(new User(resultSet.getInt("id"),resultSet.getString("username"),resultSet.getString("user_password"))));
+                }
+                return productions;
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        } else {
+            return new ArrayList<>(getProductionsChanged(user));
+        }
+        return null;
+    }
+
+    private List<Production> getProductionsChanged(IUser user) {
+        //Hente productions for producer
+        List<Production> productions = new ArrayList<>();
+        try {
+            PreparedStatement productionsStatement = connection.prepareStatement("" +
+                    "SELECT production_approval.id, own_production_id, production_name, description, year, genre_id, category_id" +
+                    " FROM production_approval, producer, users WHERE users.username = ? AND producer.id = production_approval.producer_id AND users.id = producer.id");
+            productionsStatement.setString(1, user.getUsername());
+            ResultSet proResult = productionsStatement.executeQuery();
+            while (proResult.next()) {
+                if (!(proResult.getString(3) == null)) {
+                    Production p = getProductionFromResultsetApproval(proResult);
+                    productions.add(p);
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            PreparedStatement productionsStatement = connection.prepareStatement("" +
+                    "SELECT production.id, own_production_id, production_name, description, year, genre_id, category_id" +
+                    " FROM production, producer, users WHERE users.username = ? AND producer.id = production.producer_id AND users.id = producer.id");
+            productionsStatement.setString(1, user.getUsername());
+            ResultSet proResult = productionsStatement.executeQuery();
+            while (proResult.next()) {
+                if (proResult.getString(3) != null) {
+                    boolean contains = false;
+                    Production p = getProductionFromResultset(proResult);
+                    for (Production production : productions) {
+                        if (production.getID() == p.getID()) {
+                            contains = true;
+                        }
+                    }
+                    if (!contains) {
+                        productions.add(p);
+                    }
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return productions;
+    }
+
+    private Production getProductionFromResultsetApproval(ResultSet productionsResult) throws SQLException {
+        PreparedStatement RightsholdersStatement = connection.prepareStatement("" +
+                "SELECT DISTINCT rightsholder_id " +
+                "FROM appears_in_approval " +
+                "WHERE production_id = ?");
+        RightsholdersStatement.setInt(1, productionsResult.getInt(1));
+        ResultSet rightsholderIDs = RightsholdersStatement.executeQuery();
+        Map<Integer, List<String>> roleMap = new HashMap<>();
+        while (rightsholderIDs.next()) {
+            //for each rightsholder, get all the roles that rightsholder has in the production
+            int id = rightsholderIDs.getInt(1);
+            PreparedStatement rolesStatement = connection.prepareStatement("" +
+                    "SELECT title, rolename.rolename FROM " +
+                    "appears_in_approval LEFT JOIN role_approval ON appears_in_approval.id = role_approval.appears_in_id " +
+                    "LEFT JOIN title ON role_approval.title_id = title.id " +
+                    "LEFT JOIN rolename ON role_approval.id = rolename.role_id " +
+                    "WHERE appears_in_approval.production_id = ? " +
+                    "AND appears_in_approval.rightsholder_id = ?");
+            rolesStatement.setInt(1, productionsResult.getInt(1));
+            rolesStatement.setInt(2, id);
+            ResultSet rolesResult = rolesStatement.executeQuery();
+            List<String> rolesList = new ArrayList<>();
+            while (rolesResult.next()) {
+                String title = rolesResult.getString(1);
+                if (title == null) {
+                    rolesList.add("MISSING TITLE");
+                } else if (title.equalsIgnoreCase("medvirkende")) {
+                    rolesList.add(title + ": " + rolesResult.getString(2));
+                } else {
+                    rolesList.add(title);
+                }
+            }
+            roleMap.put(id, rolesList);
+        }
+        //Gets the genre and type enum based on the genre and type
+        ProductionGenre genre = ProductionGenre.getFromID(productionsResult.getInt(6));
+        ProductionType type = ProductionType.getFromID(productionsResult.getInt(7));
+
+        Production p = new Production(productionsResult.getInt(1), productionsResult.getString(2), productionsResult.getString(3), productionsResult.getString(4), productionsResult.getInt(5), genre, type, roleMap);
+        return p;
+    }
 
 
     static ProductionHandler getInstance() {

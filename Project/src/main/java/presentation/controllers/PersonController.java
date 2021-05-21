@@ -2,6 +2,7 @@ package presentation.controllers;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,6 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +28,8 @@ import java.util.ResourceBundle;
 
 public class PersonController implements Initializable {
     @FXML
+    private TextArea descriptionBox;
+    @FXML
     private Label nameLabel;
     @FXML
     VBox scrollpaneVBox;
@@ -33,30 +37,45 @@ public class PersonController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Repository r = Repository.getInstance();
+        System.out.println("name: " + r.getRightsholderToBeShown().getFirstName());
 
-        setup(r.getRightsholderToBeShown().getFirstName() + " " + r.getRightsholderToBeShown().getLastName());
+        setup(r.getRightsholderToBeShown().getFirstName() + " " + r.getRightsholderToBeShown().getLastName(), r.getRightsholderToBeShown().getDescription());
 
-        // todo : Get all productions for this rightsholder and make a role for each
-        String roles = "";
         for(IProduction p : r.getRightsholderToBeShown().getRightsholderFor()) {
-            for(String s : p.getRightsholderRole(r.getRightsholderToBeShown())) {
+            String roles = "";
+            // new CreditWrapper(r.getRightsholderToBeShown(), p.getRightsholders().get(r.getRightsholderToBeShown())).getRoles()
+            for(String s : new CreditWrapper(r.getRightsholderToBeShown(), p.getRightsholders().get(r.getRightsholderToBeShown())).getRoles()) {
                 roles += s + ",";
             }
-            createRole(p.getName(), roles);
+            createRole(p.getName(), roles, p);
         }
     }
 
-    private void setup(String personName) {
+    private void setup(String personName, String description) {
         nameLabel.setText(personName);
+        descriptionBox.setText(description);
     }
 
     // Method to create a box with the role
-    public void createRole(String movieName, String role) {
+    public void createRole(String movieName, String role, IProduction p) {
         HBox notificationPane = new HBox();
         notificationPane.setAlignment(Pos.CENTER);
         notificationPane.setPrefHeight(50);
         notificationPane.setPrefWidth(548);
         notificationPane.setStyle("-fx-border-width: 1; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF;");
+        notificationPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            public void handle(final MouseEvent mouseEvent) {
+                Repository.getInstance().setProductionToBeShown(p);
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/layout/production.fxml"));
+                    Stage window = (Stage) descriptionBox.getScene().getWindow();
+                    window.setScene(new Scene(root, 1300, 700));
+                }
+                catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
         VBox labelBox = new VBox();
         labelBox.setPrefWidth(470);
@@ -83,8 +102,10 @@ public class PersonController implements Initializable {
 
     // Method to go back to the menu
     public void goBack(MouseEvent mouseEvent) {
+        Repository r = Repository.getInstance();
+
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/" + r.getLastPage() + ".fxml"));
             Stage window = (Stage) scrollpaneVBox.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
 

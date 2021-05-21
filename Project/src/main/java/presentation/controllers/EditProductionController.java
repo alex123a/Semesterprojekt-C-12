@@ -1,6 +1,5 @@
 package presentation.controllers;
 
-import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import domain.DomainFacade;
@@ -18,7 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.CreditWrapper;
-import presentation.NewProduction;
 import presentation.NewRightsholder;
 import presentation.Repository;
 
@@ -27,6 +25,13 @@ import java.net.URL;
 import java.util.*;
 
 public class EditProductionController implements Initializable {
+
+    @FXML
+    private TextField genreField;
+    @FXML
+    private TextField typeField;
+    @FXML
+    private TextField producerField;
 
     @FXML
     private TextArea descriptionProgramArea;
@@ -70,8 +75,8 @@ public class EditProductionController implements Initializable {
 
     @FXML
     void OnClickedSaveChanges(ActionEvent event) {
-        domain.setProductionID(toEdit, programIDField.getText());
-        domain.setName(toEdit, programNameField.getText());
+        toEdit.setProductionID(programIDField.getText());
+        toEdit.setName(programNameField.getText());
 
         CreditWrapper[] rightsholders = rightholderListview.getItems().toArray(new CreditWrapper[0]);
         // Map over rightholders with their roles
@@ -80,13 +85,13 @@ public class EditProductionController implements Initializable {
             RhsRoles.put(credit.getRightsholder(), credit.getRoles());
         }
 
-        domain.setRoles(toEdit, RhsRoles);
-        domain.saveChanges();
+        toEdit.setRightsholders(RhsRoles);
+        domain.saveProduction(toEdit);
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
-            Stage window = Repository.getInstance().getWindow();
-            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+            Stage window = (Stage) programIDField.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -137,6 +142,10 @@ public class EditProductionController implements Initializable {
         programIDField.setText(toEdit.getProductionID());
         oldId = toEdit.getProductionID();
         programNameField.setText(toEdit.getName());
+        genreField.setText(toEdit.getGenre().getGenreWord());
+        typeField.setText(toEdit.getType().getTypeWord());
+        producerField.setText(toEdit.getProducer().getUsername());
+
 
         //Doesn't work because of the persistence-layer
         List<CreditWrapper> credits = new ArrayList<>();
