@@ -63,6 +63,7 @@ public class SearchController implements Initializable {
         for(ProductionType pType : ProductionType.values()) {
             categoryOptions.add(pType.getTypeWord());
         }
+        categoryOptions.add("Medvirkende");
         comboCategory.setItems(categoryOptions);
 
         ObservableList<String> genreOptions = FXCollections.observableArrayList();
@@ -240,19 +241,17 @@ public class SearchController implements Initializable {
 
         String value = comboCategory.getValue();
 
-        // todo : Mangler "Medvirkende" i ProductionType
-
         if (value == null){
         }
         else if (value.equals(ProductionType.FILM.getTypeWord())){
             comboGenre.setDisable(false);
             setComboSort("Production");
         }
+        // "Medvirkende" is not in the ProductionType Enums
         else if (value.equals("Medvirkende")){
             comboGenre.setDisable(true);
 
-            // todo : Use Search to get all rightsholders
-
+            // todo : don't use CreditsSystem!!!!
             List<IRightsholder> rightsholderList = CreditsSystem.getInstance().getAllRightsholders();
             for(IRightsholder r : rightsholderList) {
                 createPerson(r.getFirstName() + " " + r.getLastName(), r.getDescription(), r);

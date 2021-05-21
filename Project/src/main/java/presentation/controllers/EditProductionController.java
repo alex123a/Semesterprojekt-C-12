@@ -29,6 +29,13 @@ import java.util.*;
 public class EditProductionController implements Initializable {
 
     @FXML
+    private TextField genreField;
+    @FXML
+    private TextField typeField;
+    @FXML
+    private TextField producerField;
+
+    @FXML
     private TextArea descriptionProgramArea;
 
     @FXML
@@ -137,6 +144,10 @@ public class EditProductionController implements Initializable {
         programIDField.setText(toEdit.getProductionID());
         oldId = toEdit.getProductionID();
         programNameField.setText(toEdit.getName());
+        genreField.setText(toEdit.getGenre().getGenreWord());
+        typeField.setText(toEdit.getType().getTypeWord());
+        producerField.setText("MISSING");
+
 
         //Doesn't work because of the persistence-layer
         List<CreditWrapper> credits = new ArrayList<>();
