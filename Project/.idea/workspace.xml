@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/edit_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/edit_production.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/edit_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/edit_production.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController.class" afterDir="false" />
-=======
       <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" afterDir="false" />
@@ -31,27 +18,34 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/Test.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ProductionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/userManage/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/userManage/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/edit_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/edit_production.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menuProducer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menuProducer.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserFacade.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserHandling.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/AuthenticationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/AuthenticationHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/Test.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/edit_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/edit_production.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/layout/menuProducer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/menuProducer.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ManageUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ManageUserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentation/userManage/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/userManage/User.class" afterDir="false" />
->>>>>>> master
     </list>
     <list id="398e6fdf-0be6-40ca-90c6-9a77a5d92e74" name="Changes by alexv" comment="" />
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
@@ -109,15 +103,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-<<<<<<< HEAD
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Mikkel P Larsen\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\resources\images" />
-      <recent name="C:\Users\Mikkel P Larsen\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\resources\layout" />
-      <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\stylesheets" />
-      <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\layout" />
-    </key>
-=======
->>>>>>> master
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Mikkel P Larsen\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\resources\images" />
       <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project\src\main\resources" />
@@ -165,17 +150,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -237,29 +211,4 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
-<<<<<<< HEAD
-  <component name="WindowStateProjectService">
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1621507650784">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1621507650784" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1621507650784">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1621507650784" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1621507650783">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1621507650783" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1621507650784">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1621507650784" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1621506914127">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1621506914127" />
-  </component>
-=======
->>>>>>> master
 </project>
