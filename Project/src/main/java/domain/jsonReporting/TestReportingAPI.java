@@ -31,7 +31,7 @@ public class TestReportingAPI {
         System.out.println("------------------------------------------------\n");
 
         System.out.println("------------------------------------------------");
-        System.out.println("Alle programs and all their credits");
+        System.out.println("All programs and all their credits");
         System.out.println(reportHandler.generateCreditsReport());
         System.out.println("------------------------------------------------");
 

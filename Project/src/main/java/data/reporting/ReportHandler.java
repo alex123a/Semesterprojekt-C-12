@@ -18,7 +18,8 @@ public class ReportHandler implements IReporting {
 
     private final Connection dbConnection = DatabaseConnection.getConnection();
 
-    private ReportHandler() {}
+    private ReportHandler() {
+    }
 
     @Override
     public int getTotalCreditCount() {
@@ -71,13 +72,13 @@ public class ReportHandler implements IReporting {
             PreparedStatement titleQuery = dbConnection.prepareStatement("SELECT title.title FROM title");
             ResultSet resultSet = titleQuery.executeQuery();
             while (resultSet.next()) {
-                    PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(r.id) FROM role AS r, title AS t" +
-                            " WHERE t.title = ? AND t.id = r.title_id");
-                    statement.setString(1, resultSet.getString("title"));
-                    ResultSet result = statement.executeQuery();
-                    while (result.next()) {
-                        jsonReady.put(resultSet.getString("title"), result.getInt(1));
-                    }
+                PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(r.id) FROM role AS r, title AS t" +
+                        " WHERE t.title = ? AND t.id = r.title_id");
+                statement.setString(1, resultSet.getString("title"));
+                ResultSet result = statement.executeQuery();
+                while (result.next()) {
+                    jsonReady.put(resultSet.getString("title"), result.getInt(1));
+                }
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -124,20 +125,16 @@ public class ReportHandler implements IReporting {
                 jsonReady.add(productionSet.getString(1));
                 jsonReady.add(productionSet.getString(2));
                 PreparedStatement titleQuery = dbConnection.prepareStatement(
-                        "SELECT DISTINCT t.title FROM appears_in AS ap, role AS r, title AS t" +
-                                " WHERE ap.production_id = ? AND r.title_id = t.id AND r.appears_in_id = ap.id");
+                        "\n" +
+                                "SELECT r.id, first_name, last_name, t.title FROM rightsholder r, appears_in ap, role, title t " +
+                                "WHERE role.title_id = t.id AND role.appears_in_id = ap.id AND ap.production_id = ? AND ap.rightsholder_id = r.id\n");
                 titleQuery.setInt(1, productionSet.getInt(1));
                 ResultSet result = titleQuery.executeQuery();
                 while (result.next()) {
-                    PreparedStatement personQuery = dbConnection.prepareStatement("SELECT r.id, first_name, last_name FROM rightsholder r, appears_in ap, role, title t " +
-                            "WHERE t.title = ? AND role.title_id = t.id AND role.appears_in_id = ap.id AND ap.production_id = ? AND ap.rightsholder_id = r.id");
-                    personQuery.setString(1, result.getString("title"));
-                    personQuery.setInt(2, productionSet.getInt(1));
-                    ResultSet persons = personQuery.executeQuery();
-                    while (persons.next()) {
-                        jsonReady.add(persons.getString(1));
-                        jsonReady.add(persons.getString(2) + " " + persons.getString(3));
-                    }
+                    
+                    jsonReady.add(result.getString(1));
+                    jsonReady.add(result.getString(2) + " " + result.getString(3));
+                    jsonReady.add(result.getString(4));
                 }
             }
         } catch (SQLException throwables) {

@@ -72,25 +72,29 @@ public class ReportingHandler implements IReportHandler {
         List<String> strings = PersistenceFacade.getInstance().generateCreditsReport();
         JSONArray show = new JSONArray();
         JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject1 = new JSONObject();
         for (int i = 0; i < strings.size()-2; i += 2) {
             JSONObject participants = new JSONObject();
             if (strings.get(i).equals("New Production")) {
-                JSONObject jsonObject1 = new JSONObject();
                 if(!(i == 0)) {
                     jsonObject1.put("participants",jsonArray);
                     jsonArray = new JSONArray();
+                    show.add(jsonObject1);
                 }
+                jsonObject1 = new JSONObject();
                 strings.remove(i);
                 jsonObject1.put("id",strings.get(i));
                 jsonObject1.put("programName",strings.get(i+1));
-                show.add(jsonObject1);
             } else {
                 participants.put("id", strings.get(i));
                 participants.put("name", strings.get(i+1));
+                participants.put("title",strings.get(i+2));
                 jsonArray.add(participants);
+                i++;
             }
         }
-        show.add(jsonArray);
+        jsonObject1.put("participants",jsonArray);
+        show.add(jsonObject1);
         return show;
     }
 
