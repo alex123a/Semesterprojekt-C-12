@@ -52,7 +52,6 @@ class ProductionHandler {
     IProduction getProduction(IProduction production) {
         try {
             IProduction returnProduction = null;
-            System.out.println("production id test " + ((Production) production).getID());
             //Statement to get all productions and their attributes
             PreparedStatement productionsStatement = connection.prepareStatement("" +
                     "SELECT id, own_production_id, production_name, description, year, genre_id, category_id" +

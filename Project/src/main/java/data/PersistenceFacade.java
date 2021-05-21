@@ -161,7 +161,6 @@ public class PersistenceFacade implements IPersistenceFacade {
 
     @Override
     public IProduction getProductionFromID(IProduction production) {
-        System.out.println("test print produktion " + ((Production) production).getID());
         return FacadeData.getInstance().getProduction(production);
     }
 }

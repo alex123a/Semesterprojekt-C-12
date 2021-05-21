@@ -163,6 +163,12 @@ public class NotificationController implements Initializable {
             System.out.println(notifications.get(i).getProduction().getName());
             createNotification(notifications.get(i).getProduction().getName(), notifications.get(i).getProduction().getProductionID(), status, notifications.get(i).getText(), i);
         }
+
+        for (INotification notification : notifications) {
+            notification.setViewed(true);
+            domain.editProducerNotification(notification);
+        }
+
     }
 
     public void refreshPage(int index, int status) {
@@ -171,12 +177,6 @@ public class NotificationController implements Initializable {
             domain.editAdminNotification(notifications.get(index));
         } else if (domain.getCurrentUser() instanceof IProducer) {
             // TODO This should probably be somewhere else
-            /*
-            boolean booleanStatus = status == 1;
-            notifications.get(index).setViewed(booleanStatus);
-            domain.editProducerNotification(notifications.get(index));
-
-             */
         }
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/notification.fxml"));

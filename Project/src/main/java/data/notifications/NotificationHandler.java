@@ -34,10 +34,6 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             PreparedStatement statement = dbConnection.prepareStatement(
                     "INSERT INTO producer_notification(producer_id, notification_text, viewed, production_id) " +
                     "VALUES (?, ?, ?, ?)");
-            System.out.println(notification.getProducer().getId());
-            System.out.println(notification.getText());
-            System.out.println(notification.getViewed());
-            System.out.println(((Production) production).getID());
             statement.setInt(1, notification.getProducer().getId());
             statement.setString(2, notification.getText());
             statement.setBoolean(3, notification.getViewed());
@@ -108,16 +104,13 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean editProducerNotification(INotification newNotification) {
         try {
-            IProduction production = newNotification.getProduction();
-            PreparedStatement statement = dbConnection.prepareStatement("UPDATE producer_notification SET producer_id = ?, notification_text = ?, viewed = ?, production_id = ? WHERE id = ?");
+            PreparedStatement statement = dbConnection.prepareStatement(
+                    "UPDATE producer_notification SET viewed = 'true' WHERE id = ?");
             statement.setInt(1, ((Notification) newNotification).getID());
-            statement.setInt(2, newNotification.getProducer().getId());
-            statement.setString(3, newNotification.getText());
-            statement.setBoolean(4, newNotification.getViewed());
-            statement.setInt(5, ((Production) production).getID());
             statement.execute();
             return true;
-        } catch (SQLException e) {
+        } catch(SQLException e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -156,6 +149,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             statement.setInt(1, user.getId());
             ResultSet result = statement.executeQuery();
             while (result.next()) {
+                System.out.println("dadasadssad" + result.getInt(2));
                 list.add(new ProducerNotification(result.getInt(1), (IProducer) PersistenceFacade.getInstance().getUser(new Producer(result.getInt(2))),
                         result.getString(3), result.getBoolean(4),
                         FacadeData.getInstance().getProduction(new Production(result.getInt(5)))));
