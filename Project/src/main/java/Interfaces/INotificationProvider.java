@@ -3,9 +3,7 @@ package Interfaces;
 import java.util.List;
 
 public interface INotificationProvider {
+    List<INotification> getAdminNotifications();
 
-    List<INotification> getNotifications(int userId);
-
-
-
+    List<INotification> getProducerNotifications(IUser user);
 }

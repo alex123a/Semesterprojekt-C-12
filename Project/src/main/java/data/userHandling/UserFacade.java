@@ -34,6 +34,16 @@ public class UserFacade implements IUserFacade {
     }
 
     @Override
+    public boolean addUser(IUser user) {
+        return UserManager.getInstance().addUser(user);
+    }
+
+    @Override
+    public IUser getUser(IUser user) {
+        return UserManager.getInstance().getUser(user);
+    }
+
+    @Override
     public String getDatabasePassword(IUser user) {
         return UserManager.getInstance().getDatabasePassword(user);
     }

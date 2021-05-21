@@ -17,6 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.CreditWrapper;
 import presentation.NewProduction;
 import presentation.NewRightsholder;
 import presentation.Repository;
@@ -37,10 +38,13 @@ public class EditProductionController implements Initializable {
     private TextField programNameField;
 
     @FXML
-    private ListView<IRightsholder> rightholderListview;
+    private ListView<CreditWrapper> rightholderListview;
 
     @FXML
-    private TextField rightholderName;
+    private TextField rightholderFirstName;
+
+    @FXML
+    private TextField rightholderLastName;
 
     @FXML
     private TextField rightholderDescription;
@@ -69,19 +73,15 @@ public class EditProductionController implements Initializable {
         creditsSystem.setProductionID(toEdit, programIDField.getText());
         creditsSystem.setName(toEdit, programNameField.getText());
 
-        IRightsholder[] rightsholders = rightholderListview.getItems().toArray(new IRightsholder[0]);
+        CreditWrapper[] rightsholders = rightholderListview.getItems().toArray(new CreditWrapper[0]);
         // Map over rightholders with their roles
         Map<IRightsholder, List<String>> RhsRoles = new HashMap<>();
-        for (IRightsholder rh: rightsholders) {
-            RhsRoles.put(rh, ((NewRightsholder) rh).getRoles());
+        for (CreditWrapper credit: rightsholders) {
+            RhsRoles.put(credit.getRightsholder(), credit.getRoles());
         }
 
         creditsSystem.setRoles(toEdit, RhsRoles);
         creditsSystem.saveChanges();
-
-        if (!oldId.equals(programIDField.getText())) {
-            creditsSystem.deleteProduction(CreditsSystem.getInstance().getProduction(oldId));
-        }
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
@@ -104,8 +104,8 @@ public class EditProductionController implements Initializable {
             will be changed in iteration 2 if we run out of time in iteration 1
         */
 
-        if (rightholderName.getText() != null || !rightholderName.getText().trim().isEmpty()) {
-            name = rightholderName.getText();
+        if (rightholderFirstName.getText() != null || !rightholderFirstName.getText().trim().isEmpty()) {
+            name = rightholderFirstName.getText();
         }
 
         if (rightholderDescription.getText() != null || !rightholderDescription.getText().trim().isEmpty()) {
@@ -117,9 +117,12 @@ public class EditProductionController implements Initializable {
         }
 
         if (name != null && description != null) {
-            IRightsholder newRightsholder = new NewRightsholder(name, description, roles);
-            ObservableList<IRightsholder> rightholders = rightholderListview.getItems();
-            rightholders.add(newRightsholder);
+            //TODO pass first name and last name seperately to the constructor
+            //TODO this should probably create a new creditWrapper
+            IRightsholder newRightsholder = new NewRightsholder(name, "", description);
+            CreditWrapper newCredit = new CreditWrapper(newRightsholder, roles);
+            ObservableList<CreditWrapper> rightholders = rightholderListview.getItems();
+            rightholders.add(newCredit);
         }
     }
 
@@ -136,10 +139,9 @@ public class EditProductionController implements Initializable {
         programNameField.setText(toEdit.getName());
 
         //Doesn't work because of the persistence-layer
-        List<IRightsholder> credits = new ArrayList<>();
+        List<CreditWrapper> credits = new ArrayList<>();
         for (IRightsholder rh : toEdit.getRightsholders().keySet()){
-            credits.add(new NewRightsholder(rh.getName(), rh.getDescription(), toEdit.getRightsholders().get(rh)));
-            System.out.println("read one");
+            credits.add(new CreditWrapper(rh, toEdit.getRightsholders().get(rh)));
         }
         rightholderListview.getItems().setAll(credits);
     }
@@ -153,5 +155,17 @@ public class EditProductionController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void getClickedRightsholder(MouseEvent mouseEvent) {
+        CreditWrapper cw = rightholderListview.getSelectionModel().getSelectedItem();
+        rightholderFirstName.setText(cw.getRightsholder().getFirstName());
+        rightholderLastName.setText(cw.getRightsholder().getLastName());
+        rightholderDescription.setText(cw.getRightsholder().getDescription());
+        String roles = "";
+        for(String s : cw.getRoles()) {
+            roles += s + ", ";
+        }
+        rightholderRoles.setText(roles);
     }
 }

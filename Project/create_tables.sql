@@ -1,127 +1,166 @@
-CREATE TABLE producer(
-    id SERIAL PRIMARY KEY, 
-    username VARCHAR(30) UNIQUE NOT NULL, 
-    producer_password CHAR(128) NOT NULL
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(30) UNIQUE NOT NULL,
+    user_password CHAR(160) NOT NULL
 );
 
-CREATE TABLE producer_notification(
-    id SERIAL PRIMARY KEY,
-    producer_id INT REFERENCES producer(id),
-    notification_text VARCHAR(1000) NOT NULL,
-    viewed BOOLEAN NOT NULL
+CREATE TABLE producer(
+    id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id) REFERENCES users(id) ON DELETE CASCADE
 );
+
 
 CREATE TABLE genre(
-    id SERIAL PRIMARY KEY,
-    genre_name VARCHAR(30) UNIQUE NOT NULL
+    id SERIAL,
+    genre_name VARCHAR(30) UNIQUE NOT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE category(
-    id SERIAL PRIMARY KEY,
-    category_name VARCHAR(30) UNIQUE NOT NULL
+    id SERIAL,
+    category_name VARCHAR(30) UNIQUE NOT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE production(
-    id INT PRIMARY KEY,
+    id INTEGER,
     own_production_id VARCHAR(30) UNIQUE,
     production_name VARCHAR(50) NOT NULL,
+    description VARCHAR(3000),
     year SMALLINT,
-    genre_id INT REFERENCES genre(id),
-    category_id INT REFERENCES category(id),
-    producer_id INT REFERENCES producer(id) NOT NULL
+    genre_id INTEGER,
+    category_id INTEGER,
+    producer_id INTEGER NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (genre_id) REFERENCES genre(id),
+	FOREIGN KEY (category_id) REFERENCES category(id),
+	FOREIGN KEY (producer_id) REFERENCES producer(id) ON DELETE CASCADE
 );
 
 CREATE TABLE production_approval(
-    id SERIAL PRIMARY KEY,
+    id SERIAL,
     own_production_id VARCHAR(30) UNIQUE,
     production_name VARCHAR(50) NOT NULL,
+    description VARCHAR(3000),
     year SMALLINT,
-    genre_id INT REFERENCES genre(id),
-    category_id INT REFERENCES category(id),
-    producer_id INT REFERENCES producer(id) NOT NULL
+    genre_id INTEGER,
+    category_id INTEGER,
+    producer_id INTEGER NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (genre_id) REFERENCES genre(id),
+	FOREIGN KEY (category_id) REFERENCES category(id),
+	FOREIGN KEY (producer_id) REFERENCES producer(id) ON DELETE CASCADE
 );
 
 CREATE TABLE rightsholder(
-    id INT PRIMARY KEY,
+    id INTEGER,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    rightsholder_description VARCHAR(1000)
+    rightsholder_description VARCHAR(1000),
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE rightsholder_approval(
-    id SERIAL PRIMARY KEY,
+    id SERIAL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    rightsholder_description VARCHAR(1000)
+    rightsholder_description VARCHAR(1000),
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE appears_in(
-	id SERIAL PRIMARY KEY,
-    production_id INT REFERENCES production(id) NOT NULL,
-    rightsholder_id INT REFERENCES rightsholder(id) NOT NULL
+    id SERIAL,
+    production_id INTEGER NOT NULl,
+    rightsholder_id INTEGER NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (production_id) REFERENCES production(id) ON DELETE CASCADE,
+	FOREIGN KEY (rightsholder_id) REFERENCES rightsholder(id) ON DELETE CASCADE
 );
 
 CREATE TABLE appears_in_approval(
-    production_id INT REFERENCES production(id),
-    rightsholder_id INT REFERENCES rightsholder(id),
-    PRIMARY KEY (production_id, rightsholder_id)
+    production_id INTEGER,
+    rightsholder_id INTEGER,
+    PRIMARY KEY (production_id, rightsholder_id),
+	FOREIGN KEY (production_id) REFERENCES production(id) ON DELETE CASCADE,
+	FOREIGN KEY (rightsholder_id) REFERENCES rightsholder(id) ON DELETE CASCADE
+
 );
 
 CREATE TABLE title(
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(30) UNIQUE NOT NULL
+    id SERIAL,
+    title VARCHAR(30) UNIQUE NOT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE role(
-    id SERIAL PRIMARY KEY,
-    appears_in_id INT REFERENCES appears_in(id) NOT NULL,
-    title_id INT REFERENCES title(id) NOT NULL
+    id SERIAL,
+    appears_in_id INTEGER NOT NULL,
+    title_id INTEGER NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (appears_in_id) REFERENCES appears_in(id) ON DELETE CASCADE,
+	FOREIGN KEY (title_id) REFERENCES title(id)
 );
 
 CREATE TABLE role_approval(
-    id SERIAL PRIMARY KEY,
-    appears_in_id INT NOT NULL,
-    title_id INT NOT NULL
+    id SERIAL,
+    appears_in_id INTEGER NOT NULL,
+    title_id INTEGER NOT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE rolename(
-    role_id INT PRIMARY KEY REFERENCES role(id),
-    rolename VARCHAR(50) NOT NULL
+    role_id INTEGER,
+    rolename VARCHAR(50) NOT NULL,
+	PRIMARY KEY (role_id),
+	FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE
 );
 
 CREATE TABLE rolename_approval(
-    role_id SERIAL PRIMARY KEY,
-    rolename VARCHAR(50)
+    role_id SERIAL,
+    rolename VARCHAR(50),
+	PRIMARY KEY (role_id)
 );
 
 CREATE TABLE administrator(
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(30) UNIQUE NOT NULL,
-    administrator_password CHAR(128) NOT NULL
+    id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE approval_status(
-    id SERIAL PRIMARY KEY,
-    status VARCHAR(12) UNIQUE NOT NULL
+    id SERIAL,
+    status VARCHAR(12) UNIQUE NOT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE administrator_notification(
-    id SERIAL PRIMARY KEY,
+    id SERIAL,
     notification_text VARCHAR(1000) NOT NULL,
-    production_id INT REFERENCES production(id) NOT NULL,
-    approval_status_id INT REFERENCES approval_status(id) NOT NULL
-);
-
-CREATE TABLE not_viewed(
-    administrator_id INT REFERENCES administrator(id),
-    notification_id INT REFERENCES administrator_notification(id),
-    PRIMARY KEY(administrator_id, notification_id)
+    production_id INTEGER NOT NULL,
+    approval_status_id INTEGER NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (production_id) REFERENCES production(id) ON DELETE CASCADE,
+	FOREIGN KEY (approval_status_id) REFERENCES approval_status(id)
 );
 
 CREATE TABLE approved(
-    notification_id INT REFERENCES administrator_notification(id),
+    notification_id INTEGER,
     approved_time TIMESTAMP NOT NULL,
-    approved_by INT REFERENCES administrator(id)
+    approved_by INTEGER,
+	FOREIGN KEY (notification_id) REFERENCES administrator_notification(id) ON DELETE CASCADE,
+	FOREIGN KEY (approved_by) REFERENCES administrator(id) ON DELETE CASCADE
+);
+
+CREATE TABLE producer_notification(
+    id SERIAL,
+    producer_id INTEGER,
+    notification_text VARCHAR(1000) NOT NULL,
+    viewed BOOLEAN NOT NULL,
+    production_id INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY (producer_id) REFERENCES producer(id) ON DELETE CASCADE,
+	FOREIGN KEY (production_id) REFERENCES production(id) ON DELETE CASCADE
 );
 
 --INSERT DATA
@@ -130,3 +169,4 @@ INSERT INTO title(title) VALUES ('Billedkunstnere'),('Billed- og lydredigering')
 INSERT INTO category(category_name) VALUES ('Serier'),('Film'),('Reality'),('Underholdning'),('Comedy'),('Dokumentar'),('Rejser og Eventyr'),('Livsstil'),('Magasiner');
 INSERT INTO genre(genre_name) VALUES ('Action'),('Børnefilm'),('Dokumentar'),('Drama'),('Familiefilm'),('Gyser'),('Komedie'),('Romantik'),('Thriller');
 INSERT INTO approval_status(status) VALUES ('Waiting'), ('Approved'), ('Not Approved');
+

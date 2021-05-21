@@ -1,9 +1,9 @@
 package presentation.controllers;
 
+import domain.DomainFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -103,19 +103,24 @@ public class Controller implements Initializable {
     void onBroadcastClicked(MouseEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
-            Stage window = Repository.getInstance().getWindow();
-            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+            Stage window = (Stage) tv2Default.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Broadcast");
     }
 
     @FXML
     void onHelpClicked(MouseEvent event) {
-        //todo onHelp
-        System.out.println("Help");
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/helppage.fxml"));
+            Stage window = (Stage) tv2Default.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -139,20 +144,12 @@ public class Controller implements Initializable {
     void onSearchClicked() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/search.fxml"));
-            Stage window = Repository.getInstance().getWindow();
-            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+            Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Search");
-    }
-
-
-    @FXML
-    void onLoginClicked(MouseEvent event) {
-        //todo onLogin
-
     }
 
     @FXML
@@ -241,20 +238,54 @@ public class Controller implements Initializable {
         long start;
         long end;
         Long time = System.currentTimeMillis() / 1000;
-        Label[] programs = {tv2Default,tv2Sport,tv2SportX,tv2Charlie,tv2News,tv2Zulu,tv2Fri};
-        Label[] times = {tv2DefaultTime,tv2SportTime,tv2SportXTime,tv2CharlieTime,tv2NewsTime,tv2ZuluTime,tv2FriTime};
+        Label[] programs = {tv2Default, tv2Sport, tv2SportX, tv2Charlie, tv2News, tv2Zulu, tv2Fri};
+        Label[] times = {tv2DefaultTime, tv2SportTime, tv2SportXTime, tv2CharlieTime, tv2NewsTime, tv2ZuluTime, tv2FriTime};
         int count = 0;
         for (String s : strings) {
             start = Long.parseLong(s.substring(s.lastIndexOf("data-start") + 12, s.lastIndexOf("data-stop") - 2));
             end = Long.parseLong(s.substring(s.lastIndexOf("data-stop") + 11, s.lastIndexOf("style") - 2));
             if (time > start && time < end) {
                 formatter = new SimpleDateFormat("HH:mm");
-                Date startDate = new java.util.Date(start*1000);
-                Date endDate = new java.util.Date(end*1000);
+                Date startDate = new Date(start * 1000);
+                Date endDate = new Date(end * 1000);
                 programs[count].setText(s.substring(s.lastIndexOf("title=\"") + 7, s.lastIndexOf("data-program-id") - 2));
                 times[count].setText(formatter.format(startDate) + " - " + formatter.format(endDate));
                 count++;
             }
         }
+    }
+
+    public void goToNotifications(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/notification.fxml"));
+            Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void goToLogin(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/login.fxml"));
+            Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void logOut(MouseEvent mouseEvent) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
+            Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        DomainFacade.getInstance().setCurrentUser(null);
     }
 }
