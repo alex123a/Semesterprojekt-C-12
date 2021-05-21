@@ -3,6 +3,7 @@ package domain;
 import Interfaces.*;
 import data.PersistenceFacade;
 import domain.authentication.AuthenticationHandler;
+import domain.notification.ProducerNotification;
 import domain.session.CurrentSession;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
@@ -190,9 +191,13 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public boolean editAdminNotification(INotification newNotification) {
         if (newNotification.getApproval() == 2) {
-
+            String msg = "Produktionen med produktions id " + newNotification.getProudction().getProductionID() +
+                    " er blevet godkendt";
+            createProducerNotification(new ProducerNotification(newNotification.getProudction(), msg, false, newNotification.getProducerID()));
         } else if (newNotification.getApproval() == 3) {
-
+            String msg = "Produktionen med produktions id " + newNotification.getProudction().getProductionID() +
+                    " er blevet afvist";
+            createProducerNotification(new ProducerNotification(newNotification.getProudction(), msg, false, newNotification.getProducerID()));
         }
         return PersistenceFacade.getInstance().editAdminNotification(newNotification);
     }
