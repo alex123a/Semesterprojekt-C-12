@@ -163,10 +163,3 @@ CREATE TABLE producer_notification(
 	FOREIGN KEY (production_id) REFERENCES production(id) ON DELETE CASCADE
 );
 
---INSERT DATA
-
-INSERT INTO title(title) VALUES ('Billedkunstnere'),('Billed- og lydredigering'),('Casting'),('Colourgrading'),('Dirigenter'),('Drone'),('Dukkefører'),('Dukkeskaber'),('Fortæller'),('Fotografer'),('Forlæg'),('Grafiske designere'),('Indtalere'),('Kapelmester'),('Klipper'),('Koncept'),('Konsulent'),('Kor'),('Koreografi'),('Lyd/tonemester'),('Lydredigering'),('Lys'),('Medvirkende'),('Musikalsk arrangement'),('Orkester/band'),('Oversættere'),('Producent'),('Produktionskoordinator/leder'),('Programansvarlige'),('Redaktion/tilrettelæggelse'),('Redaktøren'),('Rekvisitør'),('Scenografer'),('Scripter/producerassistent'),('Special effects'),('Sponsorer'),('Tegnefilm/animation'),('Tekstere'),('Tekst og musik'),('Uhonoreret indsats');
-INSERT INTO category(category_name) VALUES ('Serier'),('Film'),('Reality'),('Underholdning'),('Comedy'),('Dokumentar'),('Rejser og Eventyr'),('Livsstil'),('Magasiner');
-INSERT INTO genre(genre_name) VALUES ('Action'),('Børnefilm'),('Dokumentar'),('Drama'),('Familiefilm'),('Gyser'),('Komedie'),('Romantik'),('Thriller');
-INSERT INTO approval_status(status) VALUES ('Waiting'), ('Approved'), ('Not Approved');
-
