@@ -63,6 +63,7 @@ public class SearchController implements Initializable {
         comboGenre.setDisable(true);
 
         ObservableList<String> categoryOptions = FXCollections.observableArrayList();
+        categoryOptions.add("Kategori");
         for(ProductionType pType : ProductionType.values()) {
             categoryOptions.add(pType.getTypeWord());
         }
@@ -70,6 +71,7 @@ public class SearchController implements Initializable {
         comboCategory.setItems(categoryOptions);
 
         ObservableList<String> genreOptions = FXCollections.observableArrayList();
+        genreOptions.add("Genre");
         for(ProductionGenre pGenre : ProductionGenre.values()) {
             genreOptions.add(pGenre.getGenreWord());
         }
@@ -213,7 +215,7 @@ public class SearchController implements Initializable {
         String searchFor = null;
 
         // Checks if there is not chosen a category, then showing all categories
-        if(comboCategory.getValue() == null) {
+        if(comboCategory.getValue() == null ||comboCategory.getValue().equals("Kategori")) {
             searchFor = "both";
             comboSort.setValue(null);
         }
