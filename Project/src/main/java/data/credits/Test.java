@@ -6,6 +6,7 @@ import data.credits.Production;
 import data.credits.ProductionHandler;
 import data.credits.RightsHolderHandler;
 import data.credits.Rightsholder;
+import presentation.userManage.Producer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import java.util.Map;
 class Test {
 
     public static void main(String[] args) {
-
+/*
         List<IProduction> productionList = ProductionHandler.getInstance().getProductions();
         System.out.println(productionList);
 
@@ -34,6 +35,11 @@ class Test {
 
         RightsHolderHandler.getInstance().approveChangesToRightsholder(new Rightsholder(7,"Hans","Hansen","jj", f));
 
+
+ */
+        System.out.println(ProductionHandler.getInstance().getProductionsChanged(new Producer("john","john123")));
+        List<Production> production = ProductionHandler.getInstance().getProductionsChanged(new Producer("john","john123"));
+        System.out.println(production.get(0).getRightsholders());
     }
 
 }
