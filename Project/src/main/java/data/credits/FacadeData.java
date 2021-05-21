@@ -11,17 +11,14 @@ import java.util.List;
 public class FacadeData implements IFacadeData {
     private RightsHolderHandler rhHolder = RightsHolderHandler.getInstance();
     private ProductionHandler pHandler = ProductionHandler.getInstance();
-    private static FacadeData instance;
-
-    public static FacadeData getInstance() {
-        if (instance == null) {
-            instance = new FacadeData();
-        }
-        return instance;
-    }
+    private static final FacadeData FDATA = new FacadeData();
 
     private FacadeData() {
 
+    }
+
+    public static FacadeData getInstance() {
+        return FDATA;
     }
 
     /**
@@ -82,6 +79,10 @@ public class FacadeData implements IFacadeData {
     @Override
     public void approveChangesToProduction(IProduction production) {
         throw new UnsupportedOperationException();
+    }
+
+    public IProduction getProduction(IProduction production) {
+        return pHandler.getProduction(production);
     }
 
 }

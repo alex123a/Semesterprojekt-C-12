@@ -2,10 +2,11 @@ package data;
 
 import Interfaces.*;
 import data.credits.FacadeData;
+import data.credits.Production;
+import data.notifications.AdminNotification;
 import data.notifications.NotificationHandler;
 import data.reporting.ReportHandler;
 import data.userHandling.UserFacade;
-import org.json.simple.JSONObject;
 
 import java.util.List;
 import java.util.Map;
@@ -48,11 +49,6 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public List<IUser> getUsersBySearch(IUser user) {
-        return UserFacade.getInstance().getUsersBySearch(user);
-    }
-
-    @Override
     public List<IRightsholder> getRightsholders() {
         return FacadeData.getInstance().getRightsholders();
 
@@ -89,8 +85,8 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public boolean createProducerNotification(IUser user, INotification notification) {
-       return NotificationHandler.getInstance().createProducerNotification(user, notification);
+    public boolean createProducerNotification(INotification notification) {
+       return NotificationHandler.getInstance().createProducerNotification(notification);
     }
 
     @Override
@@ -129,6 +125,16 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
+    public int countUnreadAdminNotifications() {
+        return NotificationHandler.getInstance().countUnreadAdminNotifications();
+    }
+
+    @Override
+    public int countUnreadProducerNotifications(IUser user) {
+        return NotificationHandler.getInstance().countUnreadProducerNotifications(user);
+    }
+
+    @Override
     public int getTotalCreditCount() {
         return ReportHandler.getInstance().getTotalCreditCount();
     }
@@ -153,4 +159,14 @@ public class PersistenceFacade implements IPersistenceFacade {
         return ReportHandler.getInstance().generateCreditsReport();
     }
 
+
+    @Override
+    public IProduction getProductionFromID(IProduction production) {
+        return FacadeData.getInstance().getProduction(production);
+    }
+
+    @Override
+    public List<IUser> getUsersBySearch(IUser user) {
+        return UserFacade.getInstance().getUsersBySearch(user);
+    }
 }

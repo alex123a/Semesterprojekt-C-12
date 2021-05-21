@@ -26,8 +26,7 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
         }
         return instance;
     }
-    
-    @Override
+
     public void addCredit(IProduction production, IRightsholder rightsholder, List<String> roles) {
         production.getRightsholders().put(rightsholder, roles);
         if (!changedProductions.contains(production)){
@@ -35,7 +34,6 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
         }
     }
 
-    @Override
     public void removeCredit(IProduction production, IRightsholder rightsholder) {
         production.getRightsholders().remove(rightsholder);
         if (!changedProductions.contains(production)){
@@ -43,7 +41,6 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
         }
     }
 
-    @Override
     public void setProductionID(IProduction production, String productionID) {
         production.setProductionID(productionID);
         changedProductions.add(production);
@@ -59,12 +56,10 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
         changedProductions.add(production);
     }
 
-    @Override
     public boolean editCredit(IRightsholder credit) {
         return false;
     }
 
-    @Override
     public void addProduction(IProduction production) {
         PersistenceFacade.getInstance().saveProduction(production);
     }
@@ -75,6 +70,10 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     }
 
     @Override
+    public void saveProduction(IProduction production) {
+        PersistenceFacade.getInstance().saveProduction(production);
+    }
+
     public void saveChanges() {
         for (IProduction production: changedProductions) {
             PersistenceFacade.getInstance().saveProduction(production);
@@ -82,7 +81,6 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
         changedProductions.clear();
     }
 
-    @Override
     public void cancelChanges() {
         changedProductions.clear();
     }

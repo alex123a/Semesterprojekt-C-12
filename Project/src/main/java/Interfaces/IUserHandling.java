@@ -17,4 +17,5 @@ public interface IUserHandling {
     String getDatabasePassword(IUser user);
 
     List<IUser> getUsersBySearch(IUser user);
+
 }

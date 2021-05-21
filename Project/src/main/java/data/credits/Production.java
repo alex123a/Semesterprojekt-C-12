@@ -1,5 +1,6 @@
 package data.credits;
 
+import Interfaces.IProducer;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import enumerations.ProductionGenre;
@@ -18,12 +19,28 @@ public class Production implements IProduction {
     private int year;
     private ProductionGenre genre;
     private ProductionType type;
+    private IProducer producer;
     private Map<Integer, List<String>> rightsholders;
     //Saves the rightsholder, so the list above doesn't need to be converted each time
     private Map<IRightsholder, List<String>> cachedMap;
 
     public Production() {
 
+    }
+
+    public Production(int id) {
+        this.id = id;
+    }
+
+    public Production(int id, String productionID, String name, String description, int year, ProductionGenre genre, ProductionType type) {
+        this.id = id;
+        this.productionID = productionID;
+        this.name = name;
+        this.description = description;
+        this.year = year;
+        this.genre = genre;
+        this.type = type;
+        this.rightsholders = rightsholders;
     }
 
     public Production(int id, String productionID, String name, String description, int year, ProductionGenre genre, ProductionType type, Map<Integer, List<String>> rightsholders) {
@@ -100,6 +117,16 @@ public class Production implements IProduction {
     @Override
     public void setType(ProductionType type) {
         this.type = type;
+    }
+
+    @Override
+    public IProducer getProducer() {
+        return this.producer;
+    }
+
+    @Override
+    public void setProducer(IProducer producer) {
+        this.producer = producer;
     }
 
     @Override

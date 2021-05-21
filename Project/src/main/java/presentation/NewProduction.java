@@ -1,5 +1,6 @@
 package presentation;
 
+import Interfaces.IProducer;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import enumerations.ProductionGenre;
@@ -17,12 +18,18 @@ public class NewProduction implements IProduction {
     private int year;
     private ProductionGenre genre;
     private ProductionType type;
-    Map<IRightsholder, List<String>> rightsholders;
+    private IProducer producer;
+    private Map<IRightsholder, List<String>> rightsholders;
 
-    public NewProduction(String productionID, String name, Map<IRightsholder, List<String>> rightsholders) {
+    public NewProduction(String productionID, String name, String description, int year, ProductionGenre genre, ProductionType type, IProducer producer, Map<IRightsholder, List<String>> rightsholders) {
         this.productionID = productionID;
         this.name = name;
-        this.rightsholders  = rightsholders;
+        this.description = description;
+        this.year = year;
+        this.genre = genre;
+        this.type = type;
+        this.producer = producer;
+        this.rightsholders = rightsholders;
     }
 
     @Override
@@ -71,6 +78,16 @@ public class NewProduction implements IProduction {
     @Override
     public void setType(ProductionType type) {
         this.type = type;
+    }
+
+    @Override
+    public IProducer getProducer() {
+        return this.producer;
+    }
+
+    @Override
+    public void setProducer(IProducer producer) {
+        this.producer = producer;
     }
 
     @Override

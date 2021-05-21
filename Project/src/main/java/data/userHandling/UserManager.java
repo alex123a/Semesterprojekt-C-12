@@ -37,6 +37,35 @@ public class UserManager implements IUserHandling {
     }
 
     @Override
+    public List<IUser> getUsersBySearch(IUser tempUser) {
+        List<IUser> matches = new ArrayList<>();
+        IUser user = null;
+        try {
+            String searchPatteren = "%" + tempUser.getUsername() + "%";
+            PreparedStatement selectStatement = connection.prepareStatement("SELECT id, username FROM users WHERE username LIKE ?");
+            selectStatement.setString(1, searchPatteren);
+            ResultSet selectResult = selectStatement.executeQuery();
+            while(selectResult.next()) {
+                PreparedStatement selectProducerId = connection.prepareStatement("SELECT id FROM producer WHERE id = ?");
+                selectProducerId.setInt(1, selectResult.getInt("id"));
+                ResultSet producerIdResult = selectProducerId.executeQuery();
+                if (producerIdResult.next()) {
+                    if(producerIdResult.getInt("id") == selectResult.getInt("id")) {
+                        user = new Producer(selectResult.getString("username"));
+                    }
+                } else {
+                    user = new SystemAdministrator(selectResult.getString("username"));
+                }
+                matches.add(user);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return matches;
+    }
+
+    @Override
     public IUser getUser(IUser user) {
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
@@ -86,6 +115,7 @@ public class UserManager implements IUserHandling {
         return null;
     }
 
+
     @Override
     public List<IUser> getUsers() {
         List<IUser> list = new ArrayList<>();
@@ -95,55 +125,24 @@ public class UserManager implements IUserHandling {
             ResultSet producerResult = producerStatement.executeQuery();
             while (producerResult.next()) {
                 PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
-                queryStatement.setInt(1,producerResult.getInt("id"));
+                queryStatement.setInt(1,producerResult.getInt(1));
                 ResultSet queryResultSet = queryStatement.executeQuery();
-                queryResultSet.next();
-                list.add(new Producer(queryResultSet.getInt("id"), queryResultSet.getString("username"), queryResultSet.getString("user_password")));
+                list.add(new Producer(queryResultSet.getInt(1), queryResultSet.getString(2), queryResultSet.getString(3)));
             }
             //Administrator
             PreparedStatement adminStatement = connection.prepareStatement("SELECT * FROM administrator");
             ResultSet adminResult = adminStatement.executeQuery();
             while (adminResult.next()) {
                 PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
-                queryStatement.setInt(1,adminResult.getInt("id"));
+                queryStatement.setInt(1,adminResult.getInt(1));
                 ResultSet queryResultSet = queryStatement.executeQuery();
-                queryResultSet.next();
-                list.add(new SystemAdministrator(queryResultSet.getInt("id"), queryResultSet.getString("username"), queryResultSet.getString("user_password")));
+                list.add(new SystemAdministrator(queryResultSet.getInt(1), queryResultSet.getString(2), queryResultSet.getString(3)));
             }
         } catch (SQLException exception) {
             System.out.println("Error getting users");
             System.out.println(exception.getMessage());
         }
         return list;
-    }
-
-    @Override
-    public List<IUser> getUsersBySearch(IUser tempUser) {
-        List<IUser> matches = new ArrayList<>();
-        IUser user = null;
-        try {
-            String searchPatteren = "%" + tempUser.getUsername() + "%";
-            PreparedStatement selectStatement = connection.prepareStatement("SELECT id, username FROM users WHERE username LIKE ?");
-            selectStatement.setString(1, searchPatteren);
-            ResultSet selectResult = selectStatement.executeQuery();
-            while(selectResult.next()) {
-                PreparedStatement selectProducerId = connection.prepareStatement("SELECT id FROM producer WHERE id = ?");
-                selectProducerId.setInt(1, selectResult.getInt("id"));
-                ResultSet producerIdResult = selectProducerId.executeQuery();
-                if (producerIdResult.next()) {
-                    if(producerIdResult.getInt("id") == selectResult.getInt("id")) {
-                        user = new Producer(selectResult.getString("username"));
-                    }
-                } else {
-                    user = new SystemAdministrator(selectResult.getString("username"));
-                }
-                matches.add(user);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return matches;
     }
 
     @Override

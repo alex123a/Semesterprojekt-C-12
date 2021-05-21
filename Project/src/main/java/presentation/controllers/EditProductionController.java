@@ -1,9 +1,14 @@
 package presentation.controllers;
 
-import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
-import domain.CreditsManagement.CreditsSystem;
+import Interfaces.IUser;
+import domain.DomainFacade;
+import enumerations.ProductionGenre;
+import enumerations.ProductionType;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,14 +16,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.CreditWrapper;
-import presentation.NewProduction;
 import presentation.NewRightsholder;
 import presentation.Repository;
 
@@ -27,6 +28,15 @@ import java.net.URL;
 import java.util.*;
 
 public class EditProductionController implements Initializable {
+
+    @FXML
+    private ComboBox comboCategory;
+    @FXML
+    private ComboBox comboGenre;
+    @FXML
+    private ComboBox comboProducer;
+    @FXML
+    private TextField yearInput;
 
     @FXML
     private TextArea descriptionProgramArea;
@@ -66,12 +76,12 @@ public class EditProductionController implements Initializable {
     String oldId = null;
 
     private Repository rep = Repository.getInstance();
-    private ICreditManagement creditsSystem = rep.creditsSystem;
+    private DomainFacade domain = rep.domainFacade;
 
     @FXML
     void OnClickedSaveChanges(ActionEvent event) {
-        creditsSystem.setProductionID(toEdit, programIDField.getText());
-        creditsSystem.setName(toEdit, programNameField.getText());
+        toEdit.setProductionID(programIDField.getText());
+        toEdit.setName(programNameField.getText());
 
         CreditWrapper[] rightsholders = rightholderListview.getItems().toArray(new CreditWrapper[0]);
         // Map over rightholders with their roles
@@ -80,13 +90,13 @@ public class EditProductionController implements Initializable {
             RhsRoles.put(credit.getRightsholder(), credit.getRoles());
         }
 
-        creditsSystem.setRoles(toEdit, RhsRoles);
-        creditsSystem.saveChanges();
+        toEdit.setRightsholders(RhsRoles);
+        domain.saveProduction(toEdit);
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
-            Stage window = Repository.getInstance().getWindow();
-            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+            Stage window = (Stage) programIDField.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -137,6 +147,7 @@ public class EditProductionController implements Initializable {
         programIDField.setText(toEdit.getProductionID());
         oldId = toEdit.getProductionID();
         programNameField.setText(toEdit.getName());
+        descriptionProgramArea.setText(toEdit.getDescription());
 
         //Doesn't work because of the persistence-layer
         List<CreditWrapper> credits = new ArrayList<>();
@@ -144,6 +155,41 @@ public class EditProductionController implements Initializable {
             credits.add(new CreditWrapper(rh, toEdit.getRightsholders().get(rh)));
         }
         rightholderListview.getItems().setAll(credits);
+
+        // Set categories
+        ObservableList<String> categoryOptions = FXCollections.observableArrayList();
+        for(ProductionType pType : ProductionType.values()) {
+            categoryOptions.add(pType.getTypeWord());
+        }
+        comboCategory.setItems(categoryOptions);
+
+        // Set Genres
+        ObservableList<String> genreOptions = FXCollections.observableArrayList();
+        for(ProductionGenre pGenre : ProductionGenre.values()) {
+            genreOptions.add(pGenre.getGenreWord());
+        }
+        comboGenre.setItems(genreOptions);
+
+        // Get Producers
+        Repository r = Repository.getInstance();
+        List<IUser> userList = r.domainFacade.getUsers();
+        ObservableList<String> sortOptions = FXCollections.observableArrayList();
+        for(IUser user : userList) {
+            sortOptions.addAll(user.getUsername());
+            System.out.println(user.getUsername());
+        }
+        comboProducer.setItems(sortOptions);
+
+        // Makes sure that the user only inputs numbers
+        yearInput.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    yearInput.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
 
     public void onBackClicked(MouseEvent mouseEvent) {

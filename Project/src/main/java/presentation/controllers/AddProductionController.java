@@ -1,8 +1,11 @@
 package presentation.controllers;
 
-import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import Interfaces.IUser;
+import domain.DomainFacade;
+import enumerations.ProductionGenre;
+import enumerations.ProductionType;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -67,15 +70,32 @@ public class AddProductionController implements Initializable {
     private Button removeRightholder;
 
     private Repository rep = Repository.getInstance();
-    private ICreditManagement creditsSystem = rep.creditsSystem;
+    private DomainFacade domain = rep.domainFacade;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> categoryOptions = FXCollections.observableArrayList("Serier", "Film", "Reality", "Underholdning", "Stand up", "Dokumentar", "Rejser og Eventyr", "Livsstil", "Magasiner", "Medvirkende");
+        // Set categories
+        ObservableList<String> categoryOptions = FXCollections.observableArrayList();
+        for(ProductionType pType : ProductionType.values()) {
+            categoryOptions.add(pType.getTypeWord());
+        }
         comboCategory.setItems(categoryOptions);
-        ObservableList<String> genreOptions = FXCollections.observableArrayList("Krimi", "Action", "Komedie", "Drama", "Romance", "Fantasy", "Eventyr", "Gyser", "Thriller");
+
+        // Set Genres
+        ObservableList<String> genreOptions = FXCollections.observableArrayList();
+        for(ProductionGenre pGenre : ProductionGenre.values()) {
+            genreOptions.add(pGenre.getGenreWord());
+        }
         comboGenre.setItems(genreOptions);
-        ObservableList<String> sortOptions = FXCollections.observableArrayList("Kristian", "John");
+
+        // Get Producers
+        Repository r = Repository.getInstance();
+        List<IUser> userList = r.domainFacade.getUsers();
+        ObservableList<String> sortOptions = FXCollections.observableArrayList();
+        for(IUser user : userList) {
+            sortOptions.addAll(user.getUsername());
+            System.out.println(user.getUsername());
+        }
         comboProducer.setItems(sortOptions);
 
         yearInput.textProperty().addListener(new ChangeListener<String>() {
@@ -155,9 +175,12 @@ public class AddProductionController implements Initializable {
         for (CreditWrapper credit: rightsholders) {
             RhsRoles.put(credit.getRightsholder(), credit.getRoles());
         }
-
+        //TODO make this pass all values to the contructor
+        /*
         IProduction newProduction = new NewProduction(id, name, RhsRoles);
-        creditsSystem.addProduction(newProduction);
+        domain.addProduction(newProduction);
+
+         */
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));

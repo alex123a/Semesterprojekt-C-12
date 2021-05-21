@@ -1,5 +1,7 @@
 package presentation.controllers;
 
+import Interfaces.IAdministrator;
+import Interfaces.IProducer;
 import domain.DomainFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -98,6 +100,10 @@ public class Controller implements Initializable {
     @FXML
     private ImageView searchImage;
 
+    @FXML
+    private Label numberOfNotifications = new Label();
+
+    private DomainFacade domain = Repository.getInstance().domainFacade;
 
     @FXML
     void onBroadcastClicked(MouseEvent event) {
@@ -143,6 +149,7 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        System.out.println("Edit User");
 
     }
 
@@ -257,6 +264,12 @@ public class Controller implements Initializable {
                 programs[count].setText(s.substring(s.lastIndexOf("title=\"") + 7, s.lastIndexOf("data-program-id") - 2));
                 times[count].setText(formatter.format(startDate) + " - " + formatter.format(endDate));
                 count++;
+
+                if (domain.getCurrentUser() instanceof IAdministrator) {
+                    numberOfNotifications.setText("" + domain.countUnreadAdminNotifications());
+                } else if (domain.getCurrentUser() instanceof IProducer) {
+                    numberOfNotifications.setText("" + domain.countUnreadProducerNotifications(domain.getCurrentUser()));
+                }
             }
         }
     }

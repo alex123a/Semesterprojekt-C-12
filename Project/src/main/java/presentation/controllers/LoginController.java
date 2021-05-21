@@ -3,6 +3,7 @@ package presentation.controllers;
 import Interfaces.IUser;
 import domain.DomainFacade;
 import domain.authentication.AuthenticationHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import presentation.Repository;
+import presentation.userManage.Producer;
+import presentation.userManage.Systemadministrator;
 import presentation.userManage.User;
 
 import java.io.IOException;
@@ -43,11 +47,12 @@ public class LoginController {
         passwordToggle.setImage(closedEye);
     }
 
-    // Method for when the user clicks login
-    public void loginClicked(MouseEvent mouseEvent) {
-        String password;
-        String username;
+    public void onEnter(ActionEvent actionEvent) {
+        loginClicked();
+    }
 
+    // Method for when the user clicks login
+    public void loginClicked() {
         wrongInput.setVisible(false);
 
         // Checks if the input is empty

@@ -1,15 +1,17 @@
-package data.notifications;
+package domain.notification;
 
-public class AdminNotifcation extends Notification {
+import Interfaces.IProduction;
+
+public class AdminNotification extends Notification {
     private int approvalStatus;
 
-    public AdminNotifcation(String text, int productionID, int approvalStatus) {
-        super(text, productionID);
+    public AdminNotification(String text, int approvalStatus) {
+        super(text);
         this.approvalStatus = approvalStatus;
     }
 
-    public AdminNotifcation(int ID, String text, int productionID, int approvalStatus) {
-        super(ID, text, productionID);
+    public AdminNotification(String text, IProduction production, int approvalStatus) {
+        super(text, production);
         this.approvalStatus = approvalStatus;
     }
 
