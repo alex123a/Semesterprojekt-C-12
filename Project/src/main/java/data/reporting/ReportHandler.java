@@ -4,9 +4,6 @@ import Interfaces.IProduction;
 import Interfaces.IReporting;
 import data.DatabaseConnection;
 import data.credits.Production;
-import data.credits.Rightsholder;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONArray;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,9 +18,7 @@ public class ReportHandler implements IReporting {
 
     private final Connection dbConnection = DatabaseConnection.getConnection();
 
-    public static ReportHandler getInstance() {
-        return RHANDLER;
-    }
+    private ReportHandler() {}
 
     @Override
     public int getTotalCreditCount() {
@@ -149,5 +144,9 @@ public class ReportHandler implements IReporting {
             throwables.printStackTrace();
         }
         return jsonReady;
+    }
+
+    public static ReportHandler getInstance() {
+        return RHANDLER;
     }
 }

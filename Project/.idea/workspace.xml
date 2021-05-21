@@ -7,12 +7,11 @@
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/reporting/ReportHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/reporting/ReportHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/reporting/Test2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/reporting/Test2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/ReportingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/ReportingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/reporting/Test2.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/TestReportingAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/TestReportingAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/reporting/ReportHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/reporting/ReportHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/reporting/Test2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/reporting/Test2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/jsonReporting/ReportingHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/jsonReporting/ReportingHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/reporting/Test2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/jsonReporting/TestReportingAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/jsonReporting/TestReportingAPI.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -144,15 +143,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -198,6 +195,7 @@
       <workItem from="1621411739786" duration="3016000" />
       <workItem from="1621421254707" duration="42000" />
       <workItem from="1621421316683" duration="4451000" />
+      <workItem from="1621579547395" duration="889000" />
     </task>
     <servers />
   </component>
