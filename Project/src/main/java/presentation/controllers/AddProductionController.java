@@ -1,8 +1,8 @@
 package presentation.controllers;
 
-import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import domain.DomainFacade;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -67,7 +67,7 @@ public class AddProductionController implements Initializable {
     private Button removeRightholder;
 
     private Repository rep = Repository.getInstance();
-    private ICreditManagement creditsSystem = rep.creditsSystem;
+    private DomainFacade domain = rep.domainFacade;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -158,7 +158,7 @@ public class AddProductionController implements Initializable {
         //TODO make this pass all values to the contructor
         /*
         IProduction newProduction = new NewProduction(id, name, RhsRoles);
-        creditsSystem.addProduction(newProduction);
+        domain.addProduction(newProduction);
 
          */
 

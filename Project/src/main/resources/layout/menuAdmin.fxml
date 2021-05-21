@@ -46,7 +46,7 @@
                               <Image url="@/images/RedDot.png" />
                            </image>
                         </ImageView>
-                        <Label style="-fx-cursor:hand;" alignment="CENTER" layoutX="9.0" layoutY="12.0" prefHeight="27.0" prefWidth="32.0" text="0" textFill="WHITE">
+                        <Label fx:id="numberOfNotifications" style="-fx-cursor:hand;" alignment="CENTER" layoutX="9.0" layoutY="12.0" prefHeight="27.0" prefWidth="32.0" text="0" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -256,7 +256,7 @@
                      <children>
                         <ImageView fitHeight="45.0" fitWidth="96.0" layoutX="18.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="/images/TV2News.jpg" />
+                              <Image url="@/images/TV2News.jpg" />
                            </image>
                         </ImageView>
                         <Separator layoutY="59.0" prefHeight="3.0" prefWidth="899.0" stylesheets="@/stylesheets/SeperatorStyle.css" />

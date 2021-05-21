@@ -4,6 +4,7 @@ import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import domain.CreditsManagement.CreditsSystem;
+import domain.DomainFacade;
 import javafx.stage.Stage;
 
 public class Repository {
@@ -32,6 +33,8 @@ public class Repository {
         this.toEdit = toEdit;
     }
 
+    public DomainFacade domainFacade = DomainFacade.getInstance();
+    
     public IProduction getProductionToBeShown() {
         return productionToBeShown;
     }
@@ -47,7 +50,5 @@ public class Repository {
     public void setRightsholderToBeShown(IRightsholder toBeShown) {
         this.rightsholderToBeShown = toBeShown;
     }
-
-    public ICreditManagement creditsSystem = CreditsSystem.getInstance();
 
 }

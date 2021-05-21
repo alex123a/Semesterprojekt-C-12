@@ -22,16 +22,6 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public boolean makeUserProducer(IUser user) {
-        return UserFacade.getInstance().makeUserProducer(user);
-    }
-
-    @Override
-    public boolean makeUserAdmin(IUser user) {
-        return UserFacade.getInstance().makeUserAdmin(user);
-    }
-
-    @Override
     public boolean deleteUser(IUser user) {
         return UserFacade.getInstance().deleteUser(user);
     }
@@ -98,8 +88,8 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public boolean createAdminNotification(INotification notification) {
-        return NotificationHandler.getInstance().createAdminNotification(notification);
+    public boolean createAdminNotification(INotification notification, IProduction production) {
+        return NotificationHandler.getInstance().createAdminNotification(notification, production);
     }
 
     @Override
@@ -130,6 +120,16 @@ public class PersistenceFacade implements IPersistenceFacade {
     @Override
     public List<INotification> getProducerNotifications(IUser user) {
         return NotificationHandler.getInstance().getProducerNotifications(user);
+    }
+
+    @Override
+    public int countUnreadAdminNotifications() {
+        return NotificationHandler.getInstance().countUnreadAdminNotifications();
+    }
+
+    @Override
+    public int countUnreadProducerNotifications(IUser user) {
+        return NotificationHandler.getInstance().countUnreadProducerNotifications(user);
     }
 
     @Override
