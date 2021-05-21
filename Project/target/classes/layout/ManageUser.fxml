@@ -142,12 +142,12 @@
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                      <children>
-                        <Button alignment="CENTER" layoutX="159.0" layoutY="387.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="54.0" prefWidth="127.0" style="-fx-background-color: #e40000; -fx-background-radius: 20px;" text="Fjern" textFill="WHITE">
+                        <Button fx:id="removeUserBtn" alignment="CENTER" layoutX="159.0" layoutY="387.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="54.0" prefWidth="127.0" style="-fx-background-color: #e40000; -fx-background-radius: 20px;" text="Fjern" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="32.0" fitWidth="38.0" layoutX="359.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="32.0" fitWidth="38.0" layoutX="359.0" layoutY="150.0" onMouseClicked="#getRemoveUsers" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@/images/Search_Grey.jpg" />
                            </image>
@@ -178,7 +178,7 @@
                               <Font name="Calibri Bold" size="28.0" />
                            </font>
                         </Label>
-                        <TextField disable="true" editable="false" layoutX="112.0" layoutY="241.0" prefHeight="41.0" prefWidth="227.0" />
+                        <TextField fx:id="removeUserRoleField" disable="true" editable="false" layoutX="112.0" layoutY="241.0" prefHeight="41.0" prefWidth="227.0" />
                      </children>
                   </Pane>
                </content>
