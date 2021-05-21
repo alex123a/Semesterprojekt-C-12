@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +21,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="Kotlin Class" />
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -67,25 +70,11 @@
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\stylesheets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project" />
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\stylesheets" />
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\layout" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestReportingAPI">
-    <configuration name="Hash" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="domain.authentication.Hash" />
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="domain.authentication.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.NewMain">
     <configuration name="NewMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="presentation.NewMain" />
       <module name="Project" />
@@ -99,12 +88,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="domain.authentication.Test" />
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.authentication.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="data.credits.Test" />
+      <option name="MAIN_CLASS_NAME" value="data.Test" />
       <module name="Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="data.credits.*" />
+          <option name="PATTERN" value="data.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -112,52 +114,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="data.reporting.Test2" />
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="data.reporting.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestReportingAPI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="domain.jsonReporting.TestReportingAPI" />
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="domain.jsonReporting.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestReportingAPI" />
-        <item itemvalue="Application.Test2" />
-        <item itemvalue="Application.Test" />
-        <item itemvalue="Application.Hash" />
         <item itemvalue="Application.NewMain" />
+        <item itemvalue="Application.Test (1)" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -187,13 +159,8 @@
       <workItem from="1621322679507" duration="7159000" />
       <workItem from="1621331295897" duration="454000" />
       <workItem from="1621331791688" duration="6538000" />
-      <workItem from="1621408677209" duration="2979000" />
-      <workItem from="1621411696022" duration="24000" />
-      <workItem from="1621411739786" duration="3016000" />
-      <workItem from="1621421254707" duration="42000" />
-      <workItem from="1621421316683" duration="4451000" />
-      <workItem from="1621579547395" duration="2565000" />
-      <workItem from="1621594697824" duration="1309000" />
+      <workItem from="1621369246420" duration="25000" />
+      <workItem from="1621408514482" duration="4241000" />
     </task>
     <servers />
   </component>

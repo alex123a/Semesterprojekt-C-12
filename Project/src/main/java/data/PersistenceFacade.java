@@ -23,16 +23,6 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public boolean makeUserProducer(IUser user) {
-        return UserFacade.getInstance().makeUserProducer(user);
-    }
-
-    @Override
-    public boolean makeUserAdmin(IUser user) {
-        return UserFacade.getInstance().makeUserAdmin(user);
-    }
-
-    @Override
     public boolean deleteUser(IUser user) {
         return UserFacade.getInstance().deleteUser(user);
     }
@@ -55,6 +45,11 @@ public class PersistenceFacade implements IPersistenceFacade {
     @Override
     public String getDatabasePassword(IUser user) {
         return UserFacade.getInstance().getDatabasePassword(user);
+    }
+
+    @Override
+    public List<IUser> getUsersBySearch(IUser user) {
+        return UserFacade.getInstance().getUsersBySearch(user);
     }
 
     @Override
@@ -157,4 +152,5 @@ public class PersistenceFacade implements IPersistenceFacade {
     public List<String> generateCreditsReport() {
         return ReportHandler.getInstance().generateCreditsReport();
     }
+
 }

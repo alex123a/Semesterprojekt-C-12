@@ -3,12 +3,16 @@ package domain;
 import Interfaces.*;
 import data.PersistenceFacade;
 import domain.authentication.AuthenticationHandler;
+import domain.searchEngine.SearchUserHandler;
 import domain.session.CurrentSession;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
 import enumerations.ProductionType;
 import enumerations.RightholderSorting;
+import presentation.Repository;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 import java.util.Map;
 
@@ -115,23 +119,21 @@ public class DomainFacade implements IDomainFacade {
     }
 
     @Override
-    public boolean makeUserProducer(IUser user) {
-        return PersistenceFacade.getInstance().makeUserProducer(user);
-    }
-
-    @Override
-    public boolean makeUserAdmin(IUser user) {
-        return PersistenceFacade.getInstance().makeUserAdmin(user);
-    }
-
-    @Override
     public boolean deleteUser(IUser user) {
-        return PersistenceFacade.getInstance().deleteUser(user);
+        IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
+        if (validateUser(currentUser) && user != null && !currentUser.getUsername().equals(user.getUsername())) {
+            return PersistenceFacade.getInstance().deleteUser(user);
+        }
+        return false;
     }
 
     @Override
     public boolean editUser(IUser user) {
-        return PersistenceFacade.getInstance().editUser(user);
+        IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
+        if (validateUser(currentUser) && !user.getUsername().equals("") && !user.getPassword().equals("")) {
+            return PersistenceFacade.getInstance().editUser(user);
+        }
+        return false;
     }
 
     @Override
@@ -141,12 +143,26 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean addUser(IUser user) {
-        return PersistenceFacade.getInstance().addUser(user);
+        IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
+        if (validateUser(currentUser) && !user.getUsername().equals("") && !user.getPassword().equals("")) {
+            try {
+                user.setPassword(AuthenticationHandler.getInstance().generateStrongPasswordHash(user.getPassword()));
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+                e.printStackTrace();
+            }
+            return PersistenceFacade.getInstance().addUser(user);
+        }
+        return false;
     }
 
     @Override
     public String getDatabasePassword(IUser user) {
         return PersistenceFacade.getInstance().getDatabasePassword(user);
+    }
+
+    @Override
+    public List<IUser> getUsersBySearch(IUser user) {
+        return PersistenceFacade.getInstance().getUsersBySearch(user);
     }
 
     @Override
@@ -157,5 +173,20 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public void setCurrentUser(IUser user) {
         CurrentSession.getInstance().setCurrentUser(user);
+    }
+
+    @Override
+    public String generateStrongPasswordHash(String password) {
+        try {
+            return AuthenticationHandler.getInstance().generateStrongPasswordHash(password);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public String getInfoFromSearch(String search, String resultType) {
+        return SearchUserHandler.getInstance().getInfoFromSearch(search, resultType);
     }
 }

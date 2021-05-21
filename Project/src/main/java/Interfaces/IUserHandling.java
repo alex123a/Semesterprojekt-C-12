@@ -6,10 +6,6 @@ public interface IUserHandling {
 
     List<IUser> getUsers();
 
-    boolean makeUserProducer(IUser user);
-
-    boolean makeUserAdmin(IUser user);
-
     boolean deleteUser(IUser user);
 
     boolean editUser(IUser user);
@@ -19,4 +15,6 @@ public interface IUserHandling {
     IUser getUser(IUser user);
     
     String getDatabasePassword(IUser user);
+
+    List<IUser> getUsersBySearch(IUser user);
 }
