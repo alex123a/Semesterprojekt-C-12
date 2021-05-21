@@ -86,6 +86,7 @@ public class UserManager implements IUserHandling {
         return null;
     }
 
+
     @Override
     public List<IUser> getUsers() {
         List<IUser> list = new ArrayList<>();
@@ -95,18 +96,18 @@ public class UserManager implements IUserHandling {
             ResultSet producerResult = producerStatement.executeQuery();
             while (producerResult.next()) {
                 PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
-                queryStatement.setInt(1,producerResult.getInt("id"));
+                queryStatement.setInt(1,producerResult.getInt(1));
                 ResultSet queryResultSet = queryStatement.executeQuery();
-                list.add(new Producer(queryResultSet.getInt("id"), queryResultSet.getString("username"), queryResultSet.getString("user_password")));
+                list.add(new Producer(queryResultSet.getInt(1), queryResultSet.getString(2), queryResultSet.getString(3)));
             }
             //Administrator
             PreparedStatement adminStatement = connection.prepareStatement("SELECT * FROM administrator");
             ResultSet adminResult = adminStatement.executeQuery();
             while (adminResult.next()) {
                 PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
-                queryStatement.setInt(1,adminResult.getInt("id"));
+                queryStatement.setInt(1,adminResult.getInt(1));
                 ResultSet queryResultSet = queryStatement.executeQuery();
-                list.add(new SystemAdministrator(queryResultSet.getInt("id"), queryResultSet.getString("username"), queryResultSet.getString("user_password")));
+                list.add(new SystemAdministrator(queryResultSet.getInt(1), queryResultSet.getString(2), queryResultSet.getString(3)));
             }
         } catch (SQLException exception) {
             System.out.println("Error getting users");

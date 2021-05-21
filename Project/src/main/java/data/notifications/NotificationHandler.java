@@ -2,6 +2,7 @@ package data.notifications;
 
 import Interfaces.*;
 import data.DatabaseConnection;
+import data.PersistenceFacade;
 import data.credits.FacadeData;
 import data.credits.Production;
 import data.userHandling.Producer;
@@ -29,18 +30,22 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean createProducerNotification(INotification notification) {
         try {
-            IProduction production = notification.getProudction();
+            IProduction production = notification.getProduction();
             PreparedStatement statement = dbConnection.prepareStatement(
                     "INSERT INTO producer_notification(producer_id, notification_text, viewed, production_id) " +
                     "VALUES (?, ?, ?, ?)");
-            IUser user = new Producer(notification.getProducerID());
-            statement.setInt(1, user.getId());
+            System.out.println(notification.getProducer().getId());
+            System.out.println(notification.getText());
+            System.out.println(notification.getViewed());
+            System.out.println(((Production) production).getID());
+            statement.setInt(1, notification.getProducer().getId());
             statement.setString(2, notification.getText());
             statement.setBoolean(3, notification.getViewed());
             statement.setInt(4, ((Production) production).getID());
             statement.execute();
             return true;
         } catch(SQLException e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -48,7 +53,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean createAdminNotification(INotification notification) {
         try {
-            IProduction production = notification.getProudction();
+            IProduction production = notification.getProduction();
             PreparedStatement statement = dbConnection.prepareStatement("INSERT INTO administrator_notification(notification_text, production_id, approval_status_id) VALUES (?, ?, ?)");
             statement.setString(1, notification.getText());
             statement.setInt(2, ((Production) production).getID());
@@ -87,7 +92,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean editAdminNotification(INotification newNotification) {
         try {
-            IProduction production = newNotification.getProudction();
+            IProduction production = newNotification.getProduction();
             PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification SET notification_text = ?, production_id = ?, approval_status_id = ? WHERE id = ? ");
             statement.setString(1, newNotification.getText());
             statement.setInt(2, ((Production) production).getID());
@@ -103,10 +108,10 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean editProducerNotification(INotification newNotification) {
         try {
-            IProduction production = newNotification.getProudction();
+            IProduction production = newNotification.getProduction();
             PreparedStatement statement = dbConnection.prepareStatement("UPDATE producer_notification SET producer_id = ?, notification_text = ?, viewed = ?, production_id = ? WHERE id = ?");
             statement.setInt(1, ((Notification) newNotification).getID());
-            statement.setInt(2, newNotification.getProducerID());
+            statement.setInt(2, newNotification.getProducer().getId());
             statement.setString(3, newNotification.getText());
             statement.setBoolean(4, newNotification.getViewed());
             statement.setInt(5, ((Production) production).getID());
@@ -131,10 +136,11 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 list.add(new AdminNotification(result.getInt(1), result.getString(2),
-                        FacadeData.getInstance().getProduction(new Production(result.getInt(3))), result.getInt(4)));
+                        PersistenceFacade.getInstance().getProductionFromID(new Production(result.getInt(3))), result.getInt(4)));
             }
             return list;
         } catch (SQLException e) {
+            e.printStackTrace();
             return null;
         }
     }
@@ -143,18 +149,20 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     public List<INotification> getProducerNotifications(IUser user) {
         try {
             List<INotification> list = new ArrayList<>();
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT pn.id, pn.producer_id, pn.notification_text" +
-                    "pn.viewed, pn.production_id" +
+            PreparedStatement statement = dbConnection.prepareStatement("SELECT pn.id, pn.producer_id, pn.notification_text," +
+                    " pn.viewed, pn.production_id" +
                     " FROM producer_notification pn" +
                     " WHERE pn.producer_id = ?");
             statement.setInt(1, user.getId());
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                list.add(new ProducerNotification(result.getInt(1), result.getInt(2), result.getString(3),
-                        result.getBoolean(4), FacadeData.getInstance().getProduction(new Production(result.getInt(5)))));
+                list.add(new ProducerNotification(result.getInt(1), (IProducer) PersistenceFacade.getInstance().getUser(new Producer(result.getInt(2))),
+                        result.getString(3), result.getBoolean(4),
+                        FacadeData.getInstance().getProduction(new Production(result.getInt(5)))));
             }
             return list;
         } catch (SQLException e) {
+            e.printStackTrace();
             return null;
         }
     }

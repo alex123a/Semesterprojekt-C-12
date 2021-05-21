@@ -157,6 +157,7 @@ public class DomainFacade implements IDomainFacade {
         return PersistenceFacade.getInstance().getDatabasePassword(user);
     }
 
+
     @Override
     public IUser getCurrentUser() {
         return CurrentSession.getInstance().getCurrentUser();
@@ -190,13 +191,13 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public boolean editAdminNotification(INotification newNotification) {
         if (newNotification.getApproval() == 2) {
-            String msg = "Produktionen med produktions id " + newNotification.getProudction().getProductionID() +
+            String msg = "Produktionen med produktions id " + newNotification.getProduction().getProductionID() +
                     " er blevet godkendt";
-            createProducerNotification(new ProducerNotification(newNotification.getProudction(), msg, false, newNotification.getProducerID()));
+            createProducerNotification(new ProducerNotification(newNotification.getProduction(), msg, false, newNotification.getProduction().getProducer()));
         } else if (newNotification.getApproval() == 3) {
-            String msg = "Produktionen med produktions id " + newNotification.getProudction().getProductionID() +
+            String msg = "Produktionen med produktions id " + newNotification.getProduction().getProductionID() +
                     " er blevet afvist";
-            createProducerNotification(new ProducerNotification(newNotification.getProudction(), msg, false, newNotification.getProducerID()));
+            createProducerNotification(new ProducerNotification(newNotification.getProduction(), msg, false, newNotification.getProduction().getProducer()));
         }
         return PersistenceFacade.getInstance().editAdminNotification(newNotification);
     }

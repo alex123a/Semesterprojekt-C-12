@@ -2,6 +2,7 @@ package data;
 
 import Interfaces.*;
 import data.credits.FacadeData;
+import data.credits.Production;
 import data.notifications.AdminNotification;
 import data.notifications.NotificationHandler;
 import data.userHandling.UserFacade;
@@ -160,6 +161,7 @@ public class PersistenceFacade implements IPersistenceFacade {
 
     @Override
     public IProduction getProductionFromID(IProduction production) {
+        System.out.println("test print produktion " + ((Production) production).getID());
         return FacadeData.getInstance().getProduction(production);
     }
 }

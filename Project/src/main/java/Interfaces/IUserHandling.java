@@ -15,4 +15,5 @@ public interface IUserHandling {
     IUser getUser(IUser user);
     
     String getDatabasePassword(IUser user);
+
 }

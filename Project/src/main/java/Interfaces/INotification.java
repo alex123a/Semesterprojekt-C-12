@@ -12,14 +12,13 @@ public interface INotification {
 
     int getApproval();
 
-    int getProducerID();
+    IProducer getProducer();
 
-    void setProducerID(int producerID);
+    void setProducer(IProducer producerID);
 
     void setText(String text);
 
-    IProduction getProudction();
+    IProduction getProduction();
 
     void setProduction(IProduction production);
-
 }

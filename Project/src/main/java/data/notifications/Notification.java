@@ -1,6 +1,7 @@
 package data.notifications;
 
 import Interfaces.INotification;
+import Interfaces.IProducer;
 import Interfaces.IProduction;
 
 public class Notification implements INotification {
@@ -59,12 +60,12 @@ public class Notification implements INotification {
     }
 
     @Override
-    public int getProducerID() {
+    public IProducer getProducer() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void setProducerID(int producerID) {
+    public void setProducer(IProducer producer) {
         throw new UnsupportedOperationException();
     }
 
@@ -74,7 +75,7 @@ public class Notification implements INotification {
     }
 
     @Override
-    public IProduction getProudction() {
+    public IProduction getProduction() {
         return production;
     }
 
