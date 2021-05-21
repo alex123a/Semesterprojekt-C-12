@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class Production implements IProduction {
+public class Production implements IProduction {
     private int id;
     private String productionID;
     private String name;
