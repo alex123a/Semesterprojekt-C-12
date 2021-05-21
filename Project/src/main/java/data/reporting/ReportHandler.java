@@ -125,13 +125,12 @@ public class ReportHandler implements IReporting {
                 jsonReady.add(productionSet.getString(1));
                 jsonReady.add(productionSet.getString(2));
                 PreparedStatement titleQuery = dbConnection.prepareStatement(
-                        "\n" +
-                                "SELECT r.id, first_name, last_name, t.title FROM rightsholder r, appears_in ap, role, title t " +
+                        "SELECT r.id, first_name, last_name, t.title FROM rightsholder r, appears_in ap, role, title t " +
                                 "WHERE role.title_id = t.id AND role.appears_in_id = ap.id AND ap.production_id = ? AND ap.rightsholder_id = r.id\n");
                 titleQuery.setInt(1, productionSet.getInt(1));
                 ResultSet result = titleQuery.executeQuery();
                 while (result.next()) {
-                    
+
                     jsonReady.add(result.getString(1));
                     jsonReady.add(result.getString(2) + " " + result.getString(3));
                     jsonReady.add(result.getString(4));
