@@ -4,7 +4,7 @@ import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import Interfaces.ISeeCredits;
-import data.credits.FacadeData;
+import data.PersistenceFacade;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +13,6 @@ import java.util.Map;
 public class CreditsSystem implements ICreditManagement, ISeeCredits {
 
     private static CreditsSystem instance = null;
-
-    FacadeData facadeData = new FacadeData();
 
     List<IProduction> changedProductions;
 
@@ -68,18 +66,18 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
 
     @Override
     public void addProduction(IProduction production) {
-        facadeData.saveProduction(production);
+        PersistenceFacade.getInstance().saveProduction(production);
     }
 
     @Override
     public void deleteProduction(IProduction production) {
-        facadeData.deleteProduction(production);
+        PersistenceFacade.getInstance().deleteProduction(production);
     }
 
     @Override
     public void saveChanges() {
         for (IProduction production: changedProductions) {
-            facadeData.saveProduction(production);
+            PersistenceFacade.getInstance().saveProduction(production);
         }
         changedProductions.clear();
     }
@@ -92,17 +90,11 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     @Override
     public List<IProduction> getProductions() {
         //Could save the data in an attribute
-        return facadeData.getProductions();
+        return PersistenceFacade.getInstance().getProductions();
     }
-
-    @Override
-    public IProduction getProduction(String id) {
-        return facadeData.getProduction(id);
-    }
-
 
     public List<IRightsholder> getAllRightsholders() {
-        return facadeData.getRightsholders();
+        return PersistenceFacade.getInstance().getRightsholders();
     }
 
 }

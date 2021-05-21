@@ -88,16 +88,16 @@ public class DomainFacade implements IDomainFacade {
     }
 
     @Override
-    public List<?> filterProduction(List<?> list, int[] yearInterval, ProductionGenre genre, ProductionType type) {
-        throw new UnsupportedOperationException("Not implemented yet");
+    public List<IProduction> filterProduction(List<IProduction> list, int[] yearInterval, ProductionGenre genre, ProductionType type) {
+        return null;
     }
+
 
     @Override
     public List<IProduction> getProductions() {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    @Override
     public IProduction getProduction(String id) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
