@@ -72,9 +72,7 @@ class ProductionHandler {
     }
 
     IProduction saveProduction(IProduction production){
-        //TODO insert Producer id
-        //TODO All the statement.set() calls could be refactored
-
+        
         PreparedStatement insertStatement = null;
 
         if (production instanceof Production) {
@@ -127,7 +125,6 @@ class ProductionHandler {
             //Run this if the production is a new production
             try {
 
-                //TODO THE HARDCODED VALUE FOR PRODUCER_ID IS FOR TESTING PURPOSE AND SHOULD BE CHANGED
                 insertStatement = connection.prepareStatement("" +
                         "INSERT INTO production_approval (own_production_id, production_name, year, genre_id, category_id, producer_id, description) " +
                         "VALUES (?, ?, ?, ?, ?, ?, ?) " +
@@ -140,8 +137,11 @@ class ProductionHandler {
                 insertStatement.setInt(6, production.getProducer().getId());
                 insertStatement.setString(7, production.getDescription());
 
+                //Saves any changes to the rightsholders (First or last name could have been changed
                 Map<IRightsholder, List<String>> rightsholders = production.getRightsholders();
-                //TODO SAVE RIGHTSHOLDERS
+                for (IRightsholder rightsholder: rightsholders.keySet()) {
+                    RightsHolderHandler.getInstance().saveRightsholder(rightsholder);
+                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
