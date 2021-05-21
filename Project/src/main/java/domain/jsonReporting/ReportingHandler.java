@@ -42,7 +42,7 @@ public class ReportingHandler implements IReportHandler {
     }
 
     @Override
-    public List<JSONObject> generateCreditTypeCount() {
+    public JSONArray generateCreditTypeCount() {
         Map<String, Integer> creditMap = new HashMap<>(PersistenceFacade.getInstance().generateCreditTypeCount());
         JSONArray jsonObjectList = new JSONArray();
         for (String i : creditMap.keySet()) {
@@ -55,7 +55,7 @@ public class ReportingHandler implements IReportHandler {
     }
 
     @Override
-    public List<JSONObject> generate10MostCredited() {
+    public JSONArray generate10MostCredited() {
         Map<String, Integer> creditMap = new HashMap<>(PersistenceFacade.getInstance().generate10MostCredited());
         JSONArray jsonObjectList = new JSONArray();
         for (String i : creditMap.keySet()) {

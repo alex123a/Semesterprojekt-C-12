@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/drop_cascade_tables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_15_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_15.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_sample_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/create_sample_data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/create_tables.sql" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
