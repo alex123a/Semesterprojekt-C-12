@@ -1,4 +1,4 @@
-    INSERT INTO title(title) VALUES ('Billedkunstner'),('Billed- og lydredigering'),('Casting'),('Colourgrading'),('Dirigent'),('Drone'),('Dukkeføre'),('Dukkeskaber'),('Fortæller'),('Fotograf'),('Forlæg'),('Grafiske designer'),('Indtaler'),('Kapelmester'),('Klipper'),('Koncept'),('Konsulent'),('Kor'),('Koreografi'),('Lyd/tonemester'),('Lydredigering'),('Lys'),('Medvirkende'),('Musikalsk arrangement'),('Orkester/band'),('Oversætter'),('Producent'),('Produktionskoordinator/leder'),('Programansvarlig'),('Redaktion/tilrettelæggelse'),('Redaktør'),('Rekvisitør'),('Scenograf'),('Scripter/producerassistent'),('Special effects'),('Sponsorer'),('Tegnefilm/animation'),('Tekstere'),('Tekst og musik'),('Uhonoreret indsats');
+INSERT INTO title(title) VALUES ('Billedkunstner'),('Billed- og lydredigering'),('Casting'),('Colourgrading'),('Dirigent'),('Drone'),('Dukkeføre'),('Dukkeskaber'),('Fortæller'),('Fotograf'),('Forlæg'),('Grafiske designer'),('Indtaler'),('Kapelmester'),('Klipper'),('Koncept'),('Konsulent'),('Kor'),('Koreografi'),('Lyd/tonemester'),('Lydredigering'),('Lys'),('Medvirkende'),('Musikalsk arrangement'),('Orkester/band'),('Oversætter'),('Producent'),('Produktionskoordinator/leder'),('Programansvarlig'),('Redaktion/tilrettelæggelse'),('Redaktør'),('Rekvisitør'),('Scenograf'),('Scripter/producerassistent'),('Special effects'),('Sponsorer'),('Tegnefilm/animation'),('Tekstere'),('Tekst og musik'),('Uhonoreret indsats');
 INSERT INTO category(category_name) VALUES ('Serier'),('Film'),('Reality'),('Underholdning'),('Comedy'),('Dokumentar'),('Rejser og Eventyr'),('Livsstil'),('Magasiner');
 INSERT INTO genre(genre_name) VALUES ('Action'),('Børn'),('Dokumentar'),('Drama'),('Familie'),('Gyser'),('Komedie'),('Romantik'),('Thriller');
 INSERT INTO approval_status(status) VALUES ('Waiting'), ('Approved'), ('Not Approved');
@@ -15,10 +15,10 @@ VALUES (2),
 INSERT INTO administrator(id)
 VALUES (1);
 
-INSERT INTO production (id, own_production_id, production_name, year, genre_id, category_id, producer_id)
-VALUES (1, 'ID0001', 'Badehotellet: Det taler vi ikke om', 2021, 7, 1, 2),
-       (2, 'ID0002', 'Badehotellet: Chokolade og flødeskum', 2021, 7, 1, 2),
-       (3,'ID003', 'Diamantfamilien: Hvem har trusserne på?',2018,null,3,3);
+INSERT INTO production (id, own_production_id, production_name, description, year, genre_id, category_id, producer_id)
+VALUES (1, 'ID0001', 'Badehotellet: Det taler vi ikke om','Tyskerne har beslaglagt nabohotellet, men det holder ikke stamgæsterne væk. For som Weyse siger: Hvis bare vi lader som om , de ikke er der, så er de der ikke.', 2021, 7, 1, 2),
+       (2, 'ID0002', 'Badehotellet: Chokolade og flødeskum','Løjtnanten viser sig igen som Amandas hjælper, men han har et ønske til gengæld. Fru Frigh er i chok efter gensynet med svindleren, men så tager Bertha affære.', 2021, 7, 1, 2),
+       (3,'ID003', 'Diamantfamilien: Hvem har trusserne på?','Kom helt tæt på familien Pitzner og en hverdag fuld af kærlighed, konflikter og diamanter. I spidsen som den ubestridte leder står den selfmade diamantmillionøse, mor Katerina, godt flankeret af sine tre vidt forskellige, men lige elskelige, modige og drønhamrende stålsatte døtre, Thalia, Elvira og Ophelia. Vi begynder i den søde juletid, hvor traditionerne skal holdes i hævd. Men Katerina stresser over, om hun og pigerne overhovedet når den årlige julefrokost på Café Victor, Thalia tager i byen uden trusser på, og Elvira glemmer juletræet, stjæler sine søskendes gaver og går modvilligt fra brunette til blondine under stort pres fra sin mor.',2018,null,3,3);
 
 INSERT INTO rightsholder(id, first_name, last_name, rightsholder_description)
 VALUES(1,'Amalie', 'Dollerup', 'Amalie Mathisson Dollerup (født 15. april 1986) er en dansk skuespillerinde, der er uddannet fra skuespillerskolen ved Aarhus Teater i 2010. Hun blev kendt fra tv-serien Strisser på Samsø, og har siden medvirket i flere film og tv-serier, heriblandt Badehotellet.'),
@@ -129,9 +129,30 @@ VALUES (1, 1, 23),
        (25, 25, 23),
        (26, 26, 23),
        (27, 27, 31),
-       (28, 28, 27);
+       (28, 28, 27),
+       (29, 29, 23),
+       (30, 30, 23),
+       (31, 31, 23),
+       (32, 32, 23),
+       (33, 33, 23),
+       (34, 34, 23),
+       (35, 35, 23),
+       (36, 36, 31),
+       (37, 37, 31),
+       (38, 38, 34),
+       (39, 39, 27),
+       (40, 40, 15),
+       (41, 41, 23),
+       (42, 42, 23),
+       (43, 43, 23),
+       (44, 44, 23),
+       (45, 45, 23),
+       (46, 46, 23),
+       (47, 47, 31),
+       (48, 48, 27);
 
-INSERT INTO rolename (role_id, rolename)
+
+    INSERT INTO rolename (role_id, rolename)
 VALUES (1, 'Amanda Berggren'),
        (2, 'Molly Andersen'),
         (3, 'Georg Madsen'),
