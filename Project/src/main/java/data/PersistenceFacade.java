@@ -5,6 +5,7 @@ import data.credits.FacadeData;
 import data.notifications.NotificationHandler;
 import data.reporting.ReportHandler;
 import data.userHandling.UserFacade;
+import org.json.simple.JSONObject;
 
 import java.util.List;
 import java.util.Map;
@@ -138,22 +139,22 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public int generateProductionCreditsCount(IProduction production, String title) {
-        return ReportHandler.getInstance().generateProductionCreditsCount(production, title);
+    public Map<String, Integer> generateProductionCreditsCount(IProduction production) {
+        return ReportHandler.getInstance().generateProductionCreditsCount(production);
     }
 
     @Override
-    public int generateCreditTypeCount(String type) {
-        return ReportHandler.getInstance().generateCreditTypeCount(type);
+    public Map<String, Integer> generateCreditTypeCount() {
+        return ReportHandler.getInstance().generateCreditTypeCount();
     }
 
     @Override
-    public Map<Integer, Integer> generate10MostCredited() {
+    public Map<String, Integer> generate10MostCredited() {
         return ReportHandler.getInstance().generate10MostCredited();
     }
 
     @Override
-    public void generateCreditsReport() {
-        throw new UnsupportedOperationException();
+    public List<String> generateCreditsReport() {
+        return ReportHandler.getInstance().generateCreditsReport();
     }
 }
