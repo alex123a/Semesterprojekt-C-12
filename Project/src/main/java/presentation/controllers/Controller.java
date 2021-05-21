@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import domain.DomainFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -151,13 +152,6 @@ public class Controller implements Initializable {
         }
     }
 
-
-    @FXML
-    void onLoginClicked(MouseEvent event) {
-        //todo onLogin
-
-    }
-
     @FXML
     void onDefaultBoxClicked(MouseEvent event) {
         //todo implement default box
@@ -292,5 +286,6 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        DomainFacade.getInstance().setCurrentUser(null);
     }
 }

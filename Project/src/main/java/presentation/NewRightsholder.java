@@ -41,4 +41,9 @@ public class NewRightsholder implements IRightsholder {
     public String toString() {
         return "Name: " + this.firstName + " " + this.lastName + " Description: " + this.description;
     }
+
+    @Override
+    public String getName() {
+        return firstName + " " + lastName;
+    }
 }

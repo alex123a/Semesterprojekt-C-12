@@ -66,4 +66,9 @@ class Rightsholder implements IRightsholder {
     public String toString() {
         return "Credit: " + id + " " + firstName + " " + lastName + " " + description + " " + productions;
     }
+
+    @Override
+    public String getName() {
+        return firstName + " " + lastName;
+    }
 }

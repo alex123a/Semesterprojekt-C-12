@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.helppageController">
    <children>
@@ -16,12 +17,12 @@
             <Image url="@/images/Tv2Logo.png" />
          </image>
       </ImageView>
-      <Pane layoutX="200.0" layoutY="141.0" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #ffffff;">
+      <Pane layoutX="200.0" layoutY="116.0" prefHeight="542.0" prefWidth="900.0" style="-fx-background-color: #ffffff;">
          <effect>
             <DropShadow blurType="GAUSSIAN" color="#0000007e" offsetX="2.0" offsetY="2.0" />
          </effect>
          <children>
-            <ImageView onMouseClicked="#goBack" style="-fx-cursor: hand;" fitHeight="25.0" fitWidth="34.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="15.0" layoutY="14.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@/images/BackArrow.png" />
                </image>
@@ -35,11 +36,45 @@
                <content>
                   <Pane minHeight="350.0" prefWidth="781.0">
                      <children>
-                        <TextArea fx:id="informationText" editable="false" minHeight="350.0" prefWidth="781.0" text="*Brugbar information*" />
+                        <TextArea fx:id="informationText" editable="false" layoutX="11.0" layoutY="8.0" minHeight="350.0" prefHeight="350.0" prefWidth="781.0" text="Dette program giver dig mulgiheden for at finde krediteringer for alle programmer i TV 2, TV 2 ZULU, TV 2 NEWS, TV 2 CHARLIE, TV 2 FRI, &#10;TV 2 SPORT og TV2 PLAY.&#10;&#10;Krediteringssøgning kan tilgås på menuen under forstørrelsesglasset i højre hjørne.&#10;&#10;Forsiden viser en live opdatering af de programmer som vises lige nu. &#10;&#10;Behandling af personoplysninger:&#10;Der bliver ikke lavet noget statistik eller taget nogle personfølsomme oplysninger så længe man ikke er logget ind.&#10;&#10;Der bliver kun gemt oplysninger på de personer der bliver krediteret i en film eller en serie.&#10;&#10;Læs mere på https://kundeservice.tv2.dk/" />
                      </children>
                   </Pane>
                </content>
             </ScrollPane>
+            <Pane layoutX="49.0" layoutY="443.0" prefHeight="90.0" prefWidth="800.0" style="-fx-background-color: #808585;">
+               <children>
+                  <Text fill="WHITE" layoutX="9.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kundeservice">
+                     <font>
+                        <Font name="System Bold" size="33.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="450.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Skriv til os på kundeservice@tv2.dk">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="450.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ring på 89 88 12 12">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="260.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Åbningstider">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="260.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hverdage 9-21">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="260.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weekend 12-15">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>
