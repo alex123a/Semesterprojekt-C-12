@@ -19,7 +19,7 @@ class Test {
         List<IProduction> productionList = ProductionHandler.getInstance().getProductions();
         System.out.println(productionList);
 
-        IProduction production = ProductionHandler.getInstance().getProduction(1);
+        IProduction production = ProductionHandler.getInstance().getProduction(new Production(1));
         System.out.println(production);
 
         List<IRightsholder> rightholderList = RightsHolderHandler.getInstance().getRightsholders();

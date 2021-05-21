@@ -2,5 +2,5 @@ package Interfaces;
 
 
 public interface IPersistenceFacade extends IReporting, IUserFacade, IFacadeData, INotificationHandler, INotificationProvider {
-     IProduction getProductionFromID(int id);
+     IProduction getProductionFromID(IProduction production);
 }

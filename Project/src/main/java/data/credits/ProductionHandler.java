@@ -49,14 +49,14 @@ class ProductionHandler {
     }
 
     // Reads specific production with productionID
-    IProduction getProduction(int id) {
+    IProduction getProduction(IProduction production) {
         try {
             //Statement to get all productions and their attributes
             PreparedStatement productionsStatement = connection.prepareStatement("" +
                     "SELECT id, own_production_id, production_name, description, year, genre_id, category_id " +
                     "FROM production " +
                     "WHERE id = ?;");
-            productionsStatement.setInt(1, id);
+            productionsStatement.setInt(1, ((Production) production).getID());
             ResultSet productionsResult = productionsStatement.executeQuery();
 
             productionsResult.next();

@@ -131,7 +131,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 list.add(new AdminNotification(result.getInt(1), result.getString(2),
-                        FacadeData.getInstance().getProduction(result.getInt(3)), result.getInt(4)));
+                        FacadeData.getInstance().getProduction(new Production(result.getInt(3))), result.getInt(4)));
             }
             return list;
         } catch (SQLException e) {
@@ -151,7 +151,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 list.add(new ProducerNotification(result.getInt(1), result.getInt(2), result.getString(3),
-                        result.getBoolean(4), FacadeData.getInstance().getProduction(result.getInt(5))));
+                        result.getBoolean(4), FacadeData.getInstance().getProduction(new Production(result.getInt(5)))));
             }
             return list;
         } catch (SQLException e) {

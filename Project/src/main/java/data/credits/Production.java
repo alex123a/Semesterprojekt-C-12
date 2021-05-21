@@ -26,6 +26,10 @@ public class Production implements IProduction {
 
     }
 
+    public Production(int id) {
+
+    }
+
     public Production(int id, String productionID, String name, String description, int year, ProductionGenre genre, ProductionType type, Map<Integer, List<String>> rightsholders) {
         this.id = id;
         this.productionID = productionID;
