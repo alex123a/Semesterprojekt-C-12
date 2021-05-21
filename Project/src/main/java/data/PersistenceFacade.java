@@ -21,6 +21,11 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
+    public List<IUser> getAllProducers() {
+        return UserFacade.getInstance().getAllProducers();
+    }
+
+    @Override
     public boolean deleteUser(IUser user) {
         return UserFacade.getInstance().deleteUser(user);
     }
@@ -68,7 +73,7 @@ public class PersistenceFacade implements IPersistenceFacade {
 
     @Override
     public IProduction saveProduction(IProduction production) {
-        throw new UnsupportedOperationException();
+        return FacadeData.getInstance().saveProduction(production);
     }
 
     @Override

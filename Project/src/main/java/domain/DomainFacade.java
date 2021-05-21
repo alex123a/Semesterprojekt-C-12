@@ -125,6 +125,11 @@ public class DomainFacade implements IDomainFacade {
     }
 
     @Override
+    public List<IUser> getAllProducers() {
+        return PersistenceFacade.getInstance().getAllProducers();
+    }
+
+    @Override
     public boolean deleteUser(IUser user) {
         return PersistenceFacade.getInstance().deleteUser(user);
     }

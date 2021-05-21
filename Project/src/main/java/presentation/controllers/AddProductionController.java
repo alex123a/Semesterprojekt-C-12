@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import Interfaces.IProducer;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import Interfaces.IUser;
@@ -29,6 +30,9 @@ import java.net.URL;
 import java.util.*;
 
 public class AddProductionController implements Initializable {
+
+    @FXML
+    private ComboBox<String> nameInput;
 
     @FXML
     private ComboBox<String> comboGenre;
@@ -70,7 +74,9 @@ public class AddProductionController implements Initializable {
     private Button removeRightholder;
 
     private Repository rep = Repository.getInstance();
-    private DomainFacade domain = rep.domainFacade;
+    private ObservableList<String> rightsholderList;
+    private List<IRightsholder> rightList;
+    private List<IRightsholder> finalRightsholdersList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -90,7 +96,7 @@ public class AddProductionController implements Initializable {
 
         // Get Producers
         Repository r = Repository.getInstance();
-        List<IUser> userList = r.domainFacade.getUsers();
+        List<IUser> userList = r.domainFacade.getAllProducers();
         ObservableList<String> sortOptions = FXCollections.observableArrayList();
         for(IUser user : userList) {
             sortOptions.addAll(user.getUsername());
@@ -105,6 +111,17 @@ public class AddProductionController implements Initializable {
                 if (!newValue.matches("\\d*")) {
                     yearInput.setText(newValue.replaceAll("[^\\d]", ""));
                 }
+            }
+        });
+
+        finalRightsholdersList = r.domainFacade.getRightsholders();
+        rightList = r.domainFacade.getRightsholders();
+        setRightsholderComboBox();
+
+        nameInput.getEditor().textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                findRightsholder();
             }
         });
     }
@@ -162,12 +179,28 @@ public class AddProductionController implements Initializable {
         String name = programNameField.getText();
         String description = descriptionProgramArea.getText();
         int year = Integer.parseInt(yearInput.getText());
-        String genre = comboGenre.getValue();
-        String category = comboCategory.getValue();
+        ProductionGenre genre = null;
+        for(ProductionGenre pg : ProductionGenre.values()) {
+            if(comboGenre.getValue().equals(pg.getGenreWord())) {
+                genre = pg;
+            }
+        }
+        ProductionType category = null;
+        for(ProductionType pt : ProductionType.values()) {
+            if(comboCategory.getValue().equals(pt.getTypeWord())) {
+                category = pt;
+            }
+        }
         // todo : Producer should be a IProducer
         // so it's easier to handle,
         // but we can't get a IProducer out of the comboBox since it's a string *thinking emoji*
-        String producer = comboProducer.getValue();
+        IProducer producer = null;
+        Repository r = Repository.getInstance();
+        for(IUser user : r.domainFacade.getAllProducers()) {
+            if(user.getUsername().equals(comboProducer.getValue())) {
+                producer = (IProducer) user;
+            }
+        }
 
         CreditWrapper[] rightsholders = rightholderListview.getItems().toArray(new CreditWrapper[0]);
         // Map over rightholders with their roles
@@ -176,11 +209,9 @@ public class AddProductionController implements Initializable {
             RhsRoles.put(credit.getRightsholder(), credit.getRoles());
         }
         //TODO make this pass all values to the contructor
-        /*
-        IProduction newProduction = new NewProduction(id, name, RhsRoles);
-        domain.addProduction(newProduction);
 
-         */
+        IProduction newProduction = new NewProduction(id, name, description, year, genre, category, producer, RhsRoles);
+        r.domainFacade.addProduction(newProduction);
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
@@ -201,5 +232,25 @@ public class AddProductionController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void findRightsholder() {
+        rightList  = new ArrayList<>();
+        for(IRightsholder ir : finalRightsholdersList) {
+            String name = ir.getFirstName() + " " + ir.getLastName();
+            if(name.toLowerCase().contains(nameInput.getEditor().getText().toLowerCase())) {
+                rightList.add(ir);
+            }
+        }
+        setRightsholderComboBox();
+    }
+
+    public void setRightsholderComboBox() {
+        rightsholderList = FXCollections.observableArrayList();
+        for(IRightsholder ir : rightList) {
+            rightsholderList.add(ir.getFirstName() + " " + ir.getLastName());
+        }
+        nameInput.setItems(rightsholderList);
+        nameInput.show();
     }
 }

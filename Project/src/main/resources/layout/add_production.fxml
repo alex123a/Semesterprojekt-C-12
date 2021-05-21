@@ -44,9 +44,7 @@
       <ListView fx:id="rightholderListview" layoutX="256.0" layoutY="444.0" prefHeight="237.0" prefWidth="375.0" />
       <Label layoutX="656.0" layoutY="417.0" prefHeight="17.0" prefWidth="118.0" text="Indtast ophavsmænd:" />
       <Label layoutX="657.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Navn:" />
-      <TextField fx:id="rightholderFirstName" layoutX="657.0" layoutY="462.0" prefHeight="26.0" prefWidth="185.0" />
-      <Label layoutX="865.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Efternavn:" />
-      <TextField fx:id="rightholderLastName" layoutX="865.0" layoutY="462.0" prefHeight="26.0" prefWidth="185.0" />
+      <ComboBox fx:id="nameInput" editable="true" layoutX="657.0" layoutY="462.0" prefHeight="25.0" prefWidth="394.0" promptText="Indtast navn" />
       <Label layoutX="657.0" layoutY="505.0" prefHeight="17.0" prefWidth="65.0" text="Beskrivelse:" />
       <TextField fx:id="rightholderDescription" layoutX="657.0" layoutY="522.0" prefHeight="25.0" prefWidth="394.0" />
       <Label layoutX="657.0" layoutY="565.0" prefHeight="17.0" prefWidth="142.0" text="Rolle/roller (split med &quot;,&quot;):" />

@@ -23,14 +23,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_15.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_15.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_15_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_15.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/layout/add_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/add_production.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/layout/edit_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/edit_production.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserHandling.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/reporting/ReportHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/edit_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/edit_production.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/add_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/add_production.fxml" afterDir="false" />
     </list>
     <list id="398e6fdf-0be6-40ca-90c6-9a77a5d92e74" name="Changes by alexv" comment="" />
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
@@ -61,6 +79,13 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.1\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1rQK5Km5WstHAcTLM2GKVYa2GXO" />
   <component name="ProjectViewState">
@@ -211,10 +236,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="-854" key="#com.intellij.ide.util.MemberChooser" timestamp="1621596416837">
+    <state x="765" y="-854" key="#com.intellij.ide.util.MemberChooser" timestamp="1621615557920">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state x="765" y="-854" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621596416837" />
+    <state x="765" y="-854" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621615557920" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1621514927913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -223,33 +248,54 @@
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
     <state x="690" y="-814" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621603112262" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1621607106260">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1621615721743">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621607106260" />
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621615721743" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1621519690610" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1621607106260">
+    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1621615721743">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621607106260" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621615721743" />
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1621519690609" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1621607106260">
+    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1621615721743">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621607106260" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621615721743" />
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1621519690609" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1621607106260">
+    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1621615721743">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621607106260" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621615721743" />
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1621519690610" />
-    <state x="660" y="-803" key="refactoring.ChangeSignatureDialog" timestamp="1621588034840">
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1621612855459">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state x="660" y="-803" key="refactoring.ChangeSignatureDialog/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621588034840" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1621516640964">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621612855459" />
+    <state width="1877" height="347" key="GridCell.Tab.1.center" timestamp="1621612855458">
+      <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
+    <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621612855458" />
+    <state width="1877" height="347" key="GridCell.Tab.1.left" timestamp="1621612855458">
+      <screen x="0" y="-1080" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621612855458" />
+    <state width="1877" height="347" key="GridCell.Tab.1.right" timestamp="1621612855458">
+      <screen x="0" y="-1080" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621612855458" />
+    <state x="660" y="-803" key="refactoring.ChangeSignatureDialog" timestamp="1621611146566">
+      <screen x="0" y="-1080" width="1920" height="1040" />
+    </state>
+    <state x="660" y="-803" key="refactoring.ChangeSignatureDialog/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621611146566" />
+    <state x="531" y="-844" key="run.anything.popup" timestamp="1621614805130">
+      <screen x="0" y="-1080" width="1920" height="1040" />
+    </state>
+    <state x="531" y="-844" key="run.anything.popup/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621614805130" />
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1621516640964" />
+    <state x="623" y="-855" width="672" height="678" key="search.everywhere.popup" timestamp="1621611570311">
+      <screen x="0" y="-1080" width="1920" height="1040" />
+    </state>
+    <state x="623" y="-855" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621611570311" />
   </component>
 </project>

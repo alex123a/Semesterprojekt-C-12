@@ -29,6 +29,7 @@ import java.util.*;
 
 public class EditProductionController implements Initializable {
 
+    public ComboBox nameInput;
     @FXML
     private ComboBox comboCategory;
     @FXML
@@ -77,6 +78,10 @@ public class EditProductionController implements Initializable {
 
     private Repository rep = Repository.getInstance();
     private DomainFacade domain = rep.domainFacade;
+
+    private ObservableList<String> rightsholderList;
+    private List<IRightsholder> rightList;
+    private List<IRightsholder> finalRightsholdersList;
 
     @FXML
     void OnClickedSaveChanges(ActionEvent event) {
@@ -190,6 +195,17 @@ public class EditProductionController implements Initializable {
                 }
             }
         });
+
+        finalRightsholdersList = r.domainFacade.getRightsholders();
+        rightList = r.domainFacade.getRightsholders();
+        setRightsholderComboBox();
+
+        nameInput.getEditor().textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                findRightsholder();
+            }
+        });
     }
 
     public void onBackClicked(MouseEvent mouseEvent) {
@@ -213,5 +229,25 @@ public class EditProductionController implements Initializable {
             roles += s + ", ";
         }
         rightholderRoles.setText(roles);
+    }
+
+    public void findRightsholder() {
+        rightList  = new ArrayList<>();
+        for(IRightsholder ir : finalRightsholdersList) {
+            String name = ir.getFirstName() + " " + ir.getLastName();
+            if(name.toLowerCase().contains(nameInput.getEditor().getText().toLowerCase())) {
+                rightList.add(ir);
+            }
+        }
+        setRightsholderComboBox();
+    }
+
+    public void setRightsholderComboBox() {
+        rightsholderList = FXCollections.observableArrayList();
+        for(IRightsholder ir : rightList) {
+            rightsholderList.add(ir.getFirstName() + " " + ir.getLastName());
+        }
+        nameInput.setItems(rightsholderList);
+        nameInput.show();
     }
 }
