@@ -23,23 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ForgotController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/layout/forgotPassword.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/PersonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/search.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/Repository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/Repository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/login.fxml" afterDir="false" />
     </list>
-    <list id="398e6fdf-0be6-40ca-90c6-9a77a5d92e74" name="Changes by alexv" comment="" />
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
-    <list id="db307e32-29b3-4936-a4d8-b260a2229421" name="Changes by thomasraith" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,7 +71,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/layout" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -94,6 +85,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project\src\main\resources\layout" />
       <recent name="C:\Users\Mikkel P Larsen\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\resources\images" />
       <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project\src\main\resources" />
       <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project\src\main\java" />
@@ -105,17 +97,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.NewMain">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="NewMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="presentation.NewMain" />
       <module name="Project" />
@@ -194,6 +175,8 @@
       <workItem from="1621411739786" duration="3016000" />
       <workItem from="1621421254707" duration="42000" />
       <workItem from="1621421316683" duration="4451000" />
+      <workItem from="1621593067395" duration="227000" />
+      <workItem from="1621593312196" duration="802000" />
     </task>
     <servers />
   </component>
@@ -211,43 +194,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="765" y="-854" key="#com.intellij.ide.util.MemberChooser" timestamp="1621587853283">
-      <screen x="0" y="-1080" width="1920" height="1040" />
-    </state>
-    <state x="765" y="-854" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621587853283" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1621514927913">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1621514927913" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1621588096401">
-      <screen x="0" y="-1080" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621588096401" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1621519690610" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1621588096401">
-      <screen x="0" y="-1080" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621588096401" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1621519690609" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1621588096400">
-      <screen x="0" y="-1080" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621588096400" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1621519690609" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1621588096401">
-      <screen x="0" y="-1080" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621588096401" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1621519690610" />
-    <state x="660" y="-803" key="refactoring.ChangeSignatureDialog" timestamp="1621588034840">
-      <screen x="0" y="-1080" width="1920" height="1040" />
-    </state>
-    <state x="660" y="-803" key="refactoring.ChangeSignatureDialog/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621588034840" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1621516640964">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1621516640964" />
   </component>
 </project>

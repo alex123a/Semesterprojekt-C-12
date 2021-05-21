@@ -2,7 +2,6 @@ package presentation.controllers;
 
 import Interfaces.IUser;
 import domain.DomainFacade;
-import domain.authentication.AuthenticationHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -126,6 +125,17 @@ public class LoginController {
     public void goBack(MouseEvent mouseEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
+            Stage window = (Stage) backArrow.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // Shifts to a page where you get to know
+    public void ForgotPassword(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/forgotPassword.fxml"));
             Stage window = (Stage) backArrow.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
         } catch (IOException e) {
