@@ -136,7 +136,6 @@ class RightsHolderHandler {
     }
 
     void approveChangesToRightsholder(IRightsholder rightsholder) {
-        //todo implement
 
         if (rightsholder instanceof Rightsholder) {
             Rightsholder r = (Rightsholder) rightsholder;

@@ -6,19 +6,27 @@ public class Notification implements INotification {
 
     private int ID;
     private String text;
-    private int productionID;
+    private String productionID;
+    private String productionName;
+    private int db_id_production;
 
     public Notification() {
 
     }
 
-    public Notification(String text, int productionID) {
+    public Notification(String text) {
         this.text = text;
-        this.productionID = productionID;
     }
 
-    public Notification(int ID, String text, int productionID) {
-        this(text, productionID);
+    public Notification(String text, String productionID, String productionName, int db_id_production) {
+        this(text);
+        this.productionID = productionID;
+        this.productionName = productionName;
+        this.db_id_production = db_id_production;
+    }
+
+    public Notification(int ID, String text, String productionID, String productionName, int db_id_production) {
+        this(text, productionID, productionName, db_id_production);
         this.ID = ID;
     }
 
@@ -40,7 +48,7 @@ public class Notification implements INotification {
     }
 
     @Override
-    public int getProductionId() {
+    public String getProductionId() {
         return this.productionID;
     }
 
@@ -54,23 +62,40 @@ public class Notification implements INotification {
         throw new UnsupportedOperationException("Not supported");
     }
 
-    @Override
     public int getID() {
         return this.ID;
     }
 
     @Override
     public int getProducerID() {
-        throw new UnsupportedOperationException("Not supported");
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void setProducerID(int producerID) {
-        throw new UnsupportedOperationException("Not supported");
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public String getProductionName() {
+        return productionName;
+    }
+
+    @Override
+    public void setProductionName(String productionName) {
+        this.productionName = productionName;
+    }
+
+    public int getDb_id_production() {
+        return db_id_production;
+    }
+
+    public void setDb_id_production(int db_id_production) {
+        this.db_id_production = db_id_production;
     }
 }

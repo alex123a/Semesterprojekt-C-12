@@ -4,14 +4,14 @@ public class ProducerNotification extends Notification {
     private int producerID;
     private boolean viewed;
 
-    public ProducerNotification(int productionID, String text, boolean viewed, int producerID) {
-        super(text, productionID);
+    public ProducerNotification(String productionID, String text, boolean viewed, int producerID, String productionName, int db_id_production) {
+        super(text, productionID, productionName, db_id_production);
         this.viewed = viewed;
         this.producerID = producerID;
     }
 
-    public ProducerNotification(int ID, int productionID, String text, boolean viewed, int producerID) {
-        super(ID, text, productionID);
+    public ProducerNotification(int ID, String productionID, String text, boolean viewed, int producerID, String productionName, int db_id_production) {
+        super(ID, text, productionID, productionName, db_id_production);
         this.viewed = viewed;
         this.producerID = producerID;
     }

@@ -3,7 +3,7 @@ package presentation.controllers;
 import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
-import domain.CreditsManagement.CreditsSystem;
+import domain.DomainFacade;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -73,12 +73,12 @@ public class EditProductionController implements Initializable {
     String oldId = null;
 
     private Repository rep = Repository.getInstance();
-    private ICreditManagement creditsSystem = rep.creditsSystem;
+    private DomainFacade domain = rep.domainFacade;
 
     @FXML
     void OnClickedSaveChanges(ActionEvent event) {
-        creditsSystem.setProductionID(toEdit, programIDField.getText());
-        creditsSystem.setName(toEdit, programNameField.getText());
+        domain.setProductionID(toEdit, programIDField.getText());
+        domain.setName(toEdit, programNameField.getText());
 
         CreditWrapper[] rightsholders = rightholderListview.getItems().toArray(new CreditWrapper[0]);
         // Map over rightholders with their roles
@@ -87,8 +87,8 @@ public class EditProductionController implements Initializable {
             RhsRoles.put(credit.getRightsholder(), credit.getRoles());
         }
 
-        creditsSystem.setRoles(toEdit, RhsRoles);
-        creditsSystem.saveChanges();
+        domain.setRoles(toEdit, RhsRoles);
+        domain.saveChanges();
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));

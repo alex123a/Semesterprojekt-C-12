@@ -14,16 +14,6 @@ public class UserFacade implements IUserFacade {
     }
 
     @Override
-    public boolean makeUserProducer(IUser user) {
-        return UserManager.getInstance().makeUserProducer(user);
-    }
-
-    @Override
-    public boolean makeUserAdmin(IUser user) {
-        return UserManager.getInstance().makeUserAdmin(user);
-    }
-
-    @Override
     public boolean deleteUser(IUser user) {
         return UserManager.getInstance().deleteUser(user);
     }

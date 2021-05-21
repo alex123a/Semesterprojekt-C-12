@@ -5,6 +5,7 @@ import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import domain.CreditsManagement.CreditsSystem;
 import domain.searchEngine.SearchEngineHandler;
+import domain.DomainFacade;
 import javafx.stage.Stage;
 
 public class Repository {
@@ -33,6 +34,8 @@ public class Repository {
     public void setToEdit(IProduction toEdit) {
         this.toEdit = toEdit;
     }
+
+    public DomainFacade domainFacade = DomainFacade.getInstance();
 
     public IProduction getProductionToBeShown() {
         return productionToBeShown;
