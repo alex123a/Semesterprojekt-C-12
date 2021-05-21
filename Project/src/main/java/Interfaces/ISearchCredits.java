@@ -15,6 +15,6 @@ public interface ISearchCredits {
 
     List<IProduction> sortProductionBy(List<IProduction> list, ProductionSorting target);
 
-    List<?> filterProduction(List<?> list, int[] yearInterval, ProductionGenre genre, ProductionType type);
+    List<IProduction> filterProduction(List<IProduction> list, int[] yearInterval, ProductionGenre genre, ProductionType type);
 
 }

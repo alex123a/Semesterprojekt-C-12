@@ -3,18 +3,18 @@ package Interfaces;
 import java.util.List;
 
 public interface IFacadeData {
-
-    IRightsholder getRightsholder(int id);
-
     List<IRightsholder> getRightsholders();
 
     void saveRightsholder(IRightsholder rightsholder);
 
-    IProduction getProduction(String id);
+    void approveChangesToRightsholder(IRightsholder rightsholder);
 
     List<IProduction> getProductions();
 
-    void saveProduction(IProduction production);
+    //Returns the new IProduction from the persistence layer
+    IProduction saveProduction(IProduction production);
 
     void deleteProduction(IProduction production);
+
+    void approveChangesToProduction(IProduction production);
 }

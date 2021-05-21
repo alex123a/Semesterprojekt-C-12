@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
 <AnchorPane prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.MyProductionsController">
     <children>
         <ImageView fitHeight="50.0" fitWidth="100.0" layoutX="592.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
@@ -15,9 +14,9 @@
                 <Image url="@/images/Tv2Logo.png" />
             </image>
         </ImageView>
-        <VBox layoutX="231.0" layoutY="137.0" prefHeight="524.0" prefWidth="839.0" style="-fx-background-color: white;">
+        <VBox alignment="TOP_CENTER" layoutX="231.0" layoutY="137.0" prefHeight="524.0" prefWidth="839.0" style="-fx-background-color: white;">
             <children>
-                <Pane prefHeight="109.0" prefWidth="839.0">
+                <Pane minHeight="109.0" prefHeight="109.0" prefWidth="839.0">
                     <children>
                         <ImageView fx:id="backButton" fitHeight="25.0" fitWidth="46.0" layoutX="30.0" layoutY="21.0" onMouseClicked="#onBackClicked" pickOnBounds="true" preserveRatio="true" style="-fx-cursor:hand;">
                             <image>
@@ -29,19 +28,14 @@
                                 <Font name="Calibri Bold" size="21.0" />
                             </font>
                         </Label>
-                  <Button fx:id="editProgramBut1" layoutX="696.0" layoutY="47.0" mnemonicParsing="false" onAction="#onEditProgramClicked" prefHeight="25.0" prefWidth="113.0" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" text="Ændre program" />
-                  <Button fx:id="addProgramBut" layoutX="414.0" layoutY="47.0" mnemonicParsing="false" onAction="#onAddProgramClicked" prefHeight="25.0" prefWidth="128.0" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" text="Tilføj program" />
-                  <Button fx:id="removeProgramBut" layoutX="563.0" layoutY="47.0" mnemonicParsing="false" onAction="#onRemoveProgramClicked" prefHeight="25.0" prefWidth="113.0" style="-fx-cursor:hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0;" text="Fjern program" />
+                  <Button fx:id="addProgramBut" layoutX="697.0" layoutY="46.0" mnemonicParsing="false" onAction="#onAddProgramClicked" prefHeight="25.0" prefWidth="128.0" style="-fx-cursor: hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0; -fx-border-radius: 4px; -fx-background-radius: 4px;" text="Tilføj program" />
                     </children>
                 </Pane>
-                <HBox prefHeight="423.0" prefWidth="994.0">
-                    <VBox.margin>
-                        <Insets bottom="30.0" left="30.0" right="30.0" />
-                    </VBox.margin>
-                    <children>
-                        <ListView fx:id="productionsListView" prefHeight="263.0" prefWidth="779.0" />
-                    </children>
-                </HBox>
+            <ScrollPane hbarPolicy="NEVER" maxWidth="807.0" prefHeight="397.0" prefWidth="807.0" vbarPolicy="ALWAYS">
+               <content>
+                      <VBox fx:id="productionList" alignment="TOP_CENTER" maxWidth="792.0" prefHeight="395.0" prefWidth="792.0" />
+               </content>
+            </ScrollPane>
             </children>
             <effect>
                 <DropShadow offsetX="2.0" offsetY="2.0">
