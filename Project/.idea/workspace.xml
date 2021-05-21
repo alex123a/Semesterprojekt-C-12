@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/FacadeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/FacadeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Rightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Rightsholder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IPersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IPersistenceFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
-    </list>
+    <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="" />
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
