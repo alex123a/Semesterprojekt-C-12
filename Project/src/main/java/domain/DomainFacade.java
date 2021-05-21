@@ -3,8 +3,6 @@ package domain;
 import Interfaces.*;
 import data.PersistenceFacade;
 import domain.authentication.AuthenticationHandler;
-import domain.notification.AdminNotification;
-import domain.notification.ProducerNotification;
 import domain.session.CurrentSession;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
@@ -51,9 +49,13 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public void addProduction(IProduction production) {
         IProduction returnedProduction = PersistenceFacade.getInstance().saveProduction(production);
+        /*
+        Koden under er ikke opdateret til den nyeste type af notifikations klasser.
         String notificationMSG = "Produktionen med produktions ID'et  "
                 + returnedProduction.getProductionID() + " har ændringer";
-        PersistenceFacade.getInstance().createAdminNotification(new AdminNotification(notificationMSG, 0), returnedProduction);
+        PersistenceFacade.getInstance().createAdminNotification(new AdminNotification(notificationMSG, 0));
+        */
+
     }
 
     @Override
@@ -171,8 +173,8 @@ public class DomainFacade implements IDomainFacade {
     }
 
     @Override
-    public boolean createAdminNotification(INotification notification, IProduction production) {
-        return PersistenceFacade.getInstance().createAdminNotification(notification, production);
+    public boolean createAdminNotification(INotification notification) {
+        return PersistenceFacade.getInstance().createAdminNotification(notification);
     }
 
     @Override
@@ -227,10 +229,5 @@ public class DomainFacade implements IDomainFacade {
             e.printStackTrace();
         }
         return null;
-    }
-
-    @Override
-    public IProduction getProductionFromNotification(INotification notification) {
-        return PersistenceFacade.getInstance().getProductionFromNotification(notification);
     }
 }

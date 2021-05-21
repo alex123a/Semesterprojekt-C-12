@@ -5,7 +5,7 @@ import java.util.List;
 public interface INotificationHandler {
     boolean createProducerNotification(INotification notification);
 
-    boolean createAdminNotification(INotification notification, IProduction production);
+    boolean createAdminNotification(INotification notification);
 
     boolean deleteAdminNotification(INotification notification);
 

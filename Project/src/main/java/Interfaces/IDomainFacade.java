@@ -11,5 +11,4 @@ public interface IDomainFacade extends
         ISession,
         INotificationHandler,
         INotificationProvider {
-    IProduction getProductionFromNotification(INotification notification);
 }

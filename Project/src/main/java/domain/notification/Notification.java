@@ -1,12 +1,11 @@
 package domain.notification;
 
 import Interfaces.INotification;
+import Interfaces.IProduction;
 
 public class Notification implements INotification {
-
     private String text;
-    private String productionID;
-    private String productionName;
+    private IProduction production;
 
     public Notification() {
 
@@ -16,12 +15,10 @@ public class Notification implements INotification {
         this.text = text;
     }
 
-    public Notification(String text, String productionID, String productionName) {
+    public Notification(String text, IProduction production) {
         this(text);
-        this.productionID = productionID;
-        this.productionName = productionName;
+        this.production = production;
     }
-
 
 
     @Override
@@ -37,11 +34,6 @@ public class Notification implements INotification {
     @Override
     public String getText() {
         return this.text;
-    }
-
-    @Override
-    public String getProductionId() {
-        return this.productionID;
     }
 
     @Override
@@ -70,13 +62,12 @@ public class Notification implements INotification {
     }
 
     @Override
-    public String getProductionName() {
-        return productionName;
+    public IProduction getProudction() {
+        return production;
     }
 
     @Override
-    public void setProductionName(String productionName) {
-        this.productionName = productionName;
+    public void setProduction(IProduction production) {
+        this.production = production;
     }
-
 }

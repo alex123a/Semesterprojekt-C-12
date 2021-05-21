@@ -8,8 +8,6 @@ public interface INotification {
 
     String getText();
 
-    String getProductionId();
-
     void setApproval(int approval);
 
     int getApproval();
@@ -20,7 +18,8 @@ public interface INotification {
 
     void setText(String text);
 
-    String getProductionName();
+    IProduction getProudction();
 
-    void setProductionName(String productionName);
+    void setProduction(IProduction production);
+
 }

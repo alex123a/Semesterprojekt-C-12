@@ -89,8 +89,8 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public boolean createAdminNotification(INotification notification, IProduction production) {
-        return NotificationHandler.getInstance().createAdminNotification(notification, production);
+    public boolean createAdminNotification(INotification notification) {
+        return NotificationHandler.getInstance().createAdminNotification(notification);
     }
 
     @Override
@@ -158,8 +158,9 @@ public class PersistenceFacade implements IPersistenceFacade {
         throw new UnsupportedOperationException();
     }
 
+
     @Override
-    public IProduction getProductionFromNotification(INotification notification) {
-        return FacadeData.getInstance().getProduction(((AdminNotification)notification).getDb_id_production());
+    public IProduction getProductionFromID(int id) {
+        return FacadeData.getInstance().getProduction(id);
     }
 }
