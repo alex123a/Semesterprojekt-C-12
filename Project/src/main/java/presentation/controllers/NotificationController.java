@@ -5,6 +5,7 @@ import Interfaces.INotification;
 import Interfaces.IProducer;
 import domain.DomainFacade;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -122,10 +124,26 @@ public class NotificationController implements Initializable {
             // HBox style
             hbox.getStylesheets().add(getClass().getResource("/stylesheets/hboxStyle.css").toExternalForm());
             hbox.getStyleClass().add("hbox");
+            hbox.setOnMouseClicked(new EventHandler() {
+                @Override
+                public void handle(Event event) {
+                    // TODO : find the production from the productionID and set it to setToEdit
+                    //Repository.getInstance().setToEdit(p);
+
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/layout/adminVerifyProduction.fxml"));
+                        Parent root1 = (Parent) fxmlLoader.load();
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(root1));
+                        stage.show();
+                    } catch(Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
 
             // Add HBox to the VBox in the scrollpane
             notificationBox.getChildren().addAll(hbox);
-
     }
 
     public void loadNotifications() {

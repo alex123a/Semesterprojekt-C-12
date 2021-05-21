@@ -33,7 +33,26 @@
                   <Font name="Calibri Bold" size="50.0" />
                </font>
             </Label>
-            <TextField fx:id="usernameInput" layoutX="32.0" layoutY="177.0" prefHeight="43.0" prefWidth="350.0" promptText="Brugernavn" style="-fx-background-radius: 3px;">
+            <TextField fx:id="usernameInput" onAction="#onEnter" layoutX="32.0" layoutY="177.0" prefHeight="43.0" prefWidth="350.0" promptText="Brugernavn" style="-fx-background-radius: 3px;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <HBox layoutX="32.0" layoutY="252.0" prefHeight="43.0" prefWidth="350.0">
+               <children>
+                  <PasswordField fx:id="passwordHiddenInput" onAction="#onEnter" prefHeight="43.0" prefWidth="310.0" promptText="Password" style="-fx-background-radius: 3px;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </PasswordField>
+                  <ImageView fx:id="passwordToggle" onMouseClicked="#togglePassword" style="-fx-cursor: hand;" fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/closedEye.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <TextField fx:id="passwordShownInput" onAction="#onEnter" layoutX="32.0" layoutY="252.0" prefHeight="43.0" prefWidth="308.0" promptText="Password" style="-fx-background-radius: 3px;" visible="false">
                <font>
                   <Font size="16.0" />
                </font>
@@ -53,25 +72,6 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <HBox layoutX="32.0" layoutY="252.0" prefHeight="43.0" prefWidth="350.0">
-               <children>
-                  <PasswordField fx:id="passwordHiddenInput" prefHeight="43.0" prefWidth="310.0" promptText="Password" style="-fx-background-radius: 3px;">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </PasswordField>
-                  <ImageView fx:id="passwordToggle" onMouseClicked="#togglePassword" style="-fx-cursor: hand;" fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/images/closedEye.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-            <TextField fx:id="passwordShownInput" layoutX="32.0" layoutY="252.0" prefHeight="43.0" prefWidth="308.0" promptText="Password" style="-fx-background-radius: 3px;" visible="false">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </TextField>
          </children>
       </Pane>
    </children>
