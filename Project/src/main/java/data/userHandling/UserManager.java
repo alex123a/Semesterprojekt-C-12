@@ -160,6 +160,13 @@ public class UserManager implements IUserHandling {
     @Override
     public boolean editUser(IUser user) {
         try {
+            PreparedStatement selectStatement = connection.prepareStatement("SELECT * FROM users");
+            ResultSet selectResult = selectStatement.executeQuery();
+            while(selectResult.next()) {
+                if (selectResult.getInt("id") != user.getId() && selectResult.getString("username").equals(user.getUsername())) {
+                    return false;
+                }
+            }
             PreparedStatement updateStatement = connection.prepareStatement("UPDATE users SET username = ?, user_password = ? WHERE id = ?");
             updateStatement.setString(1,user.getUsername());
             updateStatement.setString(2,user.getPassword());

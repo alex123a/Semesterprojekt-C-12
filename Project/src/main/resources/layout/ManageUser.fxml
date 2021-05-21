@@ -147,7 +147,7 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="32.0" fitWidth="38.0" layoutX="359.0" layoutY="150.0" onMouseClicked="#getRemoveUser" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="32.0" fitWidth="38.0" layoutX="359.0" layoutY="150.0" onMouseClicked="#getRemoveUsers" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@/images/Search_Grey.jpg" />
                            </image>

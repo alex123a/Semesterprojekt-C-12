@@ -3,11 +3,13 @@ package domain;
 import Interfaces.*;
 import data.PersistenceFacade;
 import domain.authentication.AuthenticationHandler;
+import domain.searchEngine.SearchUserHandler;
 import domain.session.CurrentSession;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
 import enumerations.ProductionType;
 import enumerations.RightholderSorting;
+import presentation.Repository;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -118,13 +120,20 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean deleteUser(IUser user) {
-        return PersistenceFacade.getInstance().deleteUser(user);
+        IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
+        if (Repository.getInstance().domainFacade.validateUser(currentUser) && user != null) {
+            return PersistenceFacade.getInstance().deleteUser(user);
+        }
+        return false;
     }
 
     @Override
     public boolean editUser(IUser user) {
-        System.out.println("6");
-        return PersistenceFacade.getInstance().editUser(user);
+        IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
+        if (Repository.getInstance().domainFacade.validateUser(currentUser)) {
+            return PersistenceFacade.getInstance().editUser(user);
+        }
+        return false;
     }
 
     @Override
@@ -168,5 +177,10 @@ public class DomainFacade implements IDomainFacade {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public String getInfoFromSearch(String search, String resultType) {
+        return SearchUserHandler.getInstance().getInfoFromSearch(search, resultType);
     }
 }

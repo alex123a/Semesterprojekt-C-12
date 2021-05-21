@@ -108,53 +108,36 @@ public class ManageUserController {
 
     @FXML
     void updateUser(ActionEvent event) {
-//        boolean success = true;
-//        IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
-//        if (Repository.getInstance().domainFacade.validateUser(currentUser)) {
-//            String searchedUser = editSearchUsername.getText();
-//            IUser tempUser = new User(searchedUser);
-//            IUser user = Repository.getInstance().domainFacade.getUser(tempUser);
-//            if (!changeUsername.getText().equals("")) {
-//                user.setUsername(changeUsername.getText());
-//                if(Repository.getInstance().domainFacade.getUser(user) != null){
-//                    success = false;
-//                } else {
-//                    success = Repository.getInstance().domainFacade.editUser(user);
-//                }
-//
-//            }
-//            if (!changePassword.getText().equals("") && success) {
-//                user.setPassword(Repository.getInstance().domainFacade.generateStrongPasswordHash(changePassword.getText()));
-//                success = Repository.getInstance().domainFacade.editUser(user);
-//            }
-//        }
-//        if (success) {
-//            changeUsername.setText("");
-//            changePassword.setText("");
-//            editSearchUsername.setText("");
-//            changeUserResult.setText("Successfully changed the information");
-//            changeUserResult.setTextFill(Color.web("#4BB543"));
-//        } else {
-//            changeUserResult.setText("Error: Something went wrong, try again. \nMake sure that the username does not already exist!");
-//            changeUserResult.setTextFill(Color.web("#FF0000"));
-//        }
+        String editUsername = Repository.getInstance().domainFacade.getInfoFromSearch(searchUsernameEdit.getValue(), "username");
+        IUser tempUser = new User(editUsername);
+        IUser user = Repository.getInstance().domainFacade.getUser(tempUser);
+        if (!changeUsername.getText().equals("")) {
+            user.setUsername(changeUsername.getText());
+        }
+        if (!changePassword.getText().equals("")) {
+            user.setPassword(Repository.getInstance().domainFacade.generateStrongPasswordHash(changePassword.getText()));
+        }
+        boolean success = Repository.getInstance().domainFacade.editUser(user);
+
+        if (success) {
+            changeUsername.setText("");
+            changePassword.setText("");
+            changeUsername.setText("");
+            changeUserResult.setText("Successfully changed the information");
+            changeUserResult.setTextFill(Color.web("#4BB543"));
+            searchUsernameEdit.setValue("");
+        } else {
+            changeUserResult.setText("Error: Something went wrong, try again. \nMake sure that the username does not already exist!");
+            changeUserResult.setTextFill(Color.web("#FF0000"));
+        }
     }
 
     @FXML
     void deleteUser(ActionEvent event) {
-        String removeUsername = getInfoFromSearch(searchUsernameRemove.getValue(), "username");
-        IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
-        boolean success = false;
-        System.out.println(Repository.getInstance().domainFacade.validateUser(currentUser));
-        if (Repository.getInstance().domainFacade.validateUser(currentUser) && removeUsername != null) {
-            IUser tempUser = new User(removeUsername);
-            IUser removeUser = Repository.getInstance().domainFacade.getUser(tempUser);
-            if (removeUser != null) {
-                if (!removeUsername.equals("")) {
-                    success = Repository.getInstance().domainFacade.deleteUser(removeUser);
-                }
-            }
-        }
+        String removeUsername = Repository.getInstance().domainFacade.getInfoFromSearch(searchUsernameRemove.getValue(), "username");
+        IUser tempUser = new User(removeUsername);
+        IUser removeUser = Repository.getInstance().domainFacade.getUser(tempUser);
+        boolean success = Repository.getInstance().domainFacade.deleteUser(removeUser);
         if(success) {
             searchUsernameRemove.setValue("");
             removeUserResult.setText("Successfully removed the user: " +  removeUsername);
@@ -166,14 +149,14 @@ public class ManageUserController {
             removeUserBtn.setDisable(false);
         }
     }
+
     @FXML
-    void getRemoveUser(MouseEvent event) {
-        if(searchUsernameRemove.getValue() != null){
-            String removeUserRole = getInfoFromSearch(searchUsernameRemove.getValue(), "role");
-            removeUserRoleField.setText(removeUserRole);
-            removeUserBtn.setDisable(false);
-        }
+    void getRemoveUsers(MouseEvent event) {
+        String removeUserRole = Repository.getInstance().domainFacade.getInfoFromSearch(searchUsernameRemove.getValue(), "role");
+        removeUserRoleField.setText(removeUserRole);
+        removeUserBtn.setDisable(false);
     }
+
     @FXML
     void userSearcher(KeyEvent event2) {
         List<IUser> matchedUsers;
@@ -203,20 +186,6 @@ public class ManageUserController {
         return userInfo;
     }
 
-    private String getInfoFromSearch(String yes, String resultType) {
-        Pattern pattern = Pattern.compile("(Brugernavn: )([a-åA-Åø]+)( Type: )([a-åA-Åø]+)", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(yes);
-        boolean matchFound = matcher.find();
-        if(matchFound) {
-            if(resultType.equals("username")) {
-                return matcher.group(2);
-            } else {
-                return matcher.group(4);
-            }
-        }
-        return null;
-    }
-
     public void goBack(MouseEvent mouseEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
@@ -227,9 +196,6 @@ public class ManageUserController {
             throw new RuntimeException(e);
         }
     }
-
-
-
 
     @FXML
     public void initialize() {
