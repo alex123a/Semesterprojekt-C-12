@@ -44,7 +44,7 @@
                               </Label>
                               <HBox layoutX="217.0" layoutY="77.0" prefHeight="43.0" prefWidth="505.0" style="-fx-alignment: CENTER; -fx-border-color: #c9c9c9; -fx-background-color: #ffffff; -fx-border-radius: 8px; -fx-background-radius: 8px;">
                                  <children>
-                                    <TextField fx:id="searchInput" prefHeight="40.0" prefWidth="460.0" promptText="Indtast søgning" style="-fx-border-color: #ffffff; -fx-background-color: #ffffff; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                                    <TextField fx:id="searchInput" onAction="#onEnter" prefHeight="40.0" prefWidth="460.0" promptText="Indtast søgning" style="-fx-border-color: #ffffff; -fx-background-color: #ffffff; -fx-border-radius: 8px; -fx-background-radius: 8px;">
                                        <font>
                                           <Font size="16.0" />
                                        </font>

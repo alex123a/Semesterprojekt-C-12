@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-public class EditProductionController implements Initializable {
+public class adminVerifyProductionController implements Initializable {
 
     @FXML
     private TextField genreField;
@@ -143,6 +143,9 @@ public class EditProductionController implements Initializable {
         oldId = toEdit.getProductionID();
         programNameField.setText(toEdit.getName());
         descriptionProgramArea.setText(toEdit.getDescription());
+        genreField.setText(toEdit.getGenre().getGenreWord());
+        typeField.setText(toEdit.getType().getTypeWord());
+        producerField.setText(toEdit.getProducer().getUsername());
 
         //Doesn't work because of the persistence-layer
         List<CreditWrapper> credits = new ArrayList<>();

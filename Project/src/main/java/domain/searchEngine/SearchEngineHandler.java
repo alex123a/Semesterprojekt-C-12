@@ -26,7 +26,7 @@ public class SearchEngineHandler implements Interfaces.ISearchCredits {
 
         List<ISearchable> results = new ArrayList<>();
         for (ISearchable ob : list){
-            if (ob.getName().contains(target)){
+            if (ob.getName().toLowerCase().contains(target.toLowerCase())){
                 results.add(ob);
             }
         }

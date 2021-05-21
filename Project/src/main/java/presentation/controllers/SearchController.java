@@ -2,9 +2,9 @@ package presentation.controllers;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import Interfaces.ISearchable;
 import Interfaces.IUser;
 import domain.CreditsManagement.CreditsSystem;
-import domain.DomainFacade;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
 import enumerations.ProductionType;
@@ -31,6 +31,9 @@ import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -71,6 +74,8 @@ public class SearchController implements Initializable {
             genreOptions.add(pGenre.getGenreWord());
         }
         comboGenre.setItems(genreOptions);
+
+        comboSort.setValue(String.valueOf(ProductionSorting.NAME));
     }
 
     public void createMovie(String movieName, int year, IProduction production) {
@@ -167,34 +172,9 @@ public class SearchController implements Initializable {
         searchResultBox.getChildren().add(notificationPane);
     }
 
-    public void checkComboBoxSelection(){
-        String value = comboCategory.getValue();
-        if (value == null){
-            return;
-        } else if (value.equals("Film")){
-            comboGenre.setDisable(false);
-
-            // todo : call search class and run through the list
-            // Make it search for only the chosen category
-            // Right now it gets all when choosing "Film"
-            for(IProduction ip : CreditsSystem.getInstance().getProductions()) {
-                createMovie(ip.getName(), ip.getYear(), ip);
-            }
-        } else if (value.equals("Medvirkende")){
-            comboGenre.setDisable(true);
-
-            // todo : Use Search to get all rightsholders
-
-            List<IRightsholder> rightsholderList = CreditsSystem.getInstance().getAllRightsholders();
-            for(IRightsholder r : rightsholderList) {
-                createPerson(r.getFirstName() + " " + r.getLastName(), r.getDescription(), r);
-            }
-
-        }
-    }
-
     public void goBack(MouseEvent mouseEvent) {
-        IUser user = DomainFacade.getInstance().getCurrentUser();
+        Repository r = Repository.getInstance();
+        IUser user = r.domainFacade.getCurrentUser();
         if (user == null) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
@@ -203,7 +183,7 @@ public class SearchController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        } else if (DomainFacade.getInstance().validateUser(user)) {
+        } else if (r.domainFacade.validateUser(user)) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
                 Stage window = (Stage) backButton.getScene().getWindow();
@@ -223,12 +203,118 @@ public class SearchController implements Initializable {
     }
 
     public void onSearchClicked(MouseEvent mouseEvent) {
-        // Change to list
-        String searchParameters = searchInput.getText();
-
         searchResultBox.getChildren().clear();
-        //todo : Call search
-        checkComboBoxSelection();
+        search();
+    }
+
+    private void search() {
+        Repository r = Repository.getInstance();
+
+        String searchFor = null;
+
+        // Checks if there is not chosen a category, then showing all categories
+        if(comboCategory.getValue() == null) {
+            searchFor = "both";
+            comboSort.setValue(null);
+        }
+        else {
+            // Check if it should search for Productions or Rightsholders
+            for(ProductionType pType : ProductionType.values()) {
+                if(comboCategory.getValue().equals(pType.getTypeWord())) {
+                    searchFor = "production";
+                }
+            }
+            if(comboCategory.getValue().equals("Medvirkende")) {
+                searchFor = "person";
+            }
+        }
+
+        if(searchFor.equals("production") || searchFor.equals("both")) {
+            // SEARCH FUNCTION //
+            // Henter liste over alle productions
+            List<ISearchable> searchableList = new ArrayList<>(r.domainFacade.getProductions());
+            // Finder alle resultater som indeholder searchInput teksten
+            List<IProduction> productionList = new ArrayList<>();
+            productionList.addAll((Collection<? extends IProduction>) r.domainFacade.findMatch(searchableList, searchInput.getText()));
+
+            // SORTING FUNCTION //
+            // Get Genre
+            ProductionGenre pGenre = null;
+            for(ProductionGenre pg : ProductionGenre.values()) {
+                if(pg.getGenreWord().equals(comboGenre.getValue())) {
+                    pGenre = pg;
+                }
+            }
+
+            // Get Years
+            int yFrom = 1800;
+            int yTo = 3000;
+            if(!yearFrom.getText().equals("")) {
+                yFrom = Integer.parseInt(yearFrom.getText());
+            }
+            if(!yearTo.getText().equals("")) {
+                yTo = Integer.parseInt(yearTo.getText());
+            }
+            int[] years = new int[] {yFrom, yTo};
+
+            // Get Sort
+            ProductionType pType = null;
+            for(ProductionType pt : ProductionType.values()) {
+                if(pt.getTypeWord().equals(comboCategory.getValue())) {
+                    pType = pt;
+                }
+            }
+
+            List<IProduction> filteredList = r.domainFacade.filterProduction(productionList, years, pGenre, pType);
+
+            if(comboSort.getValue() != null) {
+                ProductionSorting pSort = null;
+                for(ProductionSorting ps : ProductionSorting.values()) {
+                    String temp = String.valueOf(ps);
+                    if(temp.equals(comboSort.getValue())) {
+                        pSort = ps;
+                    }
+                }
+                List<IProduction> sortedList = r.domainFacade.sortProductionBy(filteredList, pSort);
+                for(IProduction ip : sortedList) {
+                    System.out.println("name: " + ip.getName() + ", genre: " + ip.getGenre() + ", type: " + ip.getType());
+                    createMovie(ip.getName(), ip.getYear(), ip);
+                }
+            }
+            else{
+                for(IProduction ip : filteredList) {
+                    System.out.println("name: " + ip.getName() + ", genre: " + ip.getGenre() + ", type: " + ip.getType());
+                    createMovie(ip.getName(), ip.getYear(), ip);
+                }
+            }
+        }
+        if(searchFor.equals("person") || searchFor.equals("both")) {
+            // SEARCH FUNCTION //
+            // Henter liste over alle medvirkende
+            List<ISearchable> searchableList = new ArrayList<>(r.domainFacade.getRightsholders());
+            // Finder alle resultater som indeholder searchInput teksten
+            List<IRightsholder> rightsholderList = new ArrayList<>();
+            rightsholderList.addAll((Collection<? extends IRightsholder>) r.domainFacade.findMatch(searchableList, searchInput.getText()));
+
+            if(comboSort.getValue() != null) {
+                RightholderSorting rSort = null;
+                for(RightholderSorting rs : RightholderSorting.values()) {
+                    String temp = String.valueOf(rs);
+                    if(temp.equals(comboSort.getValue())) {
+                        rSort = rs;
+                    }
+                }
+                List<IRightsholder> sortedList = r.domainFacade.sortPersonBy(rightsholderList, rSort);
+                for(IRightsholder ir : sortedList) {
+                    createPerson(ir.getFirstName() + " " + ir.getLastName(), ir.getDescription(), ir);
+                }
+            }
+            else{
+                for(IRightsholder ir : rightsholderList) {
+                    createPerson(ir.getFirstName() + " " + ir.getLastName(), ir.getDescription(), ir);
+                }
+            }
+        }
     }
 
     public void resetScrollHeight() {
@@ -237,43 +323,43 @@ public class SearchController implements Initializable {
 
     public void onComboCategory(ActionEvent mouseEvent) {
         comboGenre.setDisable(true);
-        comboSort.setDisable(true);
 
         String value = comboCategory.getValue();
 
         if (value == null){
         }
-        else if (value.equals(ProductionType.FILM.getTypeWord())){
-            comboGenre.setDisable(false);
-            setComboSort("Production");
-        }
         // "Medvirkende" is not in the ProductionType Enums
         else if (value.equals("Medvirkende")){
             comboGenre.setDisable(true);
-
-            // todo : don't use CreditsSystem!!!!
-            List<IRightsholder> rightsholderList = CreditsSystem.getInstance().getAllRightsholders();
-            for(IRightsholder r : rightsholderList) {
-                createPerson(r.getFirstName() + " " + r.getLastName(), r.getDescription(), r);
-            }
+            setComboSort("Medvirkende");
+        }
+        else {
+            comboGenre.setDisable(false);
+            setComboSort("Production");
         }
     }
 
     private void setComboSort(String type) {
-        comboSort.setDisable(false);
         if(type.equals("Production")) {
             ObservableList<String> sortOptions = FXCollections.observableArrayList();
             for(ProductionSorting pSort : ProductionSorting.values()) {
                 sortOptions.add(String.valueOf(pSort));
             }
             comboSort.setItems(sortOptions);
+            comboSort.setValue(String.valueOf(ProductionSorting.NAME));
         }
-        else if(type.equals("Rightsholders")) {
+        else if(type.equals("Medvirkende")) {
             ObservableList<String> sortOptions = FXCollections.observableArrayList();
             for(RightholderSorting rSort : RightholderSorting.values()) {
                 sortOptions.add(String.valueOf(rSort));
             }
             comboSort.setItems(sortOptions);
+            comboSort.setValue(String.valueOf(RightholderSorting.FIRST_NAME));
         }
+    }
+
+    public void onEnter(ActionEvent actionEvent) {
+        searchResultBox.getChildren().clear();
+        search();
     }
 }

@@ -109,6 +109,10 @@ public class DomainFacade implements IDomainFacade {
         return CreditsSystem.getInstance().getProductions();
     }
 
+    public List<IRightsholder> getRightsholders() {
+        return CreditsSystem.getInstance().getAllRightsholders();
+    }
+
     @Override
     public boolean validateUser(IUser user) {
         return AuthenticationHandler.getUserInstance().validateUser(user);

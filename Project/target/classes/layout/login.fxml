@@ -33,7 +33,7 @@
                   <Font name="Calibri Bold" size="50.0" />
                </font>
             </Label>
-            <TextField fx:id="usernameInput" layoutX="32.0" layoutY="177.0" prefHeight="43.0" prefWidth="350.0" promptText="Brugernavn" style="-fx-background-radius: 3px;">
+            <TextField fx:id="usernameInput" onAction="#onEnter" layoutX="32.0" layoutY="177.0" prefHeight="43.0" prefWidth="350.0" promptText="Brugernavn" style="-fx-background-radius: 3px;">
                <font>
                   <Font size="16.0" />
                </font>
@@ -55,7 +55,7 @@
             </Label>
             <HBox layoutX="32.0" layoutY="252.0" prefHeight="43.0" prefWidth="350.0">
                <children>
-                  <PasswordField fx:id="passwordHiddenInput" prefHeight="43.0" prefWidth="310.0" promptText="Password" style="-fx-background-radius: 3px;">
+                  <PasswordField fx:id="passwordHiddenInput" onAction="#onEnter" prefHeight="43.0" prefWidth="310.0" promptText="Password" style="-fx-background-radius: 3px;">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -67,7 +67,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <TextField fx:id="passwordShownInput" layoutX="32.0" layoutY="252.0" prefHeight="43.0" prefWidth="308.0" promptText="Password" style="-fx-background-radius: 3px;" visible="false">
+            <TextField fx:id="passwordShownInput" onAction="#onEnter" layoutX="32.0" layoutY="252.0" prefHeight="43.0" prefWidth="308.0" promptText="Password" style="-fx-background-radius: 3px;" visible="false">
                <font>
                   <Font size="16.0" />
                </font>
