@@ -131,6 +131,7 @@ public class ManageUserController {
             searchUsernameRemove.setValue("");
             removeUserRoleField.clear();
             removeUserResult.setText("Brugeren: " +  removeUsername + " blev fjernet!");
+            removeUserResult.setText("Brugeren: " +  removeUsername + " blev fjernet!");
             removeUserResult.setTextFill(Color.web("#4BB543"));
             removeUserBtn.setDisable(true);
         } else {
