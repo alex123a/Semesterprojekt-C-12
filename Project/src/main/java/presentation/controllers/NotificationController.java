@@ -59,7 +59,7 @@ public class NotificationController implements Initializable {
         return viewed ? "Viewed" : "Not viewed";
     }
 
-    public void createNotification(String productionName, String productionID, String status, int index) {
+    public void createNotification(String productionName, String productionID, String status, String description, int index) {
             // VBox for all the labels
             VBox vbox = new VBox();
             Label labelName = new Label(productionName);
@@ -68,7 +68,9 @@ public class NotificationController implements Initializable {
             labelID.setFont(new Font(14));
             Label labelStatus = new Label("Status: " + status);
             labelStatus.setFont(new Font(14));
-            vbox.getChildren().addAll(labelName, labelID, labelStatus);
+            Label descriptionLabel = new Label(description);
+            labelStatus.setFont(new Font(14));
+            vbox.getChildren().addAll(labelName, labelID, labelStatus, descriptionLabel);
             vbox.setPrefWidth(585);
 
             // HBox for the whole notification
@@ -159,7 +161,7 @@ public class NotificationController implements Initializable {
             }
             System.out.println(notifications.size());
             System.out.println(notifications.get(i).getProduction().getName());
-            createNotification(notifications.get(i).getProduction().getName(), notifications.get(i).getProduction().getProductionID(), status, i);
+            createNotification(notifications.get(i).getProduction().getName(), notifications.get(i).getProduction().getProductionID(), status, notifications.get(i).getText(), i);
         }
     }
 
