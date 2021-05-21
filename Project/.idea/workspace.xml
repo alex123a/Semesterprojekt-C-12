@@ -24,27 +24,18 @@
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/reporting/ReportHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/searchEngine/SearchEngineHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/searchEngine/SearchEngineHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ProductionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/layout/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/search.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/Production.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/Production.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/searchEngine/SearchEngineHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/searchEngine/SearchEngineHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/search.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentation/Repository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/Repository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/BetterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/BetterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" afterDir="false" />
     </list>
     <list id="398e6fdf-0be6-40ca-90c6-9a77a5d92e74" name="Changes by alexv" comment="" />
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
@@ -222,26 +213,38 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="765" y="-854" key="#com.intellij.ide.util.MemberChooser" timestamp="1621587853283">
+      <screen x="0" y="-1080" width="1920" height="1040" />
+    </state>
+    <state x="765" y="-854" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621587853283" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1621514927913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1621514927913" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1621517007587">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1621588096401">
+      <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1621517007587" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1621517007587">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621588096401" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1621519690610" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1621588096401">
+      <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1621517007587" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1621517007587">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621588096401" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1621519690609" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1621588096400">
+      <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1621517007587" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1621517007587">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621588096400" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1621519690609" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1621588096401">
+      <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1621517007587" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621588096401" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1621519690610" />
+    <state x="660" y="-803" key="refactoring.ChangeSignatureDialog" timestamp="1621588034840">
+      <screen x="0" y="-1080" width="1920" height="1040" />
+    </state>
+    <state x="660" y="-803" key="refactoring.ChangeSignatureDialog/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1621588034840" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1621516640964">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

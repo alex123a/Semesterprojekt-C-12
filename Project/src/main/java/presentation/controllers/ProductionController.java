@@ -99,8 +99,10 @@ public class ProductionController implements Initializable {
     }
 
     public void goBack(MouseEvent mouseEvent) {
+        Repository r = Repository.getInstance();
+
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/" + r.getLastPage() + ".fxml"));
             Stage window = (Stage) movieLabel.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
 

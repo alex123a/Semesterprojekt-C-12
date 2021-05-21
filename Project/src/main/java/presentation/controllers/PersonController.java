@@ -37,12 +37,14 @@ public class PersonController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Repository r = Repository.getInstance();
+        System.out.println("name: " + r.getRightsholderToBeShown().getFirstName());
 
         setup(r.getRightsholderToBeShown().getFirstName() + " " + r.getRightsholderToBeShown().getLastName(), r.getRightsholderToBeShown().getDescription());
 
         for(IProduction p : r.getRightsholderToBeShown().getRightsholderFor()) {
             String roles = "";
-            for(String s : new CreditWrapper(r.getRightsholderToBeShown(), r.getProductionToBeShown().getRightsholders().get(r.getRightsholderToBeShown())).getRoles()) {
+            // new CreditWrapper(r.getRightsholderToBeShown(), p.getRightsholders().get(r.getRightsholderToBeShown())).getRoles()
+            for(String s : new CreditWrapper(r.getRightsholderToBeShown(), p.getRightsholders().get(r.getRightsholderToBeShown())).getRoles()) {
                 roles += s + ",";
             }
             createRole(p.getName(), roles, p);
@@ -100,8 +102,10 @@ public class PersonController implements Initializable {
 
     // Method to go back to the menu
     public void goBack(MouseEvent mouseEvent) {
+        Repository r = Repository.getInstance();
+
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/" + r.getLastPage() + ".fxml"));
             Stage window = (Stage) scrollpaneVBox.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
 

@@ -2,12 +2,16 @@ package presentation.controllers;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
-import Interfaces.ISearchable;
 import Interfaces.IUser;
 import domain.CreditsManagement.CreditsSystem;
 import domain.DomainFacade;
+import enumerations.ProductionGenre;
+import enumerations.ProductionSorting;
+import enumerations.ProductionType;
+import enumerations.RightholderSorting;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -53,15 +57,22 @@ public class SearchController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> categoryOptions = FXCollections.observableArrayList("Serier", "Film", "Reality", "Underholdning", "Stand up", "Dokumentar", "Rejser og Eventyr", "Livsstil", "Magasiner", "Medvirkende");
+        comboGenre.setDisable(true);
+
+        ObservableList<String> categoryOptions = FXCollections.observableArrayList();
+        for(ProductionType pType : ProductionType.values()) {
+            categoryOptions.add(pType.getTypeWord());
+        }
         comboCategory.setItems(categoryOptions);
-        ObservableList<String> genreOptions = FXCollections.observableArrayList("Krimi", "Action", "Komedie", "Drama", "Romance", "Fantasy", "Eventyr", "Gyser", "Thriller");
+
+        ObservableList<String> genreOptions = FXCollections.observableArrayList();
+        for(ProductionGenre pGenre : ProductionGenre.values()) {
+            genreOptions.add(pGenre.getGenreWord());
+        }
         comboGenre.setItems(genreOptions);
-        ObservableList<String> sortOptions = FXCollections.observableArrayList("Alfabetisk", "Dato");
-        comboSort.setItems(sortOptions);
     }
 
-    public void createMovie(String movieName, String year, IProduction production) {
+    public void createMovie(String movieName, int year, IProduction production) {
         HBox notificationPane = new HBox();
         notificationPane.setAlignment(Pos.CENTER);
         notificationPane.setPrefHeight(50);
@@ -72,6 +83,7 @@ public class SearchController implements Initializable {
             public void handle(Event event) {
                 Repository r = Repository.getInstance();
                 r.setProductionToBeShown(production);
+                r.setLastPage("search");
 
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("/layout/production.fxml"));
@@ -88,7 +100,7 @@ public class SearchController implements Initializable {
         labelBox.setPrefWidth(650);
 
         Label movieLabel = new Label(movieName);
-        Label yearLabel = new Label(year);
+        Label yearLabel = new Label("" + year);
 
         labelBox.getChildren().addAll(movieLabel, yearLabel);
 
@@ -118,6 +130,7 @@ public class SearchController implements Initializable {
             public void handle(Event event) {
                 Repository r = Repository.getInstance();
                 r.setRightsholderToBeShown(rightsholder);
+                r.setLastPage("search");
 
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("/layout/person.fxml"));
@@ -153,7 +166,7 @@ public class SearchController implements Initializable {
         searchResultBox.getChildren().add(notificationPane);
     }
 
-    public void onComboBoxSelection(){
+    public void checkComboBoxSelection(){
         String value = comboCategory.getValue();
         if (value == null){
             return;
@@ -164,7 +177,7 @@ public class SearchController implements Initializable {
             // Make it search for only the chosen category
             // Right now it gets all when choosing "Film"
             for(IProduction ip : CreditsSystem.getInstance().getProductions()) {
-                createMovie(ip.getName(), "2021", ip);
+                createMovie(ip.getName(), ip.getYear(), ip);
             }
         } else if (value.equals("Medvirkende")){
             comboGenre.setDisable(true);
@@ -214,10 +227,54 @@ public class SearchController implements Initializable {
 
         searchResultBox.getChildren().clear();
         //todo : Call search
-        onComboBoxSelection();
+        checkComboBoxSelection();
     }
 
     public void resetScrollHeight() {
         scrollPane.setVvalue(0.0);
+    }
+
+    public void onComboCategory(ActionEvent mouseEvent) {
+        comboGenre.setDisable(true);
+        comboSort.setDisable(true);
+
+        String value = comboCategory.getValue();
+
+        // todo : Mangler "Medvirkende" i ProductionType
+
+        if (value == null){
+        }
+        else if (value.equals(ProductionType.FILM.getTypeWord())){
+            comboGenre.setDisable(false);
+            setComboSort("Production");
+        }
+        else if (value.equals("Medvirkende")){
+            comboGenre.setDisable(true);
+
+            // todo : Use Search to get all rightsholders
+
+            List<IRightsholder> rightsholderList = CreditsSystem.getInstance().getAllRightsholders();
+            for(IRightsholder r : rightsholderList) {
+                createPerson(r.getFirstName() + " " + r.getLastName(), r.getDescription(), r);
+            }
+        }
+    }
+
+    private void setComboSort(String type) {
+        comboSort.setDisable(false);
+        if(type.equals("Production")) {
+            ObservableList<String> sortOptions = FXCollections.observableArrayList();
+            for(ProductionSorting pSort : ProductionSorting.values()) {
+                sortOptions.add(String.valueOf(pSort));
+            }
+            comboSort.setItems(sortOptions);
+        }
+        else if(type.equals("Rightsholders")) {
+            ObservableList<String> sortOptions = FXCollections.observableArrayList();
+            for(RightholderSorting rSort : RightholderSorting.values()) {
+                sortOptions.add(String.valueOf(rSort));
+            }
+            comboSort.setItems(sortOptions);
+        }
     }
 }
