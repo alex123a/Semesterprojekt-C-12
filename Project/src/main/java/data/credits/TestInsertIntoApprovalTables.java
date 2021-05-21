@@ -1,6 +1,7 @@
 package data.credits;
 
 import Interfaces.IProducer;
+import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import data.userHandling.Producer;
 import data.userHandling.UserFacade;
@@ -17,6 +18,7 @@ import java.util.Map;
 
 public class TestInsertIntoApprovalTables {
     public static void main(String[] args) {
+        /*
         Map<IRightsholder, List<String>> map = new HashMap<>();
         List<String> roles1 = new ArrayList<>();
         List<String> roles2 = new ArrayList<>();
@@ -38,5 +40,10 @@ public class TestInsertIntoApprovalTables {
                 producer,
                 map);
         FacadeData.getInstance().saveProduction(production);
+         */
+        IProduction toBeChanged = FacadeData.getInstance().getProductions().get(0);
+        toBeChanged.setDescription("New description for an afsnit of the badehotel");
+        FacadeData.getInstance().saveProduction(toBeChanged);
+
     }
 }
