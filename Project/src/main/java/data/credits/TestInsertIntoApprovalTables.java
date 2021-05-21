@@ -22,16 +22,16 @@ public class TestInsertIntoApprovalTables {
         List<String> roles2 = new ArrayList<>();
         List<String> roles3 = new ArrayList<>();
         roles1.add("Medvirkende: Moses");
-        map.put(RightsHolderHandler.getInstance().getRightsholder(3), roles1);
+        map.put(RightsHolderHandler.getInstance().getRightsholder(4), roles1);
         roles2.add("Medvirkende: Jesus");
-        map.put(RightsHolderHandler.getInstance().getRightsholder(5), roles2);
+        map.put(RightsHolderHandler.getInstance().getRightsholder(6), roles2);
         roles3.add("Casting");
-        map.put(RightsHolderHandler.getInstance().getRightsholder(7), roles3);
-        Producer producer = (Producer) DomainFacade.getInstance().getUser(new User("john", "john123"));
+        map.put(RightsHolderHandler.getInstance().getRightsholder(8), roles3);
+        Producer producer = (Producer) DomainFacade.getInstance().getUser(new User("badehotellet", "badehotellet123"));
         NewProduction production = new NewProduction(
-                "ID6543",
-                "ApprovalTest2",
-                "Tests approvals with producers",
+                "ID1234",
+                "ApprovalTest3",
+                "Tests for testing the getProduction for approval",
                 2021,
                 ProductionGenre.DRAMA,
                 ProductionType.COMEDY,

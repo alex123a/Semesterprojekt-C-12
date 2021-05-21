@@ -72,6 +72,8 @@ class ProductionHandler {
     }
 
     IProduction saveProduction(IProduction production){
+
+        //TODO insert ALL appears in and role and so on instead of just the onse that have been changed
         
         PreparedStatement insertStatement = null;
 
