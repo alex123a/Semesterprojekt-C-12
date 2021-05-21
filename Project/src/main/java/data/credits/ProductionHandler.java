@@ -4,6 +4,7 @@ import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import Interfaces.IUser;
 import data.DatabaseConnection;
+import data.userHandling.Producer;
 import enumerations.ProductionGenre;
 import enumerations.ProductionType;
 import presentation.userManage.Systemadministrator;
@@ -67,10 +68,8 @@ class ProductionHandler {
         }
     }
 
-    IProduction saveProduction(IProduction production) {
-        //TODO insert Producer id
-        //TODO All the statement.set() calls could be refactored
-
+    IProduction saveProduction(IProduction production){
+        
         PreparedStatement insertStatement = null;
 
         if (production instanceof Production) {
@@ -88,23 +87,24 @@ class ProductionHandler {
                     //Run this if the production is already in the approval table
                     insertStatement = connection.prepareStatement("" +
                             "UPDATE production_approval " +
-                            "SET own_production_id=?, production_name=?, year=?, genre_id=?, category_id=?" +
+                            "SET own_production_id=?, production_name=?, year=?, genre_id=?, category_id=?, producer_id=?" +
                             "WHERE id = ?" +
-                            "RETURNING id, own_production_id, production_name, description, year, genre_id, category_id;");
+                            "RETURNING id, own_production_id, production_name, description, year, genre_id, category_id, producer_id;");
                     insertStatement.setString(1, p.getProductionID());
                     insertStatement.setString(2, p.getName());
                     insertStatement.setInt(3, p.getYear());
                     insertStatement.setInt(4, p.getGenre().getId());
                     insertStatement.setInt(5, p.getType().getId());
                     insertStatement.setInt(6, p.getID());
+                    insertStatement.setInt(7, p.getProducer().getId());
                 } else {
 
                     //TODO hasn't been tested
                     //Run this if there's no changes for this production in the approval table
                     insertStatement = connection.prepareStatement("" +
-                            "INSERT INTO production_approval (id, own_production_id, production_name, year, genre_id, category_id, description) " +
-                            "VALUES (?, ?, ?, ?, ?, ?, ?) " +
-                            "RETURNING id, own_production_id, production_name, description, year, genre_id, category_id;");
+                            "INSERT INTO production_approval (id, own_production_id, production_name, year, genre_id, category_id, description, producer_id) " +
+                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?) " +
+                            "RETURNING id, own_production_id, production_name, description, year, genre_id, category_id, producer_id;");
                     insertStatement.setInt(1, p.getID());
                     insertStatement.setString(2, p.getProductionID());
                     insertStatement.setString(3, p.getName());
@@ -112,6 +112,7 @@ class ProductionHandler {
                     insertStatement.setInt(5, p.getGenre().getId());
                     insertStatement.setInt(6, p.getType().getId());
                     insertStatement.setString(7, p.getDescription());
+                    insertStatement.setInt(8, p.getProducer().getId());
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -121,20 +122,23 @@ class ProductionHandler {
             //Run this if the production is a new production
             try {
 
-                //TODO THE HARDCODED VALUE FOR PRODUCER_ID IS FOR TESTING PURPOSE AND SHOULD BE CHANGED
                 insertStatement = connection.prepareStatement("" +
                         "INSERT INTO production_approval (own_production_id, production_name, year, genre_id, category_id, producer_id, description) " +
-                        "VALUES (?, ?, ?, ?, ?, 2, ?) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?) " +
                         "RETURNING id, own_production_id, production_name, description, year, genre_id, category_id;");
                 insertStatement.setString(1, production.getProductionID());
                 insertStatement.setString(2, production.getName());
                 insertStatement.setInt(3, production.getYear());
                 insertStatement.setInt(4, production.getGenre().getId());
                 insertStatement.setInt(5, production.getType().getId());
-                insertStatement.setString(6, production.getDescription());
+                insertStatement.setInt(6, production.getProducer().getId());
+                insertStatement.setString(7, production.getDescription());
 
+                //Saves any changes to the rightsholders (First or last name could have been changed
                 Map<IRightsholder, List<String>> rightsholders = production.getRightsholders();
-                //TODO SAVE RIGHTSHOLDERS
+                for (IRightsholder rightsholder: rightsholders.keySet()) {
+                    RightsHolderHandler.getInstance().saveRightsholder(rightsholder);
+                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
