@@ -8,6 +8,10 @@ public class Producer extends User implements IProducer {
         super(ID);
     }
 
+    public Producer(String username) {
+        super(username);
+    }
+
     public Producer(String username, String password) {
         super(username, password);
     }

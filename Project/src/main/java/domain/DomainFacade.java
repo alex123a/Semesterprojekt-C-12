@@ -7,6 +7,7 @@ import domain.authentication.AuthenticationHandler;
 import domain.notification.ProducerNotification;
 import domain.notification.AdminNotification;
 import domain.searchEngine.SearchEngineHandler;
+import domain.searchEngine.SearchUserHandler;
 import domain.session.CurrentSession;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
@@ -234,5 +235,15 @@ public class DomainFacade implements IDomainFacade {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public String getInfoFromSearch(String search, String resultType) {
+        return SearchUserHandler.getInstance().getInfoFromSearch(search, resultType);
+    }
+
+    @Override
+    public List<IUser> getUsersBySearch(IUser user) {
+        return PersistenceFacade.getInstance().getUsersBySearch(user);
     }
 }

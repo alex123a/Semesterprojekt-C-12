@@ -10,5 +10,6 @@ public interface IDomainFacade extends
         IUserHandling,
         ISession,
         INotificationHandler,
-        INotificationProvider {
+        INotificationProvider,
+        ISearchUser{
 }

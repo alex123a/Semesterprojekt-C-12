@@ -3,6 +3,7 @@ package presentation.controllers;
 import Interfaces.IAdministrator;
 import Interfaces.INotification;
 import Interfaces.IProducer;
+import Interfaces.IProduction;
 import domain.DomainFacade;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -163,10 +164,11 @@ public class NotificationController implements Initializable {
             System.out.println(notifications.get(i).getProduction().getName());
             createNotification(notifications.get(i).getProduction().getName(), notifications.get(i).getProduction().getProductionID(), status, notifications.get(i).getText(), i);
         }
-
-        for (INotification notification : notifications) {
-            notification.setViewed(true);
-            domain.editProducerNotification(notification);
+        if (domain.getCurrentUser() instanceof IProducer) {
+            for (INotification notification : notifications) {
+                notification.setViewed(true);
+                domain.editProducerNotification(notification);
+            }
         }
 
     }
