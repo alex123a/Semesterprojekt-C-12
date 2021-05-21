@@ -75,8 +75,8 @@ public class EditProductionController implements Initializable {
 
     @FXML
     void OnClickedSaveChanges(ActionEvent event) {
-        domain.setProductionID(toEdit, programIDField.getText());
-        domain.setName(toEdit, programNameField.getText());
+        toEdit.setProductionID(programIDField.getText());
+        toEdit.setName(programNameField.getText());
 
         CreditWrapper[] rightsholders = rightholderListview.getItems().toArray(new CreditWrapper[0]);
         // Map over rightholders with their roles
@@ -85,8 +85,8 @@ public class EditProductionController implements Initializable {
             RhsRoles.put(credit.getRightsholder(), credit.getRoles());
         }
 
-        domain.setRoles(toEdit, RhsRoles);
-        domain.saveChanges();
+        toEdit.setRightsholders(RhsRoles);
+        domain.saveProduction(toEdit);
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
