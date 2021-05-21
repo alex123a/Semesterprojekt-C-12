@@ -3,7 +3,9 @@ package data;
 import Interfaces.*;
 import data.credits.FacadeData;
 import data.notifications.NotificationHandler;
+import data.reporting.ReportHandler;
 import data.userHandling.UserFacade;
+import org.json.simple.JSONObject;
 
 import java.util.List;
 import java.util.Map;
@@ -43,6 +45,11 @@ public class PersistenceFacade implements IPersistenceFacade {
     @Override
     public String getDatabasePassword(IUser user) {
         return UserFacade.getInstance().getDatabasePassword(user);
+    }
+
+    @Override
+    public List<IUser> getUsersBySearch(IUser user) {
+        return UserFacade.getInstance().getUsersBySearch(user);
     }
 
     @Override
@@ -87,8 +94,8 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public boolean createAdminNotification(INotification notification, IProduction production) {
-        return NotificationHandler.getInstance().createAdminNotification(notification, production);
+    public boolean createAdminNotification(INotification notification) {
+        return NotificationHandler.getInstance().createAdminNotification(notification);
     }
 
     @Override
@@ -122,37 +129,28 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public int countUnreadAdminNotifications() {
-        return NotificationHandler.getInstance().countUnreadAdminNotifications();
-    }
-
-    @Override
-    public int countUnreadProducerNotifications(IUser user) {
-        return NotificationHandler.getInstance().countUnreadProducerNotifications(user);
-    }
-
-    @Override
     public int getTotalCreditCount() {
-        throw new UnsupportedOperationException();
+        return ReportHandler.getInstance().getTotalCreditCount();
     }
 
     @Override
-    public int generateProductionCreditsCount(IProduction production, String title) {
-        throw new UnsupportedOperationException();
+    public Map<String, Integer> generateProductionCreditsCount(IProduction production) {
+        return ReportHandler.getInstance().generateProductionCreditsCount(production);
     }
 
     @Override
-    public int generateCreditTypeCount(String type) {
-        throw new UnsupportedOperationException();
+    public Map<String, Integer> generateCreditTypeCount() {
+        return ReportHandler.getInstance().generateCreditTypeCount();
     }
 
     @Override
-    public Map<Integer, Integer> generate10MostCredited() {
-        throw new UnsupportedOperationException();
+    public Map<String, Integer> generate10MostCredited() {
+        return ReportHandler.getInstance().generate10MostCredited();
     }
 
     @Override
-    public void generateCreditsReport() {
-        throw new UnsupportedOperationException();
+    public List<String> generateCreditsReport() {
+        return ReportHandler.getInstance().generateCreditsReport();
     }
+
 }

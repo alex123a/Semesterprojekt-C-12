@@ -10,7 +10,6 @@ public class UserAuthentication implements IUserAuthentication {
 
     @Override
     public boolean validateUser(IUser user) {
-        System.out.println(user);
         return user instanceof IAdministrator;
     }
 
