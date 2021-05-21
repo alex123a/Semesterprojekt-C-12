@@ -87,7 +87,7 @@ class ProductionHandler {
                 ResultSet result = getProductionStatement.executeQuery();
 
                 if (result.next()) {
-
+                    //TODO hasn't been tested
                     //Run this if the production is already in the approval table
                     insertStatement = connection.prepareStatement("" +
                             "UPDATE production_approval " +
@@ -102,6 +102,7 @@ class ProductionHandler {
                     insertStatement.setInt(6, p.getID());
                 } else {
 
+                    //TODO hasn't been tested
                     //Run this if there's no changes for this production in the approval table
                     insertStatement = connection.prepareStatement("" +
                             "INSERT INTO production_approval (id, own_production_id, production_name, year, genre_id, category_id, description) " +
@@ -136,6 +137,7 @@ class ProductionHandler {
                 insertStatement.setString(6, production.getDescription());
 
                 Map<IRightsholder, List<String>> rightsholders = production.getRightsholders();
+                //TODO SAVE RIGHTSHOLDERS
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
