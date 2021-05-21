@@ -119,8 +119,6 @@ public class NotificationController implements Initializable {
             // HBox style
             hbox.getStylesheets().add(getClass().getResource("/stylesheets/hboxStyle.css").toExternalForm());
             hbox.getStyleClass().add("hbox");
-            hboxhbox.getStylesheets().add(getClass().getResource("/stylesheets/hboxStyle.css").toExternalForm());
-            hbox.getStyleClass().add("hbox");
             hbox.setOnMouseClicked(new EventHandler() {
                 @Override
                 public void handle(Event event) {
@@ -141,7 +139,6 @@ public class NotificationController implements Initializable {
 
             // Add HBox to the VBox in the scrollpane
             notificationBox.getChildren().addAll(hbox);
-
     }
 
     public void loadNotifications() {

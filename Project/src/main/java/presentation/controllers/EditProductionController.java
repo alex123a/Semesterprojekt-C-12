@@ -1,6 +1,5 @@
 package presentation.controllers;
 
-import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import domain.DomainFacade;
@@ -18,7 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.CreditWrapper;
-import presentation.NewProduction;
 import presentation.NewRightsholder;
 import presentation.Repository;
 
@@ -146,7 +144,7 @@ public class EditProductionController implements Initializable {
         programNameField.setText(toEdit.getName());
         genreField.setText(toEdit.getGenre().getGenreWord());
         typeField.setText(toEdit.getType().getTypeWord());
-        producerField.setText("MISSING");
+        producerField.setText(toEdit.getProducer().getUsername());
 
 
         //Doesn't work because of the persistence-layer
