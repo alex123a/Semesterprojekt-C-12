@@ -6,6 +6,8 @@ import Interfaces.IUser;
 import data.DatabaseConnection;
 import enumerations.ProductionGenre;
 import enumerations.ProductionType;
+import presentation.userManage.Systemadministrator;
+import presentation.userManage.User;
 
 import java.sql.*;
 import java.util.*;
@@ -343,7 +345,26 @@ class ProductionHandler {
         }
     }
 
-    public List<Production> getProductionsChanged(IUser user) {
+    public List<IProduction> getProductionChanged(IUser user) {
+        if (user instanceof Systemadministrator) {
+            List<IProduction> productions = new ArrayList<>();
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT producer.id, users.username, users.user_password FROM producer, users WHERE users.id = producer.id");
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    productions.addAll(getProductionsChanged(new User(resultSet.getInt("id"),resultSet.getString("username"),resultSet.getString("user_password"))));
+                }
+                return productions;
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        } else {
+            return new ArrayList<>(getProductionsChanged(user));
+        }
+        return null;
+    }
+
+    private List<Production> getProductionsChanged(IUser user) {
         //Hente productions for producer
         List<Production> productions = new ArrayList<>();
         try {
@@ -369,11 +390,15 @@ class ProductionHandler {
             ResultSet proResult = productionsStatement.executeQuery();
             while (proResult.next()) {
                 if (proResult.getString(3) != null) {
+                    boolean contains = false;
                     Production p = getProductionFromResultset(proResult);
                     for (Production production : productions) {
-                        if (production.getID() != p.getID()) {
-                            productions.add(p);
+                        if (production.getID() == p.getID()) {
+                            contains = true;
                         }
+                    }
+                    if (!contains) {
+                        productions.add(p);
                     }
                 }
             }
@@ -399,7 +424,7 @@ class ProductionHandler {
                     "appears_in_approval LEFT JOIN role_approval ON appears_in_approval.id = role_approval.appears_in_id " +
                     "LEFT JOIN title ON role_approval.title_id = title.id " +
                     "LEFT JOIN rolename ON role_approval.id = rolename.role_id " +
-                    "WHERE appears_in_approval.production_id = ?" +
+                    "WHERE appears_in_approval.production_id = ? " +
                     "AND appears_in_approval.rightsholder_id = ?");
             rolesStatement.setInt(1, productionsResult.getInt(1));
             rolesStatement.setInt(2, id);
