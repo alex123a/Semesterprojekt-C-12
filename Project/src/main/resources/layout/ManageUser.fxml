@@ -65,7 +65,7 @@
                               <Font name="Calibri" size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="addUserResult" alignment="CENTER" contentDisplay="CENTER" layoutY="322.0" prefHeight="50.0" prefWidth="434.0" textAlignment="CENTER" textFill="#04ff00">
+                        <Label fx:id="addUserResult" alignment="CENTER" contentDisplay="CENTER" layoutY="295.0" prefHeight="85.0" prefWidth="434.0" textAlignment="CENTER" textFill="#04ff00">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -118,7 +118,7 @@
                               <Font name="System Bold" size="30.0" />
                            </font>
                         </Label>
-                        <Label fx:id="changeUserResult" alignment="CENTER" contentDisplay="CENTER" layoutY="322.0" prefHeight="50.0" prefWidth="434.0" textAlignment="CENTER" textFill="#04ff00">
+                        <Label fx:id="changeUserResult" alignment="CENTER" contentDisplay="CENTER" layoutY="295.0" prefHeight="85.0" prefWidth="434.0" textAlignment="CENTER" textFill="#04ff00">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -157,7 +157,7 @@
                               <Font name="Calibri Bold" size="28.0" />
                            </font>
                         </Label>
-                        <Label fx:id="removeUserResult" alignment="CENTER" contentDisplay="CENTER" layoutY="322.0" prefHeight="50.0" prefWidth="434.0" textAlignment="CENTER" textFill="#04ff00">
+                        <Label fx:id="removeUserResult" alignment="CENTER" contentDisplay="CENTER" layoutY="295.0" prefHeight="85.0" prefWidth="434.0" textAlignment="CENTER" textFill="#04ff00">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>

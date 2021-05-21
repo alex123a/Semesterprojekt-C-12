@@ -131,7 +131,7 @@ public class ManageUserController {
             removeUserResult.setTextFill(Color.web("#4BB543"));
             removeUserBtn.setDisable(true);
         } else {
-            removeUserResult.setText("Error: Something went wrong, try again. \nMake sure that the user exist!");
+            removeUserResult.setText("Error: Something went wrong, try again. \nMake sure that the user exist! \n You can not remove yourself!");
             removeUserResult.setTextFill(Color.web("#FF0000"));
             removeUserBtn.setDisable(false);
         }

@@ -121,7 +121,7 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public boolean deleteUser(IUser user) {
         IUser currentUser = Repository.getInstance().domainFacade.getCurrentUser();
-        if (validateUser(currentUser) && user != null) {
+        if (validateUser(currentUser) && user != null && !currentUser.getUsername().equals(user.getUsername())) {
             return PersistenceFacade.getInstance().deleteUser(user);
         }
         return false;
