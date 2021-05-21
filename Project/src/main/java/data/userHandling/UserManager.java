@@ -118,20 +118,20 @@ public class UserManager implements IUserHandling {
     @Override
     public List<IUser> getUsersBySearch(IUser tempUser) {
         List<IUser> matches = new ArrayList<>();
-        IUser user;
+        IUser user = null;
         try {
-            PreparedStatement selectStatement = connection.prepareStatement("SELECT id, username FROM users WHERE username LIKE %?%");
-            selectStatement.setString(1, tempUser.getUsername());
+            String searchPatteren = "%" + tempUser.getUsername() + "%";
+            PreparedStatement selectStatement = connection.prepareStatement("SELECT id, username FROM users WHERE username LIKE ?");
+            selectStatement.setString(1, searchPatteren);
             ResultSet selectResult = selectStatement.executeQuery();
-            PreparedStatement selectProducerId = connection.prepareStatement("SELECT id FROM producers WHERE id = ?");
-            selectProducerId.setInt(1, selectResult.getInt("id"));
-            ResultSet producerIdResult = selectProducerId.executeQuery();
-            PreparedStatement selectAdministratorId = connection.prepareStatement("SELECT id FROM administrator WHERE id = ?");
-            selectAdministratorId.setInt(1, selectResult.getInt("id"));
-            ResultSet administratorIdResult = selectProducerId.executeQuery();
             while(selectResult.next()) {
-                if(producerIdResult.getInt("id") == selectResult.getInt("id")) {
-                    user = new Producer(selectResult.getString("username"));
+                PreparedStatement selectProducerId = connection.prepareStatement("SELECT id FROM producer WHERE id = ?");
+                selectProducerId.setInt(1, selectResult.getInt("id"));
+                ResultSet producerIdResult = selectProducerId.executeQuery();
+                if (producerIdResult.next()) {
+                    if(producerIdResult.getInt("id") == selectResult.getInt("id")) {
+                        user = new Producer(selectResult.getString("username"));
+                    }
                 } else {
                     user = new SystemAdministrator(selectResult.getString("username"));
                 }

@@ -145,18 +145,20 @@ public class ManageUserController {
         System.out.println(tab1.isSelected());
         List<IUser> matchedUsers;
         ObservableList<String> userInfo = FXCollections.observableArrayList();
-
+        IUser tempUser;
         if (tab2.isSelected()) {
             String searchUsernameEditText = searchUsernameEdit.getEditor().getText();
-            matchedUsers = searchUsers(searchUsernameEditText);
+            tempUser = new User(searchUsernameEditText);
+            matchedUsers = Repository.getInstance().domainFacade.getUsersBySearch(tempUser);
             searchUsernameEdit.setItems(createList(matchedUsers));
         } else {
             String searchUsernameRemoveText = searchUsernameRemove.getEditor().getText();
-            matchedUsers = searchUsers(searchUsernameRemoveText);
+            tempUser = new User(searchUsernameRemoveText);
+            matchedUsers = Repository.getInstance().domainFacade.getUsersBySearch(tempUser);
             searchUsernameRemove.setItems(createList(matchedUsers));
         }
-        
-//        ObservableList<IUser> matchedUsers = Repository.getInstance().domainFacade.searchUsers(searchUsername)
+        System.out.println(matchedUsers);
+//      ObservableList<IUser> matchedUsers = Repository.getInstance().domainFacade.searchUsers(searchUsername)
     }
 
     private ObservableList<String> createList(List<IUser> list) {
