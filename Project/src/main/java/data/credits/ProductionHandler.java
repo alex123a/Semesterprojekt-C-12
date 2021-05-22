@@ -7,6 +7,7 @@ import enumerations.ProductionGenre;
 import enumerations.ProductionType;
 import jdk.jshell.spi.ExecutionControl;
 
+import java.awt.color.ICC_ProfileRGB;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -102,8 +103,6 @@ class ProductionHandler {
                     insertStatement.setInt(6, p.getID());
                 } else {
 
-                    //TODO hasn't been tested
-                    //Run this if there's no changes for this production in the approval table
                     insertStatement = connection.prepareStatement("" +
                             "INSERT INTO production_approval (id, own_production_id, production_name, year, genre_id, category_id, description) " +
                             "VALUES (?, ?, ?, ?, ?, ?, ?) " +
@@ -328,24 +327,213 @@ class ProductionHandler {
 
     public void approveChangesToProduction(IProduction production) {
         //todo finish implementation
-        //production is always persistense production. Therefore instant typecast.
+        //production is always persistence production. Therefore instant typecast.
         //is used for id. Pull information out of approved table, put it into table, then delete
         Production prod = (Production) production;
-
+        int prodID = prod.getID();
         try{
             //if id exists in table, overwrite
             //if not, create new
             //if full null, delete
             PreparedStatement prodStatement = connection.prepareStatement("SELECT 1 FROM production WHERE id = ?");
-            prodStatement.setInt(1, prod.getID());
+            prodStatement.setInt(1, prodID);
             ResultSet res = prodStatement.executeQuery();
 
+            PreparedStatement approvalDeleteStatement = null;
+            //if its id exists in production table
             if(res.next()){
+                //overwrite
+                //delete
 
+                //if production has all values equal to null
+                if (prod.equals(new Production(prodID,null,null,null,0,null,null,null))){
+                    PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM production WHERE id = ?");
+                    deleteStatement.setInt(1, prodID);
+                    deleteStatement.execute();
+                } //if production values does not equal null, it must overwrite
+                else {
+                    PreparedStatement overwriteStatement = connection.prepareStatement("UPDATE production " +
+                            "SET own_production_id = ?, production_name = ?, year = ?, genre_id = ?, category_id = ?, producer_id = ?, description = ? WHERE id = ?");
+                    overwriteStatement.setString(1,prod.getProductionID());
+                    overwriteStatement.setString(2,prod.getName());
+                    overwriteStatement.setInt(3,prod.getYear());
+                    overwriteStatement.setInt(4,prod.getGenre().getId());
+                    overwriteStatement.setInt(5,prod.getType().getId());
+                    //TODO implement get producer id in statement
+                    //overwriteStatement.setInt(6,prod.getProducerId());
+                    overwriteStatement.setString(7,prod.getDescription());
+                    overwriteStatement.setInt(8,prodID);
+
+                    overwriteStatement.execute();
+
+                }
+
+            } else{
+                //insert new
+                PreparedStatement newStatement = connection.prepareStatement("INSERT INTO production " +
+                        "(own_production_id, production_name , year , genre_id , category_id , producer_id , description, id) " +
+                        "VALUES (?, ?, ? , ? , ? , ? , ? , ?)");
+                newStatement.setString(1,prod.getProductionID());
+                newStatement.setString(2,prod.getName());
+                newStatement.setInt(3,prod.getYear());
+                newStatement.setInt(4,prod.getGenre().getId());
+                newStatement.setInt(5,prod.getType().getId());
+                //TODO implement get producer id in statement
+                //newStatement.setInt(6,prod.getProducerId());
+                newStatement.setString(7,prod.getDescription());
+                newStatement.setInt(8,prodID);
+            }
+            //delete the production from approval table
+            approvalDeleteStatement = connection.prepareStatement("DELETE FROM production_approval WHERE id = ?");
+            approvalDeleteStatement.setInt(1, prodID);
+            approvalDeleteStatement.execute();
+
+
+            //appears in table
+
+            Set<IRightsholder> prodRightsholdersSet = prod.getRightsholders().keySet();
+            Rightsholder[] appearsR = (Rightsholder[]) prodRightsholdersSet.toArray();
+
+            //gets rightsholder id (Where id is not null) and appears_in tuple id from appears_in table
+            PreparedStatement appearsStatement = connection.prepareStatement("SELECT rightsholder_id, id FROM appears_in WHERE production_id = ?");
+            appearsStatement.setInt(1, prodID);
+            ResultSet appearsInProd = appearsStatement.executeQuery();
+
+            //gets only appears_in tuple id from approval table WHERE prod and rights id are null
+            PreparedStatement toBeDeletedApproveIdStatement = connection.prepareStatement("SELECT id FROM appears_in_approval WHERE production_id = ? AND production_id = null AND rightsholder_id = null ");
+            toBeDeletedApproveIdStatement.setInt(1,prodID);
+            ResultSet appearsInProdApproval = toBeDeletedApproveIdStatement.executeQuery();
+
+
+            //maps all ids which need to be deleted to an array
+            List<Integer> appearsInToBeDeleted = new ArrayList<>();
+            while(appearsInProdApproval.next()){
+                appearsInToBeDeleted.add(appearsInProdApproval.getInt(1));
             }
 
+            //
+            List<Integer> appearsRighstholderIDArray = new ArrayList<>();
+            //array for tuple id's in regular table
+            List<Integer> appearsIDArray = new ArrayList<>();
+            while(appearsInProd.next()){
+                appearsRighstholderIDArray.add(appearsInProd.getInt(1));
+                appearsIDArray.add(appearsInProd.getInt(2));
+            }
+
+            //deletes tuples in both tables, where id is equal to an id that needs to be removed
+            PreparedStatement toBeDeletedStatement = connection.prepareStatement("DELETE FROM appears_in WHERE id = ?");
+            PreparedStatement toBeDeletedApproveStatement = connection.prepareStatement("DELETE FROM appears_in_approval WHERE id = ?");
+            for (Integer i : appearsInToBeDeleted){
+                if (appearsIDArray.contains(i)){
+                    toBeDeletedStatement.setInt(1,i);
+                    toBeDeletedApproveStatement.setInt(1,i);
+                    //removes deleted id from id array
+                    appearsIDArray.remove(i);
+
+                    toBeDeletedStatement.addBatch();
+                    toBeDeletedApproveStatement.addBatch();
+                }
+            }
+            toBeDeletedStatement.executeBatch();
+            toBeDeletedApproveStatement.executeBatch();
+
+            //create map to get approval id from rightsholder id
+            PreparedStatement appearsInApprovalIdStatment = connection.prepareStatement("SELECT rightsholder_id , id FROM appears_in_approval WHERE production_id = ?");
+            appearsInApprovalIdStatment.setInt(1, prodID);
+            ResultSet appearsInApprovalIdResult = appearsInApprovalIdStatment.executeQuery();
+            //Map <RightsholderID, ApprovalID>
+            Map<Integer, Integer> rightsholderIdMap = new HashMap<>();
+
+            while(appearsInApprovalIdResult.next()){
+                rightsholderIdMap.put(appearsInApprovalIdResult.getInt(1),appearsInApprovalIdResult.getInt(2));
+            }
+
+
+            //adds rightsholder id with prod id to appears in table
+            PreparedStatement newAppearsStatement = connection.prepareStatement("INSERT INTO appears_in (id, production_id, rightsholder_id) VALUES (?,?,?)");
+            for(Rightsholder r : appearsR){
+                if (!appearsRighstholderIDArray.contains(r.getId())){
+                    //add to id list
+
+                    newAppearsStatement.setInt(1,rightsholderIdMap.get(r.getId()));
+                    newAppearsStatement.setInt(2,prodID);
+                    newAppearsStatement.setInt(3,r.getId());
+                    newAppearsStatement.addBatch();
+                }
+
+            }
+            newAppearsStatement.executeBatch();
+
+            //deletes all data from associated with the production ID from the table
+            PreparedStatement deleteFromAppearsApprovalStatment = connection.prepareStatement("DELETE FROM appears_in_approval WHERE production_id = ?");
+            deleteFromAppearsApprovalStatment.setInt(1,prodID);
+            deleteFromAppearsApprovalStatment.execute();
+
+            //#######
+            //role table
+            //#######
+
+            //want all tuples from role_approval from this production
+            //TODO this might be unused code
+            PreparedStatement roleTableStatement = connection.prepareStatement("SELECT role_approval.id, appears_in_id, title_id FROM role_approval " +
+                    "RIGHT JOIN appears_in " +
+                    "ON role_approval.appears_in_id = appears_in.id " +
+                    "WHERE appears_in.production_id=?");
+            roleTableStatement.setInt(1, prodID);
+            ResultSet roleTableResult = roleTableStatement.executeQuery();
+
+            //Delete happens through automatic cascade
+            //Need to check whether approval id already exists, then overwrite, and make new if it doesn't
+
+            //create a view with the prodRoles in the given production
+            PreparedStatement roleViewStatement = connection.prepareStatement(
+                    "CREATE OR REPLACE VIEW prodRoleView AS " +
+                            "SELECT role_approval.id, appears_in_id, title_id FROM role_approval " +
+                            "RIGHT JOIN appears_in " +
+                            "ON role_approval.appears_in_id = appears_in.id " +
+                            "WHERE appears_in.production_id=?");
+            roleViewStatement.setInt(1, prodID);
+            roleViewStatement.execute();
+
+            ResultSet roleOverwriteResults = connection.prepareStatement(
+                    "SELECT prodRoleView.id, prodRoleView.appears_in_id, prodRoleView.title_id " +
+                            "FROM role " +
+                            "RIGHT JOIN prodRoleView " +
+                            "ON prodRoleView.id = role.id" ).executeQuery();
+            /* //TODO IMPLEMENT QUERY SEEN TO WORK BELOW
+            SUPPOSED TO DO THE OPPOSITE OF THE QUERY ABOVE, BUT DOES NOT WORK AS INTENTED. RETURNS 500 ROWS INSTEAD
+            ResultSet roleNewResults = connection.prepareStatement(
+                    "SELECT prodRoleView.id, prodRoleView.appears_in_id, prodRoleView.title_id " +
+                            "FROM role " +
+                            "RIGHT JOIN prodRoleView " +
+                            "ON prodRoleView.id != role.id" ).executeQuery(); */
+
+            //statements for updating the role table based on results from role_approval.
+            //Then deleting the tuples used from role_approval
+            PreparedStatement overwriteOnRolesStatement = connection.prepareStatement("UPDATE role SET appears_in_id = ?, title_id = ? WHERE id = ?");
+            PreparedStatement deleteOverwritesFromRoleApprovalStatment = connection.prepareStatement("DELETE FROM role_approval WHERE id = ?");
+            while (roleOverwriteResults.next()){
+                overwriteOnRolesStatement.setInt(1, roleOverwriteResults.getInt(2));
+                overwriteOnRolesStatement.setInt(2, roleOverwriteResults.getInt(3));
+                overwriteOnRolesStatement.setInt(3, roleOverwriteResults.getInt(1));
+                //Deleting tuple with ID just used
+                deleteOverwritesFromRoleApprovalStatment.setInt(1,roleOverwriteResults.getInt(1));
+                overwriteOnRolesStatement.addBatch();
+                deleteOverwritesFromRoleApprovalStatment.addBatch();
+            }
+            overwriteOnRolesStatement.executeBatch();
+            deleteOverwritesFromRoleApprovalStatment.executeBatch();
+
+            //todo implement statement for inserting tuples from role_approval into role where id does not exist
+
+            //rolename table
+            //get rolename from approval table to table
+            //Am certain that the ID's corresponding to the role table are ones that need to be moved.
+            //If roleName does not contain the id, insert, else update
+
+
         } catch (SQLException e){
-          e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
