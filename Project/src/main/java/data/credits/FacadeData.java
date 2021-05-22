@@ -3,6 +3,7 @@ package data.credits;
 import Interfaces.IFacadeData;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import Interfaces.IUser;
 import data.credits.ProductionHandler;
 import data.credits.RightsHolderHandler;
 
@@ -65,6 +66,8 @@ public class FacadeData implements IFacadeData {
     public IProduction saveProduction(IProduction production) {
         return pHandler.saveProduction(production);
     }
+
+    public List<IProduction> getMyProductions(IUser user) {return pHandler.getProductionChanged(user);}
 
     /**
      * Delete a procution
