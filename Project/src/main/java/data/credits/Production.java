@@ -171,7 +171,7 @@ public class Production implements IProduction {
 
     @Override
     public String toString() {
-        return productionID + ": " + name;
+        return id + " " + productionID + ": " + name;
     }
 
 

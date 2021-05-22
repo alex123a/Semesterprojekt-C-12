@@ -122,7 +122,7 @@ class ProductionHandler {
                     //Run this if the production is already in the approval table
                     insertStatement = connection.prepareStatement("" +
                             "UPDATE production_approval " +
-                            "SET own_production_id=?, production_name=?, year=?, genre_id=?, category_id=?, producer_id=?" +
+                            "SET own_production_id=?, production_name=?, year=?, genre_id=?, category_id=?, producer_id=?, description=?" +
                             "WHERE id = ?" +
                             "RETURNING id, own_production_id, production_name, description, year, genre_id, category_id, producer_id;");
                     insertStatement.setString(1, p.getProductionID());
@@ -132,6 +132,7 @@ class ProductionHandler {
                     insertStatement.setInt(5, p.getType().getId());
                     insertStatement.setInt(6, p.getID());
                     insertStatement.setInt(7, p.getProducer().getId());
+                    insertStatement.setString(8, p.getDescription());
                 } else {
 
                     insertStatement = connection.prepareStatement("" +
@@ -158,7 +159,7 @@ class ProductionHandler {
                 insertStatement = connection.prepareStatement("" +
                         "INSERT INTO production_approval (own_production_id, production_name, year, genre_id, category_id, producer_id, description) " +
                         "VALUES (?, ?, ?, ?, ?, ?, ?) " +
-                        "RETURNING id, own_production_id, production_name, description, year, genre_id, category_id;");
+                        "RETURNING id, own_production_id, production_name, description, year, genre_id, category_id, producer_id;");
                 insertStatement.setString(1, production.getProductionID());
                 insertStatement.setString(2, production.getName());
                 insertStatement.setInt(3, production.getYear());
@@ -349,7 +350,7 @@ class ProductionHandler {
             //if id exists in table, overwrite
             //if not, create new
             //if full null, delete
-            PreparedStatement prodStatement = connection.prepareStatement("SELECT 1 FROM production WHERE id = ?");
+            PreparedStatement prodStatement = connection.prepareStatement("SELECT * FROM production WHERE id = ?");
             prodStatement.setInt(1, prodID);
             ResultSet res = prodStatement.executeQuery();
 
@@ -363,7 +364,7 @@ class ProductionHandler {
                 deleteStatement.execute();
 
             }
-            if (prod.toDelete()) {
+            if (!prod.toDelete()) {
                 //insert new
                 PreparedStatement newStatement = connection.prepareStatement("INSERT INTO production " +
                         "(own_production_id, production_name , year , genre_id , category_id , producer_id , description, id) " +
@@ -376,6 +377,63 @@ class ProductionHandler {
                 newStatement.setInt(6,((Producer)prod.getProducer()).getId());
                 newStatement.setString(7,prod.getDescription());
                 newStatement.setInt(8,prodID);
+                newStatement.execute();
+
+                //Insert into Appears_in
+                PreparedStatement moveAppearsInStatement = connection.prepareStatement("" +
+                        "INSERT INTO appears_in (id, production_id, rightsholder_id) " +
+                        "SELECT id, production_id, rightsholder_id " +
+                        "FROM appears_in_approval " +
+                        "WHERE production_id=?");
+                moveAppearsInStatement.setInt(1, prodID);
+                moveAppearsInStatement.execute();
+
+                //Insert into role
+                PreparedStatement moveRoleStatement = connection.prepareStatement("" +
+                        "INSERT INTO role (id, appears_in_id, title_id)" +
+                        "SELECT role_approval.id, role_approval.appears_in_id, role_approval.title_id " +
+                        "FROM role_approval " +
+                        "INNER JOIN appears_in_approval " +
+                        "ON role_approval.appears_in_id = appears_in_approval.id " +
+                        "WHERE appears_in_approval.production_id=?");
+                moveRoleStatement.setInt(1, prodID);
+                moveRoleStatement.execute();
+
+                //Insert into rolename
+
+                PreparedStatement moveRolenameStatement = connection.prepareStatement("" +
+                        "INSERT INTO rolename (role_id, rolename)" +
+                        "SELECT rolename_approval.role_id, rolename_approval.rolename " +
+                        "FROM rolename_approval " +
+                        "INNER JOIN role " +
+                        "ON rolename_approval.role_id = role.id " +
+                        "INNER JOIN appears_in_approval " +
+                        "ON role.appears_in_id = appears_in_approval.id " +
+                        "WHERE appears_in_approval.production_id = ?");
+                moveRolenameStatement.setInt(1, prodID);
+                moveRolenameStatement.execute();
+
+                //Delete from approval tables
+                PreparedStatement deleteFromAppearsInApprovalStatement = connection.prepareStatement("" +
+                        "DELETE FROM appears_in_approval " +
+                        "WHERE EXISTS(" +
+                        "SELECT * FROM appears_in " +
+                        "WHERE appears_in.id=appears_in_approval.id)");
+                deleteFromAppearsInApprovalStatement.execute();
+
+                PreparedStatement deleteFromRoleApprovalStatement = connection.prepareStatement("" +
+                        "DELETE FROM role_approval " +
+                        "WHERE EXISTS(" +
+                        "SELECT * FROM role " +
+                        "WHERE role.id=role_approval.id)");
+                deleteFromRoleApprovalStatement.execute();
+
+                PreparedStatement deleteFromRolenameApprovalStatement = connection.prepareStatement("" +
+                        "DELETE FROM rolename_approval " +
+                        "WHERE EXISTS(" +
+                        "SELECT * FROM rolename " +
+                        "WHERE rolename.role_id=rolename_approval.role_id)");
+                deleteFromRolenameApprovalStatement.execute();
             }
             //delete the production from approval table
             approvalDeleteStatement = connection.prepareStatement("DELETE FROM production_approval WHERE id = ?");
@@ -383,7 +441,7 @@ class ProductionHandler {
             approvalDeleteStatement.execute();
 
             //appears in table
-
+/*
             Set<IRightsholder> prodRightsholdersSet = prod.getRightsholders().keySet();
             Rightsholder[] appearsR = (Rightsholder[]) prodRightsholdersSet.toArray();
 
@@ -464,12 +522,18 @@ class ProductionHandler {
             //todo implement statement for inserting tuples from role_approval into role where id does not exist
 
             //rolename table
-            PreparedStatement roleNameStatement = connection.prepareStatement("");
+            PreparedStatement roleNameQueryStatement = connection.prepareStatement("SELECT role_id, rolename FROM rolename_approval " +
+                    "RIGHT JOIN role " +
+                    "ON rolename_approval.id = role.id" +
+                    "WHERE ");
+
+
+            PreparedStatement roleNameStatement = connection.prepareStatement("INSERT INTO role");
 
             //get rolename from approval table to table
             //Am certain that the ID's corresponding to the role table are ones that need to be moved.
             //If roleName does not contain the id, insert, else update
-
+*/
 
         } catch (SQLException e){
             e.printStackTrace();
@@ -515,7 +579,7 @@ class ProductionHandler {
         }
         try {
             PreparedStatement productionsStatement = connection.prepareStatement("" +
-                    "SELECT production.id, own_production_id, production_name, description, year, genre_id, category_id" +
+                    "SELECT production.id, own_production_id, production_name, description, year, genre_id, category_id, producer_id" +
                     " FROM production, producer, users WHERE users.username = ? AND producer.id = production.producer_id AND users.id = producer.id");
             productionsStatement.setString(1, user.getUsername());
             ResultSet proResult = productionsStatement.executeQuery();

@@ -5,12 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/credits/TestApproval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_15.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_15.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_15.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_15.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_15_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_15_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_15.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_15.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/TestInsertIntoApprovalTables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/TestInsertIntoApprovalTables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/FacadeData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/FacadeData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/TestReportingAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/TestReportingAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/Production.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/Production.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/ProductionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/ProductionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/RightsHolderHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/RightsHolderHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data/credits/TestInsertIntoApprovalTables.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/TestInsertIntoApprovalTables.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/notificationController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/personController.class" beforeDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
+    <list id="49955318-5923-484e-95a9-920764597014" name="Changes by thomasraith" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +53,22 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java">
+      <ranges>
+        <range start1="124" end1="125" start2="124" end2="125" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="134" end1="134" start2="134" end2="135" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="160" end1="161" start2="161" end2="162" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="351" end1="352" start2="352" end2="353" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="365" end1="366" start2="366" end2="367" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="378" end1="378" start2="379" end2="436" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="385" end1="386" start2="443" end2="444" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="466" end1="467" start2="524" end2="531" changelist="49955318-5923-484e-95a9-920764597014" />
+        <range start1="471" end1="472" start2="535" end2="536" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="517" end1="518" start2="581" end2="582" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1rQK5Km5WstHAcTLM2GKVYa2GXO" />
   <component name="ProjectViewState">
@@ -130,13 +162,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -186,6 +220,7 @@
       <workItem from="1621610372378" duration="2550000" />
       <workItem from="1621612969222" duration="8436000" />
       <workItem from="1621625236667" duration="626000" />
+      <workItem from="1621680566143" duration="8241000" />
     </task>
     <servers />
   </component>
@@ -203,5 +238,36 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
+          <line>122</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
+          <line>137</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
+          <line>438</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
+          <line>439</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
+          <line>440</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

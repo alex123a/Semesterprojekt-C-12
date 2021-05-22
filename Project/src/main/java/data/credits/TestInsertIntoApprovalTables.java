@@ -32,6 +32,7 @@ public class TestInsertIntoApprovalTables {
         }
         //Add a production (to approval)
 
+        /*
         Map<IRightsholder, List<String>> map = new HashMap<>();
         List<String> roles1 = new ArrayList<>();
         List<String> roles2 = new ArrayList<>();
@@ -42,7 +43,7 @@ public class TestInsertIntoApprovalTables {
         map.put(RightsHolderHandler.getInstance().getRightsholder(15), roles2);
         roles3.add("Casting");
         map.put(RightsHolderHandler.getInstance().getRightsholder(20), roles3);
-        Producer producer = (Producer) DomainFacade.getInstance().getUser(new User("john", "john123"));
+        Producer producer = (Producer) DomainFacade.getInstance().getUser(new User("badehotellet", "badehotellet123"));
         NewProduction production = new NewProduction(
                 "IDTESTADD",
                 "This is a newly added production",
@@ -55,16 +56,34 @@ public class TestInsertIntoApprovalTables {
         FacadeData.getInstance().saveProduction(production);
 
         printTest();
+        */
+
+        printTest();
 
         //Change a production
+        IProduction prod = FacadeData.getInstance().getProductions().get(0);
+        prod.setProductionID("IDCHANGEDTEST");
+        prod.setName("This is now a changed production");
+        prod.setDescription("This production has been changed");
+        ProductionHandler.getInstance().saveProduction(prod);
 
         //Approve a change
 
+        IProduction toApprove = FacadeData.getInstance().getMyProductions(DomainFacade.getInstance().getUser(new User("badehotellet", "badehotellet123"))).get(2);
+        ProductionHandler.getInstance().approveChangesToProduction(toApprove);
+
+
+        printTest();
+
+
+
+
         try {
-            connection.rollback();
+            connection.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
     }
 
     private static void printTest() {
