@@ -153,8 +153,26 @@ public class Production implements IProduction {
         return rightsholders.get(rightsholder);
     }
 
+    boolean toDelete() {
+        //Not a very clean way to do this
+        if (
+                productionID==null
+                && name == null
+                && description == null
+                && year==0
+                && genre==null
+                && type == null
+                && producer==null
+                && rightsholders==null
+        ) {
+            return true;
+        } else return false;
+    }
+
     @Override
     public String toString() {
         return productionID + ": " + name;
     }
+
+
 }

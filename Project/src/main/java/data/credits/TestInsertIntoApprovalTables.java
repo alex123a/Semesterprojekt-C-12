@@ -31,7 +31,7 @@ public class TestInsertIntoApprovalTables {
             throwables.printStackTrace();
         }
         //Add a production (to approval)
-        /*
+
         Map<IRightsholder, List<String>> map = new HashMap<>();
         List<String> roles1 = new ArrayList<>();
         List<String> roles2 = new ArrayList<>();
@@ -52,12 +52,9 @@ public class TestInsertIntoApprovalTables {
                 ProductionType.LIVSSTIL,
                 producer,
                 map);
-        FacadeData.getInstance().saveProduction(production);*/
+        FacadeData.getInstance().saveProduction(production);
 
-        System.out.println("-----NORMAL PRODUCTIONS-----");
-        System.out.println(FacadeData.getInstance().getProductions());
-        System.out.println("-----APPROVAL PRODUCTION-----");
-        System.out.println(FacadeData.getInstance().getMyProductions(DomainFacade.getInstance().getUser(new User("badehotellet", "badehotellet123"))));
+        printTest();
 
         //Change a production
 
@@ -68,5 +65,13 @@ public class TestInsertIntoApprovalTables {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    private static void printTest() {
+        System.out.println("-----NORMAL PRODUCTIONS-----");
+        System.out.println(FacadeData.getInstance().getProductions());
+        System.out.println("-----APPROVAL PRODUCTION-----");
+        System.out.println(FacadeData.getInstance().getMyProductions(DomainFacade.getInstance().getUser(new User("badehotellet", "badehotellet123"))));
+
     }
 }
