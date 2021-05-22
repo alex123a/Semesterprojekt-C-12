@@ -2,8 +2,12 @@ package domain;
 
 import Interfaces.*;
 import data.PersistenceFacade;
+import domain.CreditsManagement.CreditsSystem;
 import domain.authentication.AuthenticationHandler;
+import domain.notification.ProducerNotification;
 import domain.notification.AdminNotification;
+import domain.searchEngine.SearchEngineHandler;
+import domain.searchEngine.SearchUserHandler;
 import domain.session.CurrentSession;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
@@ -32,87 +36,87 @@ public class DomainFacade implements IDomainFacade {
         return AuthenticationHandler.getLoginInstance().login(user);
     }
 
-    @Override
     public void addCredit(IProduction production, IRightsholder rightsholder, List<String> roles) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    @Override
     public void removeCredit(IProduction production, IRightsholder rightsholder) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    @Override
     public void setProductionID(IProduction production, String productionID) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    @Override
     public void addProduction(IProduction production) {
         IProduction returnedProduction = PersistenceFacade.getInstance().saveProduction(production);
+        /*
+        Koden under er ikke opdateret til den nyeste type af notifikations klasser.
+        //IProduction returnedProduction = CreditsSystem.getInstance().
         String notificationMSG = "Produktionen med produktions ID'et  "
                 + returnedProduction.getProductionID() + " har ændringer";
-        PersistenceFacade.getInstance().createAdminNotification(new AdminNotification(notificationMSG, 0), returnedProduction);
+        PersistenceFacade.getInstance().createAdminNotification(new AdminNotification(notificationMSG, 0));
+        */
+
     }
 
     @Override
     public void deleteProduction(IProduction production) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        CreditsSystem.getInstance().deleteProduction(production);
     }
 
     @Override
+    public void saveProduction(IProduction production) {
+        CreditsSystem.getInstance().saveProduction(production);
+    }
+
     public void saveChanges() {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    @Override
     public void cancelChanges() {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    @Override
     public void setName(IProduction production, String name) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    @Override
     public void setRoles(IProduction production, Map<IRightsholder, List<String>> roles) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    @Override
     public boolean editCredit(IRightsholder credit) {
         return false;
     }
 
     @Override
     public List<?> findMatch(List<ISearchable> list, String target) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return SearchEngineHandler.getInstance().findMatch(list, target);
     }
 
     @Override
     public List<IRightsholder> sortPersonBy(List<IRightsholder> list, RightholderSorting type) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return SearchEngineHandler.getInstance().sortPersonBy(list, type);
     }
 
     @Override
     public List<IProduction> sortProductionBy(List<IProduction> list, ProductionSorting target) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return SearchEngineHandler.getInstance().sortProductionBy(list, target);
     }
 
     @Override
     public List<IProduction> filterProduction(List<IProduction> list, int[] yearInterval, ProductionGenre genre, ProductionType type) {
-        return null;
+        return SearchEngineHandler.getInstance().filterProduction(list, yearInterval, genre, type);
     }
-
 
     @Override
     public List<IProduction> getProductions() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return CreditsSystem.getInstance().getProductions();
     }
 
-    public IProduction getProduction(String id) {
-        throw new UnsupportedOperationException("Not implemented yet");
+    public List<IRightsholder> getRightsholders() {
+        return CreditsSystem.getInstance().getAllRightsholders();
     }
 
     @Override
@@ -133,7 +137,6 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean editUser(IUser user) {
-        System.out.println("6");
         return PersistenceFacade.getInstance().editUser(user);
     }
 
@@ -155,6 +158,7 @@ public class DomainFacade implements IDomainFacade {
         return PersistenceFacade.getInstance().getDatabasePassword(user);
     }
 
+
     @Override
     public IUser getCurrentUser() {
         return CurrentSession.getInstance().getCurrentUser();
@@ -166,13 +170,13 @@ public class DomainFacade implements IDomainFacade {
     }
 
     @Override
-    public boolean createProducerNotification(IUser user, INotification notification) {
-        return PersistenceFacade.getInstance().createProducerNotification(user, notification);
+    public boolean createProducerNotification(INotification notification) {
+        return PersistenceFacade.getInstance().createProducerNotification(notification);
     }
 
     @Override
-    public boolean createAdminNotification(INotification notification, IProduction production) {
-        return PersistenceFacade.getInstance().createAdminNotification(notification, production);
+    public boolean createAdminNotification(INotification notification) {
+        return PersistenceFacade.getInstance().createAdminNotification(notification);
     }
 
     @Override
@@ -187,6 +191,15 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean editAdminNotification(INotification newNotification) {
+        if (newNotification.getApproval() == 2) {
+            String msg = "Produktionen med produktions id " + newNotification.getProduction().getProductionID() +
+                    " er blevet godkendt";
+            createProducerNotification(new ProducerNotification(newNotification.getProduction(), msg, false, newNotification.getProduction().getProducer()));
+        } else if (newNotification.getApproval() == 3) {
+            String msg = "Produktionen med produktions id " + newNotification.getProduction().getProductionID() +
+                    " er blevet afvist";
+            createProducerNotification(new ProducerNotification(newNotification.getProduction(), msg, false, newNotification.getProduction().getProducer()));
+        }
         return PersistenceFacade.getInstance().editAdminNotification(newNotification);
     }
 
@@ -222,5 +235,15 @@ public class DomainFacade implements IDomainFacade {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public String getInfoFromSearch(String search, String resultType) {
+        return SearchUserHandler.getInstance().getInfoFromSearch(search, resultType);
+    }
+
+    @Override
+    public List<IUser> getUsersBySearch(IUser user) {
+        return PersistenceFacade.getInstance().getUsersBySearch(user);
     }
 }

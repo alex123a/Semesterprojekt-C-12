@@ -33,7 +33,7 @@
             </ImageView>
             <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="82.0" layoutY="22.0" prefHeight="459.0" prefWidth="749.0" vbarPolicy="ALWAYS">
                <content>
-                  <VBox fx:id="searchResultBox" prefHeight="200.0" prefWidth="734.0">
+                  <VBox prefHeight="200.0" prefWidth="734.0">
                      <children>
                         <Pane minHeight="206.0" prefHeight="206.0" minWidth="733.0" prefWidth="733.0" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9;">
                            <children>
@@ -44,7 +44,7 @@
                               </Label>
                               <HBox layoutX="217.0" layoutY="77.0" prefHeight="43.0" prefWidth="505.0" style="-fx-alignment: CENTER; -fx-border-color: #c9c9c9; -fx-background-color: #ffffff; -fx-border-radius: 8px; -fx-background-radius: 8px;">
                                  <children>
-                                    <TextField fx:id="searchInput" prefHeight="40.0" prefWidth="460.0" promptText="Indtast søgning" style="-fx-border-color: #ffffff; -fx-background-color: #ffffff; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                                    <TextField fx:id="searchInput" onAction="#onEnter" prefHeight="40.0" prefWidth="460.0" promptText="Indtast søgning" style="-fx-border-color: #ffffff; -fx-background-color: #ffffff; -fx-border-radius: 8px; -fx-background-radius: 8px;">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -63,7 +63,7 @@
                                     </ImageView>
                                  </children>
                               </HBox>
-                              <ComboBox fx:id="comboCategory" layoutX="14.0" layoutY="77.0" prefHeight="43.0" prefWidth="190.0" promptText="Kategori" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
+                              <ComboBox onAction="#onComboCategory" fx:id="comboCategory" layoutX="14.0" layoutY="77.0" prefHeight="43.0" prefWidth="190.0" promptText="Kategori" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
                               <ComboBox fx:id="comboGenre" layoutX="14.0" layoutY="139.0" prefHeight="43.0" prefWidth="190.0" promptText="Genre" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
                               <ComboBox fx:id="comboSort" layoutX="477.0" layoutY="139.0" prefHeight="43.0" prefWidth="245.0" promptText="Sortering" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-cursor: hand;" />
                               <Label layoutX="218.0" layoutY="150.0" text="Årstal" textFill="#4c4c4c">
@@ -83,6 +83,11 @@
                               </TextField>
                            </children>
                         </Pane>
+                        <VBox fx:id="searchResultBox" prefHeight="200.0" prefWidth="734.0">
+                           <children>
+
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </content>

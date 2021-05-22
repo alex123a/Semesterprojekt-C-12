@@ -2,6 +2,8 @@ package data;
 
 import Interfaces.*;
 import data.credits.FacadeData;
+import data.credits.Production;
+import data.notifications.AdminNotification;
 import data.notifications.NotificationHandler;
 import data.reporting.ReportHandler;
 import data.userHandling.UserFacade;
@@ -83,13 +85,13 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public boolean createProducerNotification(IUser user, INotification notification) {
-       return NotificationHandler.getInstance().createProducerNotification(user, notification);
+    public boolean createProducerNotification(INotification notification) {
+       return NotificationHandler.getInstance().createProducerNotification(notification);
     }
 
     @Override
-    public boolean createAdminNotification(INotification notification, IProduction production) {
-        return NotificationHandler.getInstance().createAdminNotification(notification, production);
+    public boolean createAdminNotification(INotification notification) {
+        return NotificationHandler.getInstance().createAdminNotification(notification);
     }
 
     @Override
@@ -138,22 +140,33 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public int generateProductionCreditsCount(IProduction production, String title) {
-        return ReportHandler.getInstance().generateProductionCreditsCount(production, title);
+    public Map<String, Integer> generateProductionCreditsCount(IProduction production) {
+        return ReportHandler.getInstance().generateProductionCreditsCount(production);
     }
 
     @Override
-    public int generateCreditTypeCount(String type) {
-        return ReportHandler.getInstance().generateCreditTypeCount(type);
+    public Map<String, Integer> generateCreditTypeCount() {
+        return ReportHandler.getInstance().generateCreditTypeCount();
     }
 
     @Override
-    public Map<Integer, Integer> generate10MostCredited() {
+    public Map<String, Integer> generate10MostCredited() {
         return ReportHandler.getInstance().generate10MostCredited();
     }
 
     @Override
-    public void generateCreditsReport() {
-        throw new UnsupportedOperationException();
+    public List<String> generateCreditsReport() {
+        return ReportHandler.getInstance().generateCreditsReport();
+    }
+
+
+    @Override
+    public IProduction getProductionFromID(IProduction production) {
+        return FacadeData.getInstance().getProduction(production);
+    }
+
+    @Override
+    public List<IUser> getUsersBySearch(IUser user) {
+        return UserFacade.getInstance().getUsersBySearch(user);
     }
 }

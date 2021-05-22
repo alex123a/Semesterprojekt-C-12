@@ -3,6 +3,7 @@ package data.credits;
 import Interfaces.IFacadeData;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import Interfaces.IUser;
 import data.credits.ProductionHandler;
 import data.credits.RightsHolderHandler;
 
@@ -66,6 +67,8 @@ public class FacadeData implements IFacadeData {
         return pHandler.saveProduction(production);
     }
 
+    public List<IProduction> getMyProductions(IUser user) {return pHandler.getProductionChanged(user);}
+
     /**
      * Delete a procution
      * @param production Production object
@@ -79,6 +82,10 @@ public class FacadeData implements IFacadeData {
     @Override
     public void approveChangesToProduction(IProduction production) {
         throw new UnsupportedOperationException();
+    }
+
+    public IProduction getProduction(IProduction production) {
+        return pHandler.getProduction(production);
     }
 
 }

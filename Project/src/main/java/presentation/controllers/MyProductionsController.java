@@ -74,8 +74,8 @@ public class MyProductionsController implements Initializable {
                 Repository.getInstance().setToEdit(p);
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("/layout/edit_production.fxml"));
-                    Stage window = Repository.getInstance().getWindow();
-                    window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+                    Stage window = (Stage) addProgramBut.getScene().getWindow();
+                    window.setScene(new Scene(root, 1300, 700));
 
                 }
                 catch (IOException e) {
@@ -114,7 +114,7 @@ public class MyProductionsController implements Initializable {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/add_production.fxml"));
             Stage window = (Stage) addProgramBut.getScene().getWindow();
-            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+            window.setScene(new Scene(root, 1300, 700));
 
         } catch (IOException e) {
             throw new RuntimeException(e);

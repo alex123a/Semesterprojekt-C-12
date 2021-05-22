@@ -1,5 +1,7 @@
 package data.notifications;
 
+import Interfaces.IProduction;
+
 public class AdminNotification extends Notification {
     private int approvalStatus;
 
@@ -8,13 +10,13 @@ public class AdminNotification extends Notification {
         this.approvalStatus = approvalStatus;
     }
 
-    public AdminNotification(String text, String productionID, String productionName, int approvalStatus, int db_id_production) {
-        super(text, productionID, productionName, db_id_production);
+    public AdminNotification(String text, IProduction production, int approvalStatus) {
+        super(text, production);
         this.approvalStatus = approvalStatus;
     }
 
-    public AdminNotification(int ID, String text, String productionID, String productionName, int approvalStatus, int db_id_production) {
-        super(ID, text, productionID, productionName, db_id_production);
+    public AdminNotification(int ID, String text, IProduction production, int approvalStatus) {
+        super(ID, text, production);
         this.approvalStatus = approvalStatus;
     }
 
