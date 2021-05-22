@@ -57,7 +57,7 @@ class Rightsholder implements IRightsholder {
     public List<IProduction> getRightsholderFor() {
         List<IProduction> list = new ArrayList<>();
         for (int i: productions) {
-            list.add(ProductionHandler.getInstance().getProduction(i));
+            list.add(ProductionHandler.getInstance().getProduction(new Production(i)));
         }
         return list;
     }

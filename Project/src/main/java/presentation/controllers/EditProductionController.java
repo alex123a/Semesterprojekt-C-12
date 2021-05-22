@@ -2,7 +2,13 @@ package presentation.controllers;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import Interfaces.IUser;
 import domain.DomainFacade;
+import enumerations.ProductionGenre;
+import enumerations.ProductionType;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,10 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.CreditWrapper;
@@ -27,11 +30,13 @@ import java.util.*;
 public class EditProductionController implements Initializable {
 
     @FXML
-    private TextField genreField;
+    private ComboBox comboCategory;
     @FXML
-    private TextField typeField;
+    private ComboBox comboGenre;
     @FXML
-    private TextField producerField;
+    private ComboBox comboProducer;
+    @FXML
+    private TextField yearInput;
 
     @FXML
     private TextArea descriptionProgramArea;
@@ -142,10 +147,7 @@ public class EditProductionController implements Initializable {
         programIDField.setText(toEdit.getProductionID());
         oldId = toEdit.getProductionID();
         programNameField.setText(toEdit.getName());
-        genreField.setText(toEdit.getGenre().getGenreWord());
-        typeField.setText(toEdit.getType().getTypeWord());
-        producerField.setText(toEdit.getProducer().getUsername());
-
+        descriptionProgramArea.setText(toEdit.getDescription());
 
         //Doesn't work because of the persistence-layer
         List<CreditWrapper> credits = new ArrayList<>();
@@ -153,6 +155,41 @@ public class EditProductionController implements Initializable {
             credits.add(new CreditWrapper(rh, toEdit.getRightsholders().get(rh)));
         }
         rightholderListview.getItems().setAll(credits);
+
+        // Set categories
+        ObservableList<String> categoryOptions = FXCollections.observableArrayList();
+        for(ProductionType pType : ProductionType.values()) {
+            categoryOptions.add(pType.getTypeWord());
+        }
+        comboCategory.setItems(categoryOptions);
+
+        // Set Genres
+        ObservableList<String> genreOptions = FXCollections.observableArrayList();
+        for(ProductionGenre pGenre : ProductionGenre.values()) {
+            genreOptions.add(pGenre.getGenreWord());
+        }
+        comboGenre.setItems(genreOptions);
+
+        // Get Producers
+        Repository r = Repository.getInstance();
+        List<IUser> userList = r.domainFacade.getUsers();
+        ObservableList<String> sortOptions = FXCollections.observableArrayList();
+        for(IUser user : userList) {
+            sortOptions.addAll(user.getUsername());
+            System.out.println(user.getUsername());
+        }
+        comboProducer.setItems(sortOptions);
+
+        // Makes sure that the user only inputs numbers
+        yearInput.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    yearInput.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
 
     public void onBackClicked(MouseEvent mouseEvent) {

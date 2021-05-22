@@ -1,14 +1,14 @@
 package data.notifications;
 
 import Interfaces.INotification;
+import Interfaces.IProducer;
+import Interfaces.IProduction;
 
 public class Notification implements INotification {
 
     private int ID;
     private String text;
-    private String productionID;
-    private String productionName;
-    private int db_id_production;
+    private IProduction production;
 
     public Notification() {
 
@@ -18,15 +18,13 @@ public class Notification implements INotification {
         this.text = text;
     }
 
-    public Notification(String text, String productionID, String productionName, int db_id_production) {
+    public Notification(String text, IProduction production) {
         this(text);
-        this.productionID = productionID;
-        this.productionName = productionName;
-        this.db_id_production = db_id_production;
+        this.production = production;
     }
 
-    public Notification(int ID, String text, String productionID, String productionName, int db_id_production) {
-        this(text, productionID, productionName, db_id_production);
+    public Notification(int ID, String text, IProduction production) {
+        this(text, production);
         this.ID = ID;
     }
 
@@ -48,11 +46,6 @@ public class Notification implements INotification {
     }
 
     @Override
-    public String getProductionId() {
-        return this.productionID;
-    }
-
-    @Override
     public void setApproval(int approval) {
         throw new UnsupportedOperationException("Not supported");
     }
@@ -67,12 +60,12 @@ public class Notification implements INotification {
     }
 
     @Override
-    public int getProducerID() {
+    public IProducer getProducer() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void setProducerID(int producerID) {
+    public void setProducer(IProducer producer) {
         throw new UnsupportedOperationException();
     }
 
@@ -82,20 +75,12 @@ public class Notification implements INotification {
     }
 
     @Override
-    public String getProductionName() {
-        return productionName;
+    public IProduction getProduction() {
+        return production;
     }
 
     @Override
-    public void setProductionName(String productionName) {
-        this.productionName = productionName;
-    }
-
-    public int getDb_id_production() {
-        return db_id_production;
-    }
-
-    public void setDb_id_production(int db_id_production) {
-        this.db_id_production = db_id_production;
+    public void setProduction(IProduction production) {
+        this.production = production;
     }
 }

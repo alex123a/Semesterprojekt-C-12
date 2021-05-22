@@ -3,6 +3,7 @@ package presentation.controllers;
 import Interfaces.IAdministrator;
 import Interfaces.INotification;
 import Interfaces.IProducer;
+import Interfaces.IProduction;
 import domain.DomainFacade;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -59,7 +60,7 @@ public class NotificationController implements Initializable {
         return viewed ? "Viewed" : "Not viewed";
     }
 
-    public void createNotification(String productionName, String productionID, String status, int index) {
+    public void createNotification(String productionName, String productionID, String status, String description, int index) {
             // VBox for all the labels
             VBox vbox = new VBox();
             Label labelName = new Label(productionName);
@@ -68,15 +69,18 @@ public class NotificationController implements Initializable {
             labelID.setFont(new Font(14));
             Label labelStatus = new Label("Status: " + status);
             labelStatus.setFont(new Font(14));
-            vbox.getChildren().addAll(labelName, labelID, labelStatus);
+            Label descriptionLabel = new Label(description);
+            labelStatus.setFont(new Font(14));
+            vbox.getChildren().addAll(labelName, labelID, labelStatus, descriptionLabel);
             vbox.setPrefWidth(585);
 
             // HBox for the whole notification
             HBox hbox = new HBox();
             hbox.getChildren().addAll(vbox);
 
-            if (domain.getCurrentUser() instanceof IAdministrator) {
 
+
+            if (domain.getCurrentUser() instanceof IAdministrator) {
                 // Make decline Button
                 Button declineBut = new Button("Afvis");
                 declineBut.setId("" + index);
@@ -91,11 +95,13 @@ public class NotificationController implements Initializable {
                     public void handle(ActionEvent event) {
                         declineBut.setVisible(false);
                         notificationYesClicked(Integer.parseInt(approveBut.getId()));
+                        approveBut.setDisable(true);
                     }
                 });
                 hbox.getChildren().addAll(approveBut);
                 if (status.equals("Not Approved")) {
                     approveBut.setVisible(false);
+                    declineBut.setDisable(true);
                 }
 
                 // Set action on declineBut
@@ -104,11 +110,13 @@ public class NotificationController implements Initializable {
                     public void handle(ActionEvent event) {
                         approveBut.setVisible(false);
                         notificationNoClicked(Integer.parseInt(declineBut.getId()));
+                        declineBut.setDisable(true);
                     }
                 });
                 hbox.getChildren().addAll(declineBut);
                 if (status.equals("Approved")) {
                     declineBut.setVisible(false);
+                    approveBut.setDisable(true);
                 }
             }
 
@@ -152,8 +160,17 @@ public class NotificationController implements Initializable {
             } else if (domain.getCurrentUser() instanceof IProducer) {
                 status = viewedConverter(notifications.get(i).getViewed());
             }
-            createNotification(notifications.get(i).getProductionName(), notifications.get(i).getProductionId(), status, i);
+            System.out.println(notifications.size());
+            System.out.println(notifications.get(i).getProduction().getName());
+            createNotification(notifications.get(i).getProduction().getName(), notifications.get(i).getProduction().getProductionID(), status, notifications.get(i).getText(), i);
         }
+        if (domain.getCurrentUser() instanceof IProducer) {
+            for (INotification notification : notifications) {
+                notification.setViewed(true);
+                domain.editProducerNotification(notification);
+            }
+        }
+
     }
 
     public void refreshPage(int index, int status) {
@@ -162,12 +179,6 @@ public class NotificationController implements Initializable {
             domain.editAdminNotification(notifications.get(index));
         } else if (domain.getCurrentUser() instanceof IProducer) {
             // TODO This should probably be somewhere else
-            /*
-            boolean booleanStatus = status == 1;
-            notifications.get(index).setViewed(booleanStatus);
-            domain.editProducerNotification(notifications.get(index));
-
-             */
         }
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/notification.fxml"));
