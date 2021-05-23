@@ -81,4 +81,8 @@ public class FacadeData implements IFacadeData {
         throw new UnsupportedOperationException();
     }
 
+    public IProduction getProduction(IProduction production) {
+        return pHandler.getProduction(production);
+    }
+
 }

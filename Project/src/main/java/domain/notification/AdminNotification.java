@@ -1,5 +1,7 @@
 package domain.notification;
 
+import Interfaces.IProduction;
+
 public class AdminNotification extends Notification {
     private int approvalStatus;
 
@@ -8,8 +10,8 @@ public class AdminNotification extends Notification {
         this.approvalStatus = approvalStatus;
     }
 
-    public AdminNotification(String text, String productionID, String productionName, int approvalStatus) {
-        super(text, productionID, productionName);
+    public AdminNotification(String text, IProduction production, int approvalStatus) {
+        super(text, production);
         this.approvalStatus = approvalStatus;
     }
 

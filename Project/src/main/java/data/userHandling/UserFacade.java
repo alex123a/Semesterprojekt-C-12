@@ -1,5 +1,6 @@
 package data.userHandling;
 
+import Interfaces.IProduction;
 import Interfaces.IUser;
 import Interfaces.IUserFacade;
 
@@ -41,6 +42,11 @@ public class UserFacade implements IUserFacade {
     @Override
     public String getDatabasePassword(IUser user) {
         return UserManager.getInstance().getDatabasePassword(user);
+    }
+
+    @Override
+    public List<IUser> getUsersBySearch(IUser user) {
+        return UserManager.getInstance().getUsersBySearch(user);
     }
 
     public static UserFacade getInstance() {
