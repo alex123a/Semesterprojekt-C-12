@@ -65,15 +65,7 @@ class ProductionHandler {
             productionsStatement.setInt(1, ((Production) production).getID());
             ResultSet result = productionsStatement.executeQuery();
             if (result.next()) {
-                returnProduction = new Production(result.getInt(1), result.getString(2), result.getString(3),
-                        result.getString(4), result.getInt(5), ProductionGenre.getFromID(result.getInt(6)),
-                        ProductionType.getFromID(result.getInt(7)));
-                PreparedStatement producerStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
-                producerStatement.setInt(1, result.getInt(8));
-                ResultSet resultProducer = producerStatement.executeQuery();
-                if (resultProducer.next()) {
-                    returnProduction.setProducer(new Producer(resultProducer.getInt(1), resultProducer.getString(2), resultProducer.getString(3)));
-                }
+                returnProduction = getProductionFromResultset(result);
             } else {
                 PreparedStatement productionsStatement2 = connection.prepareStatement("" +
                         "SELECT id, own_production_id, production_name, description, year, genre_id, category_id, producer_id" +
@@ -82,15 +74,7 @@ class ProductionHandler {
                 productionsStatement2.setInt(1, ((Production) production).getID());
                 ResultSet result2 = productionsStatement2.executeQuery();
                 if (result2.next()) {
-                    returnProduction = new Production(result2.getInt(1), result2.getString(2), result2.getString(3),
-                            result2.getString(4), result2.getInt(5), ProductionGenre.getFromID(result2.getInt(6)),
-                            ProductionType.getFromID(result2.getInt(7)));
-                    PreparedStatement producerStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
-                    producerStatement.setInt(1, result2.getInt(8));
-                    ResultSet resultProducer = producerStatement.executeQuery();
-                    if (resultProducer.next()) {
-                        returnProduction.setProducer(new Producer(resultProducer.getInt(1), resultProducer.getString(2), resultProducer.getString(3)));
-                    }
+                    returnProduction = getProductionFromResultsetApproval(result2);
                 }
             }
             return returnProduction;
