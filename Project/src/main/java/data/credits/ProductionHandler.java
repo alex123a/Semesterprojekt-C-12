@@ -59,7 +59,7 @@ class ProductionHandler {
             IProduction returnProduction = null;
             //Statement to get all productions and their attributes
             PreparedStatement productionsStatement = connection.prepareStatement("" +
-                    "SELECT id, own_production_id, production_name, description, year, genre_id, category_id" +
+                    "SELECT id, own_production_id, production_name, description, year, genre_id, category_id, producer_id" +
                     " FROM production" +
                     " WHERE id = ?");
             productionsStatement.setInt(1, ((Production) production).getID());

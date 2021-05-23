@@ -45,7 +45,7 @@ public class PersonController implements Initializable {
             String roles = "";
             // new CreditWrapper(r.getRightsholderToBeShown(), p.getRightsholders().get(r.getRightsholderToBeShown())).getRoles()
             // todo : getRoles returns null
-            for(String s : new CreditWrapper(r.getRightsholderToBeShown(), p.getRightsholders().get(r.getRightsholderToBeShown())).getRoles()) {
+            for(String s : new CreditWrapper(r.getRightsholderToBeShown(), p.getRightsholderRole(r.getRightsholderToBeShown())).getRoles()) {
                 roles += s + ",";
             }
             createRole(p.getName(), roles, p);

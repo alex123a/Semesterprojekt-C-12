@@ -4,7 +4,6 @@ import Interfaces.IProducer;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import Interfaces.IUser;
-import domain.DomainFacade;
 import enumerations.ProductionGenre;
 import enumerations.ProductionType;
 import javafx.beans.value.ChangeListener;
@@ -116,6 +115,10 @@ public class AddProductionController implements Initializable {
                 findRightsholder();
             }
         });
+
+        nameInput.hide();
+        rightholderDescription.setText("");
+        rightholderRoles.setText("");
     }
 
     @FXML
@@ -147,6 +150,10 @@ public class AddProductionController implements Initializable {
             ObservableList<CreditWrapper> rightholders = rightholderListview.getItems();
             rightholders.add(newCredit);
         }
+
+        nameInput.getEditor().setText("");
+        rightholderDescription.setText("");
+        rightholderRoles.setText("");
     }
 
     @FXML

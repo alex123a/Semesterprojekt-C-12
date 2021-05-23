@@ -40,7 +40,6 @@ public class Production implements IProduction {
         this.year = year;
         this.genre = genre;
         this.type = type;
-        this.rightsholders = rightsholders;
     }
 
     public Production(int id, String productionID, String name, String description, int year, ProductionGenre genre, ProductionType type, IProducer producer, Map<Integer, List<String>> rightsholders) {
