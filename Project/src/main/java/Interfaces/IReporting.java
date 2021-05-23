@@ -1,5 +1,6 @@
 package Interfaces;
 
+import java.util.List;
 import java.util.Map;
 
 public interface IReporting {
@@ -12,5 +13,5 @@ public interface IReporting {
 
     Map<String, Integer> generate10MostCredited();
 
-    Object generateCreditsReport();
+    List<String> generateCreditsReport();
 }

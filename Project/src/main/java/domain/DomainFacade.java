@@ -21,6 +21,12 @@ import java.util.Map;
 
 public class DomainFacade implements IDomainFacade {
     private static final DomainFacade DOMAIN = new DomainFacade();
+    private final IPersistenceFacade PERSISTENCE_FACADE = PersistenceFacade.getInstance();
+    private final ISession CURRENT_SESSION = CurrentSession.getInstance();
+    private final CreditsSystem CREDITSYSTEM = CreditsSystem.getInstance();
+    private final ISearchCredits SEARCH_CREDITS = SearchEngineHandler.getInstance();
+    private final ISearchUser SEARCH_USER = SearchUserHandler.getInstance();
+    private final IAuthenticationHandler AUTHENTICATION_FACADE = AuthenticationFacade.getInstance();
 
     private DomainFacade() {
 
@@ -33,24 +39,24 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean login(IUser user) {
-        boolean toReturn = AuthenticationFacade.getInstance().login(user);
+        boolean toReturn = AUTHENTICATION_FACADE.login(user);
         //logAction("User logged in", user);
         return toReturn;
     }
 
     @Override
     public void deleteProduction(IProduction production) {
-        CreditsSystem.getInstance().deleteProduction(production);
+        CREDITSYSTEM.deleteProduction(production);
         //logAction("Production deleted (waiting for approval): " + production);
     }
 
     @Override
     public IProduction saveProduction(IProduction production) {
-        IProduction returnedProduction = CreditsSystem.getInstance().saveProduction(production);
+        IProduction returnedProduction = CREDITSYSTEM.saveProduction(production);
         if (!validateUser(getCurrentUser())) {
             String notificationMSG = "Produktionen med produktions ID'et  "
                     + returnedProduction.getProductionID() + " har ændringer";
-            PersistenceFacade.getInstance().createAdminNotification(new AdminNotification(notificationMSG, returnedProduction, 1));
+            PERSISTENCE_FACADE.createAdminNotification(new AdminNotification(notificationMSG, returnedProduction, 1));
             //logAction("Save production (Waiting for approval): " + production + " --- notification sent to producer");
         }
         return returnedProduction;
@@ -58,65 +64,65 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public void approveChangesToProduction(IProduction production) {
-        CreditsSystem.getInstance().approveChangesToProduction(production);
+        CREDITSYSTEM.approveChangesToProduction(production);
         //logAction("Changes to production " + production + " Approved");
     }
 
     @Override
     public List<?> findMatch(List<ISearchable> list, String target) {
-        return SearchEngineHandler.getInstance().findMatch(list, target);
+        return SEARCH_CREDITS.findMatch(list, target);
     }
 
     @Override
     public List<IRightsholder> sortPersonBy(List<IRightsholder> list, RightholderSorting type) {
-        return SearchEngineHandler.getInstance().sortPersonBy(list, type);
+        return SEARCH_CREDITS.sortPersonBy(list, type);
     }
 
     @Override
     public List<IProduction> sortProductionBy(List<IProduction> list, ProductionSorting target) {
-        return SearchEngineHandler.getInstance().sortProductionBy(list, target);
+        return SEARCH_CREDITS.sortProductionBy(list, target);
     }
 
     @Override
     public List<IProduction> filterProduction(List<IProduction> list, int[] yearInterval, ProductionGenre genre, ProductionType type) {
-        return SearchEngineHandler.getInstance().filterProduction(list, yearInterval, genre, type);
+        return SEARCH_CREDITS.filterProduction(list, yearInterval, genre, type);
     }
 
     @Override
     public List<IProduction> getProductions() {
-        return CreditsSystem.getInstance().getProductions();
+        return CREDITSYSTEM.getProductions();
     }
 
     @Override
     public List<IProduction> getMyProductions() {
-        return CreditsSystem.getInstance().getMyProductions();
+        return CREDITSYSTEM.getMyProductions();
     }
 
     public List<IRightsholder> getRightsholders() {
-        return CreditsSystem.getInstance().getAllRightsholders();
+        return CREDITSYSTEM.getAllRightsholders();
     }
 
     @Override
     public boolean validateUser(IUser user) {
-        return AuthenticationFacade.getInstance().validateUser(user);
+        return AUTHENTICATION_FACADE.validateUser(user);
     }
 
 
     @Override
     public List<IUser> getUsers() {
-        return PersistenceFacade.getInstance().getUsers();
+        return PERSISTENCE_FACADE.getUsers();
     }
 
     @Override
     public List<IUser> getAllProducers() {
-        return PersistenceFacade.getInstance().getAllProducers();
+        return PERSISTENCE_FACADE.getAllProducers();
     }
 
     @Override
     public boolean deleteUser(IUser user) {
         IUser currentUser = getCurrentUser();
         if (validateUser(currentUser) && user != null && !currentUser.getUsername().equals(user.getUsername())) {
-            return PersistenceFacade.getInstance().deleteUser(user);
+            return PERSISTENCE_FACADE.deleteUser(user);
         }
         return false;
     }
@@ -125,14 +131,14 @@ public class DomainFacade implements IDomainFacade {
     public boolean editUser(IUser user) {
         IUser currentUser = getCurrentUser();
         if (validateUser(currentUser) && !user.getUsername().equals("") && !user.getPassword().equals("")) {
-            return PersistenceFacade.getInstance().editUser(user);
+            return PERSISTENCE_FACADE.editUser(user);
         }
         return false;
     }
 
     @Override
     public IUser getUser(IUser user) {
-        return PersistenceFacade.getInstance().getUser(user);
+        return PERSISTENCE_FACADE.getUser(user);
     }
 
     @Override
@@ -140,49 +146,49 @@ public class DomainFacade implements IDomainFacade {
         IUser currentUser = getCurrentUser();
         if (validateUser(currentUser) && !user.getUsername().equals("") && !user.getPassword().equals("")) {
             try {
-                user.setPassword(AuthenticationFacade.getInstance().generateStrongPasswordHash(user.getPassword()));
+                user.setPassword(AUTHENTICATION_FACADE.generateStrongPasswordHash(user.getPassword()));
             } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 e.printStackTrace();
             }
-            return PersistenceFacade.getInstance().addUser(user);
+            return PERSISTENCE_FACADE.addUser(user);
         }
         return false;
     }
 
     @Override
     public String getDatabasePassword(IUser user) {
-        return PersistenceFacade.getInstance().getDatabasePassword(user);
+        return PERSISTENCE_FACADE.getDatabasePassword(user);
     }
 
 
     @Override
     public IUser getCurrentUser() {
-        return CurrentSession.getInstance().getCurrentUser();
+        return CURRENT_SESSION.getCurrentUser();
     }
 
     @Override
     public void setCurrentUser(IUser user) {
-        CurrentSession.getInstance().setCurrentUser(user);
+        CURRENT_SESSION.setCurrentUser(user);
     }
 
     @Override
     public boolean createProducerNotification(INotification notification) {
-        return PersistenceFacade.getInstance().createProducerNotification(notification);
+        return PERSISTENCE_FACADE.createProducerNotification(notification);
     }
 
     @Override
     public boolean createAdminNotification(INotification notification) {
-        return PersistenceFacade.getInstance().createAdminNotification(notification);
+        return PERSISTENCE_FACADE.createAdminNotification(notification);
     }
 
     @Override
     public boolean deleteAdminNotification(INotification notification) {
-        return PersistenceFacade.getInstance().deleteAdminNotification(notification);
+        return PERSISTENCE_FACADE.deleteAdminNotification(notification);
     }
 
     @Override
     public boolean deleteProducerNotification(INotification notification) {
-        return PersistenceFacade.getInstance().deleteProducerNotification(notification);
+        return PERSISTENCE_FACADE.deleteProducerNotification(notification);
     }
 
     @Override
@@ -196,38 +202,38 @@ public class DomainFacade implements IDomainFacade {
                     " er blevet afvist";
             createProducerNotification(new ProducerNotification(newNotification.getProduction(), msg, false, newNotification.getProduction().getProducer()));
         }
-        return PersistenceFacade.getInstance().editAdminNotification(newNotification);
+        return PERSISTENCE_FACADE.editAdminNotification(newNotification);
     }
 
     @Override
     public boolean editProducerNotification(INotification newNotification) {
-        return PersistenceFacade.getInstance().editProducerNotification(newNotification);
+        return PERSISTENCE_FACADE.editProducerNotification(newNotification);
     }
 
     @Override
     public List<INotification> getAdminNotifications() {
-        return PersistenceFacade.getInstance().getAdminNotifications();
+        return PERSISTENCE_FACADE.getAdminNotifications();
     }
 
     @Override
     public List<INotification> getProducerNotifications(IUser user) {
-        return PersistenceFacade.getInstance().getProducerNotifications(user);
+        return PERSISTENCE_FACADE.getProducerNotifications(user);
     }
 
     @Override
     public int countUnreadAdminNotifications() {
-        return PersistenceFacade.getInstance().countUnreadAdminNotifications();
+        return PERSISTENCE_FACADE.countUnreadAdminNotifications();
     }
 
     @Override
     public int countUnreadProducerNotifications(IUser user) {
-        return PersistenceFacade.getInstance().countUnreadProducerNotifications(user);
+        return PERSISTENCE_FACADE.countUnreadProducerNotifications(user);
     }
 
     @Override
     public String generateStrongPasswordHash(String password) {
         try {
-            return AuthenticationFacade.getInstance().generateStrongPasswordHash(password);
+            return AUTHENTICATION_FACADE.generateStrongPasswordHash(password);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             e.printStackTrace();
         }
@@ -236,12 +242,12 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public String getInfoFromSearch(String search, String resultType) {
-        return SearchUserHandler.getInstance().getInfoFromSearch(search, resultType);
+        return SEARCH_USER.getInfoFromSearch(search, resultType);
     }
 
     @Override
     public List<IUser> getUsersBySearch(IUser user) {
-        return PersistenceFacade.getInstance().getUsersBySearch(user);
+        return PERSISTENCE_FACADE.getUsersBySearch(user);
     }
 
     private void logAction(String text) {
@@ -249,6 +255,6 @@ public class DomainFacade implements IDomainFacade {
     }
 
     private void logAction(String text, IUser user) {
-        PersistenceFacade.getInstance().logAction(text, user);
+        PERSISTENCE_FACADE.logAction(text, user);
     }
 }
