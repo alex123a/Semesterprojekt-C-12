@@ -33,12 +33,15 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean login(IUser user) {
-        return AuthenticationFacade.getInstance().login(user);
+        Boolean toReturn = AuthenticationFacade.getInstance().login(user);
+        logAction("User logged in");
+        return toReturn;
     }
 
     @Override
     public void deleteProduction(IProduction production) {
         CreditsSystem.getInstance().deleteProduction(production);
+        logAction("Production deleted (waiting for approval)");
     }
 
     @Override
@@ -237,5 +240,9 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public List<IUser> getUsersBySearch(IUser user) {
         return PersistenceFacade.getInstance().getUsersBySearch(user);
+    }
+
+    private void logAction(String text) {
+        PersistenceFacade.getInstance().logAction(text, CurrentSession.getInstance().getCurrentUser());
     }
 }

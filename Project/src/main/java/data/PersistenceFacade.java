@@ -3,6 +3,7 @@ package data;
 import Interfaces.*;
 import data.credits.FacadeData;
 import data.credits.Production;
+import data.logger.LogHandler;
 import data.notifications.AdminNotification;
 import data.notifications.NotificationHandler;
 import data.reporting.ReportHandler;
@@ -178,5 +179,10 @@ public class PersistenceFacade implements IPersistenceFacade {
     @Override
     public List<IUser> getUsersBySearch(IUser user) {
         return UserFacade.getInstance().getUsersBySearch(user);
+    }
+
+    @Override
+    public void logAction(String text, IUser user) {
+        LogHandler.getInstance().writeLog(text, user);
     }
 }

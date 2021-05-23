@@ -138,7 +138,10 @@ public class AddProductionController implements Initializable {
         }
 
         if (rightholderRoles.getText() != null || !rightholderRoles.getText().trim().isEmpty()) {
-            roles.addAll(Arrays.asList(rightholderRoles.getText().split(",")));
+            roles = Arrays.asList(rightholderRoles.getText().split(","));
+            for(int i = 0; i<roles.size(); i++) {
+                roles.set(i, roles.get(i).trim());
+            }
         }
 
         if (name != null && description != null) {

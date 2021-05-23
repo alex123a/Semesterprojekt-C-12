@@ -30,7 +30,8 @@ class ProductionHandler {
         this.connection = DatabaseConnection.getConnection();
     }
 
-    // Reads the whole productionData file and returns all productions in an arraylist;
+    // Gets all he productions from the normal tables (not the approval tables) in the database
+    // This returns the list of productions as a consumer should see them
     List<IProduction> getProductions() {
         List<IProduction> productionList = new ArrayList<>();
         try {
@@ -54,6 +55,7 @@ class ProductionHandler {
     }
 
     // Reads specific production with productionID
+    // If the production waits for approval, the changed version will be returned
     IProduction getProduction(IProduction production) {
         try {
             IProduction returnProduction = null;
@@ -84,6 +86,7 @@ class ProductionHandler {
         }
     }
 
+    // Saves the production to the approval tables so it waits for approval
     IProduction saveProduction(IProduction production){
         
         PreparedStatement insertStatement = null;
@@ -249,6 +252,7 @@ class ProductionHandler {
         }
     }
 
+    //A helper method that returns a production from the normal tables (not approval tables) given a resultset from an SQL query
     private Production getProductionFromResultset(ResultSet productionsResult) throws SQLException {
         PreparedStatement RightsholdersStatement = connection.prepareStatement("" +
                 "SELECT DISTINCT rightsholder_id " +
@@ -304,6 +308,8 @@ class ProductionHandler {
         return p;
     }
 
+    //A helper method to get a producer from the producerID
+    //It's probably not really supposed to be in this class...
     private Producer getProducerFromID(int producerID) throws SQLException {
         PreparedStatement getProducer = connection.prepareStatement("" +
                 "SELECT producer.id, users.username, users.user_password " +
@@ -321,8 +327,11 @@ class ProductionHandler {
         return producer;
     }
 
+    //This Approves changes to a production. This means that it moves the productions
+    //information from the approval tables to the normal tables and deletes the data
+    //from the approval tables
     public void approveChangesToProduction(IProduction production) {
-        //todo finish implementation
+
         //production is always persistence production. Therefore instant typecast.
         //is used for id. Pull information out of approved table, put it into table, then delete
         Production prod = (Production) production;
@@ -431,6 +440,9 @@ class ProductionHandler {
         }
     }
 
+    //This return all productions WITH CHANGES WAITING FOR APPROVAL
+    //If the user argument is a producer, it will only return the
+    //productions owned by that producer
     public List<IProduction> getProductionChanged(IUser user) {
         //If the user is a Systemadministrator, call getProductionsChanged for all producers
         //If the user is a producer, call getProductionsChanged for that producer
@@ -452,6 +464,7 @@ class ProductionHandler {
         return null;
     }
 
+    //A helper method to the above method
     private List<Production> getProductionsChanged(IUser user) {
         //get productions for a producer
         List<Production> productions = new ArrayList<>();
@@ -496,6 +509,8 @@ class ProductionHandler {
         return productions;
     }
 
+    //A helper method to get a production from a resultset IF THE PRODUCTION
+    //IS IN THE APPROVAL TABLES
     private Production getProductionFromResultsetApproval(ResultSet productionsResult) throws SQLException {
         PreparedStatement RightsholdersStatement = connection.prepareStatement("" +
                 "SELECT DISTINCT rightsholder_id " +
@@ -549,7 +564,6 @@ class ProductionHandler {
                 roleMap);
         return p;
     }
-
 
     static ProductionHandler getInstance() {
         return prHandler;
