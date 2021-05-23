@@ -31,7 +31,7 @@
                         <Insets right="30.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fx:id="accountImage" onMouseClicked="#goToLogin" onMouseEntered="#onMouseEnteredAccount" onMouseExited="#onMouseExitedAccount" style="-fx-cursor:hand;" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="accountImage" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@/images/Account_Grey.jpg" />
                      </image>
