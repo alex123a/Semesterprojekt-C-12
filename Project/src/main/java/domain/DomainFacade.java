@@ -44,11 +44,17 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public IProduction saveProduction(IProduction production) {
         IProduction returnedProduction = CreditsSystem.getInstance().saveProduction(production);
-
-        String notificationMSG = "Produktionen med produktions ID'et  "
-                + returnedProduction.getProductionID() + " har ændringer";
-        PersistenceFacade.getInstance().createAdminNotification(new AdminNotification(notificationMSG, returnedProduction, 1));
+        if (!validateUser(getCurrentUser())) {
+            String notificationMSG = "Produktionen med produktions ID'et  "
+                    + returnedProduction.getProductionID() + " har ændringer";
+            PersistenceFacade.getInstance().createAdminNotification(new AdminNotification(notificationMSG, returnedProduction, 1));
+        }
         return returnedProduction;
+    }
+
+    @Override
+    public void approveChangesToProduction(IProduction production) {
+        CreditsSystem.getInstance().approveChangesToProduction(production);
     }
 
     @Override

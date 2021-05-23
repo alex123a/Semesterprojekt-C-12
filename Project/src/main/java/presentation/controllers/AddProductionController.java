@@ -196,7 +196,7 @@ public class AddProductionController implements Initializable {
 
         // Save the production
         IProduction newProduction = new NewProduction(id, name, description, year, genre, category, producer, RhsRoles);
-        r.domainFacade.addProduction(newProduction);
+        r.domainFacade.saveProduction(newProduction);
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));

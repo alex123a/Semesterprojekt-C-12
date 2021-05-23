@@ -67,6 +67,7 @@ public class FacadeData implements IFacadeData {
         return pHandler.saveProduction(production);
     }
 
+    @Override
     public List<IProduction> getMyProductions(IUser user) {return pHandler.getProductionChanged(user);}
 
     /**
@@ -81,7 +82,7 @@ public class FacadeData implements IFacadeData {
 
     @Override
     public void approveChangesToProduction(IProduction production) {
-        throw new UnsupportedOperationException();
+        pHandler.approveChangesToProduction(production);
     }
 
     public IProduction getProduction(IProduction production) {

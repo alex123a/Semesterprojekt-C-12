@@ -90,6 +90,11 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
+    public List<IProduction> getMyProductions(IUser user){
+        return FacadeData.getInstance().getMyProductions(user);
+    }
+
+    @Override
     public boolean createProducerNotification(INotification notification) {
        return NotificationHandler.getInstance().createProducerNotification(notification);
     }

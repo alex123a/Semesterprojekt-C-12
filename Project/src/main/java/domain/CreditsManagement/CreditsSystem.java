@@ -47,6 +47,11 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
         return FacadeData.getInstance().getMyProductions(CurrentSession.getInstance().getCurrentUser());
     }
 
+    @Override
+    public void approveChangesToProduction(IProduction production) {
+        PersistenceFacade.getInstance().approveChangesToProduction(production);
+    }
+
     public List<IRightsholder> getAllRightsholders() {
         return PersistenceFacade.getInstance().getRightsholders();
     }

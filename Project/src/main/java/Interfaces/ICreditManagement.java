@@ -11,4 +11,6 @@ public interface ICreditManagement {
     //"Commits" all the changes
     IProduction saveProduction(IProduction production);
 
+    void approveChangesToProduction(IProduction production);
+
 }
