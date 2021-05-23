@@ -4,6 +4,7 @@ import Interfaces.*;
 import data.PersistenceFacade;
 import domain.CreditsManagement.CreditsSystem;
 import domain.authentication.AuthenticationFacade;
+import domain.notification.AdminNotification;
 import domain.notification.ProducerNotification;
 import domain.searchEngine.SearchEngineHandler;
 import domain.searchEngine.SearchUserHandler;
@@ -35,57 +36,19 @@ public class DomainFacade implements IDomainFacade {
         return AuthenticationFacade.getInstance().login(user);
     }
 
-    public void addCredit(IProduction production, IRightsholder rightsholder, List<String> roles) {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    public void removeCredit(IProduction production, IRightsholder rightsholder) {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    public void setProductionID(IProduction production, String productionID) {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    public void addProduction(IProduction production) {
-        IProduction returnedProduction = PersistenceFacade.getInstance().saveProduction(production);
-        /*
-        Koden under er ikke opdateret til den nyeste type af notifikations klasser.
-        //IProduction returnedProduction = CreditsSystem.getInstance().
-        String notificationMSG = "Produktionen med produktions ID'et  "
-                + returnedProduction.getProductionID() + " har ændringer";
-        PersistenceFacade.getInstance().createAdminNotification(new AdminNotification(notificationMSG, 0));
-        */
-    }
-
     @Override
     public void deleteProduction(IProduction production) {
         CreditsSystem.getInstance().deleteProduction(production);
     }
 
     @Override
-    public void saveProduction(IProduction production) {
-        CreditsSystem.getInstance().saveProduction(production);
-    }
+    public IProduction saveProduction(IProduction production) {
+        IProduction returnedProduction = CreditsSystem.getInstance().saveProduction(production);
 
-    public void saveChanges() {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    public void cancelChanges() {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    public void setName(IProduction production, String name) {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    public void setRoles(IProduction production, Map<IRightsholder, List<String>> roles) {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    public boolean editCredit(IRightsholder credit) {
-        return false;
+        String notificationMSG = "Produktionen med produktions ID'et  "
+                + returnedProduction.getProductionID() + " har ændringer";
+        PersistenceFacade.getInstance().createAdminNotification(new AdminNotification(notificationMSG, returnedProduction, 1));
+        return returnedProduction;
     }
 
     @Override

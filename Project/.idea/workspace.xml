@@ -5,34 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_15.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_15.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_15.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_15.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_15_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_15_0_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_15.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_15.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/ISeeCredits.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/ISeeCredits.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/Production.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/Production.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/ProductionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/ProductionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/RightsHolderHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/RightsHolderHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/TestInsertIntoApprovalTables.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/TestInsertIntoApprovalTables.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/jsonReporting/TestReportingAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/jsonReporting/TestReportingAPI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/menuProducer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/menuProducer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/ICreditManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ICreditManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -186,7 +161,7 @@
       <workItem from="1621612969222" duration="8436000" />
       <workItem from="1621625236667" duration="626000" />
       <workItem from="1621759914259" duration="2970000" />
-      <workItem from="1621764934610" duration="1763000" />
+      <workItem from="1621764934610" duration="2534000" />
     </task>
     <servers />
   </component>

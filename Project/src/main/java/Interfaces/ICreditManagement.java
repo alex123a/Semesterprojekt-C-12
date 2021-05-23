@@ -9,6 +9,6 @@ public interface ICreditManagement {
     void deleteProduction(IProduction production);
 
     //"Commits" all the changes
-    void saveProduction(IProduction production);
+    IProduction saveProduction(IProduction production);
 
 }
