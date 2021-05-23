@@ -38,6 +38,11 @@ public class ProductionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        IUser user = DomainFacade.getInstance().getCurrentUser();
+        if (DomainFacade.getInstance().validateUser(user)) {
+            editImage.setVisible(false);
+        }
+
         Repository r = Repository.getInstance();
 
         draw(r.getProductionToBeShown().getName(), r.getProductionToBeShown().getDescription());

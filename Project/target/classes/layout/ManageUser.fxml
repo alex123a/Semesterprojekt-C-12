@@ -53,7 +53,7 @@
                               <Font name="System Bold" size="30.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="userType" layoutX="132.0" layoutY="245.0" prefHeight="44.0" prefWidth="229.0" style="-fx-background-color: #ffffff; -fx-border-radius: 3px; -fx-border-color: #c9c9c9;" />
+                        <ComboBox fx:id="userType" layoutX="132.0" layoutY="245.0" prefHeight="44.0" prefWidth="229.0" style="-fx-background-color: #ffffff; -fx-border-radius: 3px; -fx-border-color: #c9c9c9; -fx-cursor: hand;" />
                         <Label alignment="CENTER" layoutX="1.0" layoutY="245.0" prefHeight="44.0" prefWidth="131.0" style="-fx-alignment: CENTER;" text="Rolle:" textFill="#4c4c4c">
                            <font>
                               <Font name="Calibri" size="20.0" />
@@ -117,7 +117,7 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="searchUsernameEdit" editable="true" layoutX="132.0" layoutY="102.0" onKeyReleased="#userSearcher" prefHeight="44.0" prefWidth="229.0" promptText="Brugernavn" />
+                        <ComboBox fx:id="searchUsernameEdit" editable="true" layoutX="132.0" layoutY="102.0" onKeyReleased="#userSearcher" prefHeight="44.0" prefWidth="229.0" promptText="Brugernavn" style="-fx-border-radius: 3px;" />
                      </children>
                   </Pane>
                </content>
@@ -156,7 +156,7 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="searchUsernameRemove" editable="true" layoutX="132.0" layoutY="102.0" onKeyReleased="#userSearcher" prefHeight="44.0" prefWidth="229.0" promptText="Brugernavn" style="-fx-cursor: hand;" />
+                        <ComboBox fx:id="searchUsernameRemove" editable="true" layoutX="132.0" layoutY="102.0" onKeyReleased="#userSearcher" prefHeight="44.0" prefWidth="229.0" promptText="Brugernavn" style="-fx-cursor: hand; -fx-border-radius: 3px;" />
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="180.0" prefHeight="44.0" prefWidth="131.0" text="Rolle:" textAlignment="CENTER" textFill="#4c4c4c">
                            <font>
                               <Font name="Calibri" size="20.0" />

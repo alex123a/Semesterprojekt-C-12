@@ -28,6 +28,8 @@ import java.util.*;
 public class adminVerifyProductionController implements Initializable {
 
     @FXML
+    private Button showAsUser;
+    @FXML
     private TextField inputYear;
     @FXML
     private TextField genreField;
@@ -128,5 +130,17 @@ public class adminVerifyProductionController implements Initializable {
             roles += s + ", ";
         }
         rightholderRoles.setText(roles);
+    }
+
+    public void showAsUser(MouseEvent mouseEvent) {
+        try {
+            Repository.getInstance().setLastPage("adminVerifyProduction");
+            Repository.getInstance().setProductionToBeShown(Repository.getInstance().getToEdit());
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/production.fxml"));
+            Stage window = (Stage) descriptionProgramArea.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
