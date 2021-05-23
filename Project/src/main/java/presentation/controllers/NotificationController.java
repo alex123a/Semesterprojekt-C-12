@@ -160,8 +160,6 @@ public class NotificationController implements Initializable {
             } else if (domain.getCurrentUser() instanceof IProducer) {
                 status = viewedConverter(notifications.get(i).getViewed());
             }
-            System.out.println(notifications.size());
-            System.out.println(notifications.get(i).getProduction().getName());
             createNotification(notifications.get(i).getProduction().getName(), notifications.get(i).getProduction().getProductionID(), status, notifications.get(i).getText(), i);
         }
         if (domain.getCurrentUser() instanceof IProducer) {
