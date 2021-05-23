@@ -1,9 +1,6 @@
 package data.credits;
 
-import Interfaces.IProducer;
-import Interfaces.IProduction;
-import Interfaces.IRightsholder;
-import Interfaces.IUser;
+import Interfaces.*;
 import data.DatabaseConnection;
 import data.PersistenceFacade;
 import data.userHandling.Producer;
@@ -130,9 +127,9 @@ class ProductionHandler {
                     insertStatement.setInt(3, p.getYear());
                     insertStatement.setInt(4, p.getGenre().getId());
                     insertStatement.setInt(5, p.getType().getId());
-                    insertStatement.setInt(6, p.getID());
-                    insertStatement.setInt(7, p.getProducer().getId());
-                    insertStatement.setString(8, p.getDescription());
+                    insertStatement.setInt(6, p.getProducer().getId());
+                    insertStatement.setString(7, p.getDescription());
+                    insertStatement.setInt(8, p.getID());
                 } else {
 
                     insertStatement = connection.prepareStatement("" +
@@ -541,7 +538,9 @@ class ProductionHandler {
     }
 
     public List<IProduction> getProductionChanged(IUser user) {
-        if (user instanceof Systemadministrator) {
+        //If the user is a Systemadministrator, call getProductionsChanged for all producers
+        //If the user is a producer, call getProductionsChanged for that producer
+        if (user instanceof IAdministrator) {
             List<IProduction> productions = new ArrayList<>();
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT producer.id, users.username, users.user_password FROM producer, users WHERE users.id = producer.id");
@@ -560,7 +559,7 @@ class ProductionHandler {
     }
 
     private List<Production> getProductionsChanged(IUser user) {
-        //Hente productions for producer
+        //get productions for a producer
         List<Production> productions = new ArrayList<>();
         try {
             PreparedStatement productionsStatement = connection.prepareStatement("" +
@@ -615,10 +614,10 @@ class ProductionHandler {
             //for each rightsholder, get all the roles that rightsholder has in the production
             int id = rightsholderIDs.getInt(1);
             PreparedStatement rolesStatement = connection.prepareStatement("" +
-                    "SELECT title, rolename.rolename FROM " +
+                    "SELECT title, rolename_approval.rolename FROM " +
                     "appears_in_approval LEFT JOIN role_approval ON appears_in_approval.id = role_approval.appears_in_id " +
                     "LEFT JOIN title ON role_approval.title_id = title.id " +
-                    "LEFT JOIN rolename ON role_approval.id = rolename.role_id " +
+                    "LEFT JOIN rolename_approval ON role_approval.id = rolename_approval.role_id " +
                     "WHERE appears_in_approval.production_id = ? " +
                     "AND appears_in_approval.rightsholder_id = ?");
             rolesStatement.setInt(1, productionsResult.getInt(1));

@@ -57,7 +57,6 @@ public class DomainFacade implements IDomainFacade {
                 + returnedProduction.getProductionID() + " har ændringer";
         PersistenceFacade.getInstance().createAdminNotification(new AdminNotification(notificationMSG, 0));
         */
-
     }
 
     @Override
@@ -113,6 +112,11 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public List<IProduction> getProductions() {
         return CreditsSystem.getInstance().getProductions();
+    }
+
+    @Override
+    public List<IProduction> getMyProductions() {
+        return CreditsSystem.getInstance().getMyProductions();
     }
 
     public List<IRightsholder> getRightsholders() {

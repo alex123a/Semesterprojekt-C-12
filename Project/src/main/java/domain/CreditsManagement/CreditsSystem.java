@@ -1,10 +1,9 @@
 package domain.CreditsManagement;
 
-import Interfaces.ICreditManagement;
-import Interfaces.IProduction;
-import Interfaces.IRightsholder;
-import Interfaces.ISeeCredits;
+import Interfaces.*;
 import data.PersistenceFacade;
+import data.credits.FacadeData;
+import domain.session.CurrentSession;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +88,11 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     public List<IProduction> getProductions() {
         //Could save the data in an attribute
         return PersistenceFacade.getInstance().getProductions();
+    }
+
+    @Override
+    public List<IProduction> getMyProductions() {
+        return FacadeData.getInstance().getMyProductions(CurrentSession.getInstance().getCurrentUser());
     }
 
     public List<IRightsholder> getAllRightsholders() {

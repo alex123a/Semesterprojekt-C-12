@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import Interfaces.IProducer;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import Interfaces.IUser;
@@ -52,12 +53,6 @@ public class EditProductionController implements Initializable {
     private ListView<CreditWrapper> rightholderListview;
 
     @FXML
-    private TextField rightholderFirstName;
-
-    @FXML
-    private TextField rightholderLastName;
-
-    @FXML
     private TextField rightholderDescription;
 
     @FXML
@@ -87,17 +82,50 @@ public class EditProductionController implements Initializable {
     void OnClickedSaveChanges(ActionEvent event) {
         toEdit.setProductionID(programIDField.getText());
         toEdit.setName(programNameField.getText());
+        toEdit.setDescription(descriptionProgramArea.getText());
+        toEdit.setYear(Integer.parseInt(yearInput.getText()));
 
+        // Get the Production Genre
+        ProductionGenre genre = null;
+        for(ProductionGenre pg : ProductionGenre.values()) {
+            if(comboGenre.getValue().equals(pg.getGenreWord())) {
+                genre = pg;
+            }
+        }
+        toEdit.setGenre(genre);
+
+        // Get the Production Category
+        ProductionType category = null;
+        for(ProductionType pt : ProductionType.values()) {
+            if(comboCategory.getValue().equals(pt.getTypeWord())) {
+                category = pt;
+            }
+        }
+        toEdit.setType(category);
+
+        // Get the Production Producer
+        IProducer producer = null;
+        Repository r = Repository.getInstance();
+        for(IUser user : r.domainFacade.getAllProducers()) {
+            if(user.getUsername().equals(comboProducer.getValue())) {
+                producer = (IProducer) user;
+            }
+        }
+        toEdit.setProducer(producer);
+
+        // Get the Production Rightsholders
         CreditWrapper[] rightsholders = rightholderListview.getItems().toArray(new CreditWrapper[0]);
         // Map over rightholders with their roles
         Map<IRightsholder, List<String>> RhsRoles = new HashMap<>();
         for (CreditWrapper credit: rightsholders) {
             RhsRoles.put(credit.getRightsholder(), credit.getRoles());
         }
-
         toEdit.setRightsholders(RhsRoles);
+
+        // Save the changes
         domain.saveProduction(toEdit);
 
+        // Go back to my_productions
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
             Stage window = (Stage) programIDField.getScene().getWindow();
@@ -119,8 +147,8 @@ public class EditProductionController implements Initializable {
             will be changed in iteration 2 if we run out of time in iteration 1
         */
 
-        if (rightholderFirstName.getText() != null || !rightholderFirstName.getText().trim().isEmpty()) {
-            name = rightholderFirstName.getText();
+        if (nameInput.getEditor().getText() != null || !nameInput.getEditor().getText().trim().isEmpty()) {
+            name = nameInput.getEditor().getText();
         }
 
         if (rightholderDescription.getText() != null || !rightholderDescription.getText().trim().isEmpty()) {
@@ -153,6 +181,7 @@ public class EditProductionController implements Initializable {
         oldId = toEdit.getProductionID();
         programNameField.setText(toEdit.getName());
         descriptionProgramArea.setText(toEdit.getDescription());
+        yearInput.setText(String.valueOf(toEdit.getYear()));
 
         //Doesn't work because of the persistence-layer
         List<CreditWrapper> credits = new ArrayList<>();
@@ -165,6 +194,9 @@ public class EditProductionController implements Initializable {
         ObservableList<String> categoryOptions = FXCollections.observableArrayList();
         for(ProductionType pType : ProductionType.values()) {
             categoryOptions.add(pType.getTypeWord());
+            if(pType.getTypeWord().equals(toEdit.getType().getTypeWord())) {
+                comboCategory.setValue(pType.getTypeWord());
+            }
         }
         comboCategory.setItems(categoryOptions);
 
@@ -172,6 +204,9 @@ public class EditProductionController implements Initializable {
         ObservableList<String> genreOptions = FXCollections.observableArrayList();
         for(ProductionGenre pGenre : ProductionGenre.values()) {
             genreOptions.add(pGenre.getGenreWord());
+            if(pGenre.getGenreWord().equals(toEdit.getGenre().getGenreWord())) {
+                comboGenre.setValue(pGenre.getGenreWord());
+            }
         }
         comboGenre.setItems(genreOptions);
 
@@ -180,8 +215,10 @@ public class EditProductionController implements Initializable {
         List<IUser> userList = r.domainFacade.getUsers();
         ObservableList<String> sortOptions = FXCollections.observableArrayList();
         for(IUser user : userList) {
-            sortOptions.addAll(user.getUsername());
-            System.out.println(user.getUsername());
+            sortOptions.add(user.getUsername());
+            if(user.getUsername().equals(toEdit.getProducer().getUsername())) {
+                comboProducer.setValue(user.getUsername());
+            }
         }
         comboProducer.setItems(sortOptions);
 
@@ -221,8 +258,7 @@ public class EditProductionController implements Initializable {
 
     public void getClickedRightsholder(MouseEvent mouseEvent) {
         CreditWrapper cw = rightholderListview.getSelectionModel().getSelectedItem();
-        rightholderFirstName.setText(cw.getRightsholder().getFirstName());
-        rightholderLastName.setText(cw.getRightsholder().getLastName());
+        nameInput.getEditor().setText(cw.getRightsholder().getFirstName() + " " + cw.getRightsholder().getLastName());
         rightholderDescription.setText(cw.getRightsholder().getDescription());
         String roles = "";
         for(String s : cw.getRoles()) {

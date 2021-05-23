@@ -131,7 +131,7 @@ public class Production implements IProduction {
 
     @Override
     public void setRightsholders(Map<IRightsholder, List<String>> roles) {
-        throw new UnsupportedOperationException("not implemented yet");
+        cachedMap = roles;
     }
 
     @Override

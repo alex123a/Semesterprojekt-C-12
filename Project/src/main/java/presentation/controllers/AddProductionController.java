@@ -64,12 +64,6 @@ public class AddProductionController implements Initializable {
     @FXML
     private Button addRightholderBut;
 
-    @FXML
-    private Button addProductionBut;
-
-    @FXML
-    private Button removeRightholder;
-
     private Repository rep = Repository.getInstance();
     private ObservableList<String> rightsholderList;
     private List<IRightsholder> rightList;
@@ -101,6 +95,7 @@ public class AddProductionController implements Initializable {
         }
         comboProducer.setItems(sortOptions);
 
+        // Makes sure that only numbers can be written in the yearInput
         yearInput.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -147,8 +142,6 @@ public class AddProductionController implements Initializable {
         }
 
         if (name != null && description != null) {
-            //TODO pass first name and last name seperately to the constructor
-            //TODO this should probably create a new creditWrapper
             IRightsholder newRightsholder = new NewRightsholder(name, "", description);
             CreditWrapper newCredit = new CreditWrapper(newRightsholder, roles);
             ObservableList<CreditWrapper> rightholders = rightholderListview.getItems();
@@ -164,11 +157,6 @@ public class AddProductionController implements Initializable {
     @FXML
     public void onClickedAddProduction(ActionEvent event) {
         /*
-        TODO For now we ignore the description since it's not made in the other layers yet, because we forgot it,
-            will be added in iteration 2
-        */
-
-        /*
         TODO still needs a check for null values in domain layer when trying to pass it down to data layer
          */
 
@@ -176,21 +164,21 @@ public class AddProductionController implements Initializable {
         String name = programNameField.getText();
         String description = descriptionProgramArea.getText();
         int year = Integer.parseInt(yearInput.getText());
+        // Get Production Genre
         ProductionGenre genre = null;
         for(ProductionGenre pg : ProductionGenre.values()) {
             if(comboGenre.getValue().equals(pg.getGenreWord())) {
                 genre = pg;
             }
         }
+        // Get Production Category
         ProductionType category = null;
         for(ProductionType pt : ProductionType.values()) {
             if(comboCategory.getValue().equals(pt.getTypeWord())) {
                 category = pt;
             }
         }
-        // todo : Producer should be a IProducer
-        // so it's easier to handle,
-        // but we can't get a IProducer out of the comboBox since it's a string *thinking emoji*
+        // Get Production Producer
         IProducer producer = null;
         Repository r = Repository.getInstance();
         for(IUser user : r.domainFacade.getAllProducers()) {
@@ -198,15 +186,15 @@ public class AddProductionController implements Initializable {
                 producer = (IProducer) user;
             }
         }
-
+        // Get Production Rightsholders
         CreditWrapper[] rightsholders = rightholderListview.getItems().toArray(new CreditWrapper[0]);
         // Map over rightholders with their roles
         Map<IRightsholder, List<String>> RhsRoles = new HashMap<>();
         for (CreditWrapper credit: rightsholders) {
             RhsRoles.put(credit.getRightsholder(), credit.getRoles());
         }
-        //TODO make this pass all values to the contructor
 
+        // Save the production
         IProduction newProduction = new NewProduction(id, name, description, year, genre, category, producer, RhsRoles);
         r.domainFacade.addProduction(newProduction);
 

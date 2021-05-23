@@ -81,12 +81,12 @@ public class PersistenceFacade implements IPersistenceFacade {
 
     @Override
     public void deleteProduction(IProduction production) {
-        throw new UnsupportedOperationException();
+        FacadeData.getInstance().deleteProduction(production);
     }
 
     @Override
     public void approveChangesToProduction(IProduction production) {
-
+        FacadeData.getInstance().approveChangesToProduction(production);
     }
 
     @Override
