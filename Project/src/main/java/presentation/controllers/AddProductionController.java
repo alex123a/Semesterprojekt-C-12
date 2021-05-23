@@ -250,6 +250,14 @@ public class AddProductionController implements Initializable {
         rightsholderList = FXCollections.observableArrayList();
         for(IRightsholder ir : rightList) {
             rightsholderList.add(ir.getFirstName() + " " + ir.getLastName());
+            rightholderDescription.setText(ir.getDescription());
+        }
+        if(rightsholderList.size() == 0) {
+            rightholderDescription.setText("");
+            rightholderDescription.setEditable(true);
+        }
+        else {
+            rightholderDescription.setEditable(false);
         }
         nameInput.setItems(rightsholderList);
         nameInput.show();

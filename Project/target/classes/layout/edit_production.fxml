@@ -41,12 +41,12 @@
       <Label layoutX="657.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Navn:" />
       <ComboBox fx:id="nameInput" editable="true" layoutX="657.0" layoutY="462.0" prefHeight="25.0" prefWidth="394.0" promptText="Indtast navn" />
       <Label layoutX="657.0" layoutY="505.0" prefHeight="17.0" prefWidth="65.0" text="Beskrivelse:" />
-      <TextField fx:id="rightholderDescription" layoutX="657.0" layoutY="522.0" prefHeight="25.0" prefWidth="394.0" />
+      <TextField fx:id="rightholderDescription" editable="false" layoutX="657.0" layoutY="522.0" prefHeight="25.0" prefWidth="394.0" />
       <Label layoutX="657.0" layoutY="565.0" prefHeight="17.0" prefWidth="142.0" text="Rolle/roller (split med &quot;,&quot;):" />
       <TextField fx:id="rightholderRoles" layoutX="657.0" layoutY="582.0" prefHeight="25.0" prefWidth="394.0" />
 
       <Button fx:id="addRightholderBut" layoutX="657.0" layoutY="654.0" mnemonicParsing="false" onAction="#onClickedAddRightholder" style="-fx-cursor: hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0; -fx-background-radius: 4px; -fx-border-radius: 4px;" text="Tilføj ophavsmand" />
-      <Button fx:id="removeRightholder" layoutX="805.0" layoutY="654.0" mnemonicParsing="false" onAction="#onClickedRemoveRightholder" style="-fx-cursor: hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0; -fx-border-radius: 4px; -fx-background-radius: 4px;" text="Fjern ophavsmand" />
-      <Button fx:id="saveChangesBut" layoutX="951.0" layoutY="654.0" mnemonicParsing="false" onAction="#OnClickedSaveChanges" prefHeight="25.0" prefWidth="100.0" style="-fx-cursor: hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0; -fx-border-radius: 4px; -fx-background-radius: 4px;" text="Gem ændringer" />
+      <Button fx:id="removeRightholder" layoutX="791.0" layoutY="654.0" mnemonicParsing="false" onAction="#onClickedRemoveRightholder" style="-fx-cursor: hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0; -fx-border-radius: 4px; -fx-background-radius: 4px;" text="Fjern ophavsmand" />
+      <Button fx:id="saveChangesBut" layoutX="925.0" layoutY="654.0" mnemonicParsing="false" onAction="#OnClickedSaveChanges" prefHeight="27.0" prefWidth="126.0" style="-fx-cursor: hand; -fx-background-color: #ffffff; -fx-border-color: #B0B0B0; -fx-border-radius: 4px; -fx-background-radius: 4px;" text="Gem ændringer" />
    </children>
 </AnchorPane>

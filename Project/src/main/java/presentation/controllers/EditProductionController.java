@@ -61,12 +61,6 @@ public class EditProductionController implements Initializable {
     @FXML
     private Button addRightholderBut;
 
-    @FXML
-    private Button saveChangesBut;
-
-    @FXML
-    private Button removeRightholderBut;
-
     IProduction toEdit;
 
     String oldId = null;
@@ -164,7 +158,12 @@ public class EditProductionController implements Initializable {
         }
 
         if (firstName != null && lastName != null && description != null) {
-            IRightsholder newRightsholder = new NewRightsholder(firstName, lastName, description);
+            IRightsholder newRightsholder = doesRightsholderExist();
+            // Checks if the rightsholder exist doesn't exist
+            if(newRightsholder == null) {
+                // Rightsholder doesn't exist
+                newRightsholder = new NewRightsholder(firstName, lastName, description);
+            }
             CreditWrapper newCredit = new CreditWrapper(newRightsholder, roles);
             ObservableList<CreditWrapper> rightholders = rightholderListview.getItems();
             rightholders.add(newCredit);
@@ -284,8 +283,34 @@ public class EditProductionController implements Initializable {
         rightsholderList = FXCollections.observableArrayList();
         for(IRightsholder ir : rightList) {
             rightsholderList.add(ir.getFirstName() + " " + ir.getLastName());
+            rightholderDescription.setText(ir.getDescription());
+        }
+        if(rightsholderList.size() == 0) {
+            rightholderDescription.setText("");
+            rightholderDescription.setEditable(true);
+        }
+        else {
+            rightholderDescription.setEditable(false);
         }
         nameInput.setItems(rightsholderList);
         nameInput.show();
+    }
+
+    public IRightsholder doesRightsholderExist() {
+        // Should have been in domain instead
+        IRightsholder existingUser = null;
+        Repository r = Repository.getInstance();
+        finalRightsholdersList = r.domainFacade.getRightsholders();
+
+        if(rightsholderList.contains(nameInput.getValue())) {
+            for(IRightsholder rightsholder : finalRightsholdersList) {
+                String name = rightsholder.getFirstName() + " " + rightsholder.getLastName();
+                if(name.contains(rightsholderList.get(rightsholderList.indexOf(nameInput.getValue())))) {
+                    existingUser = finalRightsholdersList.get(rightsholderList.indexOf(nameInput.getValue()));
+                }
+            }
+        }
+
+        return existingUser;
     }
 }
