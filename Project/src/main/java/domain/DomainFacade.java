@@ -132,12 +132,20 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean deleteUser(IUser user) {
-        return PersistenceFacade.getInstance().deleteUser(user);
+        IUser currentUser = getCurrentUser();
+        if (validateUser(currentUser) && user != null && !currentUser.getUsername().equals(user.getUsername())) {
+            return PersistenceFacade.getInstance().deleteUser(user);
+        }
+        return false;
     }
 
     @Override
     public boolean editUser(IUser user) {
-        return PersistenceFacade.getInstance().editUser(user);
+        IUser currentUser = getCurrentUser();
+        if (validateUser(currentUser) && !user.getUsername().equals("") && !user.getPassword().equals("")) {
+            return PersistenceFacade.getInstance().editUser(user);
+        }
+        return false;
     }
 
     @Override
@@ -147,7 +155,13 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean addUser(IUser user) {
-        if (PersistenceFacade.getInstance().getUser(user) == null) {
+        IUser currentUser = getCurrentUser();
+        if (validateUser(currentUser) && !user.getUsername().equals("") && !user.getPassword().equals("")) {
+            try {
+                user.setPassword(AuthenticationHandler.getInstance().generateStrongPasswordHash(user.getPassword()));
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+                e.printStackTrace();
+            }
             return PersistenceFacade.getInstance().addUser(user);
         }
         return false;
@@ -228,6 +242,7 @@ public class DomainFacade implements IDomainFacade {
         return PersistenceFacade.getInstance().countUnreadProducerNotifications(user);
     }
 
+    @Override
     public String generateStrongPasswordHash(String password) {
         try {
             return AuthenticationHandler.getInstance().generateStrongPasswordHash(password);

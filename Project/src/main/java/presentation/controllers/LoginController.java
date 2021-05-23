@@ -2,7 +2,6 @@ package presentation.controllers;
 
 import Interfaces.IUser;
 import domain.DomainFacade;
-import domain.authentication.AuthenticationHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
