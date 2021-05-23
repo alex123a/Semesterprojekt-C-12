@@ -127,6 +127,7 @@ public class UserManager implements IUserHandling {
                 PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
                 queryStatement.setInt(1,producerResult.getInt(1));
                 ResultSet queryResultSet = queryStatement.executeQuery();
+                queryResultSet.next();
                 list.add(new Producer(queryResultSet.getInt(1), queryResultSet.getString(2), queryResultSet.getString(3)));
             }
             //Administrator
@@ -136,6 +137,7 @@ public class UserManager implements IUserHandling {
                 PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
                 queryStatement.setInt(1,adminResult.getInt(1));
                 ResultSet queryResultSet = queryStatement.executeQuery();
+                queryResultSet.next();
                 list.add(new SystemAdministrator(queryResultSet.getInt(1), queryResultSet.getString(2), queryResultSet.getString(3)));
             }
         } catch (SQLException exception) {
