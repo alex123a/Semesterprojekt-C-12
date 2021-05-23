@@ -138,7 +138,8 @@ public class EditProductionController implements Initializable {
 
     @FXML
     void onClickedAddRightholder(ActionEvent event) {
-        String name = null;
+        String firstName = null;
+        String lastName = null;
         String description = null;
         List<String> roles = new ArrayList<>();
 
@@ -148,7 +149,10 @@ public class EditProductionController implements Initializable {
         */
 
         if (nameInput.getEditor().getText() != null || !nameInput.getEditor().getText().trim().isEmpty()) {
-            name = nameInput.getEditor().getText();
+            String name = nameInput.getEditor().getText();
+            String[] splitter = name.split(" ");
+            firstName = splitter[0];
+            lastName = splitter[1];
         }
 
         if (rightholderDescription.getText() != null || !rightholderDescription.getText().trim().isEmpty()) {
@@ -159,10 +163,8 @@ public class EditProductionController implements Initializable {
             roles.addAll(Arrays.asList(rightholderRoles.getText().split(",")));
         }
 
-        if (name != null && description != null) {
-            //TODO pass first name and last name seperately to the constructor
-            //TODO this should probably create a new creditWrapper
-            IRightsholder newRightsholder = new NewRightsholder(name, "", description);
+        if (firstName != null && lastName != null && description != null) {
+            IRightsholder newRightsholder = new NewRightsholder(firstName, lastName, description);
             CreditWrapper newCredit = new CreditWrapper(newRightsholder, roles);
             ObservableList<CreditWrapper> rightholders = rightholderListview.getItems();
             rightholders.add(newCredit);

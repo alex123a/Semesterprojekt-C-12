@@ -149,7 +149,7 @@ public class Production implements IProduction {
 
     @Override
     public List<String> getRightsholderRole(IRightsholder rightsholder) {
-        return rightsholders.get(rightsholder);
+        return getRightsholders().get(rightsholder);
     }
 
     boolean toDelete() {

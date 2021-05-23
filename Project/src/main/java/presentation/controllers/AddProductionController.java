@@ -90,7 +90,6 @@ public class AddProductionController implements Initializable {
         ObservableList<String> sortOptions = FXCollections.observableArrayList();
         for(IUser user : userList) {
             sortOptions.addAll(user.getUsername());
-            System.out.println(user.getUsername());
         }
         comboProducer.setItems(sortOptions);
 
@@ -123,7 +122,8 @@ public class AddProductionController implements Initializable {
 
     @FXML
     public void onClickedAddRightholder(ActionEvent event) {
-        String name = null;
+        String firstName = null;
+        String lastName = null;
         String description = null;
         List<String> roles = new ArrayList<>();
 
@@ -133,7 +133,10 @@ public class AddProductionController implements Initializable {
         */
 
         if (nameInput.getEditor().getText() != null || !nameInput.getEditor().getText().trim().isEmpty()) {
-            name = nameInput.getEditor().getText();
+            String name = nameInput.getEditor().getText();
+            String[] splitter = name.split(" ");
+            firstName = splitter[0];
+            lastName = splitter[1];
         }
 
         if (rightholderDescription.getText() != null || !rightholderDescription.getText().trim().isEmpty()) {
@@ -144,8 +147,8 @@ public class AddProductionController implements Initializable {
             roles.addAll(Arrays.asList(rightholderRoles.getText().split(",")));
         }
 
-        if (name != null && description != null) {
-            IRightsholder newRightsholder = new NewRightsholder(name, "", description);
+        if (firstName != null && lastName != null && description != null) {
+            IRightsholder newRightsholder = new NewRightsholder(firstName, lastName, description);
             CreditWrapper newCredit = new CreditWrapper(newRightsholder, roles);
             ObservableList<CreditWrapper> rightholders = rightholderListview.getItems();
             rightholders.add(newCredit);
