@@ -102,7 +102,6 @@ class ProductionHandler {
                 ResultSet result = getProductionStatement.executeQuery();
 
                 if (result.next()) {
-                    //TODO hasn't been tested
                     //Run this if the production is already in the approval table
                     insertStatement = connection.prepareStatement("" +
                             "UPDATE production_approval " +
@@ -117,6 +116,28 @@ class ProductionHandler {
                     insertStatement.setInt(6, p.getProducer().getId());
                     insertStatement.setString(7, p.getDescription());
                     insertStatement.setInt(8, p.getID());
+
+                    //Delete from "shadow" tables
+                    //The data will be inserted again further down
+                    PreparedStatement removeFromAppearsInApprovalStatement = connection.prepareStatement("" +
+                            "DELETE FROM appears_in_approval WHERE production_id=? RETURNING id");
+                    removeFromAppearsInApprovalStatement.setInt(1, p.getID());
+                    ResultSet appearsInApprovalIDs = removeFromAppearsInApprovalStatement.executeQuery();
+                    while (appearsInApprovalIDs.next()){
+                        int appearsInApprovalID = appearsInApprovalIDs.getInt(0);
+                        PreparedStatement removeFromRoleApprovalStatement = connection.prepareStatement("" +
+                                "DELETE FROM role_approval WHERE appears_in_id=? RETURNING id");
+                        removeFromRoleApprovalStatement.setInt(1, appearsInApprovalID);
+                        ResultSet roleApprovalIDs = removeFromRoleApprovalStatement.executeQuery();
+                        while (roleApprovalIDs.next()){
+                            int roleApprovalID = roleApprovalIDs.getInt(1);
+                            PreparedStatement removeFromRoleNameApprovalStatement = connection.prepareStatement("" +
+                                    "DELETE FROM rolename_approval WHERE role_id=?");
+                            removeFromRoleNameApprovalStatement.setInt(1, roleApprovalID);
+                            removeFromRoleNameApprovalStatement.execute();
+                        }
+                    }
+
                 } else {
 
                     insertStatement = connection.prepareStatement("" +
