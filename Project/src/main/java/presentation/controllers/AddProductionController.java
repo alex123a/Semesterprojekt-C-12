@@ -56,9 +56,6 @@ public class AddProductionController implements Initializable {
     private ListView<CreditWrapper> rightholderListview;
 
     @FXML
-    private TextField rightholderName;
-
-    @FXML
     private TextField rightholderDescription;
 
     @FXML
@@ -137,8 +134,8 @@ public class AddProductionController implements Initializable {
             will be changed in iteration 2 if we run out of time in iteration 1
         */
 
-        if (rightholderName.getText() != null || !rightholderName.getText().trim().isEmpty()) {
-            name = rightholderName.getText();
+        if (nameInput.getEditor().getText() != null || !nameInput.getEditor().getText().trim().isEmpty()) {
+            name = nameInput.getEditor().getText();
         }
 
         if (rightholderDescription.getText() != null || !rightholderDescription.getText().trim().isEmpty()) {
