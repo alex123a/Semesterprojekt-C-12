@@ -3,9 +3,8 @@ package domain;
 import Interfaces.*;
 import data.PersistenceFacade;
 import domain.CreditsManagement.CreditsSystem;
-import domain.authentication.AuthenticationHandler;
+import domain.authentication.AuthenticationFacade;
 import domain.notification.ProducerNotification;
-import domain.notification.AdminNotification;
 import domain.searchEngine.SearchEngineHandler;
 import domain.searchEngine.SearchUserHandler;
 import domain.session.CurrentSession;
@@ -33,7 +32,7 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean login(IUser user) {
-        return AuthenticationHandler.getLoginInstance().login(user);
+        return AuthenticationFacade.getInstance().login(user);
     }
 
     public void addCredit(IProduction production, IRightsholder rightsholder, List<String> roles) {
@@ -121,7 +120,7 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean validateUser(IUser user) {
-        return AuthenticationHandler.getUserInstance().validateUser(user);
+        return AuthenticationFacade.getInstance().validateUser(user);
     }
 
 
@@ -158,7 +157,7 @@ public class DomainFacade implements IDomainFacade {
         IUser currentUser = getCurrentUser();
         if (validateUser(currentUser) && !user.getUsername().equals("") && !user.getPassword().equals("")) {
             try {
-                user.setPassword(AuthenticationHandler.getInstance().generateStrongPasswordHash(user.getPassword()));
+                user.setPassword(AuthenticationFacade.getInstance().generateStrongPasswordHash(user.getPassword()));
             } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 e.printStackTrace();
             }
@@ -245,7 +244,7 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public String generateStrongPasswordHash(String password) {
         try {
-            return AuthenticationHandler.getInstance().generateStrongPasswordHash(password);
+            return AuthenticationFacade.getInstance().generateStrongPasswordHash(password);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             e.printStackTrace();
         }

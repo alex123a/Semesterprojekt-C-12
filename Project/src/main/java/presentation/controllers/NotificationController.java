@@ -80,7 +80,7 @@ public class NotificationController implements Initializable {
 
 
 
-            if (domain.getCurrentUser() instanceof IAdministrator) {
+            if (domain.validateUser(domain.getCurrentUser())) {
                 // Make decline Button
                 Button declineBut = new Button("Afvis");
                 declineBut.setId("" + index);
@@ -150,7 +150,7 @@ public class NotificationController implements Initializable {
     }
 
     public void loadNotifications() {
-        notifications = domain.getCurrentUser() instanceof IAdministrator ? domain.getAdminNotifications() : domain.getProducerNotifications(domain.getCurrentUser());
+        notifications = domain.validateUser(domain.getCurrentUser()) ? domain.getAdminNotifications() : domain.getProducerNotifications(domain.getCurrentUser());
 
         String status = "";
 
@@ -174,12 +174,11 @@ public class NotificationController implements Initializable {
     }
 
     public void refreshPage(int index, int status) {
-        if (domain.getCurrentUser() instanceof IAdministrator) {
+        if (domain.validateUser(domain.getCurrentUser())) {
             notifications.get(index).setApproval(status);
             domain.editAdminNotification(notifications.get(index));
-        } else if (domain.getCurrentUser() instanceof IProducer) {
-            // TODO This should probably be somewhere else
         }
+
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/notification.fxml"));
             Stage window = (Stage) notificationBox.getScene().getWindow();
@@ -203,7 +202,7 @@ public class NotificationController implements Initializable {
     }
 
     public void backClicked(MouseEvent mouseEvent) {
-        if (domain.getCurrentUser() instanceof IAdministrator) {
+        if (domain.validateUser(domain.getCurrentUser())) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
                 Stage window = (Stage) notificationBox.getScene().getWindow();
@@ -212,7 +211,7 @@ public class NotificationController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        } else if (domain.getCurrentUser() instanceof IProducer) {
+        } else if (!domain.validateUser(domain.getCurrentUser())) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/layout/menuProducer.fxml"));
                 Stage window = (Stage) notificationBox.getScene().getWindow();
