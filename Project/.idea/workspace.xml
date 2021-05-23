@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/ICreditManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ICreditManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/RightsHolderHandler.java" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,6 +115,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.NewMain" />
@@ -161,7 +171,7 @@
       <workItem from="1621612969222" duration="8436000" />
       <workItem from="1621625236667" duration="626000" />
       <workItem from="1621759914259" duration="2970000" />
-      <workItem from="1621764934610" duration="2534000" />
+      <workItem from="1621764934610" duration="2884000" />
     </task>
     <servers />
   </component>
