@@ -17,12 +17,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import presentation.Repository;
-import presentation.userManage.Systemadministrator;
 
 import java.io.IOException;
 import java.net.URL;

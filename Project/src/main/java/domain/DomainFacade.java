@@ -33,15 +33,15 @@ public class DomainFacade implements IDomainFacade {
 
     @Override
     public boolean login(IUser user) {
-        Boolean toReturn = AuthenticationFacade.getInstance().login(user);
-        logAction("User logged in");
+        boolean toReturn = AuthenticationFacade.getInstance().login(user);
+        //logAction("User logged in", user);
         return toReturn;
     }
 
     @Override
     public void deleteProduction(IProduction production) {
         CreditsSystem.getInstance().deleteProduction(production);
-        logAction("Production deleted (waiting for approval)");
+        //logAction("Production deleted (waiting for approval): " + production);
     }
 
     @Override
@@ -51,6 +51,7 @@ public class DomainFacade implements IDomainFacade {
             String notificationMSG = "Produktionen med produktions ID'et  "
                     + returnedProduction.getProductionID() + " har ændringer";
             PersistenceFacade.getInstance().createAdminNotification(new AdminNotification(notificationMSG, returnedProduction, 1));
+            //logAction("Save production (Waiting for approval): " + production + " --- notification sent to producer");
         }
         return returnedProduction;
     }
@@ -58,6 +59,7 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public void approveChangesToProduction(IProduction production) {
         CreditsSystem.getInstance().approveChangesToProduction(production);
+        //logAction("Changes to production " + production + " Approved");
     }
 
     @Override
@@ -243,6 +245,10 @@ public class DomainFacade implements IDomainFacade {
     }
 
     private void logAction(String text) {
-        PersistenceFacade.getInstance().logAction(text, CurrentSession.getInstance().getCurrentUser());
+        logAction(text, this.getCurrentUser());
+    }
+
+    private void logAction(String text, IUser user) {
+        PersistenceFacade.getInstance().logAction(text, user);
     }
 }

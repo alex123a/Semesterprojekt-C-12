@@ -6,17 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IPersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IPersistenceFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/ProductionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/ProductionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/NotificationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/notifications/NotificationHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/adminVerifyProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/adminVerifyProductionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/notificationController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/notificationController$2.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <list id="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" name="Changes by magnu" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +58,13 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java">
       <ranges>
-        <range start1="53" end1="53" start2="53" end2="58" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="54" end1="59" start2="59" end2="59" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="240" end1="240" start2="240" end2="244" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="35" end1="37" start2="35" end2="37" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="43" end1="44" start2="43" end2="44" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="53" end1="53" start2="53" end2="54" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="56" end1="56" start2="57" end2="63" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="57" end1="62" start2="64" end2="64" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="245" end1="246" start2="247" end2="248" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="247" end1="247" start2="249" end2="253" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java">
@@ -58,16 +72,18 @@
         <range start1="32" end1="33" start2="32" end2="34" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
         <range start1="56" end1="56" start2="57" end2="58" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
         <range start1="86" end1="86" start2="88" end2="89" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="251" end1="251" start2="254" end2="255" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="306" end1="306" start2="310" end2="312" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="323" end1="323" start2="329" end2="332" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="324" end1="325" start2="333" end2="334" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="361" end1="361" start2="370" end2="374" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="362" end1="366" start2="375" end2="375" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="433" end1="433" start2="442" end2="445" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="454" end1="454" start2="466" end2="467" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="498" end1="498" start2="511" end2="513" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="551" end1="552" start2="566" end2="566" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="101" end1="102" start2="104" end2="104" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="116" end1="116" start2="118" end2="140" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="251" end1="251" start2="275" end2="276" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="306" end1="306" start2="331" end2="333" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="323" end1="323" start2="350" end2="353" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="324" end1="325" start2="354" end2="355" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="361" end1="361" start2="391" end2="395" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="362" end1="366" start2="396" end2="396" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="433" end1="433" start2="463" end2="466" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="454" end1="454" start2="487" end2="488" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="498" end1="498" start2="532" end2="534" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="551" end1="552" start2="587" end2="587" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
       </ranges>
     </file>
   </component>
@@ -209,7 +225,7 @@
       <workItem from="1621625236667" duration="626000" />
       <workItem from="1621759914259" duration="2970000" />
       <workItem from="1621764934610" duration="3638000" />
-      <workItem from="1621770081324" duration="7201000" />
+      <workItem from="1621770081324" duration="11113000" />
     </task>
     <servers />
   </component>
@@ -233,33 +249,53 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
-          <line>174</line>
+          <line>195</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
-          <line>169</line>
+          <line>190</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
-          <line>168</line>
+          <line>189</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
-          <line>167</line>
+          <line>188</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
-          <line>164</line>
+          <line>185</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/RightsHolderHandler.java</url>
           <line>90</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java</url>
+          <line>172</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java</url>
+          <line>173</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java</url>
+          <line>268</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java</url>
+          <line>270</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

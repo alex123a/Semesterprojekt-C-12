@@ -93,7 +93,6 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     @Override
     public boolean editAdminNotification(INotification newNotification) {
         try {
-            IProduction production = newNotification.getProduction();
             PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification SET approval_status_id = ? WHERE id = ? ");
             statement.setInt(1, newNotification.getApproval());
             statement.setInt(2, ((Notification) newNotification).getID());
@@ -154,7 +153,6 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             statement.setInt(1, user.getId());
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                System.out.println("dadasadssad" + result.getInt(2));
                 list.add(new ProducerNotification(result.getInt(1), (IProducer) PersistenceFacade.getInstance().getUser(new Producer(result.getInt(2))),
                         result.getString(3), result.getBoolean(4),
                         FacadeData.getInstance().getProduction(new Production(result.getInt(5)))));
