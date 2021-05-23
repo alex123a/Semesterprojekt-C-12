@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.CreditWrapper;
@@ -30,7 +31,7 @@ import java.util.*;
 
 public class EditProductionController implements Initializable {
 
-    public ComboBox nameInput;
+    public ComboBox<String> nameInput;
     @FXML
     private ComboBox comboCategory;
     @FXML
@@ -168,6 +169,13 @@ public class EditProductionController implements Initializable {
             ObservableList<CreditWrapper> rightholders = rightholderListview.getItems();
             rightholders.add(newCredit);
         }
+
+        nameInput.getEditor().setText("");
+        nameInput.getSelectionModel().clearSelection();
+        findRightsholder();
+        nameInput.hide();
+        rightholderDescription.setText("");
+        rightholderRoles.setText("");
     }
 
     @FXML
@@ -238,12 +246,8 @@ public class EditProductionController implements Initializable {
         rightList = r.domainFacade.getRightsholders();
         setRightsholderComboBox();
 
-        nameInput.getEditor().textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                findRightsholder();
-            }
-        });
+        nameInput.getEditor().setOnKeyPressed(this::handleOnKeyPressed);
+        nameInput.hide();
     }
 
     public void onBackClicked(MouseEvent mouseEvent) {
@@ -269,13 +273,16 @@ public class EditProductionController implements Initializable {
     }
 
     public void findRightsholder() {
+        // Should have been in domain instead
         rightList  = new ArrayList<>();
+
         for(IRightsholder ir : finalRightsholdersList) {
             String name = ir.getFirstName() + " " + ir.getLastName();
             if(name.toLowerCase().contains(nameInput.getEditor().getText().toLowerCase())) {
                 rightList.add(ir);
             }
         }
+
         setRightsholderComboBox();
     }
 
@@ -292,8 +299,12 @@ public class EditProductionController implements Initializable {
         else {
             rightholderDescription.setEditable(false);
         }
-        nameInput.setItems(rightsholderList);
-        nameInput.show();
+        if(rightsholderList.size() > 0) {
+            nameInput.getSelectionModel().clearSelection();
+            nameInput.getItems().clear();
+            nameInput.setItems(rightsholderList);
+            nameInput.show();
+        }
     }
 
     public IRightsholder doesRightsholderExist() {
@@ -312,5 +323,21 @@ public class EditProductionController implements Initializable {
         }
 
         return existingUser;
+    }
+
+    @FXML
+    public void handleOnKeyPressed(KeyEvent keyEvent) {
+        findRightsholder();
+    }
+
+    @FXML
+    private void updateDescription(ActionEvent actionEvent) {
+        String chosenValue = nameInput.getValue();
+        for(IRightsholder rightsholder : rightList) {
+            String name = rightsholder.getFirstName() + " " + rightsholder.getLastName();
+            if(name.equals(chosenValue)) {
+                rightholderDescription.setText(rightsholder.getDescription());
+            }
+        }
     }
 }
