@@ -43,7 +43,7 @@ public class Production implements IProduction {
         this.rightsholders = rightsholders;
     }
 
-    public Production(int id, String productionID, String name, String description, int year, ProductionGenre genre, ProductionType type, Map<Integer, List<String>> rightsholders) {
+    public Production(int id, String productionID, String name, String description, int year, ProductionGenre genre, ProductionType type, IProducer producer, Map<Integer, List<String>> rightsholders) {
         this.id = id;
         this.productionID = productionID;
         this.name = name;
@@ -51,9 +51,9 @@ public class Production implements IProduction {
         this.year = year;
         this.genre = genre;
         this.type = type;
+        this.producer = producer;
         this.rightsholders = rightsholders;
     }
-
 
     public int getID() {
         return this.id;
@@ -153,8 +153,26 @@ public class Production implements IProduction {
         return rightsholders.get(rightsholder);
     }
 
+    boolean toDelete() {
+        //Not a very clean way to do this
+        if (
+                productionID==null
+                && name == null
+                && description == null
+                && year==0
+                && genre==null
+                && type == null
+                && producer==null
+                && rightsholders==null
+        ) {
+            return true;
+        } else return false;
+    }
+
     @Override
     public String toString() {
-        return productionID + ": " + name;
+        return id + " " + productionID + ": " + name;
     }
+
+
 }
