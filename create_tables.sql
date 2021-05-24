@@ -140,6 +140,7 @@ CREATE TABLE administrator_notification(
     production_id INTEGER NOT NULL,
     approval_status_id INTEGER NOT NULL,
 	PRIMARY KEY (id),
+	FOREIGN KEY (production_id) REFERENCES production(id) ON DELETE CASCADE,
 	FOREIGN KEY (approval_status_id) REFERENCES approval_status(id)
 );
 
@@ -153,9 +154,12 @@ CREATE TABLE approved(
 
 CREATE TABLE producer_notification(
     id SERIAL,
+    producer_id INTEGER,
     notification_text VARCHAR(1000) NOT NULL,
     viewed BOOLEAN NOT NULL,
     production_id INTEGER,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	FOREIGN KEY (producer_id) REFERENCES producer(id) ON DELETE CASCADE,
+	FOREIGN KEY (production_id) REFERENCES production(id) ON DELETE CASCADE
 );
 
