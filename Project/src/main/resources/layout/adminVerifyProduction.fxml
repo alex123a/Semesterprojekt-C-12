@@ -44,6 +44,6 @@
       <TextField fx:id="genreField" editable="false" layoutX="725.0" layoutY="160.0" prefHeight="26.0" prefWidth="150.0" />
       <TextField fx:id="typeField" editable="false" layoutX="899.0" layoutY="160.0" prefHeight="26.0" prefWidth="150.0" />
       <TextField fx:id="producerField" editable="false" layoutX="657.0" layoutY="232.0" prefHeight="26.0" prefWidth="394.0" />
-      <Button fx:id="showAsUser" onMouseClicked="#showAsUser" layoutX="739.0" layoutY="638.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="231.0" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 4px;" text="Vis som bruger" />
+      <Button fx:id="showAsUser" layoutX="739.0" layoutY="638.0" mnemonicParsing="false" onMouseClicked="#showAsUser" prefHeight="45.0" prefWidth="231.0" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 4px; -fx-cursor: hand;" text="Vis som bruger" />
    </children>
 </AnchorPane>
