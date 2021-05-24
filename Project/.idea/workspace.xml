@@ -6,17 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/PersonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/adminVerifyProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/adminVerifyProductionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/adminVerifyProduction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/adminVerifyProduction.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/ManageUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/ManageUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/layout/adminVerifyProduction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/adminVerifyProduction.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/adminVerifyProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/adminVerifyProductionController.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <list id="dcfeaff2-c6b9-4337-9cef-a39c9d58fce8" name="Changes by magnu" comment="" />
@@ -46,13 +41,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.1\plugins\maven\lib\maven3" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectId" id="1rQK5Km5WstHAcTLM2GKVYa2GXO" />
   <component name="ProjectViewState">
@@ -196,24 +184,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1493" height="208" key="GridCell.Tab.0.bottom" timestamp="1621850178140">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1621850178140" />
-    <state width="1493" height="208" key="GridCell.Tab.0.center" timestamp="1621850178140">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1621850178140" />
-    <state width="1493" height="208" key="GridCell.Tab.0.left" timestamp="1621850178140">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1621850178140" />
-    <state width="1493" height="208" key="GridCell.Tab.0.right" timestamp="1621850178140">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1621850178140" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

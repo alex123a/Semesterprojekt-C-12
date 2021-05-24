@@ -148,7 +148,8 @@ public class ProductionController implements Initializable {
     }
 
     public void editClicked(MouseEvent mouseEvent) {
-        Repository.getInstance().setToEdit(Repository.getInstance().getProductionToBeShown());
+        Repository r = Repository.getInstance();
+        Repository.getInstance().setToEdit(r.getProductionToBeShown());
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/edit_production.fxml"));
             Stage window = (Stage) movieLabel.getScene().getWindow();

@@ -72,10 +72,12 @@ public class MyProductionsController implements Initializable {
         edit.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             public void handle(final MouseEvent mouseEvent) {
                 Repository.getInstance().setToEdit(p);
+                Repository.getInstance().setLastPage("my_productions");
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("/layout/edit_production.fxml"));
                     Stage window = (Stage) addProgramBut.getScene().getWindow();
                     window.setScene(new Scene(root, 1300, 700));
+
                 }
                 catch (IOException e) {
                     throw new RuntimeException(e);
@@ -111,6 +113,7 @@ public class MyProductionsController implements Initializable {
     @FXML
     public void onAddProgramClicked(ActionEvent event) {
         try {
+            Repository.getInstance().setLastPage("my_productions");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/add_production.fxml"));
             Stage window = (Stage) addProgramBut.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
