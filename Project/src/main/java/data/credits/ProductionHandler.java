@@ -173,11 +173,7 @@ class ProductionHandler {
                 insertStatement.setInt(6, production.getProducer().getId());
                 insertStatement.setString(7, production.getDescription());
 
-                //Saves any changes to the rightsholders (First or last name could have been changed
-                Map<IRightsholder, List<String>> rightsholders = production.getRightsholders();
-                for (IRightsholder rightsholder: rightsholders.keySet()) {
-                    RightsHolderHandler.getInstance().saveRightsholder(rightsholder);
-                }
+
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }

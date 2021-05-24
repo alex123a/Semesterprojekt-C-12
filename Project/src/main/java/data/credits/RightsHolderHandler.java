@@ -76,7 +76,8 @@ class RightsHolderHandler {
                 PreparedStatement statement = connection.prepareStatement("SELECT * FROM rightsholder_approval WHERE id = ?");
                 statement.setInt(1, id);
                 ResultSet rightsholderApprovalResult = statement.executeQuery();
-                r = new Rightsholder(rightsholderResult.getInt(1), rightsholderResult.getString(2), rightsholderResult.getString(3), rightsholderResult.getString(4), getRightsholdersProductions(rightsholderResult));
+                rightsholderApprovalResult.next();
+                r = new Rightsholder(rightsholderApprovalResult.getInt(1), rightsholderApprovalResult.getString(2), rightsholderApprovalResult.getString(3), rightsholderApprovalResult.getString(4), getRightsholdersProductions(rightsholderApprovalResult));
             }
 
 
