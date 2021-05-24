@@ -18,15 +18,6 @@ public class Repository {
     private IProduction productionToBeShown;
     private IRightsholder rightsholderToBeShown;
     private String lastPage;
-    private String programName = "";
-
-    public String getProgramName() {
-        return programName;
-    }
-
-    public void setProgramName(String programName) {
-        this.programName = programName;
-    }
 
     public Stage getWindow() {
         return window;

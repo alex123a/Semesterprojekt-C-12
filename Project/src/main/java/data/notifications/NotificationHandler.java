@@ -149,6 +149,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             statement.setInt(1, user.getId());
             ResultSet result = statement.executeQuery();
             while (result.next()) {
+                System.out.println("dadasadssad" + result.getInt(2));
                 list.add(new ProducerNotification(result.getInt(1), (IProducer) PersistenceFacade.getInstance().getUser(new Producer(result.getInt(2))),
                         result.getString(3), result.getBoolean(4),
                         FacadeData.getInstance().getProduction(new Production(result.getInt(5)))));

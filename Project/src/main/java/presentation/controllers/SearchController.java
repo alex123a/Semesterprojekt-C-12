@@ -62,9 +62,6 @@ public class SearchController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         comboGenre.setDisable(true);
-        searchInput.setText(Repository.getInstance().getProgramName());
-        Repository.getInstance().setProgramName("");
-        searchInput.setFocusTraversable(false);
 
         ObservableList<String> categoryOptions = FXCollections.observableArrayList();
         categoryOptions.add("Kategori");
