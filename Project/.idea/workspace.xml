@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IDomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IDomainFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/INotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IDomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IDomainFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/INotificationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/INotificationHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IPersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IPersistenceFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/NotificationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/notifications/NotificationHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <list id="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" name="Changes by magnu" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +39,24 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java">
+      <ranges>
+        <range start1="255" end1="256" start2="255" end2="256" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="262" end1="263" start2="262" end2="264" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
+        <range start1="362" end1="363" start2="363" end2="364" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="377" end1="391" start2="378" end2="392" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="392" end1="395" start2="393" end2="396" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="396" end1="404" start2="397" end2="405" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="405" end1="415" start2="406" end2="416" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="416" end1="417" start2="417" end2="418" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="418" end1="429" start2="419" end2="430" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="430" end1="437" start2="431" end2="438" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="438" end1="444" start2="439" end2="445" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+        <range start1="445" end1="452" start2="446" end2="453" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1rQK5Km5WstHAcTLM2GKVYa2GXO" />
   <component name="ProjectViewState">
@@ -187,7 +195,7 @@
       <workItem from="1621759914259" duration="2970000" />
       <workItem from="1621764934610" duration="3638000" />
       <workItem from="1621770081324" duration="13158000" />
-      <workItem from="1621840452039" duration="2704000" />
+      <workItem from="1621840452039" duration="4662000" />
     </task>
     <servers />
   </component>
