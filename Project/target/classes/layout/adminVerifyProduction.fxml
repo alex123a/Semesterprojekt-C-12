@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.adminVerifyProductionController">
    <children>
@@ -29,26 +25,25 @@
             <Image url="@/images/BackArrow.png" />
          </image>
       </ImageView>
-      <Label layoutX="657.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Fornavn:" />
-      <TextField fx:id="rightholderFirstName" editable="false" layoutX="657.0" layoutY="462.0" prefHeight="26.0" prefWidth="185.0" />
+      <Label layoutX="657.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Navn:" />
+      <TextField fx:id="rightholderName" editable="false" layoutX="657.0" layoutY="462.0" prefHeight="26.0" prefWidth="394.0" />
       <Label layoutX="657.0" layoutY="505.0" prefHeight="17.0" prefWidth="65.0" text="Beskrivelse:" />
       <Label layoutX="657.0" layoutY="565.0" prefHeight="17.0" prefWidth="142.0" text="Rolle/roller (split med &quot;,&quot;):" />
       <TextField fx:id="rightholderDescription" editable="false" layoutX="657.0" layoutY="522.0" prefHeight="25.0" prefWidth="394.0" />
       <TextField fx:id="rightholderRoles" editable="false" layoutX="657.0" layoutY="582.0" prefHeight="25.0" prefWidth="394.0" />
-      <TextField editable="false" layoutX="657.0" layoutY="160.0" prefHeight="26.0" prefWidth="46.0" promptText="1990" />
+      <TextField fx:id="inputYear" editable="false" layoutX="657.0" layoutY="160.0" prefHeight="26.0" prefWidth="46.0" promptText="1990" />
       <Label layoutX="657.0" layoutY="133.0" prefHeight="18.0" prefWidth="46.0" text="Årstal:" />
       <Label alignment="CENTER" layoutX="386.0" layoutY="412.0" prefHeight="26.0" prefWidth="116.0" text="Ophavsmænd:">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="rightholderLastName" editable="false" layoutX="865.0" layoutY="462.0" prefHeight="26.0" prefWidth="185.0" />
-      <Label layoutX="865.0" layoutY="444.0" prefHeight="17.0" prefWidth="90.0" text="Efternavn:" />
       <Label layoutX="726.0" layoutY="134.0" text="Genre:" />
       <Label layoutX="899.0" layoutY="134.0" text="Type:" />
       <Label layoutX="657.0" layoutY="206.0" text="Producer:" />
       <TextField fx:id="genreField" editable="false" layoutX="725.0" layoutY="160.0" prefHeight="26.0" prefWidth="150.0" />
       <TextField fx:id="typeField" editable="false" layoutX="899.0" layoutY="160.0" prefHeight="26.0" prefWidth="150.0" />
       <TextField fx:id="producerField" editable="false" layoutX="657.0" layoutY="232.0" prefHeight="26.0" prefWidth="394.0" />
+      <Button fx:id="showAsUser" layoutX="739.0" layoutY="638.0" mnemonicParsing="false" onMouseClicked="#showAsUser" prefHeight="45.0" prefWidth="231.0" style="-fx-background-color: #ffffff; -fx-border-color: #c9c9c9; -fx-border-radius: 4px; -fx-cursor: hand;" text="Vis som bruger" />
    </children>
 </AnchorPane>

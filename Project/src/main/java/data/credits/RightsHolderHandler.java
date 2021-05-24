@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class RightsHolderHandler {
-    private Connection connection = null;
+    private Connection connection;
 
     /**
      * Establish a connection to the Database
@@ -66,12 +66,18 @@ class RightsHolderHandler {
     IRightsholder getRightsholder(int id) {
         Rightsholder r = null;
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM rightsholder WHERE id = ?");
-            statement.setInt(1, id);
-            ResultSet rightsholderResult = statement.executeQuery();
+            PreparedStatement getRightsholderStatement = connection.prepareStatement("SELECT * FROM rightsholder WHERE id = ?");
+            getRightsholderStatement.setInt(1, id);
+            ResultSet rightsholderResult = getRightsholderStatement.executeQuery();
 
-            while (rightsholderResult.next()) {
+            if (rightsholderResult.next()) {
                 r = new Rightsholder(rightsholderResult.getInt(1), rightsholderResult.getString(2), rightsholderResult.getString(3), rightsholderResult.getString(4), getRightsholdersProductions(rightsholderResult));
+            } else { // If the rightsholder is not in the rightsholder table check the rightsholder approval table
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM rightsholder_approval WHERE id = ?");
+                statement.setInt(1, id);
+                ResultSet rightsholderApprovalResult = statement.executeQuery();
+                rightsholderApprovalResult.next();
+                r = new Rightsholder(rightsholderApprovalResult.getInt(1), rightsholderApprovalResult.getString(2), rightsholderApprovalResult.getString(3), rightsholderApprovalResult.getString(4), getRightsholdersProductions(rightsholderApprovalResult));
             }
 
 

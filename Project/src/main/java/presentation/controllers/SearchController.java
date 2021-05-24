@@ -5,6 +5,7 @@ import Interfaces.IRightsholder;
 import Interfaces.ISearchable;
 import Interfaces.IUser;
 import domain.CreditsManagement.CreditsSystem;
+import domain.DomainFacade;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
 import enumerations.ProductionType;
@@ -178,8 +179,7 @@ public class SearchController implements Initializable {
     }
 
     public void goBack(MouseEvent mouseEvent) {
-        Repository r = Repository.getInstance();
-        IUser user = r.domainFacade.getCurrentUser();
+        IUser user = DomainFacade.getInstance().getCurrentUser();
         if (user == null) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
@@ -188,7 +188,7 @@ public class SearchController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        } else if (r.domainFacade.validateUser(user)) {
+        } else if (DomainFacade.getInstance().validateUser(user)) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
                 Stage window = (Stage) backButton.getScene().getWindow();
@@ -252,7 +252,7 @@ public class SearchController implements Initializable {
             }
 
             // Get Years
-            int yFrom = 1800;
+            int yFrom = 1300;
             int yTo = 3000;
             if(!yearFrom.getText().equals("")) {
                 yFrom = Integer.parseInt(yearFrom.getText());

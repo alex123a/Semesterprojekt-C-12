@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationHandler implements INotificationHandler, INotificationProvider {
+public class NotificationHandler implements INotificationFacade {
 
     private static final NotificationHandler handler = new NotificationHandler();
     private final Connection dbConnection = DatabaseConnection.getConnection();
@@ -27,17 +27,17 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         return handler;
     }
 
+    // This method creates a producer notifications
     @Override
     public boolean createProducerNotification(INotification notification) {
         try {
             IProduction production = notification.getProduction();
             PreparedStatement statement = dbConnection.prepareStatement(
-                    "INSERT INTO producer_notification(producer_id, notification_text, viewed, production_id) " +
-                    "VALUES (?, ?, ?, ?)");
-            statement.setInt(1, notification.getProducer().getId());
-            statement.setString(2, notification.getText());
-            statement.setBoolean(3, notification.getViewed());
-            statement.setInt(4, ((Production) production).getID());
+                    "INSERT INTO producer_notification(notification_text, viewed, production_id) " +
+                    "VALUES (?, ?, ?)");
+            statement.setString(1, notification.getText());
+            statement.setBoolean(2, notification.getViewed());
+            statement.setInt(3, ((Production) production).getID());
             statement.execute();
             return true;
         } catch(SQLException e) {
@@ -46,6 +46,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // This method creates an admin notification
     @Override
     public boolean createAdminNotification(INotification notification) {
         try {
@@ -61,6 +62,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // This method deletes an admin notification
     @Override
     public boolean deleteAdminNotification(INotification notification) {
         try {
@@ -73,6 +75,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // This method deletes an producer notification
     @Override
     public boolean deleteProducerNotification(INotification notification) {
         try {
@@ -85,15 +88,13 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // This method edit an admin notification (Only edits/updates the approval status)
     @Override
     public boolean editAdminNotification(INotification newNotification) {
         try {
-            IProduction production = newNotification.getProduction();
-            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification SET notification_text = ?, production_id = ?, approval_status_id = ? WHERE id = ? ");
-            statement.setString(1, newNotification.getText());
-            statement.setInt(2, ((Production) production).getID());
-            statement.setInt(3, newNotification.getApproval());
-            statement.setInt(4, ((Notification) newNotification).getID());
+            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification SET approval_status_id = ? WHERE id = ? ");
+            statement.setInt(1, newNotification.getApproval());
+            statement.setInt(2, ((Notification) newNotification).getID());
             statement.execute();
             return true;
         } catch (SQLException e) {
@@ -101,6 +102,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // This method edit an producer notification (Only edits/updates the viewed status)
     @Override
     public boolean editProducerNotification(INotification newNotification) {
         try {
@@ -116,7 +118,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     }
 
 
-
+    // This methods returns a list with all the admin notifications
     @Override
     public List<INotification> getAdminNotifications() {
         try {
@@ -138,21 +140,63 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // This method returns a list with all the notifications for a specific producer
     @Override
     public List<INotification> getProducerNotifications(IUser user) {
         try {
-            List<INotification> list = new ArrayList<>();
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT pn.id, pn.producer_id, pn.notification_text," +
-                    " pn.viewed, pn.production_id" +
-                    " FROM producer_notification pn" +
-                    " WHERE pn.producer_id = ?");
-            statement.setInt(1, user.getId());
-            ResultSet result = statement.executeQuery();
-            while (result.next()) {
-                list.add(new ProducerNotification(result.getInt(1), (IProducer) PersistenceFacade.getInstance().getUser(new Producer(result.getInt(2))),
-                        result.getString(3), result.getBoolean(4),
-                        FacadeData.getInstance().getProduction(new Production(result.getInt(5)))));
+            /*
+            int productionID = 0;
+            PreparedStatement producer_production = dbConnection.prepareStatement("SELECT id FROM production WHERE producer_id = ?");
+            producer_production.setInt(1, user.getId());
+            ResultSet result_producer_production = producer_production.executeQuery();
+            if (result_producer_production.next()) {
+                productionID = result_producer_production.getInt("id");
+                System.out.println("test id one " + productionID);
+            } else {
+                PreparedStatement producer_production_approval = dbConnection.prepareStatement("SELECT id FROM production_approval WHERE producer_id = ?");
+                producer_production_approval.setInt(1, user.getId());
+                ResultSet result_producer_production_approval = producer_production_approval.executeQuery();
+                if (result_producer_production_approval.next()) {
+                    productionID = result_producer_production_approval.getInt("id");
+                    System.out.println("test id two " + productionID);
+                }
             }
+
+            List<INotification> list = new ArrayList<>();
+            PreparedStatement notificationStatement = dbConnection.prepareStatement("SELECT pn.id, pn.notification_text," +
+                    " pn.viewed" +
+                    " FROM producer_notification pn" +
+                    " WHERE pn.production_id = ?");
+            notificationStatement.setInt(1, productionID);
+
+             */
+
+            List<INotification> list = new ArrayList<>();
+            PreparedStatement notificationStatement = dbConnection.prepareStatement("SELECT pn.id, pn.notification_text," +
+                    " pn.viewed, pn.production_id" +
+                    " FROM producer_notification pn, production p" +
+                    " WHERE pn.production_id = p.id and p.producer_id = ?");
+            notificationStatement.setInt(1, user.getId());
+            ResultSet result = notificationStatement.executeQuery();
+            while (result.next()) {
+                list.add(new ProducerNotification(result.getInt(1), (IProducer) PersistenceFacade.getInstance().getUser(new Producer(user.getId())),
+                        result.getString(2), result.getBoolean(3),
+                        FacadeData.getInstance().getProduction(new Production(result.getInt(4)))));
+            }
+
+            PreparedStatement notificationStatement_for_approval = dbConnection.prepareStatement("SELECT pn.id, pn.notification_text," +
+                    " pn.viewed, pn.production_id" +
+                    " FROM producer_notification pn, production_approval pa" +
+                    " WHERE pn.production_id = pa.id and pa.producer_id = ?");
+            notificationStatement_for_approval.setInt(1, user.getId());
+            ResultSet result_for_approval = notificationStatement_for_approval.executeQuery();
+
+            while (result_for_approval.next()) {
+                list.add(new ProducerNotification(result_for_approval.getInt(1), (IProducer) PersistenceFacade.getInstance().getUser(new Producer(user.getId())),
+                        result_for_approval.getString(2), result_for_approval.getBoolean(3),
+                        FacadeData.getInstance().getProduction(new Production(result_for_approval.getInt(4)))));
+            }
+
             return list;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -160,6 +204,10 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    /*
+    This method counts all admin notifications where approval status is "waiting" and not really if it is read or not.
+    Maybe the method name should have been something else
+    */
     @Override
     public int countUnreadAdminNotifications() {
         try {
@@ -178,18 +226,19 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // Counts all the unread notifications for a specific producer. It is unread if the boolean viewed is false.
     @Override
     public int countUnreadProducerNotifications(IUser user) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(id)" +
-                    " FROM producer_notification WHERE viewed = 'false' and producer_id = ?");
+            int unread = 0;
+            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(pn.id)" +
+                    " FROM producer_notification pn, production p WHERE viewed = 'false' and producer_id = ? and p.id = pn.production_id");
             statement.setInt(1, user.getId());
             ResultSet result = statement.executeQuery();
             if (result.next()) {
-                return result.getInt(1);
-            } else {
-                return 0;
+                unread += result.getInt(1);
             }
+            return unread;
 
         } catch (SQLException e) {
             e.printStackTrace();

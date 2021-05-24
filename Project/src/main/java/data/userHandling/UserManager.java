@@ -1,16 +1,12 @@
 package data.userHandling;
 
-import Interfaces.IAdministrator;
-import Interfaces.IProducer;
-import Interfaces.IUser;
-import Interfaces.IUserHandling;
+import Interfaces.*;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserManager implements IUserHandling {
+public class UserManager implements IUserFacade {
     private static Connection connection = null;
     private static final UserManager USERMANAGER = new UserManager();
 
@@ -127,8 +123,9 @@ public class UserManager implements IUserHandling {
                 PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
                 queryStatement.setInt(1,producerResult.getInt(1));
                 ResultSet queryResultSet = queryStatement.executeQuery();
-                queryResultSet.next();
-                list.add(new Producer(queryResultSet.getInt(1), queryResultSet.getString(2), queryResultSet.getString(3)));
+                while (queryResultSet.next()) {
+                    list.add(new Producer(queryResultSet.getInt("id"), queryResultSet.getString("username"), queryResultSet.getString("user_password")));
+                }
             }
             //Administrator
             PreparedStatement adminStatement = connection.prepareStatement("SELECT * FROM administrator");
@@ -137,8 +134,31 @@ public class UserManager implements IUserHandling {
                 PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
                 queryStatement.setInt(1,adminResult.getInt(1));
                 ResultSet queryResultSet = queryStatement.executeQuery();
-                queryResultSet.next();
-                list.add(new SystemAdministrator(queryResultSet.getInt(1), queryResultSet.getString(2), queryResultSet.getString(3)));
+                while (queryResultSet.next()) {
+                    list.add(new SystemAdministrator(queryResultSet.getInt("id"), queryResultSet.getString("username"), queryResultSet.getString("user_password")));
+                }
+            }
+        } catch (SQLException exception) {
+            System.out.println("Error getting users");
+            System.out.println(exception.getMessage());
+        }
+        return list;
+    }
+
+    @Override
+    public List<IUser> getAllProducers() {
+        List<IUser> list = new ArrayList<>();
+        try {
+            //Producer
+            PreparedStatement producerStatement = connection.prepareStatement("SELECT * FROM producer");
+            ResultSet producerResult = producerStatement.executeQuery();
+            while (producerResult.next()) {
+                PreparedStatement queryStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
+                queryStatement.setInt(1,producerResult.getInt("id"));
+                ResultSet queryResultSet = queryStatement.executeQuery();
+                while (queryResultSet.next()) {
+                    list.add(new Producer(queryResultSet.getInt("id"), queryResultSet.getString("username"), queryResultSet.getString("user_password")));
+                }
             }
         } catch (SQLException exception) {
             System.out.println("Error getting users");

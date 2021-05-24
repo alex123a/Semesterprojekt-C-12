@@ -6,6 +6,8 @@ public interface IUserHandling {
 
     List<IUser> getUsers();
 
+    List<IUser> getAllProducers();
+
     boolean deleteUser(IUser user);
 
     boolean editUser(IUser user);

@@ -15,10 +15,6 @@ public interface INotificationHandler {
 
     boolean editProducerNotification(INotification newNotification);
 
-    List<INotification> getAdminNotifications();
-
-    List<INotification> getProducerNotifications(IUser user);
-
     int countUnreadAdminNotifications();
 
     int countUnreadProducerNotifications(IUser user);

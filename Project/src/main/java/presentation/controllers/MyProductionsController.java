@@ -40,7 +40,7 @@ public class MyProductionsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        for(IProduction p : CreditsSystem.getInstance().getProductions()) {
+        for(IProduction p : CreditsSystem.getInstance().getMyProductions()) {
             createProduction(p);
         }
     }

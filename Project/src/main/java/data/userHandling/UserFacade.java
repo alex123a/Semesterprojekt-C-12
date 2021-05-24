@@ -15,6 +15,11 @@ public class UserFacade implements IUserFacade {
     }
 
     @Override
+    public List<IUser> getAllProducers() {
+        return UserManager.getInstance().getAllProducers();
+    }
+
+    @Override
     public boolean deleteUser(IUser user) {
         return UserManager.getInstance().deleteUser(user);
     }

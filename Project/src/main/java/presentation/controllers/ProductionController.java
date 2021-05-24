@@ -1,6 +1,8 @@
 package presentation.controllers;
 
 import Interfaces.IRightsholder;
+import Interfaces.IUser;
+import domain.DomainFacade;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +38,11 @@ public class ProductionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        IUser user = DomainFacade.getInstance().getCurrentUser();
+        if (DomainFacade.getInstance().validateUser(user)) {
+            editImage.setVisible(false);
+        }
+
         Repository r = Repository.getInstance();
 
         draw(r.getProductionToBeShown().getName(), r.getProductionToBeShown().getDescription());
@@ -57,19 +64,22 @@ public class ProductionController implements Initializable {
         notificationPane.setPrefHeight(50);
         notificationPane.setPrefWidth(548);
         notificationPane.setStyle("-fx-border-radius: 8px; -fx-background-radius: 8px; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF; -fx-cursor: hand;");
-        notificationPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            public void handle(final MouseEvent mouseEvent) {
-                Repository.getInstance().setRightsholderToBeShown(rh);
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("/layout/person.fxml"));
-                    Stage window = (Stage) movieLabel.getScene().getWindow();
-                    window.setScene(new Scene(root, 1300, 700));
+
+        if(Repository.getInstance().getLastPage().equals("search")) {
+            notificationPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+                public void handle(final MouseEvent mouseEvent) {
+                    Repository.getInstance().setRightsholderToBeShown(rh);
+                    try {
+                        Parent root = FXMLLoader.load(getClass().getResource("/layout/person.fxml"));
+                        Stage window = (Stage) movieLabel.getScene().getWindow();
+                        window.setScene(new Scene(root, 1300, 700));
+                    }
+                    catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
-                catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
+            });
+        }
 
         VBox labelBox = new VBox();
         labelBox.setPrefWidth(470);
@@ -99,15 +109,23 @@ public class ProductionController implements Initializable {
     }
 
     public void goBack(MouseEvent mouseEvent) {
-        Repository r = Repository.getInstance();
-
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/" + r.getLastPage() + ".fxml"));
-            Stage window = (Stage) movieLabel.getScene().getWindow();
-            window.setScene(new Scene(root, 1300, 700));
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if(Repository.getInstance().getLastPage().equals("search")) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/layout/search.fxml"));
+                Stage window = (Stage) movieLabel.getScene().getWindow();
+                window.setScene(new Scene(root, 1300, 700));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        else {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/layout/adminVerifyProduction.fxml"));
+                Stage window = (Stage) movieLabel.getScene().getWindow();
+                window.setScene(new Scene(root, 1300, 700));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

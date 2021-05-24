@@ -2,6 +2,8 @@ package presentation.controllers;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
+import Interfaces.IUser;
+import domain.DomainFacade;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +25,7 @@ import presentation.Repository;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -37,16 +40,18 @@ public class PersonController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Repository r = Repository.getInstance();
-        System.out.println("name: " + r.getRightsholderToBeShown().getFirstName());
 
         setup(r.getRightsholderToBeShown().getFirstName() + " " + r.getRightsholderToBeShown().getLastName(), r.getRightsholderToBeShown().getDescription());
 
         for(IProduction p : r.getRightsholderToBeShown().getRightsholderFor()) {
             String roles = "";
-            // new CreditWrapper(r.getRightsholderToBeShown(), p.getRightsholders().get(r.getRightsholderToBeShown())).getRoles()
-            // todo : getRoles returns null
-            for(String s : new CreditWrapper(r.getRightsholderToBeShown(), p.getRightsholders().get(r.getRightsholderToBeShown())).getRoles()) {
-                roles += s + ",";
+            if(new CreditWrapper(r.getRightsholderToBeShown(), p.getRightsholders().get(r.getRightsholderToBeShown())).getRoles() != null) {
+                for(String s : new CreditWrapper(r.getRightsholderToBeShown(), p.getRightsholders().get(r.getRightsholderToBeShown())).getRoles()) {
+                    roles += s + ",";
+                }
+            }
+            else {
+                roles = "";
             }
             createRole(p.getName(), roles, p);
         }
@@ -103,13 +108,10 @@ public class PersonController implements Initializable {
 
     // Method to go back to the menu
     public void goBack(MouseEvent mouseEvent) {
-        Repository r = Repository.getInstance();
-
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/" + r.getLastPage() + ".fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/search.fxml"));
             Stage window = (Stage) scrollpaneVBox.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

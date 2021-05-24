@@ -1,6 +1,7 @@
 package presentation.controllers;
 
 import Interfaces.IAdministrator;
+import domain.DomainFacade;
 import javafx.event.Event;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
@@ -191,7 +192,6 @@ public class ManageUserController {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
             Stage window = (Stage) backButton.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

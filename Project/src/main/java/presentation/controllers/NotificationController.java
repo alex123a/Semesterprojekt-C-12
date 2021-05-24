@@ -17,12 +17,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import presentation.Repository;
-import presentation.userManage.Systemadministrator;
 
 import java.io.IOException;
 import java.net.URL;
@@ -60,12 +58,12 @@ public class NotificationController implements Initializable {
         return viewed ? "Viewed" : "Not viewed";
     }
 
-    public void createNotification(String productionName, String productionID, String status, String description, int index) {
+    public void createNotification(IProduction production, String status, String description, int index) {
             // VBox for all the labels
             VBox vbox = new VBox();
-            Label labelName = new Label(productionName);
+            Label labelName = new Label(production.getName());
             labelName.setFont(new Font(14));
-            Label labelID = new Label("Produktions ID: " + productionID);
+            Label labelID = new Label("Produktions ID: " + production.getProductionID());
             labelID.setFont(new Font(14));
             Label labelStatus = new Label("Status: " + status);
             labelStatus.setFont(new Font(14));
@@ -130,8 +128,7 @@ public class NotificationController implements Initializable {
             hbox.setOnMouseClicked(new EventHandler() {
                 @Override
                 public void handle(Event event) {
-                    // TODO : find the production from the productionID and set it to setToEdit
-                    //Repository.getInstance().setToEdit(p);
+                    Repository.getInstance().setToEdit(production);
 
                     try {
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/layout/adminVerifyProduction.fxml"));
@@ -155,14 +152,15 @@ public class NotificationController implements Initializable {
         String status = "";
 
         for (int i = 0; i < notifications.size(); i++) {
-            if (domain.getCurrentUser() instanceof IAdministrator) {
+            if (domain.validateUser(domain.getCurrentUser())) {
                 status = approvalConverter(notifications.get(i).getApproval());
-            } else if (domain.getCurrentUser() instanceof IProducer) {
+            } else if (!domain.validateUser(domain.getCurrentUser())) {
                 status = viewedConverter(notifications.get(i).getViewed());
             }
-            createNotification(notifications.get(i).getProduction().getName(), notifications.get(i).getProduction().getProductionID(), status, notifications.get(i).getText(), i);
+            createNotification(notifications.get(i).getProduction(), status, notifications.get(i).getText(), i);
         }
-        if (domain.getCurrentUser() instanceof IProducer) {
+
+        if (!domain.validateUser(domain.getCurrentUser())) {
             for (INotification notification : notifications) {
                 notification.setViewed(true);
                 domain.editProducerNotification(notification);
@@ -175,6 +173,7 @@ public class NotificationController implements Initializable {
         if (domain.validateUser(domain.getCurrentUser())) {
             notifications.get(index).setApproval(status);
             domain.editAdminNotification(notifications.get(index));
+            domain.approveChangesToProduction(notifications.get(index).getProduction());
         }
 
         try {
