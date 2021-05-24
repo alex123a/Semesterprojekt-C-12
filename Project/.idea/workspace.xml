@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IFacadeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IFacadeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IReporting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IReporting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/FacadeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/FacadeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/searchEngine/SearchEngineHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/searchEngine/SearchEngineHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/Repository.java" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <list id="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" name="Changes by magnu" comment="" />
@@ -42,27 +35,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java">
-      <ranges>
-        <range start1="32" end1="33" start2="32" end2="34" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="56" end1="56" start2="57" end2="58" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="86" end1="86" start2="88" end2="89" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="101" end1="102" start2="104" end2="104" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="116" end1="116" start2="118" end2="140" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="251" end1="251" start2="275" end2="276" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="306" end1="306" start2="331" end2="333" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="323" end1="323" start2="350" end2="353" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="324" end1="325" start2="354" end2="355" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="361" end1="361" start2="391" end2="395" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="362" end1="366" start2="396" end2="396" changelist="80272dec-5e1b-4c39-a5be-617acfe66920" />
-        <range start1="433" end1="433" start2="463" end2="466" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="454" end1="454" start2="487" end2="488" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="498" end1="498" start2="532" end2="534" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-        <range start1="551" end1="552" start2="587" end2="587" changelist="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1rQK5Km5WstHAcTLM2GKVYa2GXO" />
   <component name="ProjectViewState">
@@ -143,19 +115,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.NewMain" />
@@ -203,6 +162,7 @@
       <workItem from="1621759914259" duration="2970000" />
       <workItem from="1621764934610" duration="3638000" />
       <workItem from="1621770081324" duration="13158000" />
+      <workItem from="1621840452039" duration="1150000" />
     </task>
     <servers />
   </component>
@@ -226,52 +186,52 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
-          <line>195</line>
+          <line>205</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
-          <line>190</line>
+          <line>200</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
-          <line>189</line>
+          <line>199</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
-          <line>188</line>
+          <line>198</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java</url>
-          <line>185</line>
+          <line>195</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/RightsHolderHandler.java</url>
-          <line>90</line>
+          <line>95</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java</url>
-          <line>172</line>
+          <line>179</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java</url>
-          <line>173</line>
+          <line>180</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java</url>
-          <line>268</line>
+          <line>272</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java</url>
-          <line>270</line>
+          <line>274</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
