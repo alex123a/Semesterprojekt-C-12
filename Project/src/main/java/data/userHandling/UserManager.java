@@ -1,16 +1,12 @@
 package data.userHandling;
 
-import Interfaces.IAdministrator;
-import Interfaces.IProducer;
-import Interfaces.IUser;
-import Interfaces.IUserHandling;
+import Interfaces.*;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserManager implements IUserHandling {
+public class UserManager implements IUserFacade {
     private static Connection connection = null;
     private static final UserManager USERMANAGER = new UserManager();
 

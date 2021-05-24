@@ -33,12 +33,11 @@ public class NotificationHandler implements INotificationFacade {
         try {
             IProduction production = notification.getProduction();
             PreparedStatement statement = dbConnection.prepareStatement(
-                    "INSERT INTO producer_notification(producer_id, notification_text, viewed, production_id) " +
-                    "VALUES (?, ?, ?, ?)");
-            statement.setInt(1, notification.getProducer().getId());
-            statement.setString(2, notification.getText());
-            statement.setBoolean(3, notification.getViewed());
-            statement.setInt(4, ((Production) production).getID());
+                    "INSERT INTO producer_notification(notification_text, viewed, production_id) " +
+                    "VALUES (?, ?, ?)");
+            statement.setString(1, notification.getText());
+            statement.setBoolean(2, notification.getViewed());
+            statement.setInt(3, ((Production) production).getID());
             statement.execute();
             return true;
         } catch(SQLException e) {
@@ -145,18 +144,59 @@ public class NotificationHandler implements INotificationFacade {
     @Override
     public List<INotification> getProducerNotifications(IUser user) {
         try {
-            List<INotification> list = new ArrayList<>();
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT pn.id, pn.producer_id, pn.notification_text," +
-                    " pn.viewed, pn.production_id" +
-                    " FROM producer_notification pn" +
-                    " WHERE pn.producer_id = ?");
-            statement.setInt(1, user.getId());
-            ResultSet result = statement.executeQuery();
-            while (result.next()) {
-                list.add(new ProducerNotification(result.getInt(1), (IProducer) PersistenceFacade.getInstance().getUser(new Producer(result.getInt(2))),
-                        result.getString(3), result.getBoolean(4),
-                        FacadeData.getInstance().getProduction(new Production(result.getInt(5)))));
+            /*
+            int productionID = 0;
+            PreparedStatement producer_production = dbConnection.prepareStatement("SELECT id FROM production WHERE producer_id = ?");
+            producer_production.setInt(1, user.getId());
+            ResultSet result_producer_production = producer_production.executeQuery();
+            if (result_producer_production.next()) {
+                productionID = result_producer_production.getInt("id");
+                System.out.println("test id one " + productionID);
+            } else {
+                PreparedStatement producer_production_approval = dbConnection.prepareStatement("SELECT id FROM production_approval WHERE producer_id = ?");
+                producer_production_approval.setInt(1, user.getId());
+                ResultSet result_producer_production_approval = producer_production_approval.executeQuery();
+                if (result_producer_production_approval.next()) {
+                    productionID = result_producer_production_approval.getInt("id");
+                    System.out.println("test id two " + productionID);
+                }
             }
+
+            List<INotification> list = new ArrayList<>();
+            PreparedStatement notificationStatement = dbConnection.prepareStatement("SELECT pn.id, pn.notification_text," +
+                    " pn.viewed" +
+                    " FROM producer_notification pn" +
+                    " WHERE pn.production_id = ?");
+            notificationStatement.setInt(1, productionID);
+
+             */
+
+            List<INotification> list = new ArrayList<>();
+            PreparedStatement notificationStatement = dbConnection.prepareStatement("SELECT pn.id, pn.notification_text," +
+                    " pn.viewed, pn.production_id" +
+                    " FROM producer_notification pn, production p" +
+                    " WHERE pn.production_id = p.id and p.producer_id = ?");
+            notificationStatement.setInt(1, user.getId());
+            ResultSet result = notificationStatement.executeQuery();
+            while (result.next()) {
+                list.add(new ProducerNotification(result.getInt(1), (IProducer) PersistenceFacade.getInstance().getUser(new Producer(user.getId())),
+                        result.getString(2), result.getBoolean(3),
+                        FacadeData.getInstance().getProduction(new Production(result.getInt(4)))));
+            }
+
+            PreparedStatement notificationStatement_for_approval = dbConnection.prepareStatement("SELECT pn.id, pn.notification_text," +
+                    " pn.viewed, pn.production_id" +
+                    " FROM producer_notification pn, production_approval pa" +
+                    " WHERE pn.production_id = pa.id and pa.producer_id = ?");
+            notificationStatement_for_approval.setInt(1, user.getId());
+            ResultSet result_for_approval = notificationStatement_for_approval.executeQuery();
+
+            while (result_for_approval.next()) {
+                list.add(new ProducerNotification(result_for_approval.getInt(1), (IProducer) PersistenceFacade.getInstance().getUser(new Producer(user.getId())),
+                        result_for_approval.getString(2), result_for_approval.getBoolean(3),
+                        FacadeData.getInstance().getProduction(new Production(result_for_approval.getInt(4)))));
+            }
+
             return list;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -190,15 +230,15 @@ public class NotificationHandler implements INotificationFacade {
     @Override
     public int countUnreadProducerNotifications(IUser user) {
         try {
-            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(id)" +
-                    " FROM producer_notification WHERE viewed = 'false' and producer_id = ?");
+            int unread = 0;
+            PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(pn.id)" +
+                    " FROM producer_notification pn, production p WHERE viewed = 'false' and producer_id = ? and p.id = pn.production_id");
             statement.setInt(1, user.getId());
             ResultSet result = statement.executeQuery();
             if (result.next()) {
-                return result.getInt(1);
-            } else {
-                return 0;
+                unread += result.getInt(1);
             }
+            return unread;
 
         } catch (SQLException e) {
             e.printStackTrace();
