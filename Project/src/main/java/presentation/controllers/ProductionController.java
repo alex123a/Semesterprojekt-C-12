@@ -65,8 +65,7 @@ public class ProductionController implements Initializable {
         notificationPane.setPrefWidth(548);
         notificationPane.setStyle("-fx-border-radius: 8px; -fx-background-radius: 8px; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF; -fx-cursor: hand;");
 
-        IUser user = DomainFacade.getInstance().getCurrentUser();
-        if (!DomainFacade.getInstance().validateUser(user)) {
+        if(Repository.getInstance().getLastPage().equals("search")) {
             notificationPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
                 public void handle(final MouseEvent mouseEvent) {
                     Repository.getInstance().setRightsholderToBeShown(rh);
