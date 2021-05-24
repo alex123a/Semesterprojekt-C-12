@@ -128,6 +128,7 @@ public class NotificationController implements Initializable {
             hbox.setOnMouseClicked(new EventHandler() {
                 @Override
                 public void handle(Event event) {
+                    // TODO : find the production from the productionID and set it to setToEdit
                     Repository.getInstance().setToEdit(production);
 
                     try {
