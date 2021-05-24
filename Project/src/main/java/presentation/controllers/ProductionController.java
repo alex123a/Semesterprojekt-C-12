@@ -64,23 +64,19 @@ public class ProductionController implements Initializable {
         notificationPane.setPrefHeight(50);
         notificationPane.setPrefWidth(548);
         notificationPane.setStyle("-fx-border-radius: 8px; -fx-background-radius: 8px; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF; -fx-cursor: hand;");
-
-        IUser user = DomainFacade.getInstance().getCurrentUser();
-        if (!DomainFacade.getInstance().validateUser(user)) {
-            notificationPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-                public void handle(final MouseEvent mouseEvent) {
-                    Repository.getInstance().setRightsholderToBeShown(rh);
-                    try {
-                        Parent root = FXMLLoader.load(getClass().getResource("/layout/person.fxml"));
-                        Stage window = (Stage) movieLabel.getScene().getWindow();
-                        window.setScene(new Scene(root, 1300, 700));
-                    }
-                    catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+        notificationPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            public void handle(final MouseEvent mouseEvent) {
+                Repository.getInstance().setRightsholderToBeShown(rh);
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/layout/person.fxml"));
+                    Stage window = (Stage) movieLabel.getScene().getWindow();
+                    window.setScene(new Scene(root, 1300, 700));
                 }
-            });
-        }
+                catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
         VBox labelBox = new VBox();
         labelBox.setPrefWidth(470);
