@@ -108,6 +108,7 @@ public class Controller implements Initializable {
     @FXML
     void onBroadcastClicked(MouseEvent event) {
         try {
+            Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
             Stage window = (Stage) tv2Default.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
@@ -120,6 +121,7 @@ public class Controller implements Initializable {
     @FXML
     void onHelpClicked(MouseEvent event) {
         try {
+            Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/helppage.fxml"));
             Stage window = (Stage) tv2Default.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
@@ -142,6 +144,7 @@ public class Controller implements Initializable {
     @FXML
     void onEditUserClicked(MouseEvent event) {
         try {
+            Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/ManageUser.fxml"));
             Stage window = Repository.getInstance().getWindow();
             window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
@@ -156,6 +159,7 @@ public class Controller implements Initializable {
     @FXML
     void onSearchClicked() {
         try {
+            Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/search.fxml"));
             Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
@@ -276,6 +280,7 @@ public class Controller implements Initializable {
 
     public void goToNotifications(MouseEvent mouseEvent) {
         try {
+            Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/notification.fxml"));
             Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
@@ -287,6 +292,7 @@ public class Controller implements Initializable {
 
     public void goToLogin(MouseEvent mouseEvent) {
         try {
+            Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/login.fxml"));
             Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
@@ -299,6 +305,7 @@ public class Controller implements Initializable {
     public void logOut(MouseEvent mouseEvent) {
         Parent root = null;
         try {
+            Repository.getInstance().setLastPage("menu");
             root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
             Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));

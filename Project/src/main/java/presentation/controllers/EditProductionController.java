@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.CreditWrapper;
@@ -30,7 +31,7 @@ import java.util.*;
 
 public class EditProductionController implements Initializable {
 
-    public ComboBox nameInput;
+    public ComboBox<String> nameInput;
     @FXML
     private ComboBox comboCategory;
     @FXML
@@ -60,12 +61,6 @@ public class EditProductionController implements Initializable {
 
     @FXML
     private Button addRightholderBut;
-
-    @FXML
-    private Button saveChangesBut;
-
-    @FXML
-    private Button removeRightholderBut;
 
     IProduction toEdit;
 
@@ -164,11 +159,23 @@ public class EditProductionController implements Initializable {
         }
 
         if (firstName != null && lastName != null && description != null) {
-            IRightsholder newRightsholder = new NewRightsholder(firstName, lastName, description);
+            IRightsholder newRightsholder = doesRightsholderExist();
+            // Checks if the rightsholder exist doesn't exist
+            if(newRightsholder == null) {
+                // Rightsholder doesn't exist
+                newRightsholder = new NewRightsholder(firstName, lastName, description);
+            }
             CreditWrapper newCredit = new CreditWrapper(newRightsholder, roles);
             ObservableList<CreditWrapper> rightholders = rightholderListview.getItems();
             rightholders.add(newCredit);
         }
+
+        nameInput.getEditor().setText("");
+        nameInput.getSelectionModel().clearSelection();
+        findRightsholder();
+        nameInput.hide();
+        rightholderDescription.setText("");
+        rightholderRoles.setText("");
     }
 
     @FXML
@@ -239,22 +246,49 @@ public class EditProductionController implements Initializable {
         rightList = r.domainFacade.getRightsholders();
         setRightsholderComboBox();
 
-        nameInput.getEditor().textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                findRightsholder();
-            }
-        });
+        nameInput.getEditor().setOnKeyPressed(this::handleOnKeyPressed);
+        nameInput.hide();
     }
 
     public void onBackClicked(MouseEvent mouseEvent) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
-            Stage window = (Stage) addRightholderBut.getScene().getWindow();
-            window.setScene(new Scene(root, 1300, 700));
+        String lastPage = Repository.getInstance().getLastPage();
+        if(lastPage.equals("menu")) {
+            IUser user = DomainFacade.getInstance().getCurrentUser();
+            if (user == null) {
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
+                    Stage window = (Stage) addRightholderBut.getScene().getWindow();
+                    window.setScene(new Scene(root, 1300, 700));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } else if (DomainFacade.getInstance().validateUser(user)) {
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
+                    Stage window = (Stage) addRightholderBut.getScene().getWindow();
+                    window.setScene(new Scene(root, 1300, 700));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/layout/menuProducer.fxml"));
+                    Stage window = (Stage) addRightholderBut.getScene().getWindow();
+                    window.setScene(new Scene(root, 1300, 700));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        else {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/layout/" + lastPage + ".fxml"));
+                Stage window = (Stage) addRightholderBut.getScene().getWindow();
+                window.setScene(new Scene(root, 1300, 700));
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -270,13 +304,16 @@ public class EditProductionController implements Initializable {
     }
 
     public void findRightsholder() {
+        // Should have been in domain instead
         rightList  = new ArrayList<>();
+
         for(IRightsholder ir : finalRightsholdersList) {
             String name = ir.getFirstName() + " " + ir.getLastName();
             if(name.toLowerCase().contains(nameInput.getEditor().getText().toLowerCase())) {
                 rightList.add(ir);
             }
         }
+
         setRightsholderComboBox();
     }
 
@@ -284,8 +321,54 @@ public class EditProductionController implements Initializable {
         rightsholderList = FXCollections.observableArrayList();
         for(IRightsholder ir : rightList) {
             rightsholderList.add(ir.getFirstName() + " " + ir.getLastName());
+            rightholderDescription.setText(ir.getDescription());
         }
-        nameInput.setItems(rightsholderList);
-        nameInput.show();
+        if(rightsholderList.size() == 0) {
+            rightholderDescription.setText("");
+            rightholderDescription.setEditable(true);
+        }
+        else {
+            rightholderDescription.setEditable(false);
+        }
+        if(rightsholderList.size() > 0) {
+            nameInput.getSelectionModel().clearSelection();
+            nameInput.getItems().clear();
+            nameInput.setItems(rightsholderList);
+            nameInput.show();
+        }
+    }
+
+    public IRightsholder doesRightsholderExist() {
+        // Should have been in domain instead
+        IRightsholder existingUser = null;
+        Repository r = Repository.getInstance();
+        finalRightsholdersList = r.domainFacade.getRightsholders();
+
+        if(rightsholderList.contains(nameInput.getValue())) {
+            for(IRightsholder rightsholder : finalRightsholdersList) {
+                String name = rightsholder.getFirstName() + " " + rightsholder.getLastName();
+                if(name.contains(rightsholderList.get(rightsholderList.indexOf(nameInput.getValue())))) {
+                    existingUser = finalRightsholdersList.get(rightsholderList.indexOf(nameInput.getValue()));
+                }
+            }
+        }
+
+        return existingUser;
+    }
+
+    @FXML
+    public void handleOnKeyPressed(KeyEvent keyEvent) {
+        findRightsholder();
+    }
+
+    @FXML
+    private void updateDescription(ActionEvent actionEvent) {
+        String chosenValue = nameInput.getValue();
+        for(IRightsholder rightsholder : rightList) {
+            String name = rightsholder.getFirstName() + " " + rightsholder.getLastName();
+            if(name.equals(chosenValue)) {
+                rightholderDescription.setText(rightsholder.getDescription());
+            }
+        }
     }
 }
