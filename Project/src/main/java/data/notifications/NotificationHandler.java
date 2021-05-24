@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationHandler implements INotificationHandler, INotificationProvider {
+public class NotificationHandler implements INotificationFacade {
 
     private static final NotificationHandler handler = new NotificationHandler();
     private final Connection dbConnection = DatabaseConnection.getConnection();

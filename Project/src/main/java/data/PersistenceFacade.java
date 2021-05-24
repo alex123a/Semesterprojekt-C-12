@@ -16,7 +16,7 @@ public class PersistenceFacade implements IPersistenceFacade {
     private static final PersistenceFacade PERSISTENCE_FACADE = new PersistenceFacade();
     private final IUserFacade USER_FACADE = UserFacade.getInstance();
     private final IFacadeData FACADE_DATA = FacadeData.getInstance();
-    private final INotificationHandler NOTIFICATION_HANDLER = NotificationHandler.getInstance();
+    private final INotificationFacade NOTIFICATION_HANDLER = NotificationHandler.getInstance();
     private final IReporting REPORT_HANDLER = ReportHandler.getInstance();
 
     public static PersistenceFacade getInstance() {
@@ -171,7 +171,7 @@ public class PersistenceFacade implements IPersistenceFacade {
 
     @Override
     public List<String> generateCreditsReport() {
-        return ReportHandler.getInstance().generateCreditsReport();
+        return REPORT_HANDLER.generateCreditsReport();
     }
 
     @Override

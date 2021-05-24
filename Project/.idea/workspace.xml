@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IDomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IDomainFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/INotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IDomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IDomainFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/INotificationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/INotificationHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IPersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IPersistenceFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/NotificationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/notifications/NotificationHandler.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
-    <list id="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" name="Changes by magnu" comment="" />
+    <list id="c924ff52-da1c-4a2b-a9ed-cdb5c395da08" name="Changes by magnu" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,9 +33,9 @@
       <list>
         <option value="Kotlin Class" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -115,6 +129,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.NewMain" />
@@ -162,7 +187,7 @@
       <workItem from="1621759914259" duration="2970000" />
       <workItem from="1621764934610" duration="3638000" />
       <workItem from="1621770081324" duration="13158000" />
-      <workItem from="1621840452039" duration="1150000" />
+      <workItem from="1621840452039" duration="2704000" />
     </task>
     <servers />
   </component>
@@ -213,16 +238,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/data/credits/RightsHolderHandler.java</url>
           <line>95</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java</url>
-          <line>179</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java</url>
-          <line>180</line>
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java</url>
