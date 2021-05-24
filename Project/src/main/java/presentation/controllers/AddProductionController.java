@@ -88,11 +88,15 @@ public class AddProductionController implements Initializable {
         comboGenre.setItems(genreOptions);
 
         // Get Producers
-        Repository r = Repository.getInstance();
-        List<IUser> userList = r.domainFacade.getAllProducers();
         ObservableList<String> sortOptions = FXCollections.observableArrayList();
-        for(IUser user : userList) {
-            sortOptions.addAll(user.getUsername());
+        if (rep.domainFacade.validateUser(rep.domainFacade.getCurrentUser())) {
+            List<IUser> userList = rep.domainFacade.getAllProducers();
+            for (IUser user : userList) {
+                sortOptions.addAll(user.getUsername());
+            }
+        } else {
+            sortOptions.add(rep.domainFacade.getCurrentUser().getUsername());
+            comboProducer.setValue(rep.domainFacade.getCurrentUser().getUsername());
         }
         comboProducer.setItems(sortOptions);
 
@@ -107,8 +111,8 @@ public class AddProductionController implements Initializable {
             }
         });
 
-        finalRightsholdersList = r.domainFacade.getRightsholders();
-        rightList = r.domainFacade.getRightsholders();
+        finalRightsholdersList = rep.domainFacade.getRightsholders();
+        rightList = rep.domainFacade.getRightsholders();
         setRightsholderComboBox();
 
         nameInput.getEditor().setOnKeyPressed(this::handleOnKeyPressed);
@@ -142,7 +146,10 @@ public class AddProductionController implements Initializable {
         }
 
         if (rightholderRoles.getText() != null || !rightholderRoles.getText().trim().isEmpty()) {
-            roles.addAll(Arrays.asList(rightholderRoles.getText().split(",")));
+            roles = Arrays.asList(rightholderRoles.getText().split(","));
+            for(int i = 0; i<roles.size(); i++) {
+                roles.set(i, roles.get(i).trim());
+            }
         }
 
         if (firstName != null && lastName != null && description != null) {
@@ -212,7 +219,7 @@ public class AddProductionController implements Initializable {
 
         // Save the production
         IProduction newProduction = new NewProduction(id, name, description, year, genre, category, producer, RhsRoles);
-        r.domainFacade.addProduction(newProduction);
+        r.domainFacade.saveProduction(newProduction);
 
         try {
             Repository.getInstance().setLastPage("add_production");

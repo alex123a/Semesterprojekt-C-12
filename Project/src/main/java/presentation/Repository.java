@@ -1,10 +1,8 @@
 package presentation;
 
-import Interfaces.ICreditManagement;
+import Interfaces.IDomainFacade;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
-import domain.CreditsManagement.CreditsSystem;
-import domain.searchEngine.SearchEngineHandler;
 import domain.DomainFacade;
 import javafx.stage.Stage;
 
@@ -52,10 +50,6 @@ public class Repository {
     public void setRightsholderToBeShown(IRightsholder toBeShown) {
         this.rightsholderToBeShown = toBeShown;
     }
-
-    public ICreditManagement creditsSystem = CreditsSystem.getInstance();
-
-    public SearchEngineHandler searchEngineHandler = SearchEngineHandler.getInstance();
 
     public void setLastPage(String lastPage) {
         this.lastPage = lastPage;

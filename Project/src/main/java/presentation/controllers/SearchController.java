@@ -249,7 +249,7 @@ public class SearchController implements Initializable {
             }
 
             // Get Years
-            int yFrom = 1800;
+            int yFrom = 1300;
             int yTo = 3000;
             if(!yearFrom.getText().equals("")) {
                 yFrom = Integer.parseInt(yearFrom.getText());

@@ -17,12 +17,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import presentation.Repository;
-import presentation.userManage.Systemadministrator;
 
 import java.io.IOException;
 import java.net.URL;
@@ -154,14 +152,15 @@ public class NotificationController implements Initializable {
         String status = "";
 
         for (int i = 0; i < notifications.size(); i++) {
-            if (domain.getCurrentUser() instanceof IAdministrator) {
+            if (domain.validateUser(domain.getCurrentUser())) {
                 status = approvalConverter(notifications.get(i).getApproval());
-            } else if (domain.getCurrentUser() instanceof IProducer) {
+            } else if (!domain.validateUser(domain.getCurrentUser())) {
                 status = viewedConverter(notifications.get(i).getViewed());
             }
             createNotification(notifications.get(i).getProduction(), status, notifications.get(i).getText(), i);
         }
-        if (domain.getCurrentUser() instanceof IProducer) {
+
+        if (!domain.validateUser(domain.getCurrentUser())) {
             for (INotification notification : notifications) {
                 notification.setViewed(true);
                 domain.editProducerNotification(notification);
@@ -174,6 +173,7 @@ public class NotificationController implements Initializable {
         if (domain.validateUser(domain.getCurrentUser())) {
             notifications.get(index).setApproval(status);
             domain.editAdminNotification(notifications.get(index));
+            domain.approveChangesToProduction(notifications.get(index).getProduction());
         }
 
         try {

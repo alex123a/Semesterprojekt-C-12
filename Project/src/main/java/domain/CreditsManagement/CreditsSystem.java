@@ -26,62 +26,14 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
         return instance;
     }
 
-    public void addCredit(IProduction production, IRightsholder rightsholder, List<String> roles) {
-        production.getRightsholders().put(rightsholder, roles);
-        if (!changedProductions.contains(production)){
-            changedProductions.add(production);
-        }
-    }
-
-    public void removeCredit(IProduction production, IRightsholder rightsholder) {
-        production.getRightsholders().remove(rightsholder);
-        if (!changedProductions.contains(production)){
-            changedProductions.add(production);
-        }
-    }
-
-    public void setProductionID(IProduction production, String productionID) {
-        production.setProductionID(productionID);
-        changedProductions.add(production);
-    }
-
-    public void setName(IProduction production, String name) {
-        production.setName(name);
-        changedProductions.add(production);
-    }
-
-    public void setRoles(IProduction production, Map<IRightsholder, List<String>> roles) {
-        production.setRightsholders(roles);
-        changedProductions.add(production);
-    }
-
-    public boolean editCredit(IRightsholder credit) {
-        return false;
-    }
-
-    public void addProduction(IProduction production) {
-        PersistenceFacade.getInstance().saveProduction(production);
-    }
-
     @Override
     public void deleteProduction(IProduction production) {
         PersistenceFacade.getInstance().deleteProduction(production);
     }
 
     @Override
-    public void saveProduction(IProduction production) {
-        PersistenceFacade.getInstance().saveProduction(production);
-    }
-
-    public void saveChanges() {
-        for (IProduction production: changedProductions) {
-            PersistenceFacade.getInstance().saveProduction(production);
-        }
-        changedProductions.clear();
-    }
-
-    public void cancelChanges() {
-        changedProductions.clear();
+    public IProduction saveProduction(IProduction production) {
+        return PersistenceFacade.getInstance().saveProduction(production);
     }
 
     @Override
@@ -93,6 +45,11 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     @Override
     public List<IProduction> getMyProductions() {
         return FacadeData.getInstance().getMyProductions(CurrentSession.getInstance().getCurrentUser());
+    }
+
+    @Override
+    public void approveChangesToProduction(IProduction production) {
+        PersistenceFacade.getInstance().approveChangesToProduction(production);
     }
 
     public List<IRightsholder> getAllRightsholders() {

@@ -265,7 +265,7 @@ public class Controller implements Initializable {
                 times[count].setText(formatter.format(startDate) + " - " + formatter.format(endDate));
                 count++;
 
-                if (domain.getCurrentUser() instanceof IAdministrator) {
+                if (domain.validateUser(domain.getCurrentUser())) {
                     numberOfNotifications.setText("" + domain.countUnreadAdminNotifications());
                 } else if (domain.getCurrentUser() instanceof IProducer) {
                     numberOfNotifications.setText("" + domain.countUnreadProducerNotifications(domain.getCurrentUser()));

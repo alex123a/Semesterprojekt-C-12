@@ -14,7 +14,7 @@ public interface INotification {
 
     IProducer getProducer();
 
-    void setProducer(IProducer producerID);
+    void setProducer(IProducer producer);
 
     void setText(String text);
 

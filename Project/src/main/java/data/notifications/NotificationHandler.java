@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationHandler implements INotificationHandler, INotificationProvider {
+public class NotificationHandler implements INotificationFacade {
 
     private static final NotificationHandler handler = new NotificationHandler();
     private final Connection dbConnection = DatabaseConnection.getConnection();
@@ -27,6 +27,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         return handler;
     }
 
+    // This method creates a producer notifications
     @Override
     public boolean createProducerNotification(INotification notification) {
         try {
@@ -46,6 +47,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // This method creates an admin notification
     @Override
     public boolean createAdminNotification(INotification notification) {
         try {
@@ -61,6 +63,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // This method deletes an admin notification
     @Override
     public boolean deleteAdminNotification(INotification notification) {
         try {
@@ -73,6 +76,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // This method deletes an producer notification
     @Override
     public boolean deleteProducerNotification(INotification notification) {
         try {
@@ -85,15 +89,13 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // This method edit an admin notification (Only edits/updates the approval status)
     @Override
     public boolean editAdminNotification(INotification newNotification) {
         try {
-            IProduction production = newNotification.getProduction();
-            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification SET notification_text = ?, production_id = ?, approval_status_id = ? WHERE id = ? ");
-            statement.setString(1, newNotification.getText());
-            statement.setInt(2, ((Production) production).getID());
-            statement.setInt(3, newNotification.getApproval());
-            statement.setInt(4, ((Notification) newNotification).getID());
+            PreparedStatement statement = dbConnection.prepareStatement("UPDATE administrator_notification SET approval_status_id = ? WHERE id = ? ");
+            statement.setInt(1, newNotification.getApproval());
+            statement.setInt(2, ((Notification) newNotification).getID());
             statement.execute();
             return true;
         } catch (SQLException e) {
@@ -101,6 +103,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // This method edit an producer notification (Only edits/updates the viewed status)
     @Override
     public boolean editProducerNotification(INotification newNotification) {
         try {
@@ -116,7 +119,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
     }
 
 
-
+    // This methods returns a list with all the admin notifications
     @Override
     public List<INotification> getAdminNotifications() {
         try {
@@ -138,6 +141,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // This method returns a list with all the notifications for a specific producer
     @Override
     public List<INotification> getProducerNotifications(IUser user) {
         try {
@@ -149,7 +153,6 @@ public class NotificationHandler implements INotificationHandler, INotificationP
             statement.setInt(1, user.getId());
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                System.out.println("dadasadssad" + result.getInt(2));
                 list.add(new ProducerNotification(result.getInt(1), (IProducer) PersistenceFacade.getInstance().getUser(new Producer(result.getInt(2))),
                         result.getString(3), result.getBoolean(4),
                         FacadeData.getInstance().getProduction(new Production(result.getInt(5)))));
@@ -161,6 +164,10 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    /*
+    This method counts all admin notifications where approval status is "waiting" and not really if it is read or not.
+    Maybe the method name should have been something else
+    */
     @Override
     public int countUnreadAdminNotifications() {
         try {
@@ -179,6 +186,7 @@ public class NotificationHandler implements INotificationHandler, INotificationP
         }
     }
 
+    // Counts all the unread notifications for a specific producer. It is unread if the boolean viewed is false.
     @Override
     public int countUnreadProducerNotifications(IUser user) {
         try {

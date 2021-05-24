@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class RightsHolderHandler {
-    private Connection connection = null;
+    private Connection connection;
 
     /**
      * Establish a connection to the Database
