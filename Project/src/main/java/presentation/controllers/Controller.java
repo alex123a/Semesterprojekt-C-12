@@ -165,46 +165,51 @@ public class Controller implements Initializable {
         }
     }
 
+    private void shiftPage(Label channel) {
+        Parent root;
+        try {
+            Repository.getInstance().setProgramName(channel.getText());
+            root = FXMLLoader.load(getClass().getResource("/layout/search.fxml"));
+            Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     void onDefaultBoxClicked(MouseEvent event) {
-        //todo implement default box
-        System.out.println("Default");
+        shiftPage(tv2Default);
     }
 
     @FXML
     void onSportBoxClicked(MouseEvent event) {
-        //todo implement sport box
-        System.out.println("Sport");
+        shiftPage(tv2Sport);
     }
 
     @FXML
     void onSportXBoxClicked(MouseEvent event) {
-        //todo implement sport X box
-        System.out.println("Sport X");
+        shiftPage(tv2SportX);
     }
 
     @FXML
     void onCharlieBoxClicked(MouseEvent event) {
-        //todo implement Charlie box
-        System.out.println("Charlie");
+        shiftPage(tv2Charlie);
     }
 
     @FXML
     void onNewsBoxClicked(MouseEvent event) {
-        //todo implement news box
-        System.out.println("News");
+        shiftPage(tv2News);
     }
 
     @FXML
     void onZuluBoxClicked(MouseEvent event) {
-        //todo implement Zulu box
-        System.out.println("Zulu");
+        shiftPage(tv2Zulu);
     }
 
     @FXML
     void onFriBoxClicked(MouseEvent event) {
-        //todo implement fri box
-        System.out.println("Fri");
+        shiftPage(tv2Fri);
     }
 
     public void onMouseEnteredAccount(MouseEvent mouseEvent) {
