@@ -1,8 +1,6 @@
 package presentation.userManage;
 
-import Interfaces.IAdministrator;
-
-public class Systemadministrator extends User implements IAdministrator {
+public class Systemadministrator extends User{
     public Systemadministrator(String username, String password) {
         super(username, password);
     }

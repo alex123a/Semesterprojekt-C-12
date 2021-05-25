@@ -1,8 +1,6 @@
 package presentation.userManage;
 
-import Interfaces.IProducer;
-
-public class Producer extends User implements IProducer {
+public class Producer extends User {
     public Producer(String username, String password) {
         super(username, password);
     }

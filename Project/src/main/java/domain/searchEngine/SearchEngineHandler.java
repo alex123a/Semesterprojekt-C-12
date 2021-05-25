@@ -2,8 +2,8 @@ package domain.searchEngine;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
-import Interfaces.ISearchCredits;
 import Interfaces.ISearchable;
+import domain.CreditsManagement.CreditsSystem;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
 import enumerations.ProductionType;
@@ -11,14 +11,13 @@ import enumerations.RightholderSorting;
 
 import java.util.*;
 
-public class SearchEngineHandler implements ISearchCredits {
-    private static final SearchEngineHandler instance = new SearchEngineHandler();
-
-    private SearchEngineHandler() {
-
-    }
+public class SearchEngineHandler implements Interfaces.ISearchCredits {
+    private static SearchEngineHandler instance = null;
 
     public static SearchEngineHandler getInstance() {
+        if (instance==null) {
+            instance = new SearchEngineHandler();
+        }
         return instance;
     }
 
@@ -27,7 +26,7 @@ public class SearchEngineHandler implements ISearchCredits {
 
         List<ISearchable> results = new ArrayList<>();
         for (ISearchable ob : list){
-            if (ob.getName().toLowerCase().contains(target.toLowerCase())){
+            if (ob.getName().contains(target)){
                 results.add(ob);
             }
         }

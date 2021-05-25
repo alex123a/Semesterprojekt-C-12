@@ -2,11 +2,7 @@ package data;
 
 import Interfaces.*;
 import data.credits.FacadeData;
-import data.credits.Production;
-import data.logger.LogHandler;
-import data.notifications.AdminNotification;
 import data.notifications.NotificationHandler;
-import data.reporting.ReportHandler;
 import data.userHandling.UserFacade;
 
 import java.util.List;
@@ -14,10 +10,6 @@ import java.util.Map;
 
 public class PersistenceFacade implements IPersistenceFacade {
     private static final PersistenceFacade PERSISTENCE_FACADE = new PersistenceFacade();
-    private final IUserFacade USER_FACADE = UserFacade.getInstance();
-    private final IFacadeData FACADE_DATA = FacadeData.getInstance();
-    private final INotificationFacade NOTIFICATION_HANDLER = NotificationHandler.getInstance();
-    private final IReporting REPORT_HANDLER = ReportHandler.getInstance();
 
     public static PersistenceFacade getInstance() {
         return PERSISTENCE_FACADE;
@@ -25,48 +17,53 @@ public class PersistenceFacade implements IPersistenceFacade {
 
     @Override
     public List<IUser> getUsers() {
-        return USER_FACADE.getUsers();
+        return UserFacade.getInstance().getUsers();
     }
 
     @Override
-    public List<IUser> getAllProducers() {
-        return USER_FACADE.getAllProducers();
+    public boolean makeUserProducer(IUser user) {
+        return UserFacade.getInstance().makeUserProducer(user);
+    }
+
+    @Override
+    public boolean makeUserAdmin(IUser user) {
+        return UserFacade.getInstance().makeUserAdmin(user);
     }
 
     @Override
     public boolean deleteUser(IUser user) {
-        return USER_FACADE.deleteUser(user);
+        return UserFacade.getInstance().deleteUser(user);
     }
 
     @Override
     public boolean editUser(IUser user) {
-        return USER_FACADE.editUser(user);
+        return UserFacade.getInstance().editUser(user);
     }
 
     @Override
     public boolean addUser(IUser user) {
-        return USER_FACADE.addUser(user);
+        return UserFacade.getInstance().addUser(user);
     }
 
     @Override
     public IUser getUser(IUser user) {
-        return USER_FACADE.getUser(user);
+        return UserFacade.getInstance().getUser(user);
     }
 
     @Override
     public String getDatabasePassword(IUser user) {
-        return USER_FACADE.getDatabasePassword(user);
+        return UserFacade.getInstance().getDatabasePassword(user);
     }
 
     @Override
     public List<IRightsholder> getRightsholders() {
-        return FACADE_DATA.getRightsholders();
+        return FacadeData.getInstance().getRightsholders();
 
     }
 
     @Override
     public void saveRightsholder(IRightsholder rightsholder) {
-        FACADE_DATA.saveRightsholder(rightsholder);
+        FacadeData.getInstance().saveRightsholder(rightsholder);
     }
 
     @Override
@@ -76,116 +73,86 @@ public class PersistenceFacade implements IPersistenceFacade {
 
     @Override
     public List<IProduction> getProductions() {
-        return FACADE_DATA.getProductions();
+        return FacadeData.getInstance().getProductions();
     }
 
     @Override
     public IProduction saveProduction(IProduction production) {
-        return FACADE_DATA.saveProduction(production);
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void deleteProduction(IProduction production) {
-        FACADE_DATA.deleteProduction(production);
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void approveChangesToProduction(IProduction production) {
-        FACADE_DATA.approveChangesToProduction(production);
+
     }
 
     @Override
-    public List<IProduction> getMyProductions(IUser user){
-        return FACADE_DATA.getMyProductions(user);
-    }
-
-    @Override
-    public boolean createProducerNotification(INotification notification) {
-       return NOTIFICATION_HANDLER.createProducerNotification(notification);
+    public boolean createProducerNotification(IUser user, INotification notification) {
+       return NotificationHandler.getInstance().createProducerNotification(user, notification);
     }
 
     @Override
     public boolean createAdminNotification(INotification notification) {
-        return NOTIFICATION_HANDLER.createAdminNotification(notification);
+        return NotificationHandler.getInstance().createAdminNotification(notification);
     }
 
     @Override
     public boolean deleteAdminNotification(INotification notification) {
-        return NOTIFICATION_HANDLER.deleteAdminNotification(notification);
+        return NotificationHandler.getInstance().deleteAdminNotification(notification);
     }
 
     @Override
     public boolean deleteProducerNotification(INotification notification) {
-        return NOTIFICATION_HANDLER.deleteProducerNotification(notification);
+        return NotificationHandler.getInstance().deleteProducerNotification(notification);
     }
 
     @Override
     public boolean editAdminNotification(INotification newNotification) {
-        return NOTIFICATION_HANDLER.editAdminNotification(newNotification);
+        return NotificationHandler.getInstance().editAdminNotification(newNotification);
     }
 
     @Override
     public boolean editProducerNotification(INotification newNotification) {
-        return NOTIFICATION_HANDLER.editProducerNotification(newNotification);
+        return NotificationHandler.getInstance().editProducerNotification(newNotification);
     }
 
     @Override
     public List<INotification> getAdminNotifications() {
-        return NOTIFICATION_HANDLER.getAdminNotifications();
+        return NotificationHandler.getInstance().getAdminNotifications();
     }
 
     @Override
     public List<INotification> getProducerNotifications(IUser user) {
-        return NOTIFICATION_HANDLER.getProducerNotifications(user);
-    }
-
-    @Override
-    public int countUnreadAdminNotifications() {
-        return NOTIFICATION_HANDLER.countUnreadAdminNotifications();
-    }
-
-    @Override
-    public int countUnreadProducerNotifications(IUser user) {
-        return NOTIFICATION_HANDLER.countUnreadProducerNotifications(user);
+        return NotificationHandler.getInstance().getProducerNotifications(user);
     }
 
     @Override
     public int getTotalCreditCount() {
-        return REPORT_HANDLER.getTotalCreditCount();
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public Map<String, Integer> generateProductionCreditsCount(IProduction production) {
-        return REPORT_HANDLER.generateProductionCreditsCount(production);
+    public int generateProductionCreditsCount(IProduction production, String title) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public Map<String, Integer> generateCreditTypeCount() {
-        return REPORT_HANDLER.generateCreditTypeCount();
+    public int generateCreditTypeCount(String type) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public Map<String, Integer> generate10MostCredited() {
-        return REPORT_HANDLER.generate10MostCredited();
+    public Map<Integer, Integer> generate10MostCredited() {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public List<String> generateCreditsReport() {
-        return REPORT_HANDLER.generateCreditsReport();
-    }
-
-    @Override
-    public IProduction getProductionFromID(IProduction production) {
-        return FacadeData.getInstance().getProduction(production);
-    }
-
-    @Override
-    public List<IUser> getUsersBySearch(IUser user) {
-        return USER_FACADE.getUsersBySearch(user);
-    }
-
-    @Override
-    public void logAction(String text, IUser user) {
-        LogHandler.getInstance().writeLog(text, user);
+    public void generateCreditsReport() {
+        throw new UnsupportedOperationException();
     }
 }

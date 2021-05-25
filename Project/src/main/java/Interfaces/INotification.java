@@ -8,17 +8,17 @@ public interface INotification {
 
     String getText();
 
+    int getProductionId();
+
     void setApproval(int approval);
 
     int getApproval();
 
-    IProducer getProducer();
+    int getID();
 
-    void setProducer(IProducer producer);
+    int getProducerID();
+
+    void setProducerID(int producerID);
 
     void setText(String text);
-
-    IProduction getProduction();
-
-    void setProduction(IProduction production);
 }

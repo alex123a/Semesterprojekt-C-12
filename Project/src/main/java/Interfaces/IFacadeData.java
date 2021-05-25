@@ -16,8 +16,5 @@ public interface IFacadeData {
 
     void deleteProduction(IProduction production);
 
-    List<IProduction> getMyProductions(IUser user);
-
     void approveChangesToProduction(IProduction production);
-
 }

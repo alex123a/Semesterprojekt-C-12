@@ -3,206 +3,34 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_json_simple_json_simple_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logfile.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IAdministrator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IAuthenticationHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationFacade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IReportHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ISearchUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/credits/TestApproval.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/credits/TestInsertIntoApprovalTables.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/logger/LogHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/notifications/AdminNotification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/reporting/ReportHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationFacade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/ReportingHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/TestReportingAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/notification/Notification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/notification/ProducerNotification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/searchEngine/SearchUserHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/adminVerifyProductionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/layout/adminVerifyProduction.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Interfaces/IAdministrator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Interfaces/IAuthenticationHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Interfaces/INotificationFacade.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Interfaces/IProducer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Interfaces/IReportHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Interfaces/ISearchUser.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/data/credits/TestApproval.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/data/credits/TestInsertIntoApprovalTables.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/data/logger/LogHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/data/notifications/AdminNotification.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/domain/authentication/AuthenticationFacade.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/domain/jsonReporting/ReportingHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/domain/jsonReporting/TestReportingAPI.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/domain/notification/AdminNotification.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/domain/notification/Notification.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/domain/notification/ProducerNotification.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/domain/searchEngine/SearchUserHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/layout/adminVerifyProduction.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/adminVerifyProductionController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/presentation/credits/NewProduction.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/presentation/credits/Repository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../create_sample_data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../create_tables.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../drop_cascade_tables.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ForgotController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/layout/forgotPassword.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_15_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_15.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/create_tables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IAuthenticator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IAuthenticator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/ICreditManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ICreditManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IDomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IDomainFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IFacadeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IFacadeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/INotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/INotificationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IPersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IProduction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IReporting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IReporting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/ISeeCredits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/ISeeCredits.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Interfaces/IUserHandling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/PersistenceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/FacadeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/FacadeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Production.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/ProductionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/RightsHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/RightsHolderHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Rightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Rightsholder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/credits/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/credits/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/AdminNotifcation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/notification/AdminNotification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/NotificationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/ProducerNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/ProducerNotification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/Producer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/SystemAdministrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/SystemAdministrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/CreditsManagement/CreditsSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/AuthenticationHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/LoginAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/LoginAuthentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/UserAuthentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/searchEngine/SearchEngineHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/searchEngine/SearchEngineHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/CreditWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/credits/CreditWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/NewProduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/credits/NewProduction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/NewRightsholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/credits/NewRightsholder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/AddProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/BetterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/BetterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/EditProductionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ManageUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/MyProductionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/PersonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ProductionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ProductionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/userManage/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/userManage/Producer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/userManage/Systemadministrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/userManage/Systemadministrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/ManageUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/ManageUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/add_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/add_production.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/edit_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/edit_production.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/layout/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menuAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/menuProducer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/menuProducer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/notification.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/notification.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/layout/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/layout/search.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IAuthenticator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IAuthenticator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/ICreditManagement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/ICreditManagement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IDomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IDomainFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IFacadeData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IFacadeData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/INotification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/INotification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/INotificationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/INotificationHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IPersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IPersistenceFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IProduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IProduction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IReporting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IReporting.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/ISeeCredits.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/ISeeCredits.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Interfaces/IUserHandling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Interfaces/IUserhandling.class~master" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/PersistenceFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/FacadeData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/FacadeData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/Production.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/Production.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/ProductionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/ProductionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/RightsHolderHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/RightsHolderHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/Rightsholder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/Rightsholder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/credits/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/credits/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/AdminNotifcation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/Notification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/notifications/Notification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/NotificationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/notifications/NotificationHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/notifications/ProducerNotification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/notifications/ProducerNotification.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/reporting/ReportHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/reporting/ReportHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/Producer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/Producer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/SystemAdministrator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/SystemAdministrator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/CreditsManagement/CreditsSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/AuthenticationHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/LoginAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/LoginAuthentication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/UserAuthentication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/searchEngine/SearchEngineHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/searchEngine/SearchEngineHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/searchEngine/test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/ManageUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/ManageUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/edit_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/edit_production.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/menuAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/menuProducer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/menuProducer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/notification.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/notification.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/person.fxml~master" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/search.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/CreditWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/credits/CreditWrapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewProduction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/NewRightsholder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/credits/NewRightsholder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/Repository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/BetterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/BetterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/EditProductionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ForgotController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ForgotController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ManageUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ManageUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/MyProductionsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/NotificationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/PersonController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/ProductionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/SearchController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/notificationController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/notificationController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/personController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/personController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/userManage/Producer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/userManage/Producer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/userManage/Systemadministrator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/userManage/Systemadministrator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/add_production.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/layout/add_production.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/layout/person.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/AddProductionController.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
-    <list id="24071367-1411-41c8-9493-e26a578583b3" name="Changes by magnu" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -240,22 +68,19 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/layout" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/presentation/controllers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.35731414" />
-    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -265,11 +90,6 @@
       <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project\src\main\resources" />
       <recent name="C:\Users\janik\Documents\GitHub\exercise\jasun2\Semesterprojekt-C-12\Project\src\main\java" />
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\stylesheets" />
-      <recent name="C:\Users\alexv\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\java\presentation\controllers" />
-      <recent name="C:\Users\alexv\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\resources\layout" />
-      <recent name="C:\Users\alexv\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\java\Interfaces" />
-      <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\Project\src\main\java\domain\notification" />
-      <recent name="C:\Users\alexv\Documents\GitHub\Semesterprojekt-C-12\Project\src\main\java\domain\notification" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\alexv\Documents\GitHub\TA2\Semesterprojekt-C-12\project\src\main\resources\stylesheets" />
@@ -282,7 +102,7 @@
       <module name="Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="presentation.credits.*" />
+          <option name="PATTERN" value="presentation.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -312,17 +132,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -368,12 +177,6 @@
       <workItem from="1621421316683" duration="4451000" />
       <workItem from="1621593067395" duration="227000" />
       <workItem from="1621593312196" duration="802000" />
-      <workItem from="1621429793332" duration="20639000" />
-      <workItem from="1621597670728" duration="616000" />
-      <workItem from="1621610372378" duration="2550000" />
-      <workItem from="1621612969222" duration="8436000" />
-      <workItem from="1621625236667" duration="626000" />
-      <workItem from="1621759914259" duration="2970000" />
     </task>
     <servers />
   </component>

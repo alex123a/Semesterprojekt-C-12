@@ -19,8 +19,7 @@ public interface IProduction extends ISearchable {
     void setGenre(ProductionGenre genre);
     ProductionType getType();
     void setType(ProductionType type);
-    IProducer getProducer();
-    void setProducer(IProducer producer);
+    //TODO add get and set producer
     void setRightsholders(Map<IRightsholder, List<String>> roles);
     Map<IRightsholder, List<String>> getRightsholders();
     List<String> getRightsholderRole(IRightsholder rightsholder);

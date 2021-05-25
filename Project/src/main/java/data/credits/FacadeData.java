@@ -3,7 +3,6 @@ package data.credits;
 import Interfaces.IFacadeData;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
-import Interfaces.IUser;
 import data.credits.ProductionHandler;
 import data.credits.RightsHolderHandler;
 
@@ -12,14 +11,17 @@ import java.util.List;
 public class FacadeData implements IFacadeData {
     private RightsHolderHandler rhHolder = RightsHolderHandler.getInstance();
     private ProductionHandler pHandler = ProductionHandler.getInstance();
-    private static final FacadeData FDATA = new FacadeData();
+    private static FacadeData instance;
+
+    public static FacadeData getInstance() {
+        if (instance == null) {
+            instance = new FacadeData();
+        }
+        return instance;
+    }
 
     private FacadeData() {
 
-    }
-
-    public static FacadeData getInstance() {
-        return FDATA;
     }
 
     /**
@@ -67,9 +69,6 @@ public class FacadeData implements IFacadeData {
         return pHandler.saveProduction(production);
     }
 
-    @Override
-    public List<IProduction> getMyProductions(IUser user) {return pHandler.getProductionChanged(user);}
-
     /**
      * Delete a procution
      * @param production Production object
@@ -82,11 +81,7 @@ public class FacadeData implements IFacadeData {
 
     @Override
     public void approveChangesToProduction(IProduction production) {
-        pHandler.approveChangesToProduction(production);
-    }
-
-    public IProduction getProduction(IProduction production) {
-        return pHandler.getProduction(production);
+        throw new UnsupportedOperationException();
     }
 
 }

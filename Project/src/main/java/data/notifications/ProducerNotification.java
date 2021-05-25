@@ -1,32 +1,29 @@
 package data.notifications;
 
-import Interfaces.IProducer;
-import Interfaces.IProduction;
-
 public class ProducerNotification extends Notification {
-    private IProducer producer;
+    private int producerID;
     private boolean viewed;
 
-    public ProducerNotification(IProduction production, String text, boolean viewed, IProducer producer) {
-        super(text, production);
+    public ProducerNotification(int productionID, String text, boolean viewed, int producerID) {
+        super(text, productionID);
         this.viewed = viewed;
-        this.producer = producer;
+        this.producerID = producerID;
     }
 
-    public ProducerNotification(int ID, IProducer producer, String text, boolean viewed, IProduction production) {
-        super(ID, text, production);
+    public ProducerNotification(int ID, int productionID, String text, boolean viewed, int producerID) {
+        super(ID, text, productionID);
         this.viewed = viewed;
-        this.producer = producer;
+        this.producerID = producerID;
     }
 
     @Override
-    public IProducer getProducer() {
-        return producer;
+    public int getProducerID() {
+        return producerID;
     }
 
     @Override
-    public void setProducer(IProducer producer) {
-        this.producer = producer;
+    public void setProducerID(int producerID) {
+        this.producerID = producerID;
     }
 
     @Override

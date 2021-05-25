@@ -3,7 +3,7 @@ package Interfaces;
 import java.util.List;
 
 public interface INotificationHandler {
-    boolean createProducerNotification(INotification notification);
+    boolean createProducerNotification(IUser user, INotification notification);
 
     boolean createAdminNotification(INotification notification);
 
@@ -15,8 +15,8 @@ public interface INotificationHandler {
 
     boolean editProducerNotification(INotification newNotification);
 
-    int countUnreadAdminNotifications();
+    List<INotification> getAdminNotifications();
 
-    int countUnreadProducerNotifications(IUser user);
+    List<INotification> getProducerNotifications(IUser user);
 
 }

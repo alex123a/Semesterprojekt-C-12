@@ -7,11 +7,11 @@ public interface IReporting {
 
     int getTotalCreditCount();
 
-    Map<String, Integer> generateProductionCreditsCount(IProduction production);
+    int generateProductionCreditsCount(IProduction production, String title);
 
-    Map<String, Integer> generateCreditTypeCount();
+    int generateCreditTypeCount(String type);
 
-    Map<String, Integer> generate10MostCredited();
+    Map<Integer, Integer> generate10MostCredited();
 
-    List<String> generateCreditsReport();
+    void generateCreditsReport();
 }

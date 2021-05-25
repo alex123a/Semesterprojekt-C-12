@@ -1,9 +1,10 @@
 package domain.CreditsManagement;
 
-import Interfaces.*;
+import Interfaces.ICreditManagement;
+import Interfaces.IProduction;
+import Interfaces.IRightsholder;
+import Interfaces.ISeeCredits;
 import data.PersistenceFacade;
-import data.credits.FacadeData;
-import domain.session.CurrentSession;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,48 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
         }
         return instance;
     }
+    
+    @Override
+    public void addCredit(IProduction production, IRightsholder rightsholder, List<String> roles) {
+        production.getRightsholders().put(rightsholder, roles);
+        if (!changedProductions.contains(production)){
+            changedProductions.add(production);
+        }
+    }
+
+    @Override
+    public void removeCredit(IProduction production, IRightsholder rightsholder) {
+        production.getRightsholders().remove(rightsholder);
+        if (!changedProductions.contains(production)){
+            changedProductions.add(production);
+        }
+    }
+
+    @Override
+    public void setProductionID(IProduction production, String productionID) {
+        production.setProductionID(productionID);
+        changedProductions.add(production);
+    }
+
+    public void setName(IProduction production, String name) {
+        production.setName(name);
+        changedProductions.add(production);
+    }
+
+    public void setRoles(IProduction production, Map<IRightsholder, List<String>> roles) {
+        production.setRightsholders(roles);
+        changedProductions.add(production);
+    }
+
+    @Override
+    public boolean editCredit(IRightsholder credit) {
+        return false;
+    }
+
+    @Override
+    public void addProduction(IProduction production) {
+        PersistenceFacade.getInstance().saveProduction(production);
+    }
 
     @Override
     public void deleteProduction(IProduction production) {
@@ -32,24 +75,22 @@ public class CreditsSystem implements ICreditManagement, ISeeCredits {
     }
 
     @Override
-    public IProduction saveProduction(IProduction production) {
-        return PersistenceFacade.getInstance().saveProduction(production);
+    public void saveChanges() {
+        for (IProduction production: changedProductions) {
+            PersistenceFacade.getInstance().saveProduction(production);
+        }
+        changedProductions.clear();
+    }
+
+    @Override
+    public void cancelChanges() {
+        changedProductions.clear();
     }
 
     @Override
     public List<IProduction> getProductions() {
         //Could save the data in an attribute
         return PersistenceFacade.getInstance().getProductions();
-    }
-
-    @Override
-    public List<IProduction> getMyProductions() {
-        return FacadeData.getInstance().getMyProductions(CurrentSession.getInstance().getCurrentUser());
-    }
-
-    @Override
-    public void approveChangesToProduction(IProduction production) {
-        PersistenceFacade.getInstance().approveChangesToProduction(production);
     }
 
     public List<IRightsholder> getAllRightsholders() {
