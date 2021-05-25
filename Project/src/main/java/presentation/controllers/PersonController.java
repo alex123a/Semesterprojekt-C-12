@@ -1,9 +1,6 @@
 package presentation.controllers;
 
 import Interfaces.IProduction;
-import Interfaces.IRightsholder;
-import Interfaces.IUser;
-import domain.DomainFacade;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,14 +16,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import presentation.CreditWrapper;
-import presentation.Repository;
+import presentation.credits.CreditWrapper;
+import presentation.credits.Repository;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class PersonController implements Initializable {

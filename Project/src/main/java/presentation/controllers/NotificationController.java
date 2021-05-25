@@ -1,8 +1,6 @@
 package presentation.controllers;
 
-import Interfaces.IAdministrator;
 import Interfaces.INotification;
-import Interfaces.IProducer;
 import Interfaces.IProduction;
 import domain.DomainFacade;
 import javafx.event.ActionEvent;
@@ -20,7 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import presentation.Repository;
+import presentation.credits.Repository;
 
 import java.io.IOException;
 import java.net.URL;

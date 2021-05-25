@@ -10,7 +10,7 @@ import data.userHandling.UserFacade;
 import domain.DomainFacade;
 import enumerations.ProductionGenre;
 import enumerations.ProductionType;
-import presentation.NewProduction;
+import presentation.credits.NewProduction;
 import presentation.userManage.User;
 
 import java.sql.Connection;

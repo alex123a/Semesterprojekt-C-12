@@ -1,6 +1,5 @@
 package presentation.controllers;
 
-import Interfaces.IAdministrator;
 import Interfaces.IProducer;
 import domain.DomainFacade;
 import javafx.fxml.FXML;
@@ -15,7 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import presentation.Repository;
+import presentation.credits.Repository;
 
 import java.io.BufferedReader;
 import java.io.IOException;

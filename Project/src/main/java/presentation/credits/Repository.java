@@ -1,6 +1,5 @@
-package presentation;
+package presentation.credits;
 
-import Interfaces.IDomainFacade;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import domain.DomainFacade;
