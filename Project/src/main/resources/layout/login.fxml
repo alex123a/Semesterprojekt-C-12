@@ -33,7 +33,7 @@
                   <Font name="Calibri Bold" size="50.0" />
                </font>
             </Label>
-            <TextField fx:id="usernameInput" layoutX="32.0" layoutY="177.0" prefHeight="43.0" prefWidth="350.0" promptText="Brugernavn" style="-fx-background-radius: 3px;">
+            <TextField fx:id="usernameInput" onAction="#onEnter" layoutX="32.0" layoutY="177.0" prefHeight="43.0" prefWidth="350.0" promptText="Brugernavn" style="-fx-background-radius: 3px;">
                <font>
                   <Font size="16.0" />
                </font>
@@ -55,7 +55,7 @@
             </Label>
             <HBox layoutX="32.0" layoutY="252.0" prefHeight="43.0" prefWidth="350.0">
                <children>
-                  <PasswordField fx:id="passwordHiddenInput" prefHeight="43.0" prefWidth="310.0" promptText="Password" style="-fx-background-radius: 3px;">
+                  <PasswordField fx:id="passwordHiddenInput" onAction="#onEnter" prefHeight="43.0" prefWidth="310.0" promptText="Password" style="-fx-background-radius: 3px;">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -67,11 +67,21 @@
                   </ImageView>
                </children>
             </HBox>
-            <TextField fx:id="passwordShownInput" layoutX="32.0" layoutY="252.0" prefHeight="43.0" prefWidth="308.0" promptText="Password" style="-fx-background-radius: 3px;" visible="false">
+            <TextField fx:id="passwordShownInput" onAction="#onEnter" layoutX="32.0" layoutY="252.0" prefHeight="43.0" prefWidth="308.0" promptText="Password" style="-fx-background-radius: 3px;" visible="false">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
+            <Button alignment="CENTER" layoutX="147.0" layoutY="399.0" mnemonicParsing="false" onMouseClicked="#loginClicked" prefHeight="54.0" prefWidth="120.0" style="-fx-cursor: hand; -fx-background-color: #49d100; -fx-background-radius: 20px;" text="Log ind" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="228.0" layoutY="328.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="166.0" style="-fx-cursor: hand; -fx-background-color: ffffff;" text="Glemt adgangskode?" textFill="#0093ff" underline="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

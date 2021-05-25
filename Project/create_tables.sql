@@ -13,7 +13,7 @@ CREATE TABLE producer_notification(
     producer_id INT REFERENCES producer(id),
     notification_text VARCHAR(1000) NOT NULL,
     viewed BOOLEAN NOT NULL,
-    production_id INT REFERENCES production(id)
+    production_id INT REFERENCES production_approval(id)
 );
 
 CREATE TABLE genre(
@@ -67,9 +67,9 @@ CREATE TABLE appears_in(
 );
 
 CREATE TABLE appears_in_approval(
+    id SERIAL PRIMARY KEY,
     production_id INT REFERENCES production(id),
-    rightsholder_id INT REFERENCES rightsholder(id),
-    PRIMARY KEY (production_id, rightsholder_id)
+    rightsholder_id INT REFERENCES rightsholder(id)
 );
 
 CREATE TABLE title(
@@ -111,7 +111,7 @@ CREATE TABLE approval_status(
 CREATE TABLE administrator_notification(
     id SERIAL PRIMARY KEY,
     notification_text VARCHAR(1000) NOT NULL,
-    production_id INT REFERENCES production(id) NOT NULL,
+    production_id INT NOT NULL,
     approval_status_id INT REFERENCES approval_status(id) NOT NULL
 );
 

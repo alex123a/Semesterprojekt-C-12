@@ -1,5 +1,6 @@
 package data.credits;
 
+import Interfaces.IProducer;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import enumerations.ProductionGenre;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class Production implements IProduction {
+public class Production implements IProduction {
     private int id;
     private String productionID;
     private String name;
@@ -18,6 +19,7 @@ class Production implements IProduction {
     private int year;
     private ProductionGenre genre;
     private ProductionType type;
+    private IProducer producer;
     private Map<Integer, List<String>> rightsholders;
     //Saves the rightsholder, so the list above doesn't need to be converted each time
     private Map<IRightsholder, List<String>> cachedMap;
@@ -26,7 +28,11 @@ class Production implements IProduction {
 
     }
 
-    public Production(int id, String productionID, String name, String description, int year, ProductionGenre genre, ProductionType type, Map<Integer, List<String>> rightsholders) {
+    public Production(int id) {
+        this.id = id;
+    }
+
+    public Production(int id, String productionID, String name, String description, int year, ProductionGenre genre, ProductionType type) {
         this.id = id;
         this.productionID = productionID;
         this.name = name;
@@ -34,9 +40,19 @@ class Production implements IProduction {
         this.year = year;
         this.genre = genre;
         this.type = type;
-        this.rightsholders = rightsholders;
     }
 
+    public Production(int id, String productionID, String name, String description, int year, ProductionGenre genre, ProductionType type, IProducer producer, Map<Integer, List<String>> rightsholders) {
+        this.id = id;
+        this.productionID = productionID;
+        this.name = name;
+        this.description = description;
+        this.year = year;
+        this.genre = genre;
+        this.type = type;
+        this.producer = producer;
+        this.rightsholders = rightsholders;
+    }
 
     public int getID() {
         return this.id;
@@ -103,8 +119,18 @@ class Production implements IProduction {
     }
 
     @Override
+    public IProducer getProducer() {
+        return this.producer;
+    }
+
+    @Override
+    public void setProducer(IProducer producer) {
+        this.producer = producer;
+    }
+
+    @Override
     public void setRightsholders(Map<IRightsholder, List<String>> roles) {
-        throw new UnsupportedOperationException("not implemented yet");
+        cachedMap = roles;
     }
 
     @Override
@@ -123,11 +149,13 @@ class Production implements IProduction {
 
     @Override
     public List<String> getRightsholderRole(IRightsholder rightsholder) {
-        return rightsholders.get(rightsholder);
+        return getRightsholders().get(rightsholder);
     }
 
     @Override
     public String toString() {
-        return productionID + ": " + name;
+        return id + " " + productionID + ": " + name;
     }
+
+
 }

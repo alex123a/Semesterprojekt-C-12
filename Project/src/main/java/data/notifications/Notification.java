@@ -1,24 +1,30 @@
 package data.notifications;
 
 import Interfaces.INotification;
+import Interfaces.IProducer;
+import Interfaces.IProduction;
 
 public class Notification implements INotification {
 
     private int ID;
     private String text;
-    private int productionID;
+    private IProduction production;
 
     public Notification() {
 
     }
 
-    public Notification(String text, int productionID) {
+    public Notification(String text) {
         this.text = text;
-        this.productionID = productionID;
     }
 
-    public Notification(int ID, String text, int productionID) {
-        this(text, productionID);
+    public Notification(String text, IProduction production) {
+        this(text);
+        this.production = production;
+    }
+
+    public Notification(int ID, String text, IProduction production) {
+        this(text, production);
         this.ID = ID;
     }
 
@@ -40,11 +46,6 @@ public class Notification implements INotification {
     }
 
     @Override
-    public int getProductionId() {
-        return this.productionID;
-    }
-
-    @Override
     public void setApproval(int approval) {
         throw new UnsupportedOperationException("Not supported");
     }
@@ -54,23 +55,32 @@ public class Notification implements INotification {
         throw new UnsupportedOperationException("Not supported");
     }
 
-    @Override
     public int getID() {
         return this.ID;
     }
 
     @Override
-    public int getProducerID() {
-        throw new UnsupportedOperationException("Not supported");
+    public IProducer getProducer() {
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public void setProducerID(int producerID) {
-        throw new UnsupportedOperationException("Not supported");
+    public void setProducer(IProducer producer) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public IProduction getProduction() {
+        return production;
+    }
+
+    @Override
+    public void setProduction(IProduction production) {
+        this.production = production;
     }
 }

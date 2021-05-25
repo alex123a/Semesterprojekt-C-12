@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import Interfaces.IProducer;
 import domain.DomainFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -98,10 +99,15 @@ public class Controller implements Initializable {
     @FXML
     private ImageView searchImage;
 
+    @FXML
+    private Label numberOfNotifications = new Label();
+
+    private DomainFacade domain = Repository.getInstance().domainFacade;
 
     @FXML
     void onBroadcastClicked(MouseEvent event) {
         try {
+            Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
             Stage window = (Stage) tv2Default.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
@@ -114,6 +120,7 @@ public class Controller implements Initializable {
     @FXML
     void onHelpClicked(MouseEvent event) {
         try {
+            Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/helppage.fxml"));
             Stage window = (Stage) tv2Default.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
@@ -135,7 +142,15 @@ public class Controller implements Initializable {
 
     @FXML
     void onEditUserClicked(MouseEvent event) {
-        //todo onEditUser
+        try {
+            Repository.getInstance().setLastPage("menu");
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/ManageUser.fxml"));
+            Stage window = Repository.getInstance().getWindow();
+            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("Edit User");
 
     }
@@ -143,6 +158,7 @@ public class Controller implements Initializable {
     @FXML
     void onSearchClicked() {
         try {
+            Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/search.fxml"));
             Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
@@ -152,46 +168,51 @@ public class Controller implements Initializable {
         }
     }
 
+    private void shiftPage(Label channel) {
+        Parent root;
+        try {
+            Repository.getInstance().setProgramName(channel.getText());
+            root = FXMLLoader.load(getClass().getResource("/layout/search.fxml"));
+            Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     void onDefaultBoxClicked(MouseEvent event) {
-        //todo implement default box
-        System.out.println("Default");
+        shiftPage(tv2Default);
     }
 
     @FXML
     void onSportBoxClicked(MouseEvent event) {
-        //todo implement sport box
-        System.out.println("Sport");
+        shiftPage(tv2Sport);
     }
 
     @FXML
     void onSportXBoxClicked(MouseEvent event) {
-        //todo implement sport X box
-        System.out.println("Sport X");
+        shiftPage(tv2SportX);
     }
 
     @FXML
     void onCharlieBoxClicked(MouseEvent event) {
-        //todo implement Charlie box
-        System.out.println("Charlie");
+        shiftPage(tv2Charlie);
     }
 
     @FXML
     void onNewsBoxClicked(MouseEvent event) {
-        //todo implement news box
-        System.out.println("News");
+        shiftPage(tv2News);
     }
 
     @FXML
     void onZuluBoxClicked(MouseEvent event) {
-        //todo implement Zulu box
-        System.out.println("Zulu");
+        shiftPage(tv2Zulu);
     }
 
     @FXML
     void onFriBoxClicked(MouseEvent event) {
-        //todo implement fri box
-        System.out.println("Fri");
+        shiftPage(tv2Fri);
     }
 
     public void onMouseEnteredAccount(MouseEvent mouseEvent) {
@@ -251,12 +272,19 @@ public class Controller implements Initializable {
                 programs[count].setText(s.substring(s.lastIndexOf("title=\"") + 7, s.lastIndexOf("data-program-id") - 2));
                 times[count].setText(formatter.format(startDate) + " - " + formatter.format(endDate));
                 count++;
+
+                if (domain.validateUser(domain.getCurrentUser())) {
+                    numberOfNotifications.setText("" + domain.countUnreadAdminNotifications());
+                } else if (domain.getCurrentUser() instanceof IProducer) {
+                    numberOfNotifications.setText("" + domain.countUnreadProducerNotifications(domain.getCurrentUser()));
+                }
             }
         }
     }
 
     public void goToNotifications(MouseEvent mouseEvent) {
         try {
+            Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/notification.fxml"));
             Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
@@ -268,6 +296,7 @@ public class Controller implements Initializable {
 
     public void goToLogin(MouseEvent mouseEvent) {
         try {
+            Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/login.fxml"));
             Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));
@@ -280,6 +309,7 @@ public class Controller implements Initializable {
     public void logOut(MouseEvent mouseEvent) {
         Parent root = null;
         try {
+            Repository.getInstance().setLastPage("menu");
             root = FXMLLoader.load(getClass().getResource("/layout/menu.fxml"));
             Stage window = (Stage) menuMyBroadcast.getScene().getWindow();
             window.setScene(new Scene(root, 1300, 700));

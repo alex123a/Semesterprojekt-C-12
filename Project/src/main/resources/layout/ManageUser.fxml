@@ -1,196 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.PersonController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.ManageUserController">
    <children>
       <ImageView fitWidth="120.0" layoutX="590.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@/images/Tv2Logo.png" />
          </image>
       </ImageView>
-      <TabPane layoutX="433.0" layoutY="126.0" prefHeight="503.0" prefWidth="434.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPane" layoutX="433.0" layoutY="126.0" prefHeight="503.0" prefWidth="434.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab style="-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-border-color: #c9c9c9; -fx-border-radius: 10px;" text="Tilføj bruger">
+            <Tab fx:id="tab1" style="-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-border-color: #c9c9c9; -fx-border-radius: 10px;" text="Tilføj bruger">
                <content>
                   <Pane prefHeight="473.0" prefWidth="468.0" style="-fx-background-color: #ffffff;">
                      <children>
-                        <Label alignment="CENTER" layoutY="199.0" prefHeight="32.0" prefWidth="128.0" style="-fx-alignment: CENTER;" text="Password:" textFill="#4c4c4c">
-                           <font>
-                              <Font name="Calibri" size="20.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="15.0" layoutY="14.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@/images/BackArrow.png" />
                            </image>
                         </ImageView>
-                        <Button alignment="CENTER" layoutX="159.0" layoutY="387.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="127.0" style="-fx-background-color: #49d100; -fx-background-radius: 20px;" text="Tilføj" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Button>
-                        <Label alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="120.0" style="-fx-alignment: CENTER;" text="Brugernavn:" textFill="#4c4c4c">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="180.0" prefHeight="44.0" prefWidth="131.0" style="-fx-alignment: CENTER;" text="Adgangskode: " textFill="#4c4c4c">
                            <font>
                               <Font name="Calibri" size="20.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="115.0" layoutY="124.0" prefHeight="43.0" prefWidth="229.0" style="-fx-background-radius: 3px;">
+                        <Button alignment="CENTER" layoutX="159.0" layoutY="387.0" mnemonicParsing="false" onAction="#addUser" prefHeight="54.0" prefWidth="127.0" style="-fx-background-color: #49d100; -fx-background-radius: 20px; -fx-cursor: hand;" text="Tilføj" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="102.0" prefHeight="44.0" prefWidth="131.0" style="-fx-alignment: CENTER;" text="Brugernavn:" textFill="#4c4c4c">
+                           <font>
+                              <Font name="Calibri" size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="username" layoutX="132.0" layoutY="102.0" prefHeight="44.0" prefWidth="229.0" style="-fx-background-radius: 3px;">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </TextField>
-                        <TextField layoutX="115.0" layoutY="193.0" prefHeight="43.0" prefWidth="229.0" style="-fx-background-radius: 3px;">
+                        <TextField fx:id="password" layoutX="132.0" layoutY="180.0" prefHeight="44.0" prefWidth="229.0" style="-fx-background-radius: 3px;">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </TextField>
-                        <ImageView fitHeight="32.0" fitWidth="50.0" layoutX="364.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/images/closedEye.png" />
-                           </image>
-                        </ImageView>
                         <Label layoutX="134.0" layoutY="26.0" text="Tilføj bruger">
                            <font>
                               <Font name="System Bold" size="30.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="115.0" layoutY="262.0" prefHeight="43.0" prefWidth="229.0" style="-fx-background-color: #ffffff; -fx-border-radius: 3px; -fx-border-color: #c9c9c9;" />
-                        <Label alignment="CENTER" layoutY="268.0" prefHeight="32.0" prefWidth="128.0" style="-fx-alignment: CENTER;" text="Rolle:" textFill="#4c4c4c">
+                        <ComboBox fx:id="userType" layoutX="132.0" layoutY="245.0" prefHeight="44.0" prefWidth="229.0" style="-fx-background-color: #ffffff; -fx-border-radius: 3px; -fx-border-color: #c9c9c9; -fx-cursor: hand;" />
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="245.0" prefHeight="44.0" prefWidth="131.0" style="-fx-alignment: CENTER;" text="Rolle:" textFill="#4c4c4c">
                            <font>
                               <Font name="Calibri" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="addUserResult" alignment="CENTER" contentDisplay="CENTER" layoutY="295.0" prefHeight="85.0" prefWidth="434.0" textAlignment="CENTER" textFill="#04ff00">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
                </content>
             </Tab>
-          <Tab style="-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-border-color: #c9c9c9; -fx-border-radius: 10px;" text="Ændre bruger">
+          <Tab fx:id="tab2" style="-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-border-color: #c9c9c9; -fx-border-radius: 10px;" text="Ændre bruger">
                <content>
                   <Pane prefHeight="473.0" prefWidth="468.0" style="-fx-background-color: #ffffff;">
                      <children>
-                        <Label alignment="CENTER" layoutY="307.0" prefHeight="32.0" prefWidth="128.0" style="-fx-alignment: CENTER;" text="Password:" textFill="#4c4c4c">
-                           <font>
-                              <Font name="Calibri" size="20.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="backButton" fitHeight="25.0" fitWidth="34.0" layoutX="15.0" layoutY="14.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@/images/BackArrow.png" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" layoutX="4.0" layoutY="107.0" prefHeight="32.0" prefWidth="125.0" style="-fx-alignment: CENTER;" text="Søg" textFill="#4c4c4c">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="102.0" prefHeight="44.0" prefWidth="131.0" style="-fx-alignment: CENTER;" text="Søg" textFill="#4c4c4c">
                            <font>
                               <Font name="Calibri Bold" size="28.0" />
                            </font>
                         </Label>
-                        <Button alignment="CENTER" layoutX="159.0" layoutY="387.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="127.0" style="-fx-background-color: #49d100; -fx-background-radius: 20px;" text="Opdater" textFill="WHITE">
+                        <Button alignment="CENTER" layoutX="159.0" layoutY="387.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="54.0" prefWidth="127.0" style="-fx-background-color: #49d100; -fx-background-radius: 20px; -fx-cursor: hand;" text="Opdater" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="32.0" fitWidth="38.0" layoutX="362.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/images/Search_Grey.jpg" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" layoutX="1.0" layoutY="176.0" prefHeight="32.0" prefWidth="128.0" style="-fx-alignment: CENTER;" text="UserID:" textFill="#4c4c4c">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="179.0" prefHeight="44.0" prefWidth="131.0" style="-fx-alignment: CENTER;" text="Brugernavn:" textFill="#4c4c4c">
                            <font>
                               <Font name="Calibri" size="20.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="115.0" layoutY="171.0" prefHeight="43.0" prefWidth="229.0" style="-fx-background-radius: 3px;">
+                        <TextField fx:id="changeUsername" layoutX="132.0" layoutY="180.0" prefHeight="44.0" prefWidth="229.0" style="-fx-background-radius: 3px;">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </TextField>
-                        <TextField layoutX="115.0" layoutY="102.0" prefHeight="43.0" prefWidth="229.0" promptText="UserID" style="-fx-background-radius: 3px;">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </TextField>
-                        <Label alignment="CENTER" layoutX="1.0" layoutY="242.0" prefHeight="32.0" prefWidth="128.0" style="-fx-alignment: CENTER;" text="Name:" textFill="#4c4c4c">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="245.0" prefHeight="44.0" prefWidth="131.0" style="-fx-alignment: CENTER;" text="Adgangskode:" textFill="#4c4c4c">
                            <font>
                               <Font name="Calibri" size="20.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="115.0" layoutY="237.0" prefHeight="43.0" prefWidth="229.0" style="-fx-background-radius: 3px;">
+                        <TextField fx:id="changePassword" layoutX="132.0" layoutY="245.0" prefHeight="44.0" prefWidth="229.0" style="-fx-background-radius: 3px;">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </TextField>
-                        <TextField layoutX="115.0" layoutY="302.0" prefHeight="43.0" prefWidth="229.0" style="-fx-background-radius: 3px;">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </TextField>
-                        <ImageView fitHeight="32.0" fitWidth="50.0" layoutX="363.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/images/closedEye.png" />
-                           </image>
-                        </ImageView>
                         <Label layoutX="119.0" layoutY="26.0" text="Ændre bruger">
                            <font>
                               <Font name="System Bold" size="30.0" />
                            </font>
                         </Label>
+                        <Label fx:id="changeUserResult" alignment="CENTER" contentDisplay="CENTER" layoutY="295.0" prefHeight="85.0" prefWidth="434.0" textAlignment="CENTER" textFill="#04ff00">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="searchUsernameEdit" editable="true" layoutX="132.0" layoutY="102.0" onKeyReleased="#userSearcher" prefHeight="44.0" prefWidth="229.0" promptText="Brugernavn" style="-fx-border-radius: 3px;" />
                      </children>
                   </Pane>
                </content>
             </Tab>
-          <Tab style="-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-border-color: #c9c9c9; -fx-border-radius: 10px;" text="Fjern bruger">
+          <Tab fx:id="tab3" style="-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-border-color: #c9c9c9; -fx-border-radius: 10px;" text="Fjern bruger">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                      <children>
-                        <Button alignment="CENTER" layoutX="159.0" layoutY="387.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="127.0" style="-fx-background-color: #e40000; -fx-background-radius: 20px;" text="Fjern" textFill="WHITE">
+                        <Button fx:id="removeUserBtn" alignment="CENTER" layoutX="159.0" layoutY="387.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="54.0" prefWidth="127.0" style="-fx-background-color: #e40000; -fx-background-radius: 20px; -fx-cursor: hand;" text="Fjern" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="32.0" fitWidth="38.0" layoutX="359.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="32.0" fitWidth="38.0" layoutX="365.0" layoutY="108.0" onMouseClicked="#getRemoveUsers" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@/images/Search_Grey.jpg" />
                            </image>
                         </ImageView>
-                        <TextField layoutX="112.0" layoutY="145.0" prefHeight="43.0" prefWidth="229.0" promptText="UserID" style="-fx-background-radius: 3px;">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </TextField>
                         <Label layoutX="130.0" layoutY="26.0" text="Fjern bruger">
                            <font>
                               <Font name="System Bold" size="30.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="backButton" fitHeight="25.0" fitWidth="34.0" layoutX="15.0" layoutY="14.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@/images/BackArrow.png" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" layoutX="1.0" layoutY="150.0" prefHeight="32.0" prefWidth="125.0" style="-fx-alignment: CENTER;" text="Søg" textFill="#4c4c4c">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="102.0" prefHeight="44.0" prefWidth="131.0" style="-fx-alignment: CENTER;" text="Søg" textFill="#4c4c4c">
                            <font>
                               <Font name="Calibri Bold" size="28.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="1.0" layoutY="236.0" prefHeight="32.0" prefWidth="128.0" style="-fx-alignment: CENTER;" text="Rolle:" textFill="#4c4c4c">
+                        <Label fx:id="removeUserResult" alignment="CENTER" contentDisplay="CENTER" layoutY="295.0" prefHeight="85.0" prefWidth="434.0" textAlignment="CENTER" textFill="#04ff00">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="searchUsernameRemove" editable="true" layoutX="132.0" layoutY="102.0" onKeyReleased="#userSearcher" prefHeight="44.0" prefWidth="229.0" promptText="Brugernavn" style="-fx-cursor: hand; -fx-border-radius: 3px;" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="180.0" prefHeight="44.0" prefWidth="131.0" text="Rolle:" textAlignment="CENTER" textFill="#4c4c4c">
                            <font>
                               <Font name="Calibri" size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="115.0" layoutY="236.0" prefHeight="32.0" prefWidth="229.0" text="*Rolle*" textFill="#4c4c4c">
-                           <font>
-                              <Font name="Calibri" size="16.0" />
-                           </font>
-                        </Label>
+                        <TextField fx:id="removeUserRoleField" editable="false" layoutX="132.0" layoutY="180.0" prefHeight="44.0" prefWidth="229.0" />
                      </children>
                   </Pane>
                </content>

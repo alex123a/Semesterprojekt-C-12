@@ -1,10 +1,8 @@
 package presentation;
 
-import Interfaces.ICreditManagement;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
-import domain.CreditsManagement.CreditsSystem;
-import domain.searchEngine.SearchEngineHandler;
+import domain.DomainFacade;
 import javafx.stage.Stage;
 
 public class Repository {
@@ -17,6 +15,15 @@ public class Repository {
     private IProduction productionToBeShown;
     private IRightsholder rightsholderToBeShown;
     private String lastPage;
+    private String programName = "";
+
+    public String getProgramName() {
+        return programName;
+    }
+
+    public void setProgramName(String programName) {
+        this.programName = programName;
+    }
 
     public Stage getWindow() {
         return window;
@@ -34,6 +41,8 @@ public class Repository {
         this.toEdit = toEdit;
     }
 
+    public DomainFacade domainFacade = DomainFacade.getInstance();
+
     public IProduction getProductionToBeShown() {
         return productionToBeShown;
     }
@@ -49,10 +58,6 @@ public class Repository {
     public void setRightsholderToBeShown(IRightsholder toBeShown) {
         this.rightsholderToBeShown = toBeShown;
     }
-
-    public ICreditManagement creditsSystem = CreditsSystem.getInstance();
-
-    public SearchEngineHandler searchEngineHandler = SearchEngineHandler.getInstance();
 
     public void setLastPage(String lastPage) {
         this.lastPage = lastPage;
