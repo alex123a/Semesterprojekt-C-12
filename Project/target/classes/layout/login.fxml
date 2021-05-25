@@ -62,7 +62,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="228.0" layoutY="328.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="166.0" style="-fx-cursor: hand; -fx-background-color: ffffff;" text="Glemt adgangskode?" textFill="#0093ff" underline="true">
+            <Button layoutX="228.0" layoutY="328.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="166.0" style="-fx-cursor: hand; -fx-background-color: ffffff;" text="Glemt adgangskode?" textFill="#0093ff" underline="true" onMouseClicked="#ForgotPassword">
                <font>
                   <Font size="15.0" />
                </font>
