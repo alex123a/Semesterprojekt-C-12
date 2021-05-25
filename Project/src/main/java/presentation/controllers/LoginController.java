@@ -133,4 +133,15 @@ public class LoginController {
             throw new RuntimeException(e);
         }
     }
+
+
+    public void ForgotPassword(MouseEvent mouseEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/layout/forgotPassword.fxml"));
+            Stage window = (Stage) backArrow.getScene().getWindow();
+            window.setScene(new Scene(root, 1300, 700));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
