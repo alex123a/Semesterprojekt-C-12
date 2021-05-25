@@ -18,7 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import presentation.credits.Repository;
+import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;

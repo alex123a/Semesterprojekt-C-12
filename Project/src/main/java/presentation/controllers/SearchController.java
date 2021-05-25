@@ -27,7 +27,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import presentation.credits.Repository;
+import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;

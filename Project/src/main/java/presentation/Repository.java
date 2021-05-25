@@ -1,4 +1,4 @@
-package presentation.credits;
+package presentation;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;

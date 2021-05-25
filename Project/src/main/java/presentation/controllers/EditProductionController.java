@@ -23,7 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.credits.CreditWrapper;
 import presentation.credits.NewRightsholder;
-import presentation.credits.Repository;
+import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;

@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.credits.CreditWrapper;
-import presentation.credits.Repository;
+import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
