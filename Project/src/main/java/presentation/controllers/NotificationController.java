@@ -1,8 +1,6 @@
 package presentation.controllers;
 
-import Interfaces.IAdministrator;
 import Interfaces.INotification;
-import Interfaces.IProducer;
 import Interfaces.IProduction;
 import domain.DomainFacade;
 import javafx.event.ActionEvent;

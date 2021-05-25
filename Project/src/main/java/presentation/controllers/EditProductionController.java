@@ -21,8 +21,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import presentation.CreditWrapper;
-import presentation.NewRightsholder;
+import presentation.credits.CreditWrapper;
+import presentation.credits.NewRightsholder;
 import presentation.Repository;
 
 import java.io.IOException;

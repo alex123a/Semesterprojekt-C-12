@@ -1,6 +1,5 @@
 package presentation.controllers;
 
-import Interfaces.IAdministrator;
 import Interfaces.IProducer;
 import domain.DomainFacade;
 import javafx.fxml.FXML;

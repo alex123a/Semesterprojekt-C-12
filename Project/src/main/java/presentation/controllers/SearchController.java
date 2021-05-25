@@ -4,7 +4,6 @@ import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import Interfaces.ISearchable;
 import Interfaces.IUser;
-import domain.CreditsManagement.CreditsSystem;
 import domain.DomainFacade;
 import enumerations.ProductionGenre;
 import enumerations.ProductionSorting;
@@ -32,7 +31,6 @@ import presentation.Repository;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

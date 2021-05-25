@@ -2,10 +2,6 @@ package presentation.controllers;
 
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
-import Interfaces.IUser;
-import domain.DomainFacade;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,8 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import presentation.CreditWrapper;
-import presentation.NewRightsholder;
+import presentation.credits.CreditWrapper;
 import presentation.Repository;
 
 import java.io.IOException;

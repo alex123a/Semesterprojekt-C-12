@@ -1,5 +1,5 @@
 2021.05.23.16.01.29 : User logged in by: badehotellet
-2021.05.23.16.02.50 : Save production (Waiting for approval): presentation.NewProduction@5f8ab59f --- notification sent to producer by: badehotellet
+2021.05.23.16.02.50 : Save production (Waiting for approval): presentation.credits.NewProduction@5f8ab59f --- notification sent to producer by: badehotellet
 2021.05.23.16.03.09 : User logged in by: admin
 2021.05.23.16.04.56 : User logged in by: admin
 2021.05.23.16.09.22 : User logged in by: admin

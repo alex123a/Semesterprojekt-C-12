@@ -1,6 +1,5 @@
 package presentation;
 
-import Interfaces.IDomainFacade;
 import Interfaces.IProduction;
 import Interfaces.IRightsholder;
 import domain.DomainFacade;

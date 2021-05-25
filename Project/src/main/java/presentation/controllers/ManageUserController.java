@@ -1,8 +1,6 @@
 package presentation.controllers;
 
 import Interfaces.IAdministrator;
-import domain.DomainFacade;
-import javafx.event.Event;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import presentation.Repository;

@@ -1,4 +1,4 @@
-package presentation;
+package presentation.credits;
 
 import Interfaces.IRightsholder;
 
