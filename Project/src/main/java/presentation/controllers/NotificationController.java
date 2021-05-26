@@ -171,7 +171,9 @@ public class NotificationController implements Initializable {
         if (domain.validateUser(domain.getCurrentUser())) {
             notifications.get(index).setApproval(status);
             domain.editAdminNotification(notifications.get(index));
-            domain.approveChangesToProduction(notifications.get(index).getProduction());
+            if (notifications.get(index).getApproval() == 2) {
+                domain.approveChangesToProduction(notifications.get(index).getProduction());
+            }
         }
 
         try {
