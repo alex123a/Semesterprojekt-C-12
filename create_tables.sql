@@ -79,12 +79,9 @@ CREATE TABLE appears_in(
 );
 
 CREATE TABLE appears_in_approval(
-    production_id INTEGER,
-    rightsholder_id INTEGER,
-    PRIMARY KEY (production_id, rightsholder_id),
-	FOREIGN KEY (production_id) REFERENCES production(id) ON DELETE CASCADE,
-	FOREIGN KEY (rightsholder_id) REFERENCES rightsholder(id) ON DELETE CASCADE
-
+	id SERIAL PRIMARY KEY,
+        production_id INTEGER,
+        rightsholder_id INTEGER
 );
 
 CREATE TABLE title(
@@ -140,7 +137,6 @@ CREATE TABLE administrator_notification(
     production_id INTEGER NOT NULL,
     approval_status_id INTEGER NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (production_id) REFERENCES production(id) ON DELETE CASCADE,
 	FOREIGN KEY (approval_status_id) REFERENCES approval_status(id)
 );
 
@@ -154,12 +150,9 @@ CREATE TABLE approved(
 
 CREATE TABLE producer_notification(
     id SERIAL,
-    producer_id INTEGER,
     notification_text VARCHAR(1000) NOT NULL,
     viewed BOOLEAN NOT NULL,
     production_id INTEGER,
 	PRIMARY KEY (id),
-	FOREIGN KEY (producer_id) REFERENCES producer(id) ON DELETE CASCADE,
-	FOREIGN KEY (production_id) REFERENCES production(id) ON DELETE CASCADE
 );
 
