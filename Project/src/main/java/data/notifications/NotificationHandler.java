@@ -144,33 +144,6 @@ public class NotificationHandler implements INotificationFacade {
     @Override
     public List<INotification> getProducerNotifications(IUser user) {
         try {
-            /*
-            int productionID = 0;
-            PreparedStatement producer_production = dbConnection.prepareStatement("SELECT id FROM production WHERE producer_id = ?");
-            producer_production.setInt(1, user.getId());
-            ResultSet result_producer_production = producer_production.executeQuery();
-            if (result_producer_production.next()) {
-                productionID = result_producer_production.getInt("id");
-                System.out.println("test id one " + productionID);
-            } else {
-                PreparedStatement producer_production_approval = dbConnection.prepareStatement("SELECT id FROM production_approval WHERE producer_id = ?");
-                producer_production_approval.setInt(1, user.getId());
-                ResultSet result_producer_production_approval = producer_production_approval.executeQuery();
-                if (result_producer_production_approval.next()) {
-                    productionID = result_producer_production_approval.getInt("id");
-                    System.out.println("test id two " + productionID);
-                }
-            }
-
-            List<INotification> list = new ArrayList<>();
-            PreparedStatement notificationStatement = dbConnection.prepareStatement("SELECT pn.id, pn.notification_text," +
-                    " pn.viewed" +
-                    " FROM producer_notification pn" +
-                    " WHERE pn.production_id = ?");
-            notificationStatement.setInt(1, productionID);
-
-             */
-
             List<INotification> list = new ArrayList<>();
             PreparedStatement notificationStatement = dbConnection.prepareStatement("SELECT pn.id, pn.notification_text," +
                     " pn.viewed, pn.production_id" +
