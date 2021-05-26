@@ -197,6 +197,7 @@ public class DomainFacade implements IDomainFacade {
             String msg = "Produktionen med produktions id " + newNotification.getProduction().getProductionID() +
                     " er blevet godkendt";
             createProducerNotification(new ProducerNotification(newNotification.getProduction(), msg, false, newNotification.getProduction().getProducer()));
+            approveChangesToProduction(newNotification.getProduction());
         } else if (newNotification.getApproval() == 3) {
             String msg = "Produktionen med produktions id " + newNotification.getProduction().getProductionID() +
                     " er blevet afvist";
