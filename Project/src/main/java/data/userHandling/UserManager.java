@@ -1,6 +1,7 @@
 package data.userHandling;
 
 import Interfaces.*;
+import data.DatabaseConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,11 +12,7 @@ public class UserManager implements IUserFacade {
     private static final UserManager USERMANAGER = new UserManager();
 
     private UserManager() {
-        try {
-            connection = getConnection();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+            connection = DatabaseConnection.getConnection();
     }
 
     @Override
@@ -240,18 +237,5 @@ public class UserManager implements IUserFacade {
 
     public static UserManager getInstance() {
         return USERMANAGER;
-    }
-
-    /**
-     * Establish a connection to the Database
-     *
-     * @return Connection
-     */
-    public Connection getConnection() throws SQLException {
-        DriverManager.registerDriver(new org.postgresql.Driver());
-        return DriverManager.getConnection(
-                "jdbc:postgresql://ec2-34-250-16-127.eu-west-1.compute.amazonaws.com:5432/d82q285u8akq13",
-                "pjmqbdledqjucs",
-                "030c8df346d06432b9a5a4ed0bf42e56dc34761fda8d3cc04af8085dfb4f7c2b");
     }
 }
