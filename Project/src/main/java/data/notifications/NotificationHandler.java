@@ -211,6 +211,15 @@ public class NotificationHandler implements INotificationFacade {
             if (result.next()) {
                 unread += result.getInt(1);
             }
+
+            PreparedStatement statementApproval = dbConnection.prepareStatement("SELECT COUNT(pn.id)" +
+                    " FROM producer_notification pn, production_approval p WHERE viewed = 'false' and producer_id = ? and p.id = pn.production_id");
+            statementApproval.setInt(1, user.getId());
+            ResultSet resultApproval = statementApproval.executeQuery();
+            if (resultApproval.next()) {
+                unread += resultApproval.getInt(1);
+            }
+
             return unread;
 
         } catch (SQLException e) {
