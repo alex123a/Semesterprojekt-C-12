@@ -75,6 +75,7 @@ public class EditProductionController implements Initializable {
 
     @FXML
     void OnClickedSaveChanges(ActionEvent event) {
+        // Retrieve all the information
         toEdit.setProductionID(programIDField.getText());
         toEdit.setName(programNameField.getText());
         toEdit.setDescription(descriptionProgramArea.getText());
@@ -185,6 +186,7 @@ public class EditProductionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Get all the information about the production that is to be edited
         toEdit = Repository.getInstance().getToEdit();
         programIDField.setText(toEdit.getProductionID());
         oldId = toEdit.getProductionID();
@@ -192,7 +194,7 @@ public class EditProductionController implements Initializable {
         descriptionProgramArea.setText(toEdit.getDescription());
         yearInput.setText(String.valueOf(toEdit.getYear()));
 
-        //Doesn't work because of the persistence-layer
+        // Make a list of all the rightsholders that is credited on the production
         List<CreditWrapper> credits = new ArrayList<>();
         for (IRightsholder rh : toEdit.getRightsholders().keySet()){
             credits.add(new CreditWrapper(rh, toEdit.getRightsholders().get(rh)));
@@ -242,10 +244,12 @@ public class EditProductionController implements Initializable {
             }
         });
 
+        // Sets up the lists for the combobox that searches for the rightsholders
         finalRightsholdersList = r.domainFacade.getRightsholders();
         rightList = r.domainFacade.getRightsholders();
         setRightsholderComboBox();
 
+        // Sets a keyPressed listener on the name input combobox
         nameInput.getEditor().setOnKeyPressed(this::handleOnKeyPressed);
         nameInput.hide();
     }
@@ -262,6 +266,7 @@ public class EditProductionController implements Initializable {
     }
 
     public void getClickedRightsholder(MouseEvent mouseEvent) {
+        // Inserts the information about the clicked rightsholder into the boxes
         CreditWrapper cw = rightholderListview.getSelectionModel().getSelectedItem();
         nameInput.getEditor().setText(cw.getRightsholder().getFirstName() + " " + cw.getRightsholder().getLastName());
         rightholderDescription.setText(cw.getRightsholder().getDescription());
@@ -273,6 +278,8 @@ public class EditProductionController implements Initializable {
     }
 
     public void findRightsholder() {
+        // Is used to get a list of all the rightsholders
+        // and check if the names contains the input name from the user
         // Should have been in domain instead
         rightList  = new ArrayList<>();
 
@@ -287,6 +294,7 @@ public class EditProductionController implements Initializable {
     }
 
     public void setRightsholderComboBox() {
+        // Updates the rightsholders information boxes
         rightsholderList = FXCollections.observableArrayList();
         for(IRightsholder ir : rightList) {
             rightsholderList.add(ir.getFirstName() + " " + ir.getLastName());
@@ -308,6 +316,7 @@ public class EditProductionController implements Initializable {
     }
 
     public IRightsholder doesRightsholderExist() {
+        // Checks if the inputted user does already exist
         // Should have been in domain instead
         IRightsholder existingUser = null;
         Repository r = Repository.getInstance();
@@ -332,6 +341,8 @@ public class EditProductionController implements Initializable {
 
     @FXML
     private void updateDescription(ActionEvent actionEvent) {
+        // Gets the chosen rightsholders description and adds it to the description box
+
         String chosenValue = nameInput.getValue();
         for(IRightsholder rightsholder : rightList) {
             String name = rightsholder.getFirstName() + " " + rightsholder.getLastName();

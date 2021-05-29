@@ -58,6 +58,7 @@ public class adminVerifyProductionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Sets all the information up
         toEdit = Repository.getInstance().getToEdit();
         programIDField.setText(toEdit.getProductionID());
         programNameField.setText(toEdit.getName());
@@ -80,6 +81,7 @@ public class adminVerifyProductionController implements Initializable {
     }
 
     public void getClickedRightsholder(MouseEvent mouseEvent) {
+        // Inserts the rightsholders information, in the rightsholders input boxes
         CreditWrapper cw = rightholderListview.getSelectionModel().getSelectedItem();
         rightholderName.setText(cw.getRightsholder().getFirstName() + " " + cw.getRightsholder().getLastName());
         rightholderDescription.setText(cw.getRightsholder().getDescription());
@@ -91,6 +93,7 @@ public class adminVerifyProductionController implements Initializable {
     }
 
     public void showAsUser(MouseEvent mouseEvent) {
+        // Opens the production page to show the production as a normal user would see it
         try {
             Repository.getInstance().setLastPage("adminVerifyProduction");
             Repository.getInstance().setProductionToBeShown(Repository.getInstance().getToEdit());
