@@ -15,6 +15,7 @@ public class UserManager implements IUserFacade {
             connection = DatabaseConnection.getConnection();
     }
 
+    //Selects the users password from the database from their username
     @Override
     public String getDatabasePassword(IUser user) {
         try {

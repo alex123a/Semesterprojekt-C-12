@@ -65,11 +65,14 @@ public class LoginController {
         if (usernameInput.getText().equals("") && passwordInput.getText().equals("")) {
             emptyLogin();
         } else {
+            //Instantiates the user, here the user gets a hashed password
             IUser user = DomainFacade.getInstance().getUser(new User(usernameInput.getText(), passwordInput.getText()));
-            if (DomainFacade.getInstance().login(new User(usernameInput.getText(),passwordInput.getText()))) {
+            //Sends the user down to check if the hashed password is valid
+            if (DomainFacade.getInstance().login(user)) {
+                //The user is instantiated as a systemadmin or a producer, so that is checked
                 if (DomainFacade.getInstance().validateUser(user)) {
+                    //The session user is being set
                     DomainFacade.getInstance().setCurrentUser(user);
-                    System.out.println("admin");
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
                         Stage window = (Stage) backArrow.getScene().getWindow();
@@ -79,7 +82,6 @@ public class LoginController {
                     }
                 } else {
                     DomainFacade.getInstance().setCurrentUser(user);
-                    System.out.println("producer");
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/layout/menuProducer.fxml"));
                         Stage window = (Stage) backArrow.getScene().getWindow();

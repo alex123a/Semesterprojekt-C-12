@@ -5,10 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80272dec-5e1b-4c39-a5be-617acfe66920" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/DomainFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/NotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/DomainFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/reporting/ReportHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/reporting/ReportHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/userHandling/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/authentication/LoginAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/authentication/LoginAuthentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/ReportingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/ReportingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/TestReportingAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/jsonReporting/TestReportingAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/ForgotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/ForgotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/reporting/ReportHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/reporting/ReportHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data/userHandling/UserManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/authentication/LoginAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/authentication/LoginAuthentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/jsonReporting/ReportingHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/jsonReporting/ReportingHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/jsonReporting/TestReportingAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/jsonReporting/TestReportingAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <list id="24071367-1411-41c8-9493-e26a578583b3" name="Changes by magnu" comment="" />
@@ -119,9 +131,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestReportingAPI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="domain.jsonReporting.TestReportingAPI" />
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.jsonReporting.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.NewMain" />
+        <item itemvalue="Application.TestReportingAPI" />
         <item itemvalue="Application.ReportHandler" />
         <item itemvalue="Application.Test" />
       </list>
@@ -165,6 +191,8 @@
       <workItem from="1621625236667" duration="626000" />
       <workItem from="1621759914259" duration="2970000" />
       <workItem from="1622014283291" duration="3351000" />
+      <workItem from="1622269762794" duration="2635000" />
+      <workItem from="1622272450709" duration="94000" />
     </task>
     <servers />
   </component>

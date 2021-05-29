@@ -22,39 +22,7 @@ public class LoginAuthentication implements IAuthenticator {
 
     @Override
     public boolean login(IUser user) {
-        try {
-            return validatePassword(user.getPassword(), DomainFacade.getInstance().getDatabasePassword(user));
-        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    private boolean validatePassword(String parsedPassword, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        // Checks if the stored password from database is there (The username has a password)
-        if (storedPassword == null) {
-            System.out.println("Not in the database");
-            return false;
-        }
-
-        // Iterations is how its hashed when saved, Salt is always the first 32 chars
-        int iterations = 1000;
-        byte[] salt = fromHex(storedPassword.substring(0, 32));
-        byte[] hash = fromHex(storedPassword.substring(32));
-
-        // Convert the password characters to a PBE key by creating an instance of the appropriate secret-key factory, the factory is PBKDF2WithHmacSHA1
-        // This creates a hash from the input that we can compare with the stored password
-        PBEKeySpec spec = new PBEKeySpec(parsedPassword.toCharArray(), salt, iterations, hash.length * 8);
-        SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-        byte[] testHash = skf.generateSecret(spec).getEncoded();
-
-        // Comparing the stored with the parsed password, if one of the chars is different the passwords are different
-        for (int i = 0; i < hash.length && i < testHash.length; i++) {
-            if (!(hash[i] == testHash[i])) {
-                return false;
-            }
-        }
-        return true;
+        return user.getPassword().equals(DomainFacade.getInstance().getDatabasePassword(user));
     }
 
     private byte[] fromHex(String hex) throws NoSuchAlgorithmException {
@@ -68,11 +36,14 @@ public class LoginAuthentication implements IAuthenticator {
 
     @Override
     public String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        // Explained in validate password except the salt is here random generated
+        // Iterations is how many times the hash is iterated through the PBE key, salt is randomly generated from getSalt()
+        // High iterations secures the password, salt secure uniqueness, because the hash is not unique in itself.
         int iterations = 1000;
         char[] chars = password.toCharArray();
         byte[] salt = getSalt();
 
+        // Convert the password characters to a PBE key by creating an instance of the appropriate secret-key factory, the factory is PBKDF2WithHmacSHA1
+        // This creates a hash from the input that we can compare with the stored password
         PBEKeySpec spec = new PBEKeySpec(chars, salt, iterations, 64 * 8);
         SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
         byte[] hash = skf.generateSecret(spec).getEncoded();
@@ -89,8 +60,8 @@ public class LoginAuthentication implements IAuthenticator {
 
     private String toHex(byte[] array) throws NoSuchAlgorithmException {
         // Changes a byte array to Hex
-        BigInteger bi = new BigInteger(1, array);
-        String hex = bi.toString(16);
+        BigInteger bigInt = new BigInteger(1, array);
+        String hex = bigInt.toString(16);
         int paddingLength = (array.length * 2) - hex.length();
         if (paddingLength > 0) {
             return String.format("%0" + paddingLength + "d", 0) + hex;
