@@ -39,6 +39,7 @@ public class NotificationController implements Initializable {
         loadNotifications();
     }
 
+    // approval converter. In the database the value is an int, so here we convert it to a text string which describes what the status is (used for systemadministrator notifications).
     public String approvalConverter(int i) {
         switch(i) {
             case 1:
@@ -52,10 +53,12 @@ public class NotificationController implements Initializable {
         }
     }
 
+    // This method converts the boolean value on producer notifications to a text string which describes the viewed state.
     public String viewedConverter(boolean viewed) {
         return viewed ? "Viewed" : "Not viewed";
     }
 
+    // Here it creates the notifications for GUI.
     public void createNotification(IProduction production, String status, String description, int index) {
             // VBox for all the labels
             VBox vbox = new VBox();
@@ -75,7 +78,7 @@ public class NotificationController implements Initializable {
             hbox.getChildren().addAll(vbox);
 
 
-
+            // Checks if the user is a systemadministrator, since approve/not approve buttons are only for admins.
             if (domain.validateUser(domain.getCurrentUser())) {
                 // Make decline Button
                 Button declineBut = new Button("Afvis");
@@ -144,7 +147,9 @@ public class NotificationController implements Initializable {
             notificationBox.getChildren().addAll(hbox);
     }
 
+    // Here it loads the notifications.
     public void loadNotifications() {
+        // Tenary operator there gets the systemadministrator notifications it's a systemadministrator and the producer notifications if it's a producer
         notifications = domain.validateUser(domain.getCurrentUser()) ? domain.getAdminNotifications() : domain.getProducerNotifications(domain.getCurrentUser());
 
         String status = "";
@@ -167,7 +172,10 @@ public class NotificationController implements Initializable {
 
     }
 
+    // For refreshing the page when a systemadministrator clicks approve or not approve on a notification.
     public void refreshPage(int index, int status) {
+        // It checks for user type. But this method only get used if the user is a systemadministrator, so it is just a extra check
+        // It change approval status to whatever the systemadministrator clicked and then it edit the notification in database.
         if (domain.validateUser(domain.getCurrentUser())) {
             notifications.get(index).setApproval(status);
             domain.editAdminNotification(notifications.get(index));
@@ -185,16 +193,19 @@ public class NotificationController implements Initializable {
         }
     }
 
+    // Approved button handler
     public void notificationYesClicked(int index) {
         notifications.get(index).setApproval(2);
         refreshPage(index, 2);
     }
 
+    // Not approved button handler
     public void notificationNoClicked(int index) {
         notifications.get(index).setApproval(3);
         refreshPage(index, 3);
     }
 
+    // Back arrow
     public void backClicked(MouseEvent mouseEvent) {
         if (domain.validateUser(domain.getCurrentUser())) {
             try {
