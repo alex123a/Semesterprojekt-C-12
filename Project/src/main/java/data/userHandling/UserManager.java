@@ -31,14 +31,18 @@ public class UserManager implements IUserFacade {
     }
 
     @Override
+//  Retrieves users whose username is like the username from the tempUser object.
     public List<IUser> getUsersBySearch(IUser tempUser) {
         List<IUser> matches = new ArrayList<>();
         IUser user = null;
         try {
+//          Search patteren for the SQL statement in the like clause.
             String searchPatteren = "%" + tempUser.getUsername() + "%";
             PreparedStatement selectStatement = connection.prepareStatement("SELECT id, username FROM users WHERE username LIKE ?");
             selectStatement.setString(1, searchPatteren);
             ResultSet selectResult = selectStatement.executeQuery();
+
+//          Makes the correct user object depending on the usertype, by checking if the userid is in producer table or not.
             while(selectResult.next()) {
                 PreparedStatement selectProducerId = connection.prepareStatement("SELECT id FROM producer WHERE id = ?");
                 selectProducerId.setInt(1, selectResult.getInt("id"));
@@ -60,6 +64,7 @@ public class UserManager implements IUserFacade {
     }
 
     @Override
+//  Retrieves an user from the database by the username. This is for when the program only knows a users username and needs the other information.
     public IUser getUser(IUser user) {
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
@@ -111,6 +116,7 @@ public class UserManager implements IUserFacade {
 
 
     @Override
+//  Gets all users from the database.
     public List<IUser> getUsers() {
         List<IUser> list = new ArrayList<>();
         try {
@@ -144,6 +150,7 @@ public class UserManager implements IUserFacade {
     }
 
     @Override
+//  Retrieves all producers from the database
     public List<IUser> getAllProducers() {
         List<IUser> list = new ArrayList<>();
         try {
@@ -166,6 +173,7 @@ public class UserManager implements IUserFacade {
     }
 
     @Override
+//  Removes an user from the database by the users id.
     public boolean deleteUser(IUser user) {
         try {
             PreparedStatement deleteStatement = connection.prepareStatement(" DELETE FROM users WHERE id = ? ");
@@ -179,15 +187,18 @@ public class UserManager implements IUserFacade {
     }
 
     @Override
+//  Updates an users information in the database.
     public boolean editUser(IUser user) {
         try {
             PreparedStatement selectStatement = connection.prepareStatement("SELECT * FROM users");
             ResultSet selectResult = selectStatement.executeQuery();
             while(selectResult.next()) {
+//              Checks if the user has got an new username that already exists to another user by comparing the usernames and user ids
                 if (selectResult.getInt("id") != user.getId() && selectResult.getString("username").equals(user.getUsername())) {
                     return false;
                 }
             }
+//          If the username does not exists or if it is the current users username the information will be updated.
             PreparedStatement updateStatement = connection.prepareStatement("UPDATE users SET username = ?, user_password = ? WHERE id = ?");
             updateStatement.setString(1,user.getUsername());
             updateStatement.setString(2,user.getPassword());
@@ -201,11 +212,13 @@ public class UserManager implements IUserFacade {
     }
 
     @Override
+//  Adds a new user to the database.
     public boolean addUser(IUser user) {
         try {
             PreparedStatement selectStatement = connection.prepareStatement("SELECT * FROM users");
             ResultSet selectResult = selectStatement.executeQuery();
             while(selectResult.next()) {
+//              Checks if the user has got an new username that already exists to another user by comparing the usernames and user ids
                 if (selectResult.getInt("id") != user.getId() && selectResult.getString("username").equals(user.getUsername())) {
                     return false;
                 }
@@ -214,7 +227,7 @@ public class UserManager implements IUserFacade {
             insertStatement.setString(1, user.getUsername());
             insertStatement.setString(2, user.getPassword());
             insertStatement.execute();
-
+//          Gets the userid from the new user to be able to insert the user in the correct producer or systemadmin table.
             PreparedStatement selectUserID = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
             selectUserID.setString(1, user.getUsername());
             ResultSet selectIDResult = selectUserID.executeQuery();
