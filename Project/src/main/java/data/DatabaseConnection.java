@@ -6,7 +6,11 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 
-    private static Connection connection = null;
+    private static final Connection connection = createConnection();
+
+    private DatabaseConnection() {
+
+    }
 
     /**
      * Establish a connection to the Database
@@ -26,9 +30,6 @@ public class DatabaseConnection {
     }
 
     public static Connection getConnection(){
-        if (connection == null) {
-            connection = createConnection();
-        }
         return connection;
     }
 }
