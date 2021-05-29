@@ -20,8 +20,9 @@ public class Production implements IProduction {
     private ProductionGenre genre;
     private ProductionType type;
     private IProducer producer;
+    //If all the rightsholders are loaded along with the production, the load times are increased significantly
+    //Therefore the rightsholders ID's are saved, at the Rightsholder object are only instantiated when they are needed
     private Map<Integer, List<String>> rightsholders;
-    //Saves the rightsholder, so the list above doesn't need to be converted each time
     private Map<IRightsholder, List<String>> cachedMap;
 
     public Production() {
@@ -135,14 +136,17 @@ public class Production implements IProduction {
 
     @Override
     public Map<IRightsholder, List<String>> getRightsholders() {
-        //Converts a map of <int, List<String>> to map of <Rightsholder, List<String>>
+
         if (cachedMap != null) {
             return cachedMap;
         }
+
+        //Converts a map of <int, List<String>> to map of <Rightsholder, List<String>>
         Map<IRightsholder, List<String>> map = new HashMap<>();
         for (int i: rightsholders.keySet()) {
             map.put(RightsHolderHandler.getInstance().getRightsholder(i), rightsholders.get(i));
         }
+
         cachedMap = map;
         return map;
     }

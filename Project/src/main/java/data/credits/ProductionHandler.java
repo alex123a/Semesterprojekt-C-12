@@ -43,7 +43,7 @@ class ProductionHandler {
 
             //For each production get the rightsholders and their roles
             while (productionsResult.next()) {
-                //Statement to get all rightsholders on each production
+                //Call helper method to convert the resultset to a production
                 Production p = getProductionFromResultset(productionsResult);
                 productionList.add(p);
             }
@@ -117,7 +117,7 @@ class ProductionHandler {
                     insertStatement.setString(7, p.getDescription());
                     insertStatement.setInt(8, p.getID());
 
-                    //Delete from "shadow" tables
+                    //Delete from approval tables
                     //The data will be inserted again further down
                     PreparedStatement removeFromAppearsInApprovalStatement = connection.prepareStatement("" +
                             "DELETE FROM appears_in_approval WHERE production_id=? RETURNING id");
@@ -200,13 +200,13 @@ class ProductionHandler {
             try {
                 int rightsholderID = r.getId();
 
-                PreparedStatement insertAppears_inStatement = connection.prepareStatement("" +
+                PreparedStatement insertAppearsInStatement = connection.prepareStatement("" +
                         "INSERT INTO appears_in_approval (production_id, rightsholder_id) " +
                         "VALUES (?, ?)" +
                         "RETURNING id");
-                insertAppears_inStatement.setInt(1, productionID);
-                insertAppears_inStatement.setInt(2, rightsholderID);
-                ResultSet appears_in_id_result = insertAppears_inStatement.executeQuery();
+                insertAppearsInStatement.setInt(1, productionID);
+                insertAppearsInStatement.setInt(2, rightsholderID);
+                ResultSet appears_in_id_result = insertAppearsInStatement.executeQuery();
                 appears_in_id_result.next();
                 int appearsinID = appears_in_id_result.getInt(1);
 
@@ -214,7 +214,7 @@ class ProductionHandler {
 
                 for (String role: rightsholders.get(rightsholder)){
 
-                    //The role string might consist of e.g. "medvirkende: darth vader" therefore has to be split
+                    //The role string might consist of e.g. "Medvirkende: Darth Vader" therefore has to be split
                     String title;
                     if (role.contains(": ")) {
                         title = role.split(": ")[0];
@@ -327,7 +327,7 @@ class ProductionHandler {
     }
 
     //A helper method to get a producer from the producerID
-    //It's probably not really supposed to be in this class...
+    //It's probably not really supposed to be in this class... It should probably be done by the Userhandler or something
     private Producer getProducerFromID(int producerID) throws SQLException {
         PreparedStatement getProducer = connection.prepareStatement("" +
                 "SELECT producer.id, users.username, users.user_password " +
@@ -345,7 +345,7 @@ class ProductionHandler {
         return producer;
     }
 
-    //This Approves changes to a production. This means that it moves the productions
+    //This Approves changes to a production. This means that it moves the production
     //information from the approval tables to the normal tables and deletes the data
     //from the approval tables
     public void approveChangesToProduction(IProduction production) {
