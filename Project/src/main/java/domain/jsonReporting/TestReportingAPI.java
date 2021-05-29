@@ -16,7 +16,7 @@ public class TestReportingAPI {
 
         System.out.println("------------------------------------------------");
         System.out.println("Total number of credits for the production parsed (this should be implemented where you chose an excisting production)");
-        Production production = new Production(1,null,"Badehotellet",null,0,null, null,null,null);
+        Production production = new Production(1,null,"badehotellet",null,0,null, null,null,null);
         System.out.println(reportHandler.generateProductionCreditsCount(production));
         System.out.println("------------------------------------------------\n");
 

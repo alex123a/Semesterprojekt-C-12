@@ -33,6 +33,7 @@ public class ForgotController {
         }
     }
 
+    //Printed out to the controller because we didnt have time to put it into notifications
     public void ForgotClicked(MouseEvent mouseEvent) {
         System.out.println("Denne person har glemt sit kodeord '" + usernameOutput.getText() + "'. Det skal sendes til '" + mailOutput.getText() + "'");
         usernameOutput.setText("");

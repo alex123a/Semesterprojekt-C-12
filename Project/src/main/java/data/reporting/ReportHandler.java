@@ -72,6 +72,7 @@ public class ReportHandler implements IReporting {
             PreparedStatement titleQuery = dbConnection.prepareStatement("SELECT title.title FROM title");
             ResultSet resultSet = titleQuery.executeQuery();
             while (resultSet.next()) {
+                //Counts every role id, because every credit has a role id
                 PreparedStatement statement = dbConnection.prepareStatement("SELECT COUNT(r.id) FROM role AS r, title AS t" +
                         " WHERE t.title = ? AND t.id = r.title_id");
                 statement.setString(1, resultSet.getString("title"));
@@ -89,6 +90,7 @@ public class ReportHandler implements IReporting {
     @Override
     public Map<String, Integer> generate10MostCredited() {
         try {
+            //Counts all credits and orders it, then the 10 most credited will be at the top (which is limited)
             PreparedStatement gets10MostCredited = dbConnection.prepareStatement("SELECT ap.rightsholder_id," +
                     " COUNT(ap.rightsholder_id) AS number_of_times" +
                     " FROM appears_in ap, role r" +
@@ -99,6 +101,7 @@ public class ReportHandler implements IReporting {
             ResultSet resultOf10Most = gets10MostCredited.executeQuery();
             Map<String, Integer> map = new HashMap<>();
             while (resultOf10Most.next()) {
+                //The information for the 10 most credited is collected
                 PreparedStatement getNameQuery = dbConnection.prepareStatement("SELECT r.first_name, r.last_name " +
                         "FROM rightsholder AS r " +
                         "WHERE r.id = ?");
@@ -118,19 +121,23 @@ public class ReportHandler implements IReporting {
     public List<String> generateCreditsReport() {
         List<String> jsonReady = new ArrayList<>();
         try {
+            //Selects all productions in the database
             PreparedStatement productionQuery = dbConnection.prepareStatement("SELECT production.id, production.production_name FROM production");
             ResultSet productionSet = productionQuery.executeQuery();
             while (productionSet.next()) {
+                //For every new production the text "New Production" is added (see more in domain)
                 jsonReady.add("New Production");
+                //Production id and name is added to the list
                 jsonReady.add(productionSet.getString(1));
                 jsonReady.add(productionSet.getString(2));
+                //All rightsholders for the productions is added at the end of the list.
                 PreparedStatement titleQuery = dbConnection.prepareStatement(
                         "SELECT r.id, first_name, last_name, t.title FROM rightsholder r, appears_in ap, role, title t " +
                                 "WHERE role.title_id = t.id AND role.appears_in_id = ap.id AND ap.production_id = ? AND ap.rightsholder_id = r.id\n");
                 titleQuery.setInt(1, productionSet.getInt(1));
                 ResultSet result = titleQuery.executeQuery();
+                //The result for rightsholders is split so it is easier to put it into Json
                 while (result.next()) {
-
                     jsonReady.add(result.getString(1));
                     jsonReady.add(result.getString(2) + " " + result.getString(3));
                     jsonReady.add(result.getString(4));
