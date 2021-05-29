@@ -22,7 +22,15 @@ public class LoginAuthentication implements IAuthenticator {
 
     @Override
     public boolean login(IUser user) {
-        return user.getPassword().equals(DomainFacade.getInstance().getDatabasePassword(user));
+        try {
+            return validatePassword(user.getPassword(),DomainFacade.getInstance().getDatabasePassword(user));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return false;
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private byte[] fromHex(String hex) throws NoSuchAlgorithmException {
@@ -32,6 +40,33 @@ public class LoginAuthentication implements IAuthenticator {
             bytes[i] = (byte) Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
         }
         return bytes;
+    }
+
+    private boolean validatePassword(String parsedPassword, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        // Checks if the stored password from database is in database
+        if (storedPassword == null) {
+            System.out.println("Not in the database");
+            return false;
+        }
+
+        // Iterations constant, Salt is the first 32 chars
+        int iterations = 1000;
+        byte[] salt = fromHex(storedPassword.substring(0, 32));
+        byte[] hash = fromHex(storedPassword.substring(32));
+
+        // Convert the password characters to a PBE key
+        // This creates a hash from the input that we can compare
+        PBEKeySpec spec = new PBEKeySpec(parsedPassword.toCharArray(), salt, iterations, hash.length * 8);
+        SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        byte[] testHash = skf.generateSecret(spec).getEncoded();
+
+        // Comparing the stored with the parsed password
+        for (int i = 0; i < hash.length && i < testHash.length; i++) {
+            if (!(hash[i] == testHash[i])) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
