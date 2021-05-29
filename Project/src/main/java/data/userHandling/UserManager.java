@@ -22,8 +22,9 @@ public class UserManager implements IUserFacade {
             PreparedStatement queryStatement = connection.prepareStatement("SELECT user_password FROM users WHERE username = ?");
             queryStatement.setString(1, user.getUsername());
             ResultSet resultSet = queryStatement.executeQuery();
-            resultSet.next();
-            return resultSet.getString("user_password");
+            if (resultSet.next()) {
+                return resultSet.getString("user_password");
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
