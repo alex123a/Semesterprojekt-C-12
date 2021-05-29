@@ -45,16 +45,19 @@ class RightsHolderHandler {
         return rightsholderList;
     }
 
+    //method for getting all production ID belonging to a rightsholder.
+    //Private cause it is only used in the handler, multiple places
     private List<Integer> getRightsholdersProductions(ResultSet rightsholderSet) throws SQLException {
 
         List<Integer> idList = new ArrayList<>();
+        //makes sure they're distinct
         PreparedStatement productionStatement = connection.prepareStatement("" +
                 "SELECT DISTINCT production_id " +
                 "FROM appears_in " +
                 "WHERE rightsholder_id = ?");
         productionStatement.setInt(1, rightsholderSet.getInt(1));
         ResultSet productionIDs = productionStatement.executeQuery();
-
+        //iterates the resultset to get all id's
         while (productionIDs.next()) {
             idList.add(productionIDs.getInt(1));
         }
@@ -62,14 +65,15 @@ class RightsHolderHandler {
         return idList;
     }
 
-    // Return one rightholder with the use of id
+    // Return one rightholder object with the use of id
+    // Returns null if not found
     IRightsholder getRightsholder(int id) {
         Rightsholder r = null;
         try {
             PreparedStatement getRightsholderStatement = connection.prepareStatement("SELECT * FROM rightsholder WHERE id = ?");
             getRightsholderStatement.setInt(1, id);
             ResultSet rightsholderResult = getRightsholderStatement.executeQuery();
-
+            //if rightsholder exist in normal table, create object based on vaues
             if (rightsholderResult.next()) {
                 r = new Rightsholder(rightsholderResult.getInt(1), rightsholderResult.getString(2), rightsholderResult.getString(3), rightsholderResult.getString(4), getRightsholdersProductions(rightsholderResult));
             } else { // If the rightsholder is not in the rightsholder table check the rightsholder approval table
@@ -126,6 +130,7 @@ class RightsHolderHandler {
                                 "RETURNING id, first_name, last_name, rightsholder_description");
 
             }
+            //if a statement gets created, the attributes gets filled.
             if (statement != null) {
                 statement.setString(1, rightsholder.getFirstName());
                 statement.setString(2, rightsholder.getLastName());
@@ -142,7 +147,7 @@ class RightsHolderHandler {
     }
 
     void approveChangesToRightsholder(IRightsholder rightsholder) {
-
+        //checks if the rightsholder is a persistence rightsholder
         if (rightsholder instanceof Rightsholder) {
             Rightsholder r = (Rightsholder) rightsholder;
 
@@ -189,9 +194,6 @@ class RightsHolderHandler {
 
         }
 
-
-        //check if rightsholder is new, or already in table. update if not new.
-        //delete when moved
     }
 
     static RightsHolderHandler getInstance() {
