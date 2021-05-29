@@ -71,21 +71,21 @@ public class AddProductionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Set categories
+        // Set items in category combo box
         ObservableList<String> categoryOptions = FXCollections.observableArrayList();
         for(ProductionType pType : ProductionType.values()) {
             categoryOptions.add(pType.getTypeWord());
         }
         comboCategory.setItems(categoryOptions);
 
-        // Set Genres
+        // Set items in genre combo box
         ObservableList<String> genreOptions = FXCollections.observableArrayList();
         for(ProductionGenre pGenre : ProductionGenre.values()) {
             genreOptions.add(pGenre.getGenreWord());
         }
         comboGenre.setItems(genreOptions);
 
-        // Get Producers
+        // Get items in producer combo box
         ObservableList<String> sortOptions = FXCollections.observableArrayList();
         if (rep.domainFacade.validateUser(rep.domainFacade.getCurrentUser())) {
             List<IUser> userList = rep.domainFacade.getAllProducers();
@@ -98,7 +98,7 @@ public class AddProductionController implements Initializable {
         }
         comboProducer.setItems(sortOptions);
 
-        // Makes sure that only numbers can be written in the yearInput
+        // Listener that only allows numbers to be inserted in yearInput
         yearInput.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -109,12 +109,16 @@ public class AddProductionController implements Initializable {
             }
         });
 
+        // Set up the lists for the rightsholders search combo box
         finalRightsholdersList = rep.domainFacade.getRightsholders();
         rightList = rep.domainFacade.getRightsholders();
         setRightsholderComboBox();
 
+        // Set a keyPressed listener on the name input
+        // Sorts through the names when a key is pressed
         nameInput.getEditor().setOnKeyPressed(this::handleOnKeyPressed);
 
+        // Close the nameInput combobox and clear the rightsholders input boxes
         nameInput.hide();
         rightholderDescription.setText("");
         rightholderRoles.setText("");
@@ -132,6 +136,7 @@ public class AddProductionController implements Initializable {
             will be changed in iteration 2 if we run out of time in iteration 1
         */
 
+        // Get the rightholders name
         if (nameInput.getEditor().getText() != null || !nameInput.getEditor().getText().trim().isEmpty()) {
             String name = nameInput.getEditor().getText();
             String[] splitter = name.split(" ");
@@ -139,10 +144,12 @@ public class AddProductionController implements Initializable {
             lastName = splitter[1];
         }
 
+        // Get the rightholders description
         if (rightholderDescription.getText() != null || !rightholderDescription.getText().trim().isEmpty()) {
             description = rightholderDescription.getText();
         }
 
+        // Get the rightholders role
         if (rightholderRoles.getText() != null || !rightholderRoles.getText().trim().isEmpty()) {
             roles = Arrays.asList(rightholderRoles.getText().split(","));
             for(int i = 0; i<roles.size(); i++) {
@@ -150,6 +157,7 @@ public class AddProductionController implements Initializable {
             }
         }
 
+        // If the inputs aren't null, then create a new rightsholder
         if (firstName != null && lastName != null && description != null) {
             IRightsholder newRightsholder = doesRightsholderExist();
             // Checks if the rightsholder exist doesn't exist
@@ -162,6 +170,7 @@ public class AddProductionController implements Initializable {
             rightholders.add(newCredit);
         }
 
+        // Clear the rightsholders input boxes
         nameInput.getEditor().setText("");
         nameInput.getSelectionModel().clearSelection();
         findRightsholder();
@@ -219,6 +228,7 @@ public class AddProductionController implements Initializable {
         IProduction newProduction = new NewProduction(id, name, description, year, genre, category, producer, RhsRoles);
         r.domainFacade.saveProduction(newProduction);
 
+        // Return to the producers productions page
         try {
             Repository.getInstance().setLastPage("add_production");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
@@ -242,6 +252,8 @@ public class AddProductionController implements Initializable {
     }
 
     public void findRightsholder() {
+        // Is used to get a list of all the rightsholders
+        // and check if the names contains the input name from the user
         // Should have been in domain instead
         rightList  = new ArrayList<>();
 
@@ -256,6 +268,8 @@ public class AddProductionController implements Initializable {
     }
 
     public void setRightsholderComboBox() {
+        // Updates the rightsholders information boxes
+
         rightsholderList = FXCollections.observableArrayList();
         for(IRightsholder ir : rightList) {
             rightsholderList.add(ir.getFirstName() + " " + ir.getLastName());
@@ -277,6 +291,7 @@ public class AddProductionController implements Initializable {
     }
 
     public IRightsholder doesRightsholderExist() {
+        // Checks if the inputted user does already exist
         // Should have been in domain instead
         IRightsholder existingUser = null;
         Repository r = Repository.getInstance();
@@ -300,6 +315,8 @@ public class AddProductionController implements Initializable {
 
     @FXML
     private void updateDescription(ActionEvent actionEvent) {
+        // Gets the chosen rightsholders description and adds it to the description box
+
         String chosenValue = nameInput.getValue();
         for(IRightsholder rightsholder : rightList) {
             String name = rightsholder.getFirstName() + " " + rightsholder.getLastName();
