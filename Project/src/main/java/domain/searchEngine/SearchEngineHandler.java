@@ -12,6 +12,8 @@ import enumerations.RightholderSorting;
 import java.util.*;
 
 public class SearchEngineHandler implements ISearchCredits {
+
+    //singleton
     private static final SearchEngineHandler instance = new SearchEngineHandler();
 
     private SearchEngineHandler() {
@@ -22,6 +24,7 @@ public class SearchEngineHandler implements ISearchCredits {
         return instance;
     }
 
+    //Method for searching a list of searchable, by finding where a name contains searchword.
     @Override
     public List<ISearchable> findMatch(List<ISearchable> list, String target) {
 
@@ -31,13 +34,14 @@ public class SearchEngineHandler implements ISearchCredits {
                 results.add(ob);
             }
         }
-        //finder en liste af ting der overholder target regex %target%
         return results;
     }
 
+    //uses comparators to sort rightsholders by firstname or lastname,
+    // either in reverse or not
     @Override
     public List<IRightsholder> sortPersonBy(List<IRightsholder> list, RightholderSorting type) {
-        //navn og efternavn
+        //Name and lastname
 
         if(type == RightholderSorting.FIRST_NAME){
         list.sort((o1, o2) -> o1.getFirstName().compareTo(o2.getFirstName()));
@@ -62,9 +66,11 @@ public class SearchEngineHandler implements ISearchCredits {
         return null;
     }
 
+    //uses comparators to sort productions by year or name,
+    // either in reverse or not
     @Override
     public List<IProduction> sortProductionBy(List<IProduction> list, ProductionSorting target) {
-        //navn og årstal
+        //name and year
         if(target == ProductionSorting.NAME){
             list.sort((o1, o2) -> o1.getName().compareTo(o2.getName()));
             return list;
@@ -90,10 +96,12 @@ public class SearchEngineHandler implements ISearchCredits {
         return null;
     }
 
+    //filters productions, to remove items not corresponding to constraints
+    // can filter by range of years, genre and type
     @Override
     public List<IProduction> filterProduction(List<IProduction> list, int[] yearInterval, ProductionGenre genre, ProductionType type) {
-        //årstal, genre og type
 
+        //if yearinterval is filled
         if(yearInterval != null){
 
             //Checks which given year is the lowest, and assigns it to a corresponding value
@@ -107,23 +115,27 @@ public class SearchEngineHandler implements ISearchCredits {
             }
 
             //for every production, check if its year is inside the range
+            //do it through and iterator, as this is the only way that works lol
             Iterator<IProduction> iter = list.iterator();
-
+            //for every item in list
             while (iter.hasNext()) {
                 IProduction prod = iter.next();
                 int year = prod.getYear();
-
+                    //if year is outside range, remove item
                     if (year < lowestYr || year > highestYr) {
                         iter.remove();
                     }
                 }
             }
 
-
+        //if genre is set
         if(genre != null){
+            //remove item if it does not correspond to chosen genre
            list.removeIf(prod -> prod.getGenre() != genre);
         }
+        //if type is set
         if(type != null){
+            //remove item if it does not correspond to chosen type
             list.removeIf(prod -> prod.getType() != type);
         }
 

@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 
 public class LogHandler {
 
-    private static LogHandler logHandler = null;
+    private static LogHandler logHandler = new LogHandler();
 
     private PrintWriter outputStream = null;
 
@@ -20,7 +20,7 @@ public class LogHandler {
     private static final SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
     private LogHandler(){
-
+        //when instanciated, try to create file for logging
         try{
             file = new File(fileName);
             if(file.createNewFile()){
@@ -32,6 +32,7 @@ public class LogHandler {
             e.printStackTrace();
         }
         try{
+            //make outputstream append the file
             outputStream = new PrintWriter(new FileOutputStream(file, true));
         } catch(FileNotFoundException e){
             e.printStackTrace();
@@ -41,17 +42,13 @@ public class LogHandler {
 
     //singleton getInstance architecture
     public static LogHandler getInstance(){
-
-        if(logHandler == null){
-            logHandler = new LogHandler();
-        }
         return logHandler;
 
     }
 
     public void writeLog(String logTxt, IUser user) {
 
-        //output written
+        //Write output to file, with logtxt as the text, and user as the person responsible for the log.
         outputStream.println(sdf1.format(new Timestamp(System.currentTimeMillis())) + " : " + logTxt + " by: " + user.getUsername());
         outputStream.flush();
 
