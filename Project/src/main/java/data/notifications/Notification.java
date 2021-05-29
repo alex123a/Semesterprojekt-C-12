@@ -4,7 +4,7 @@ import Interfaces.INotification;
 import Interfaces.IProducer;
 import Interfaces.IProduction;
 
-public class Notification implements INotification {
+public abstract class Notification implements INotification {
 
     private int ID;
     private String text;
@@ -27,8 +27,6 @@ public class Notification implements INotification {
         this(text, production);
         this.ID = ID;
     }
-
-
 
     @Override
     public void setViewed(boolean status) {

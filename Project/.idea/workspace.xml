@@ -21,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/domain/jsonReporting/ReportingHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/jsonReporting/ReportingHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/domain/jsonReporting/TestReportingAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/jsonReporting/TestReportingAPI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentation/controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/notifications/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/notifications/Notification.java" afterDir="false" />
     </list>
     <list id="7459892f-f4aa-4fd0-9025-1be0d243d254" name="Changes by janik" comment="" />
     <list id="24071367-1411-41c8-9493-e26a578583b3" name="Changes by magnu" comment="" />
