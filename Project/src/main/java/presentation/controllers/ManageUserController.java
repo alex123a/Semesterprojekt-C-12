@@ -71,15 +71,18 @@ public class ManageUserController {
     ImageView backButton;
 
     @FXML
+//  Adds an user to the system.<
     void addUser(ActionEvent event) {
         String userUsername = username.getText();
         String userPassword = password.getText();
         String userUserType = userType.getValue();
         boolean success = false;
+//      Checks if there is selected a type for the user.
         if(userUserType != null) {
             IUser user = (userUserType.equals("Systemadministrator")) ? new Systemadministrator(userUsername, userPassword) : new Producer(userUsername, userPassword);
             success = Repository.getInstance().domainFacade.addUser(user);
         }
+//      Displays messages and resets the different fields depending on if the user were sucessfully added.
         if (success) {
             username.clear();
             password.clear();
@@ -94,18 +97,24 @@ public class ManageUserController {
     }
 
     @FXML
+//  Updates an users information
     void updateUser(ActionEvent event) {
+//      Gets the username from the selected user in the combobox.
         String editUsername = Repository.getInstance().domainFacade.getInfoFromSearch(searchUsernameEdit.getValue(), "username");
+//      Creates a tempoary user to get the information about the user from the database
         IUser tempUser = new User(editUsername);
         IUser user = Repository.getInstance().domainFacade.getUser(tempUser);
+//      Checks to see whats needs to be updated.
         if (!changeUsername.getText().equals("")) {
             user.setUsername(changeUsername.getText());
         }
         if (!changePassword.getText().equals("")) {
+//          Hashes the new password and updates it on the user.
             user.setPassword(Repository.getInstance().domainFacade.generateStrongPasswordHash(changePassword.getText()));
         }
         boolean success = Repository.getInstance().domainFacade.editUser(user);
 
+//      Displays messages and resets the different fields depending on if the user were sucessfully updated.
         if (success) {
             changeUsername.clear();
             changePassword.clear();
@@ -121,11 +130,16 @@ public class ManageUserController {
     }
 
     @FXML
+//  Removes an user
     void deleteUser(ActionEvent event) {
+//      Gets the username from the selected user in the combobox.
         String removeUsername = Repository.getInstance().domainFacade.getInfoFromSearch(searchUsernameRemove.getValue(), "username");
+//      Creates a tempoary user to get the information about the user from the database
         IUser tempUser = new User(removeUsername);
         IUser removeUser = Repository.getInstance().domainFacade.getUser(tempUser);
         boolean success = Repository.getInstance().domainFacade.deleteUser(removeUser);
+
+//      Displays messages and resets the different fields depending on if the user were sucessfully removed.
         if(success) {
             searchUsernameRemove.setValue("");
             removeUserRoleField.clear();
@@ -142,6 +156,7 @@ public class ManageUserController {
     }
 
     @FXML
+//  Displays the users role that is selected to be deleted.
     void getRemoveUsers(MouseEvent event) {
         String removeUserRole = Repository.getInstance().domainFacade.getInfoFromSearch(searchUsernameRemove.getValue(), "role");
         removeUserRoleField.setText(removeUserRole);
@@ -149,26 +164,31 @@ public class ManageUserController {
     }
 
     @FXML
+//  Finds all users depending on what is typed into the combobox, this is run for every keypress in the combobox.
     void userSearcher(KeyEvent event) {
         List<IUser> matchedUsers;
         ObservableList<String> userInfo = FXCollections.observableArrayList();
         IUser tempUser;
+//      If the combobox is typed in, in the update user tab
         if (tab2.isSelected()) {
             String searchUsernameEditText = searchUsernameEdit.getEditor().getText();
+//          Creates a temporary user and uses this user to fetch all users like this users name from the database and adds them to the combobox
             tempUser = new User(searchUsernameEditText);
             matchedUsers = Repository.getInstance().domainFacade.getUsersBySearch(tempUser);
             searchUsernameEdit.setItems(createList(matchedUsers));
         } else {
             String searchUsernameRemoveText = searchUsernameRemove.getEditor().getText();
+//          Creates a temporary user and uses this user to fetch all users like this users name from the database and adds them to the combobox
             tempUser = new User(searchUsernameRemoveText);
             matchedUsers = Repository.getInstance().domainFacade.getUsersBySearch(tempUser);
             searchUsernameRemove.setItems(createList(matchedUsers));
         }
+//      Of there is nothing typed in the combobox it is not possible to press the remove button.
         if (searchUsernameRemove.getEditor().getText().isEmpty()) {
             removeUserBtn.setDisable(true);
         }
     }
-
+//  Helper method to userSearcher to make the list of items for the combobox with the user information
     private ObservableList<String> createList(List<IUser> list) {
         ObservableList<String> userInfo = FXCollections.observableArrayList();
         for(IUser user : list) {
@@ -179,12 +199,12 @@ public class ManageUserController {
         }
         return userInfo;
     }
-
+//  Used after either Add, remove or update user, to reset the combobox, and sets the combobox to contain all users in the database.
     private void resetSearches() {
         searchUsernameEdit.setItems(createList(Repository.getInstance().domainFacade.getUsers()));
         searchUsernameRemove.setItems(createList(Repository.getInstance().domainFacade.getUsers()));
     }
-
+// The possibility to go back from this menu.
     public void goBack(MouseEvent mouseEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/menuAdmin.fxml"));
@@ -197,6 +217,7 @@ public class ManageUserController {
 
     @FXML
     public void initialize() {
+//      Sets the different comboboxes to contain the correct information
         ObservableList<String> roles = FXCollections.observableArrayList("Producer", "Systemadministrator");
         userType.setItems(roles);
         removeUserBtn.setDisable(true);

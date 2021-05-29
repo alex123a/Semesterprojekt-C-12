@@ -121,6 +121,8 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public boolean deleteUser(IUser user) {
         IUser currentUser = getCurrentUser();
+//      Checks if the user calling the method is systemadmin, and that the user that should be deleted is not null
+//      and that the user that should be deleted does not match the user that is logged in and had called the method
         if (validateUser(currentUser) && user != null && !currentUser.getUsername().equals(user.getUsername())) {
             return PERSISTENCE_FACADE.deleteUser(user);
         }
@@ -130,6 +132,7 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public boolean editUser(IUser user) {
         IUser currentUser = getCurrentUser();
+//      Checks if the user calling the method is systemadmin, and that the username or password is not empty.
         if (validateUser(currentUser) && !user.getUsername().equals("") && !user.getPassword().equals("")) {
             return PERSISTENCE_FACADE.editUser(user);
         }
@@ -144,8 +147,10 @@ public class DomainFacade implements IDomainFacade {
     @Override
     public boolean addUser(IUser user) {
         IUser currentUser = getCurrentUser();
+//      Checks if the user calling the method is systemadmin, and that the username or password is not empty.
         if (validateUser(currentUser) && !user.getUsername().equals("") && !user.getPassword().equals("")) {
             try {
+//              Generates a hashed password for the user
                 user.setPassword(AUTHENTICATION_FACADE.generateStrongPasswordHash(user.getPassword()));
             } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 e.printStackTrace();
