@@ -35,8 +35,11 @@ public class PersonController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Repository r = Repository.getInstance();
 
+        // Inserts the name and their description in the text on the page
         setup(r.getRightsholderToBeShown().getFirstName() + " " + r.getRightsholderToBeShown().getLastName(), r.getRightsholderToBeShown().getDescription());
 
+        // For each production that the rightsholder it credited for
+        // make a production in the list
         for(IProduction p : r.getRightsholderToBeShown().getRightsholderFor()) {
             String roles = "";
             if(new CreditWrapper(r.getRightsholderToBeShown(), p.getRightsholders().get(r.getRightsholderToBeShown())).getRoles() != null) {
@@ -63,6 +66,7 @@ public class PersonController implements Initializable {
         notificationPane.setPrefHeight(50);
         notificationPane.setPrefWidth(548);
         notificationPane.setStyle("-fx-border-width: 1; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF;");
+        // Set an on click on the production that opens the productions page
         notificationPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             public void handle(final MouseEvent mouseEvent) {
                 Repository.getInstance().setProductionToBeShown(p);

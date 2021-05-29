@@ -59,6 +59,7 @@ public class SearchController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Sets up all the information into the combo boxes
         comboGenre.setDisable(true);
         searchInput.setText(Repository.getInstance().getProgramName());
         Repository.getInstance().setProgramName("");
@@ -82,12 +83,14 @@ public class SearchController implements Initializable {
         comboSort.setValue(String.valueOf(ProductionSorting.NAME));
     }
 
+    // Method to create a production in the list
     public void createMovie(String movieName, int year, IProduction production) {
         HBox notificationPane = new HBox();
         notificationPane.setAlignment(Pos.CENTER);
         notificationPane.setPrefHeight(50);
         notificationPane.setPrefWidth(733);
         notificationPane.setStyle("-fx-cursor: hand; -fx-border-width: 1; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF;");
+        // set an onClick listener on the production panel, to open the production
         notificationPane.setOnMouseClicked(new EventHandler() {
             @Override
             public void handle(Event event) {
@@ -129,12 +132,14 @@ public class SearchController implements Initializable {
         searchResultBox.getChildren().add(notificationPane);
     }
 
+    // Method to create a person in the list
     public void createPerson(String personName, String description, IRightsholder rightsholder) {
         HBox notificationPane = new HBox();
         notificationPane.setAlignment(Pos.CENTER);
         notificationPane.setPrefHeight(50);
         notificationPane.setPrefWidth(733);
         notificationPane.setStyle("-fx-cursor: hand; -fx-border-width: 1; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF;");
+        // Set an onClick listener on the person pane to open the persons page
         notificationPane.setOnMouseClicked(new EventHandler() {
             @Override
             public void handle(Event event) {
@@ -215,7 +220,8 @@ public class SearchController implements Initializable {
 
         String searchFor = null;
 
-        // Checks if there is not chosen a category, then showing all categories
+        // Checks if there is not chosen a category
+        // If not, then show both the productions and the rightsholders
         if(comboCategory.getValue() == null ||comboCategory.getValue().equals("Kategori")) {
             searchFor = "both";
             comboSort.setValue(null);

@@ -106,6 +106,7 @@ public class Controller implements Initializable {
 
     @FXML
     void onBroadcastClicked(MouseEvent event) {
+        // Opens the page with the producers productions
         try {
             Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
@@ -119,6 +120,7 @@ public class Controller implements Initializable {
 
     @FXML
     void onHelpClicked(MouseEvent event) {
+        // Opens the help page
         try {
             Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/helppage.fxml"));
@@ -132,6 +134,7 @@ public class Controller implements Initializable {
 
     @FXML
     void onHomepageClicked(MouseEvent event) {
+        // Opens TV2.dk in a browser
         try {
             java.awt.Desktop.getDesktop().browse(new URI("https://tv2.dk/"));
         } catch (IOException | URISyntaxException e) {
@@ -142,6 +145,7 @@ public class Controller implements Initializable {
 
     @FXML
     void onEditUserClicked(MouseEvent event) {
+        // Opens the page where an admin can manage a user
         try {
             Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/ManageUser.fxml"));
@@ -157,6 +161,7 @@ public class Controller implements Initializable {
 
     @FXML
     void onSearchClicked() {
+        // Opens the search page
         try {
             Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/search.fxml"));
@@ -169,6 +174,8 @@ public class Controller implements Initializable {
     }
 
     private void shiftPage(Label channel) {
+        // Gets the clicked channel and what's being shown
+        // and opens the search page and inserts the program name
         Parent root;
         try {
             Repository.getInstance().setProgramName(channel.getText());
@@ -238,9 +245,11 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Set the date
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM");
         subject.setText("TV-GUIDE " + formatter.format(new Date()));
 
+        // Gets all the programs from TV2.dk
         List<String> strings = new ArrayList<>();
         try {
             URL url = new URL("https://tv.tv2.dk/");
@@ -256,6 +265,7 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
 
+        // Sets up the now showing programs in the boxes
         long start;
         long end;
         Long time = System.currentTimeMillis() / 1000;
@@ -283,6 +293,7 @@ public class Controller implements Initializable {
     }
 
     public void goToNotifications(MouseEvent mouseEvent) {
+        // Opens notifications
         try {
             Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/notification.fxml"));
@@ -295,6 +306,7 @@ public class Controller implements Initializable {
     }
 
     public void goToLogin(MouseEvent mouseEvent) {
+        // Opens the login page
         try {
             Repository.getInstance().setLastPage("menu");
             Parent root = FXMLLoader.load(getClass().getResource("/layout/login.fxml"));
@@ -307,6 +319,8 @@ public class Controller implements Initializable {
     }
 
     public void logOut(MouseEvent mouseEvent) {
+        // Sends the user back to the standard menu for the standard users
+        // and logs out the user
         Parent root = null;
         try {
             Repository.getInstance().setLastPage("menu");

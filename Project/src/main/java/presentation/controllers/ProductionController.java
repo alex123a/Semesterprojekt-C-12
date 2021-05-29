@@ -37,6 +37,7 @@ public class ProductionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // If the user is an admin, then hide the edit production image
         IUser user = DomainFacade.getInstance().getCurrentUser();
         if (DomainFacade.getInstance().validateUser(user)) {
             editImage.setVisible(false);
@@ -44,8 +45,10 @@ public class ProductionController implements Initializable {
 
         Repository r = Repository.getInstance();
 
+        // Insert the production name and description in the text on the page
         draw(r.getProductionToBeShown().getName(), r.getProductionToBeShown().getDescription());
 
+        // Create a role for each rightsholder
         for (IRightsholder rh : r.getProductionToBeShown().getRightsholders().keySet()){
             createRightsholder(new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRightsholder(), new CreditWrapper(rh, r.getProductionToBeShown().getRightsholders().get(rh)).getRoles());
         }
@@ -64,6 +67,9 @@ public class ProductionController implements Initializable {
         notificationPane.setPrefWidth(548);
         notificationPane.setStyle("-fx-border-radius: 8px; -fx-background-radius: 8px; -fx-border-color: #BBBBBB; -fx-background-color: #FFFFFF; -fx-cursor: hand;");
 
+        // If the last page is the search page
+        // Then allow the user to click on the rightsholder
+        // and open their page
         if(Repository.getInstance().getLastPage().equals("search")) {
             notificationPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
                 public void handle(final MouseEvent mouseEvent) {
@@ -129,6 +135,7 @@ public class ProductionController implements Initializable {
     }
 
     public void editClicked(MouseEvent mouseEvent) {
+        // Opens the edit production page and sets the production to be edited
         Repository r = Repository.getInstance();
         Repository.getInstance().setToEdit(r.getProductionToBeShown());
         try {

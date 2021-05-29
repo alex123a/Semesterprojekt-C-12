@@ -136,7 +136,7 @@ public class LoginController {
         }
     }
 
-
+    // Opens the page for forgot password
     public void ForgotPassword(MouseEvent mouseEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/forgotPassword.fxml"));

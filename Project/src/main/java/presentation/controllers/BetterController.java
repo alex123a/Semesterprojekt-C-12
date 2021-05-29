@@ -101,9 +101,11 @@ public class BetterController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // set the date
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM");
         subject.setText("TV-GUIDE " + formatter.format(new Date()));
 
+        // Get information from TV2.dk
         List<String> strings = new ArrayList<>();
         try {
             URL url = new URL("https://tv.tv2.dk/");
@@ -119,6 +121,7 @@ public class BetterController implements Initializable {
             e.printStackTrace();
         }
 
+        // Insert the program into the "now showing" box
         long start;
         long end;
         Long time = System.currentTimeMillis() / 1000;
@@ -159,6 +162,7 @@ public class BetterController implements Initializable {
 
     @FXML
     void onBroadcastClicked(MouseEvent event) {
+        // Opens the page of all the producers productions
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/layout/my_productions.fxml"));
             Stage window = (Stage) tv2Default.getScene().getWindow();

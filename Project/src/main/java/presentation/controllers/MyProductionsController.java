@@ -39,6 +39,7 @@ public class MyProductionsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // For each production that the producer owns, create a production in the list
         for(IProduction p : CreditsSystem.getInstance().getMyProductions()) {
             createProduction(p);
         }
@@ -68,6 +69,7 @@ public class MyProductionsController implements Initializable {
         edit.setFitWidth(25);
         edit.setPreserveRatio(true);
         edit.setStyle("-fx-cursor: hand;");
+        // Set a onClick on the edit image so it opens the edit_production page
         edit.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             public void handle(final MouseEvent mouseEvent) {
                 Repository.getInstance().setToEdit(p);
@@ -88,6 +90,7 @@ public class MyProductionsController implements Initializable {
         trash.setFitWidth(30);
         trash.setPreserveRatio(true);
         trash.setStyle("-fx-cursor: hand;");
+        // Set a onClick on the trash image so it deletes the production
         trash.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             public void handle(final MouseEvent mouseEvent) {
                 CreditsSystem.getInstance().deleteProduction(p);
