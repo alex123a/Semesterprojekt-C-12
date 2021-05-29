@@ -42,24 +42,24 @@ public class SearchEngineHandler implements ISearchCredits {
     @Override
     public List<IRightsholder> sortPersonBy(List<IRightsholder> list, RightholderSorting type) {
         //Name and lastname
-
+        //sets strings to lowercase and trims them to get a homogenous result from sorting
         if(type == RightholderSorting.FIRST_NAME){
-        list.sort((o1, o2) -> o1.getFirstName().compareTo(o2.getFirstName()));
+        list.sort((o1, o2) -> o1.getFirstName().toLowerCase().trim().compareTo(o2.getFirstName().toLowerCase().trim()));
         return list;
         }
 
         if(type == RightholderSorting.FIRST_NAME_REVERSE){
-            list.sort((o1, o2) -> o2.getFirstName().compareTo(o1.getFirstName()));
+            list.sort((o1, o2) -> o2.getFirstName().toLowerCase().trim().compareTo(o1.getFirstName().toLowerCase().trim()));
             return list;
         }
 
         if(type == RightholderSorting.LAST_NAME){
-          list.sort((o1, o2) -> o1.getLastName().compareTo(o2.getLastName()));
+          list.sort((o1, o2) -> o1.getLastName().toLowerCase().trim().compareTo(o2.getLastName().toLowerCase().trim()));
             return list;
         }
 
         if(type == RightholderSorting.LAST_NAME_REVERSE){
-            list.sort((o1, o2) -> o2.getLastName().compareTo(o1.getLastName()));
+            list.sort((o1, o2) -> o2.getLastName().toLowerCase().trim().compareTo(o1.getLastName().toLowerCase().trim()));
             return list;
         }
 
@@ -72,12 +72,12 @@ public class SearchEngineHandler implements ISearchCredits {
     public List<IProduction> sortProductionBy(List<IProduction> list, ProductionSorting target) {
         //name and year
         if(target == ProductionSorting.NAME){
-            list.sort((o1, o2) -> o1.getName().compareTo(o2.getName()));
+            list.sort((o1, o2) -> o1.getName().toLowerCase().trim().compareTo(o2.getName().toLowerCase().trim()));
             return list;
         }
 
         if(target == ProductionSorting.NAME_REVERSE){
-            list.sort((o1, o2) -> o2.getName().compareTo(o1.getName()));
+            list.sort((o1, o2) -> o2.getName().toLowerCase().trim().compareTo(o1.getName().toLowerCase().trim()));
             return list;
 
         }
