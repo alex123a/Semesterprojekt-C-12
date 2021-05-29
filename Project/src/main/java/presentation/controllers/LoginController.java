@@ -67,8 +67,8 @@ public class LoginController {
         } else {
             //Instantiates the user, here the user gets a hashed password
             IUser user = DomainFacade.getInstance().getUser(new User(usernameInput.getText(), passwordInput.getText()));
-            //Sends the user down to check if the hashed password is valid
-            if (DomainFacade.getInstance().login(user)) {
+            //Sends the user without hashed password down to check if the hashed password is valid
+            if (DomainFacade.getInstance().login(new User(usernameInput.getText(), passwordInput.getText()))) {
                 //The user is instantiated as a systemadmin or a producer, so that is checked
                 if (DomainFacade.getInstance().validateUser(user)) {
                     //The session user is being set

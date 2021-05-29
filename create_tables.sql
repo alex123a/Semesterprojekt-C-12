@@ -153,6 +153,6 @@ CREATE TABLE producer_notification(
     notification_text VARCHAR(1000) NOT NULL,
     viewed BOOLEAN NOT NULL,
     production_id INTEGER,
-	PRIMARY KEY (id),
+	PRIMARY KEY (id)
 );
 
